@@ -3,6 +3,7 @@ import Dashboard from "./Pages/Dashboard";
 import Agenda from "./Pages/Agenda";
 import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar";
+import DateTime from "./Components/DateTime";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Sidebar />
         <main>
+          <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/agenda" element={<Agenda />} />
