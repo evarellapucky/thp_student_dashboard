@@ -1,7 +1,22 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./Pages/Dashboard";
+import Agenda from "./Pages/Agenda";
+import Profile from "./Pages/Profile";
+import Sidebar from "./Components/Sidebar";
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">bonjour</h1>
+      <BrowserRouter>
+        <Sidebar />
+        <main>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
     </>
   );
 }
