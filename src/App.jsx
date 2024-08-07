@@ -7,16 +7,18 @@ import Sidebar from "./Components/Sidebar";
 function App() {
   return (
     <>
-      <BrowserRouter>
+  <BrowserRouter>
+      <div className="flex h-screen">
         <Sidebar />
-        <main>
+        <main className="flex-1 ml-64 p-6">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
-      </BrowserRouter>
+      </div>
+    </BrowserRouter>
     </>
   );
 }
