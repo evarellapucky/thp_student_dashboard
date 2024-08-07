@@ -3,6 +3,7 @@ import Dashboard from "./Pages/Dashboard";
 import Agenda from "./Pages/Agenda";
 import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar";
+import DateTime from "./Components/DateTime";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="flex h-screen">
         <Sidebar />
         <main className="flex-1 ml-64 p-6">
+          <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/agenda" element={<Agenda />} />
