@@ -1,5 +1,6 @@
 import React from "react";
 import MyProfile from "../Components/MyProfile";
+import MyDocuments from "../Components/MyDocuments";
 
 function Profile() {
   return (
@@ -11,7 +12,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Documents" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Tab content 2
+        <MyDocuments/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Leaderboard" />
