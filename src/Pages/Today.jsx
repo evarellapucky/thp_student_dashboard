@@ -4,7 +4,7 @@ const Today = () => {
     return (
         <>
                 <h1 className="text-3xl text-center">Titre de la journée</h1>
-            <div className="flex flex-row justify-center space-x-60 mr-36 mt-6">
+            <div className="flex flex-row justify-center space-x-60 mt-6">
                 <div className="flex flex-row justify-end">
                     <div className="rounded-lg bg-base-200 p-4 flex flex-col space-y-2 w-96">
                         <input type="text" className="input input-bordered input-primary" />
@@ -20,7 +20,7 @@ const Today = () => {
                 </div>
                 <Countdown />
             </div>
-            <div className="flex justify-start p-4">
+            <div className="flex justify-center p-4">
                 <div className="w-full max-w-4xl">
                     <div className="collapse collapse-arrow bg-base-200 mb-4 border border-blue-500">
                         <input type="radio" name="my-accordion-2" defaultChecked />
