@@ -1,11 +1,14 @@
 import React from "react";
-import DashboardCards from "../Components/DashboardCard";
+import TopCards from "../Components/Dashboard/TopCards";
+import BottomCards from "../Components/Dashboard/BottomCards";
+import Week from "../Components/Dashboard/Week";
 
 function Dashboard() {
   return (
     <>
-      <DashboardCards />
-      <h2>Semaine en cours</h2>
+      <TopCards />
+      <Week />
+      <BottomCards />
     </>
   );
 }

@@ -3,6 +3,7 @@ import MyProfile from "../Components/MyProfile";
 import MyDocuments from "../Components/MyDocuments";
 import Leaderboard from "../Components/Leaderboard";
 import Directory from "../Components/Directory";
+import MyJourney from "../Components/MyJourney";
 
 function Profile() {
   return (
@@ -29,7 +30,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Mon parcours"/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Tab content 5
+        <MyJourney/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" />

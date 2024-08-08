@@ -1,11 +1,29 @@
-import Countdown from "../Components/Countdown"
-import InputField from "../Components/InputField"
-import CollapseBar from "../Components/CollapseBar"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Countdown from "../Components/Countdown";
+import InputField from "../Components/InputField";
+import CollapseBar from "../Components/CollapseBar";
 
 const Today = () => {
+    const [resources, setResources] = useState([]);
+
+    useEffect(() => {
+
+        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json')
+            .then(response => {
+                const content = response.data.content;
+
+                // Décodage du contenu base64
+                const decodedContent = JSON.parse(decodeURIComponent(escape(atob(content))));
+
+                setResources(decodedContent.resources);
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données:', error));
+    }, []);
+
     return (
         <>
-        <h1 className="text-3xl text-center">Titre de la journée</h1>
+            <h1 className="text-3xl text-center">Titre de la journée</h1>
             <div className="flex flex-row justify-center space-x-60 mt-6">
                 <div className="flex flex-row justify-end">
                     <div className="rounded-lg bg-base-200 p-4 flex flex-col space-y-2 w-96">
@@ -24,36 +42,18 @@ const Today = () => {
             </div>
             <div className="flex justify-center p-4">
                 <div className="w-full max-w-4xl">
-                    <CollapseBar 
-                      title="Ressource : Bienvenue à THP !" 
-                      content="Bon ok, ch'suis dans la rue chez nous J'voyais rien, je fesse dans une rafale de 6 pieds R'gardez mon pick-up Ch'peux pu avancer Ch't'à peu près à 500 mètres de chez nous Checkez-moi ça la rafale Checkez mon pick-up, j'ai fessé là-d'dans, ça a arrêté ben sec, j'm'suis fessé la face dans l'steering Tabarnak de câlisse de ciboire La la, ça a pas d'allure" 
-                      borderColor="border-blue-500" 
-                    />
-                  <CollapseBar
-                    title="Click to open this one and close other"
-                    content="hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos.s"
-                    borderColor={"border-blue-500"}
-                  />
-                  <CollapseBar
-                    title="Click to open this one and close other"
-                    content="hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos.s"
-                    borderColor={"border-blue-500"}
-                  />
-                  <CollapseBar
-                    title="Click to open this one and close other"
-                    content="hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos.s"
-                    borderColor={"border-red-500"}
-                  />
-                  <CollapseBar
-                    title="Click to open this one and close other"
-                    content="hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia placeat excepturi ut velit labore inventore, dolor recusandae repellat alias ipsa, itaque dolores beatae commodi, qui consequatur doloribus tenetur vitae corrupti. Dolorum, voluptatibus dignissimos.s"
-                    borderColor={"border-red-500"}
-                  />
-
+                    {resources.map((resource, index) => (
+                        <CollapseBar 
+                            key={index}
+                            title={resource.title}
+                            content={resource.content}
+                            borderColor="border-blue-500" 
+                        />
+                    ))}
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default Today
+export default Today;
