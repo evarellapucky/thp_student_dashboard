@@ -41,7 +41,7 @@ function Leaderboard() {
 
   return(
     <>
-      <h1 className="m-5">Leaderboard</h1>
+      <h1>Leaderboard</h1>
       <Link to="/shop" className="border-2 px-3">Boutique</Link>
       <div className="overflow-x-auto">
         <button onClick={resetSort} className="underline">Reset Sort</button>
