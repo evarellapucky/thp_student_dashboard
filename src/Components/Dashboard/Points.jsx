@@ -25,8 +25,8 @@ function Points() {
       <div className="card-body">
         <h2 className="card-title">Mes points</h2>
         <div className="flex flex-col items-center p-2 mt-2 gap-5">
-          <div className="text-white font-semibold">23 575</div>
-          <div className="text-white font-semibold">Rank : 10e</div>
+          <div className="font-semibold">23 575</div>
+          <div className="font-semibold">Rank : 10e</div>
         </div>
 
         <div className="card-actions justify-end"></div>

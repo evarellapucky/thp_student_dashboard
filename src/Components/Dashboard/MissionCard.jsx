@@ -14,9 +14,9 @@ function MissionCard() {
       <div className="card-body">
         <div className="flex flex-col items-center p-2 mt-5 gap-5">
           <Link to="/missions">
-            <div className="text-white font-semibold">Liste des missions</div>
+            <div className="font-semibold">Liste des missions</div>
           </Link>
-          <div className='text-white font-semibold'>
+          <div className='font-semibold'>
             258
           </div>
         </div>

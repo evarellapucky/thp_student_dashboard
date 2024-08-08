@@ -22,7 +22,7 @@ function Handshakes() {
           <div className="card-body">
             <h2 className="card-title">Mes coups de mains</h2>
             <div className="flex items-center justify-around mt-5">
-              <div className="text-white font-bold">
+              <div className="font-bold">
                 123
               </div>
               <div className="mr-5">
