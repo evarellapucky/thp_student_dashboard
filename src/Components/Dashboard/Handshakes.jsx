@@ -1,5 +1,5 @@
 import React from 'react'
-import Handshake from "../Public/Images/Handshake.png"
+import Handshake from "../../Public/Images/Handshake.png"
 
 function Handshakes() {
   return (

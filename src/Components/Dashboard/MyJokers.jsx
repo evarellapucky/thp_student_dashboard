@@ -1,5 +1,5 @@
 import React from "react"
-import Joker from "../Public/Images/Joker.png"
+import Joker from "../../Public/Images/Joker.png"
 
 function MyJokers() {
   return (

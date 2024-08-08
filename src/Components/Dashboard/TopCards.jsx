@@ -5,7 +5,7 @@ import MyJokers from "./MyJokers";
 import Handshakes from "./Handshakes";
 
 
-function DashboardCards() {
+function TopCards() {
 
   return (
     <>
@@ -19,4 +19,4 @@ function DashboardCards() {
   );
 }
 
-export default DashboardCards;
+export default TopCards;
