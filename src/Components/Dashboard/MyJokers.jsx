@@ -3,7 +3,7 @@ import Joker from "../../Public/Images/Joker.png"
 
 function MyJokers() {
   return (
-    <div className="card top-7 bg-base-100 w-96 shadow-xl">
+    <div className="card bg-base-100 w-96 shadow-xl">
       <div className="card bg-base-100 w-96">
         <div className="relative">
           <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-red-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
