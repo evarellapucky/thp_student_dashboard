@@ -17,8 +17,4 @@ SidebarItem.propTypes = {
   textColor: PropTypes.string         // textColor is optional and must be a string
 };
 
-SidebarItem.defaultProps = {
-  textColor: 'text-white' // Default value for textColor
-};
-
 export default SidebarItem;

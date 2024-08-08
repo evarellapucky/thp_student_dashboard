@@ -5,7 +5,12 @@ import SidebarItem from "./SidebarItem";
 const Sidebar = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const handleToggleSearch = () => setIsOpenSearch(isOpenSearch);
+  const handleToggleSearch = (e) => {
+    e.preventDefault();
+    setIsOpenSearch(!isOpenSearch);
+    console.log("isOpenSearch :", !isOpenSearch);
+  };
+
 
   return (
     <>
@@ -89,7 +94,9 @@ const Sidebar = () => {
                 onClick={handleToggleSearch}
                 className="cursor-pointer"
               >
-                <summary className="text-white flex items-center">
+                <summary className="text-white flex items-center"
+                  
+                >
                   <span className="mr-2 flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +126,8 @@ const Sidebar = () => {
                     />
                   </svg>
                 </summary>
-                <ul className={`p-2 space-y-1 ${isOpenSearch ? "" : "hidden"}`}>
+                {isOpenSearch && (   
+                <ul className="p-2 space-y-1">
                   <SidebarItem
                     link="/search"
                     text="Recherche"
@@ -153,6 +161,7 @@ const Sidebar = () => {
                     }
                   />
                 </ul>
+                )}
               </details>
             </li>
             <SidebarItem
