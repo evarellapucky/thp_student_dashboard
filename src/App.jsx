@@ -4,6 +4,7 @@ import Agenda from "./Pages/Agenda";
 import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import DateTime from "./Components/DateTime";
+import Today from "./Pages/Today";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/today" element={<Today />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
