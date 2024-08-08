@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import DashboardCards from "../Components/DashboardCard";
 
 function Dashboard() {
   return (
-    <div>Vous êtes sur la page Dashboard</div>
-  )
+    <>
+      <DashboardCards />
+      <h2>Semaine en cours</h2>
+    </>
+  );
 }
 
 export default Dashboard;
