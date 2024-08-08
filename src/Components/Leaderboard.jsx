@@ -1,6 +1,7 @@
 import React from "react";
-
+import { Link } from 'react-router-dom'
 import { useState } from "react";
+
 
 function Leaderboard() {
   const [data, setData] = useState([
@@ -40,9 +41,10 @@ function Leaderboard() {
 
   return(
     <>
-      <h1>LeaderBoard</h1>
+      <h1 className="m-5">Leaderboard</h1>
+      <Link to="/shop" className="border-2 px-3">Boutique</Link>
       <div className="overflow-x-auto">
-        <button onClick={resetSort} className="border-2 px-3">Reset Sort</button>
+        <button onClick={resetSort} className="underline">Reset Sort</button>
         <table className="table">
           <thead>
             <tr>
