@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
+import Table from "./Table";
 
 function Directory() {
 
@@ -11,6 +12,7 @@ function Directory() {
         <SearchBar/>
         <button className="border-2 px-2">Ma promo</button>
       </div>
+      <Table/>
     </>
   )
 }
