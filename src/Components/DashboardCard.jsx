@@ -105,7 +105,7 @@ function DashboardCards() {
           <div className="card-body">
             <h2 className="card-title">Mes jokers</h2>
             <div className="flex items-center justify-center"></div>
-            <div className="flex flex-row 3">
+            <div className="flex flex-row 3 gap-2 mt-2">
               <div className="border-2 rounded-lg">
                 <img src={Joker} alt="Chapeau de clown" />
               </div>
@@ -137,15 +137,14 @@ function DashboardCards() {
           </div>
           <div className="card-body">
             <h2 className="card-title">Mes coups de mains</h2>
-            <div className="flex flex-row items-center gap-5">
-              <div className="text-white font-bold flex-grow w-1/5">
+            <div className="flex items-center justify-around mt-5">
+              <div className="text-white font-bold">
                 123
               </div>
-              <div className="flex-shrink-0 w-4/5">
-                <img src={Handshake} alt="Poignées de mains" className="w-48"/>
+              <div className="mr-5">
+                <img src={Handshake} alt="Poignées de mains" className="w-24"/>
               </div>
             </div>
-            <div className="card-actions justify-end"></div>
           </div>
         </div>
       </div>
