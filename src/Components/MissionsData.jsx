@@ -13,7 +13,6 @@ const MissionsData = () => {
     const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
-        console.log('Data reçue', response.data)
         setIssues(response.data);
       } catch (err) {
         setError('Error fetching the data');
