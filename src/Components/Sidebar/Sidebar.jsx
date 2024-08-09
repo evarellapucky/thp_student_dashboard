@@ -14,115 +14,110 @@ import faq_logo from "../../Assets/question_mark.svg";
 
 const Sidebar = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Ajout de l'état pour la Sidebar
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false); // Nouvel état pour la Sidebar réduite
 
   const handleToggleSearch = (e) => {
     e.preventDefault();
     setIsOpenSearch(!isOpenSearch);
-    console.log("isOpenSearch :", !isOpenSearch);
   };
 
-  const handleToggleSidebar = () => { // Fonction pour toggler la Sidebar
-    setIsSidebarOpen(!isSidebarOpen);
+  const handleToggleMinimize = () => { // Fonction pour toggler le mode réduit
+    setIsSidebarMinimized(!isSidebarMinimized);
   };
 
   return (
     <>
-      {/* Bouton pour ouvrir/fermer la Sidebar */}
-      <button
-        onClick={handleToggleSidebar}
-        className="fixed top-3 left-3 z-50 bg-black text-white p-2 rounded-md"
+      {/* Sidebar ouverte par défaut */}
+      <aside
+        className={`bg-black text-white fixed top-3 left-3 h-95 ${
+          isSidebarMinimized ? "w-20" : "w-64"
+        } p-4 z-50 rounded-lg transition-all duration-300`}
       >
-        {isSidebarOpen ? "Fermer Menu" : "Ouvrir Menu"}
-      </button>
+        {/* Bouton pour minimiser/maximiser la Sidebar */}
+        <button
+          onClick={handleToggleMinimize}
+          className="absolute top-2 right-2 bg-gray-700 text-white p-1 rounded-full"
+        >
+          {isSidebarMinimized ? ">" : "<"}
+        </button>
 
-      {/* Sidebar affichée seulement si isSidebarOpen est true */}
-      {isSidebarOpen && (
-        <aside className="bg-black text-white fixed top-3 left-3 h-95 w-64 p-4 z-50 rounded-lg">
-          <div className="flex justify-center items-center my-4">
-          <button
-              onClick={handleToggleSidebar}
-              className="absolute top-2 right-2 bg-gray-700 text-white p-1 rounded-full"
-            >
-              Fermer
-            </button>
-            <div className="avatar mb-6">
-              <div className="w-24 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="Profile"/>
-              </div>
+        <div className="flex justify-center items-center my-4">
+          <div className={`avatar mb-6 ${isSidebarMinimized ? "hidden" : ""}`}>
+            <div className="w-24 rounded-full">
+              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="Profile"/>
             </div>
           </div>
-          <nav>
-            <ul className="space-y-1">
-              <SidebarItem
-                link="/profile"
-                text="Profil"
-                icon={<img src={profile} alt="mon profil" className="w-6 h-6 mr-2"></img>}
-              />
-              <SidebarItem
-                link="/dashboard"
-                text="Dashboard"
-                icon={<img src={dashboard_logo} alt="dashboard" className="w-6 h-6 mr-2"></img>}
-              />
-              <SidebarItem
-                link="/today"
-                text="Aujourd'hui"
-                icon={<img src={today_logo} alt="aujourd'hui" className="w-6 h-6 mr-2"></img>}
-              />
-              <SidebarItem
-                link="/agenda"
-                text="Agenda"
-                icon={<img src={agenda_logo} alt="agenda" className="w-6 h-6 mr-2"></img>}
-              />
-              <li className="p-2 hover:bg-blue-700 rounded">
-                <details
-                  open={isOpenSearch}
-                  onClick={handleToggleSearch}
-                  className="cursor-pointer"
-                >
-                  <summary className="text-white flex items-center">
-                    <span className="mr-2 flex items-center">
-                      <img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>
-                      Mes recherches
-                    </span>
-                    <img src={toggler_logo} alt="toggle" className="w-4 h-4"></img>
-                  </summary>
-                  {isOpenSearch && (
-                    <ul className="p-2 space-y-1">
-                      <SidebarItem
-                        link="/search"
-                        text="Recherche"
-                        icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>}
-                      />
-                      <SidebarItem
-                        link="/favorites"
-                        text="Mes favoris"
-                        icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2"></img>}
-                      />
-                    </ul>
-                  )}
-                </details>
-              </li>
-              <SidebarItem
-                link="/faq"
-                text="FAQ / Aide"
-                icon={<img src={faq_logo} alt="faq" className="w-6 h-6 mr-2"></img>}
-              />
-              <SidebarItem
-                link="/logout"
-                text="Déconnexion"
-                icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2"></img>}
-                textColor="text-red-500"
-              />
-            </ul>
-            <div className="flex justify-center items-center mt-44">
-              <a href="https://www.thehackingproject.org" className="flex justify-center items-center">
-                <img src={logo} alt="Logo" />
-              </a>
-            </div>
-          </nav>
-        </aside>
-      )}
+        </div>
+        <nav>
+          <ul className="space-y-1">
+            <SidebarItem
+              link="/profile"
+              text={isSidebarMinimized ? "" : "Profil"}
+              icon={<img src={profile} alt="mon profil" className="w-6 h-6 mr-2"></img>}
+            />
+            <SidebarItem
+              link="/dashboard"
+              text={isSidebarMinimized ? "" : "Dashboard"}
+              icon={<img src={dashboard_logo} alt="dashboard" className="w-6 h-6 mr-2"></img>}
+            />
+            <SidebarItem
+              link="/today"
+              text={isSidebarMinimized ? "" : "Aujourd'hui"}
+              icon={<img src={today_logo} alt="aujourd'hui" className="w-6 h-6 mr-2"></img>}
+            />
+            <SidebarItem
+              link="/agenda"
+              text={isSidebarMinimized ? "" : "Agenda"}
+              icon={<img src={agenda_logo} alt="agenda" className="w-6 h-6 mr-2"></img>}
+            />
+            <li className="p-2 hover:bg-blue-700 rounded">
+              <details
+                open={isOpenSearch}
+                onClick={handleToggleSearch}
+                className="cursor-pointer"
+              >
+                <summary className="text-white flex items-center">
+                  <span className="mr-2 flex items-center">
+                    <img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>
+                    {isSidebarMinimized ? "" : "Mes recherches"}
+                  </span>
+                  <img src={toggler_logo} alt="toggle" className={`w-4 h-4 ${isSidebarMinimized ? "hidden" : ""}`}></img>
+                </summary>
+                {isOpenSearch && !isSidebarMinimized && (
+                  <ul className="p-2 space-y-1">
+                    <SidebarItem
+                      link="/search"
+                      text="Recherche"
+                      icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>}
+                    />
+                    <SidebarItem
+                      link="/favorites"
+                      text="Mes favoris"
+                      icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2"></img>}
+                    />
+                  </ul>
+                )}
+              </details>
+            </li>
+            <SidebarItem
+              link="/faq"
+              text={isSidebarMinimized ? "" : "FAQ / Aide"}
+              icon={<img src={faq_logo} alt="faq" className="w-6 h-6 mr-2"></img>}
+            />
+            <SidebarItem
+              link="/logout"
+              text={isSidebarMinimized ? "" : "Déconnexion"}
+              icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2"></img>}
+              textColor="text-red-500"
+            />
+          </ul>
+          <div className="flex justify-center items-center mt-44">
+            <a href="https://www.thehackingproject.org" className="flex justify-center items-center">
+              <img src={logo} alt="Logo" className={`transition-all duration-300 ${isSidebarMinimized ? "w-12" : "w-24"}`} />
+            </a>
+          </div>
+        </nav>
+      </aside>
     </>
   );
 };
