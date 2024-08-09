@@ -29,8 +29,8 @@ const Sidebar = () => {
     <>
       {/* Sidebar ouverte par défaut */}
       <aside
-        className={`bg-black text-white fixed top-3 left-3 h-95 ${
-          isSidebarMinimized ? "w-20" : "w-64"
+        className={`text-white fixed top-3 left-3 h-95 ${
+          isSidebarMinimized ? "w-20 flex flex-col justify-between" : "w-64 bg-black"
         } p-4 z-50 rounded-lg transition-all duration-300`}
       >
         {/* Bouton pour minimiser/maximiser la Sidebar */}
@@ -52,25 +52,29 @@ const Sidebar = () => {
           <ul className="space-y-1">
             <SidebarItem
               link="/profile"
-              text={isSidebarMinimized ? "" : "Profil"}
-              icon={<img src={profile} alt="mon profil" className="w-6 h-6 mr-2"></img>}
+              text="Profil"
+              icon={<img src={profile} alt="mon profil" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
             />
             <SidebarItem
               link="/dashboard"
-              text={isSidebarMinimized ? "" : "Dashboard"}
-              icon={<img src={dashboard_logo} alt="dashboard" className="w-6 h-6 mr-2"></img>}
+              text="Dashboard"
+              icon={<img src={dashboard_logo} alt="dashboard" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
             />
             <SidebarItem
               link="/today"
-              text={isSidebarMinimized ? "" : "Aujourd'hui"}
-              icon={<img src={today_logo} alt="aujourd'hui" className="w-6 h-6 mr-2"></img>}
+              text="Aujourd'hui"
+              icon={<img src={today_logo} alt="aujourd'hui" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
             />
             <SidebarItem
               link="/agenda"
-              text={isSidebarMinimized ? "" : "Agenda"}
-              icon={<img src={agenda_logo} alt="agenda" className="w-6 h-6 mr-2"></img>}
+              text="Agenda"
+              icon={<img src={agenda_logo} alt="agenda" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
             />
-            <li className="p-2 hover:bg-blue-700 rounded">
+            <li className="p-2 rounded">
               <details
                 open={isOpenSearch}
                 onClick={handleToggleSearch}
@@ -78,22 +82,24 @@ const Sidebar = () => {
               >
                 <summary className="text-white flex items-center">
                   <span className="mr-2 flex items-center">
-                    <img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>
+                    <img src={search_logo} alt="rechercher" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />
                     {isSidebarMinimized ? "" : "Mes recherches"}
                   </span>
-                  <img src={toggler_logo} alt="toggle" className={`w-4 h-4 ${isSidebarMinimized ? "hidden" : ""}`}></img>
+                  <img src={toggler_logo} alt="toggle" className={`w-4 h-4 ${isSidebarMinimized ? "hidden" : ""}`} />
                 </summary>
                 {isOpenSearch && !isSidebarMinimized && (
                   <ul className="p-2 space-y-1">
                     <SidebarItem
                       link="/search"
                       text="Recherche"
-                      icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2"></img>}
+                      icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
+                      isSidebarMinimized={isSidebarMinimized}
                     />
                     <SidebarItem
                       link="/favorites"
                       text="Mes favoris"
-                      icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2"></img>}
+                      icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2" />}
+                      isSidebarMinimized={isSidebarMinimized}
                     />
                   </ul>
                 )}
@@ -101,19 +107,21 @@ const Sidebar = () => {
             </li>
             <SidebarItem
               link="/faq"
-              text={isSidebarMinimized ? "" : "FAQ / Aide"}
-              icon={<img src={faq_logo} alt="faq" className="w-6 h-6 mr-2"></img>}
+              text="FAQ / Aide"
+              icon={<img src={faq_logo} alt="faq" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
             />
             <SidebarItem
               link="/logout"
-              text={isSidebarMinimized ? "" : "Déconnexion"}
-              icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2"></img>}
+              text="Déconnexion"
+              icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2" />}
               textColor="text-red-500"
+              isSidebarMinimized={isSidebarMinimized}
             />
           </ul>
           <div className="flex justify-center items-center mt-44">
-            <a href="https://www.thehackingproject.org" className="flex justify-center items-center">
-              <img src={logo} alt="Logo" className={`transition-all duration-300 ${isSidebarMinimized ? "w-12" : "w-24"}`} />
+            <a href="https://www.thehackingproject.org" className={`flex justify-center items-center ${isSidebarMinimized ? "hidden" : ""}`}>
+              <img src={logo} alt="Logo" className={`transition-all duration-300 w-24`} />
             </a>
           </div>
         </nav>
