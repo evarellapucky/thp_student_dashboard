@@ -6,6 +6,7 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
 import Search from "./Pages/Search";
+import Favorites from "./Pages/Favorites";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
       </div>
