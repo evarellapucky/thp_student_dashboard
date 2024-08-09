@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className="bg-black text-white fixed top-3 left-3 h-95 w-64 p-4 z-50 rounded-lg">
+      <aside className="bg-black text-white fixed top-3 left-3 h-95 w-60 p-4 z-50 rounded-lg">
         <div className="flex justify-center items-center my-4">
           <div className="avatar mb-6">
             <div className="w-24 rounded-full">
