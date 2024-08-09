@@ -1,10 +1,12 @@
 import MyProfile from "../Components/MyProfile";
 import MyDocuments from "../Components/MyDocuments";
 import Leaderboard from "../Components/Leaderboard";
-import Table from "../Components/Table";
+import HandshakesTable from "../Components/HandshakeTable.jsx";
+import {UsersTable} from "../Components/AnnuaireTable.jsx";
 import MyJourney from "../Components/MyJourney";
 import MyBumpChart from "../Components/BumpChart";
 import Handshakes from "../Components/Dashboard/Handshakes";
+
 
 function Profile() {
   return (
@@ -26,7 +28,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambassadeur" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Tab content 4
+        <h1>Ambassadeur</h1>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Mon parcours"/>
@@ -36,7 +38,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <Table/>
+        <UsersTable/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
@@ -46,7 +48,7 @@ function Profile() {
         <Handshakes/>
         </div>
         <MyBumpChart/>
-        <Table/>
+        <HandshakesTable/>
       </div>
     </div>
   );

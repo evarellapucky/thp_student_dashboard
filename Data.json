@@ -76,15 +76,45 @@
         }
     ],
     "handshakes": [ 
-        { "name": "Hart Hagerty", "date": "01-08-2024", "comment": "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem." },
-        { "name": "Brice Swyre", "date": "01-08-2024", "comment": "Red" },
-        { "name": "Marjy Ferencz", "date": "01-08-2024", "comment": "Crimson" },
-        { "name": "Yancy Tear", "date": "01-08-2024", "comment": "Indigo" },
-        { "name": "Alice Johnson", "date": "01-08-2024", "comment": "Green" },
-        { "name": "Bob Smith", "date": "01-08-2024", "comment": "Blue" },
-        { "name": "Charlie Brown", "date": "01-08-2024", "comment": "Yellow" },
-        { "name": "Diana Prince", "date": "01-08-2024", "comment": "Pink" },
-        { "name": "Ethan Hunt", "date": "01-08-2024", "comment": "Orange" },
-        { "name": "Fiona Gallagher", "date": "01-08-2024", "comment": "Violet" }
+        { "name": "Hart Hagerty", 
+          "date": "01-08-2024", 
+          "comment": "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem." 
+        },
+        { "name": "Brice Swyre", 
+          "date": "01-08-2024", 
+          "comment": "Red" 
+        },
+        { "name": "Marjy Ferencz", 
+          "date": "01-08-2024", 
+          "comment": "Crimson" 
+        },
+        { "name": "Yancy Tear", 
+          "date": "01-08-2024", 
+          "comment": "Indigo" 
+        },
+        { "name": "Alice Johnson", 
+          "date": "01-08-2024", 
+          "comment": "Green" 
+        },
+        { "name": "Bob Smith", 
+          "date": "01-08-2024", 
+          "comment": "Blue"                  
+        },
+        { "name": "Charlie Brown", 
+          "date": "01-08-2024", 
+          "comment": "Yellow" 
+          },
+        { "name": "Diana Prince", 
+          "date": "01-08-2024", 
+          "comment": "Pink" 
+        },
+        { "name": "Ethan Hunt", 
+          "date": "01-08-2024", 
+          "comment": "Orange" 
+        },
+        { "name": "Fiona Gallagher", 
+          "date": "01-08-2024", 
+          "comment": "Violet" 
+        }
     ]
 }
