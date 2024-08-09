@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Modal = ({ isOpen, onClose, content }) => {
+const Modal = ({ isOpen, onClose, content, title }) => {
     useEffect(() => {
         const modal = document.getElementById('my_modal_2');
         if (isOpen) {
@@ -15,7 +15,7 @@ const Modal = ({ isOpen, onClose, content }) => {
         <>
             <dialog id="my_modal_2" className="modal">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
+                    {title}
                     {content}
                 </div>
                 <form method="dialog" className="modal-backdrop">
@@ -29,6 +29,7 @@ const Modal = ({ isOpen, onClose, content }) => {
 Modal.propTypes = { // Added prop validation
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
     content: PropTypes.node.isRequired,
 };
 
