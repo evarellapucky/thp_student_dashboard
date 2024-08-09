@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        '95': '97%',
+      },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         ubuntu: ['Ubuntu', 'sans-serif'],

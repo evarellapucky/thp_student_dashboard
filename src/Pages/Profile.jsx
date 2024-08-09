@@ -1,8 +1,10 @@
-import React from "react";
 import MyProfile from "../Components/MyProfile";
 import MyDocuments from "../Components/MyDocuments";
 import Leaderboard from "../Components/Leaderboard";
+import Table from "../Components/Table";
 import MyJourney from "../Components/MyJourney";
+import MyBumpChart from "../Components/BumpChart";
+import Handshakes from "../Components/Dashboard/Handshakes";
 
 function Profile() {
   return (
@@ -39,7 +41,12 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Tab content 7
+        <div className="flex flex-row justify-around mt-6">
+        <Handshakes/>
+        <Handshakes/>
+        </div>
+        <MyBumpChart/>
+        <Table/>
       </div>
     </div>
   );
