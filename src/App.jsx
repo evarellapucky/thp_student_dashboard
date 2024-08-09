@@ -5,6 +5,7 @@ import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
+import Missions from "./Pages/Missions";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/today" element={<Today />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/missions" element={<Missions />} />
           </Routes>
         </main>
       </div>
