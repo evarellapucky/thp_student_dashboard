@@ -8,11 +8,12 @@ const MissionsData = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/b683c3e5ecfafa9af1bf34ea2ff9e731924d9d63/Issues.json'
+    const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json'
 
     const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
+        console.log(response.data)
         setIssues(response.data);
       } catch (err) {
         setError('Error fetching the data');
@@ -29,6 +30,7 @@ const MissionsData = () => {
       {issues.map(issue => (
         <div key={issue.id}>
           <p>ID: {issue.id}</p>
+          <p>Title: {issue.title}</p>
           <p>Creator: {issue.user.login}</p>
           <p>State: {issue.state}</p>
           <p>Assignees: {issue.assignees.map(assignee => assignee.login).join(', ') || "None"} </p>
