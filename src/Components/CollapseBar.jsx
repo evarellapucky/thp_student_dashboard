@@ -6,7 +6,7 @@ function CollapseBar({ title, content, borderColor }) {
         {title}
         </summary>
       <div className="collapse-content bg-white">
-        <p>{content}</p>
+        <div>{content}</div>
       </div>
     </details>
   )
@@ -14,7 +14,7 @@ function CollapseBar({ title, content, borderColor }) {
 
 CollapseBar.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.element.isRequired,
   borderColor: PropTypes.string
 };
 
