@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import RedirectButton from './RedirectButton';
 
 const MissionsData = () => {
   const [issues, setIssues] = useState([]);
@@ -44,6 +45,8 @@ const MissionsData = () => {
     fetchRepoIssues();
   }, []);
 
+
+
   return (
     <>
     <div className='flex flex-row'>
@@ -73,6 +76,7 @@ const MissionsData = () => {
           </div>
         ))}
       </div>
+      <RedirectButton url="https://github.com/Marcaraph/Missions/issues/new" text="Créer une mission" />
     </div>
     </>
   );
