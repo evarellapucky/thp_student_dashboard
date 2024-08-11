@@ -19,7 +19,6 @@ const MissionsData = () => {
        const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
-        console.log(response.data)
         setIssues(response.data);
       } catch (err) {
         setError('Error fetching the data');
@@ -27,6 +26,7 @@ const MissionsData = () => {
       }
     };
 
+    // Fetch sur repo Github
     const fetchRepoIssues = async () => {
       try {
         const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
@@ -34,7 +34,6 @@ const MissionsData = () => {
             'Accept' : 'application/vnd.github.v3+json'
           }
       });
-      console.log('Repo data', response.data)
       setRepoIssues(response.data);
     } catch (err) {
       setError('Error fetching the repository issues');
@@ -73,6 +72,7 @@ const MissionsData = () => {
             <p>Creator: {issue.user.login}</p>
             <p>State: {issue.state}</p>
             <p>Assignees: {issue.assignees.map(assignee => assignee.login).join(', ') || "None"} </p>
+            <p>Number of Assignees: {issue.assignees.length}</p>
             <p>Labels: {issue.labels.map(label => label.name).join(', ') || "None"}</p>
           </div>
         ))}
@@ -86,6 +86,7 @@ const MissionsData = () => {
             <p>Creator: {issue.user.login}</p>
             <p>State: {issue.state}</p>
             <p>Assignees: {issue.assignees.map(assignee => assignee.login).join(', ') || "None"} </p>
+            <p>Number of Assignees: {issue.assignees.length}</p>
             <p>Labels: {issue.labels.map(label => label.name).join(', ') || "None"}</p>
           </div>
         ))}

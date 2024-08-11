@@ -2,7 +2,7 @@ import React from 'react'
 
 const RedirectButton = ({ url, text }) => {
   const handleRedirect = () => {
-    window.location.href = url;
+    window.open(url, "_blank", "noopener, noreferrer");
   };
 
   return (
