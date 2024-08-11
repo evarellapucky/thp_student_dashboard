@@ -3,6 +3,8 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import RedirectButton from './RedirectButton';
+import TooltipIcon from './TooltipIcon/TooltipIcon';
+import MissionCard from './MissionCard';
 
 const MissionsData = () => {
   const [issues, setIssues] = useState([]);
@@ -19,6 +21,7 @@ const MissionsData = () => {
        const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
+        console.log(response.data)
         setIssues(response.data);
       } catch (err) {
         setError('Error fetching the data');
@@ -53,9 +56,35 @@ const MissionsData = () => {
 
   return (
     <>
-    <div>
+    <div className='flex justify-end'>
+    <RedirectButton url="https://github.com/Marcaraph/Missions/issues/new" text="Créer une mission via Github" />
+    </div>
+
+    <div className='flex flex-row gap-3 items-center'>    
+      <h1 className='font-bold text-black text-3xl ml-5'>MISSIONS</h1>
+      <TooltipIcon text="Explications d'une mission à completer" />
+    </div>
+
+    
+    <div className='flex justify-end gap-2 items-center'>
       <h1>Filter issues by State</h1>
-      <select value={filterState} onChange={(e) => setFilterState(e.target.value)}>
+      <select 
+      className='
+      px-3 
+      py-2 
+      border 
+      border-gray-300 
+      rounded-md 
+      shadow-sm 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-blue-500 
+      focus:border-blue-500 
+      text-sm
+      bg-white 
+      text-gray-700' 
+      value={filterState} 
+      onChange={(e) => setFilterState(e.target.value)}>
         <option value='all'>All</option>
         <option value='open'>Open</option>
         <option value='closed'>Closed</option>
@@ -66,32 +95,39 @@ const MissionsData = () => {
       <div>
         <h1>Missions JSON</h1>
         {filteredIssues.map(issue => (
-          <div key={issue.id}>
-            <p>ID: {issue.id}</p>
-            <p>Title: {issue.title}</p>
-            <p>Creator: {issue.user.login}</p>
-            <p>State: {issue.state}</p>
-            <p>Assignees: {issue.assignees.map(assignee => assignee.login).join(', ') || "None"} </p>
-            <p>Number of Assignees: {issue.assignees.length}</p>
-            <p>Labels: {issue.labels.map(label => label.name).join(', ') || "None"}</p>
-          </div>
+          <MissionCard
+            key={issue.id}
+            id={issue.id}
+            date={new Date(issue.date).toLocaleDateString()}
+            title={issue.title}
+            assignees={issue.assignees.map(assignee => assignee.login).join(', ') || "None"}
+            assigneesCount={issue.assignees.length}
+            description={issue.description || "No description"}
+            html_url={issue.html_url}
+            creator={issue.user.login}
+            state={issue.state}
+            labels={issue.labels.map(label => label.name).join(', ') || "None"}
+          />
         ))}
       </div>
       <div>
         <h1>Missions Repo</h1>
         {repoIssues.map(issue => (
-          <div key={issue.id}>
-            <p>ID: {issue.id}</p>
-            <a href={issue.html_url} target="_blank" rel="noopener noreferrer">{issue.title}</a>
-            <p>Creator: {issue.user.login}</p>
-            <p>State: {issue.state}</p>
-            <p>Assignees: {issue.assignees.map(assignee => assignee.login).join(', ') || "None"} </p>
-            <p>Number of Assignees: {issue.assignees.length}</p>
-            <p>Labels: {issue.labels.map(label => label.name).join(', ') || "None"}</p>
-          </div>
+          <MissionCard
+            key={issue.id} 
+            id={issue.id}
+            date={new Date(issue.created_at).toLocaleDateString()}
+            title={issue.title}
+            assignees={issue.assignees.map(assignee => assignee.login).join(', ') || "None"}
+            assigneesCount={issue.assignees.length}
+            description={issue.body || "No description"}
+            html_url={issue.html_url}
+            creator={issue.user.login}
+            state={issue.state}
+            labels={issue.labels.map(label => label.name).join(', ') || "None"}
+          />
         ))}
       </div>
-      <RedirectButton url="https://github.com/Marcaraph/Missions/issues/new" text="Créer une mission" />
     </div>
     </>
   );
