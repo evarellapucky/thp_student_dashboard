@@ -8,6 +8,7 @@ const MissionsData = () => {
   const [issues, setIssues] = useState([]);
   const [repoIssues, setRepoIssues] = useState([])
   const [error, setError] = useState(null);
+  const [filterState, setFilterState] = useState("all");
 
   useEffect(() => {
     const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json'
@@ -45,14 +46,27 @@ const MissionsData = () => {
     fetchRepoIssues();
   }, []);
 
+  const filteredIssues = issues.filter(issue => {
+    if (filterState === 'all') return true;
+    return issue.state === filterState;
+  });
 
 
   return (
     <>
+    <div>
+      <h1>Filter issues by State</h1>
+      <select value={filterState} onChange={(e) => setFilterState(e.target.value)}>
+        <option value='all'>All</option>
+        <option value='open'>Open</option>
+        <option value='closed'>Closed</option>
+      </select>
+    </div>
+
     <div className='flex flex-row'>
       <div>
         <h1>Missions JSON</h1>
-        {issues.map(issue => (
+        {filteredIssues.map(issue => (
           <div key={issue.id}>
             <p>ID: {issue.id}</p>
             <p>Title: {issue.title}</p>
