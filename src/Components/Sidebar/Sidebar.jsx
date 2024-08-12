@@ -30,7 +30,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar ouverte par défaut */}
       <aside
-        className={`text-white fixed top-3 left-3 h-full ${
+        className={`text-white fixed top-3 left-3 h-95 w-60 p-4 z-50 rounded-lg ${
           isSidebarMinimized ? "w-20 flex flex-col justify-between" : "w-64 bg-black"
         } p-4 z-50 rounded-lg transition-all duration-300`}
       >
