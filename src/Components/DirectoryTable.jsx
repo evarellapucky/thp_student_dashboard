@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import parse from 'html-react-parser';
 
 function DirectoryTable({ columns, data }) {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
@@ -65,7 +66,7 @@ function DirectoryTable({ columns, data }) {
         {sortedData.map((item, index) => (
           <tr key={index} className="hover">
             {columns.map((column) => (
-              <td key={column.key} dangerouslySetInnerHTML={{ __html: item[column.key] }}></td>
+              <td key={column.key}>{parse(item[column.key])}</td>
             ))}
           </tr>
         ))}
