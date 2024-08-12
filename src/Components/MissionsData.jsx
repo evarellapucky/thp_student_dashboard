@@ -11,6 +11,7 @@ const MissionsData = () => {
   const [repoIssues, setRepoIssues] = useState([])
   const [error, setError] = useState(null);
   const [filterState, setFilterState] = useState("all");
+  const [filterLabel, setFilterLabel] = useState("all");
 
   useEffect(() => {
     const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json'
@@ -37,6 +38,7 @@ const MissionsData = () => {
             'Accept' : 'application/vnd.github.v3+json'
           }
       });
+      console.log('Github', response.data)
       setRepoIssues(response.data);
     } catch (err) {
       setError('Error fetching the repository issues');
@@ -48,10 +50,20 @@ const MissionsData = () => {
     fetchRepoIssues();
   }, []);
 
+  // const filteredIssues = issues.filter(issue => {
+  //   if (filterState === 'all') return true;
+  //   return issue.state === filterState;
+  // });
+
   const filteredIssues = issues.filter(issue => {
-    if (filterState === 'all') return true;
-    return issue.state === filterState;
-  });
+    const matchesState = filterState === 'all' || issue.state === filterState;
+    const issueLabels = Array.isArray(issue.labels) ? issue.labels.map(label => typeof label === 'string' ? label : label.name) : [];
+    console.log('Filter Label', filterLabel)
+    console.log('Issue Labels', issueLabels)
+    const matchesLabel = filterLabel === 'all' || issue.labels.includes(filterLabel);
+    return matchesState && matchesLabel;
+  })
+
 
 
   return (
@@ -65,7 +77,7 @@ const MissionsData = () => {
       <TooltipIcon text="Explications d'une mission à completer" />
     </div>
 
-    
+
     <div className='flex justify-end gap-2 items-center'>
       <h1>Filter issues by State</h1>
       <select 
@@ -88,6 +100,36 @@ const MissionsData = () => {
         <option value='all'>All</option>
         <option value='open'>Open</option>
         <option value='closed'>Closed</option>
+      </select>
+
+      <h1>Filter issues by Labels</h1>
+      <select 
+      className='
+      px-3 
+      py-2 
+      border 
+      border-gray-300 
+      rounded-md 
+      shadow-sm 
+      focus:outline-none 
+      focus:ring-2 
+      focus:ring-blue-500 
+      focus:border-blue-500 
+      text-sm
+      bg-white 
+      text-gray-700' 
+      value={filterLabel} 
+      onChange={(e) => setFilterLabel(e.target.value)}>
+        <option value='all'>All</option>
+        <option value='good first issue'>Good First Issue</option>
+        <option value='help wanted'>Help Wanted</option>
+        <option value='documentation'>Documentation</option>
+        <option value='bug'>Bug</option>
+        <option value='enhancement'>Enhancement</option>
+        <option value='question'>Question</option>
+        <option value='wontfix'>Wontfix</option>
+        <option value='duplicate'>Duplicate</option>
+        <option value='invalid'>Invalid</option>
       </select>
     </div>
 
