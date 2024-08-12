@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-const fetchFaqData = async () => {
-  try {
-    const response = await axios.get("https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/faq.json");
-    return response.data;
-  } catch (err) {
-    console.error('Error fetching the data', err);
-    throw err;
-  }
-};
+import { fetchFaqData } from './FaqData';
 
 function CategoryList() {
   const [faqData, setFaqData] = useState({ categories: [] });
