@@ -11,10 +11,20 @@ const MissionsData = () => {
   const [filterState, setFilterState] = useState("all");
   const [filterLabel, setFilterLabel] = useState("all");
   const [uniqueLabels, setUniqueLabels] = useState([]);
+  const [labelColors, setLabelColors] = useState({});
 
   const getUniqueLabels = (issues) => {
     const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
     return Array.from(new Set(allLabels));
+  };
+
+  const getLabelColors = (issues) => {
+    const labels = issues.flatMap(issue => issue.labels);
+    const labelColors = {};
+    labels.forEach(label => {
+      labelColors[label.name.trim().toLowerCase()] = label.color;
+    });
+    return labelColors;
   };
 
   useEffect(() => {
@@ -27,6 +37,7 @@ const MissionsData = () => {
         const response = await axios.get(url);
         setIssues(response.data);
         setUniqueLabels(getUniqueLabels(response.data));
+        setLabelColors(getLabelColors(response.data));
       } catch (err) {
         setError('Error fetching the data');
         console.error(err);
@@ -40,8 +51,10 @@ const MissionsData = () => {
             'Accept': 'application/vnd.github.v3+json'
           }
         });
+        console.log(response.data)
         setRepoIssues(response.data);
         setUniqueLabels(prevLabels => [...new Set([...prevLabels, ...getUniqueLabels(response.data)])]);
+        setLabelColors(prevColors => ({ ...prevColors, ...getLabelColors(response.data) }));
       } catch (err) {
         setError('Error fetching the repository issues');
         console.error(err);
@@ -158,6 +171,7 @@ const MissionsData = () => {
               creator={issue.user.login}
               state={issue.state}
               labels={issue.labels.map(label => label.name.trim().toLowerCase()).join(', ') || "None"}
+              labelColors={labelColors}
             />
           ))}
         </div>
@@ -176,6 +190,7 @@ const MissionsData = () => {
               creator={issue.user.login}
               state={issue.state}
               labels={issue.labels.map(label => label.name.trim().toLowerCase()).join(', ') || "None"}
+              labelColors={labelColors}
             />
           ))}
         </div>
