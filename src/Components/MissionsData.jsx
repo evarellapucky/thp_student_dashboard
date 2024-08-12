@@ -10,24 +10,29 @@ const MissionsData = () => {
   const [error, setError] = useState(null);
   const [filterState, setFilterState] = useState("all");
   const [filterLabel, setFilterLabel] = useState("all");
+  const [uniqueLabels, setUniqueLabels] = useState([]);
+
+  const getUniqueLabels = (issues) => {
+    const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
+    return Array.from(new Set(allLabels));
+  };
 
   useEffect(() => {
     const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json';
     const owner = 'Marcaraph';
     const repo = 'Missions';
 
-    // Fetch JSON
     const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
         setIssues(response.data);
+        setUniqueLabels(getUniqueLabels(response.data));
       } catch (err) {
         setError('Error fetching the data');
         console.error(err);
       }
     };
 
-    // Fetch GitHub Repo Issues
     const fetchRepoIssues = async () => {
       try {
         const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
@@ -36,6 +41,7 @@ const MissionsData = () => {
           }
         });
         setRepoIssues(response.data);
+        setUniqueLabels(prevLabels => [...new Set([...prevLabels, ...getUniqueLabels(response.data)])]);
       } catch (err) {
         setError('Error fetching the repository issues');
         console.error(err);
@@ -56,7 +62,6 @@ const MissionsData = () => {
     const normalizedFilterLabel = filterLabel.trim().toLowerCase();
     
     const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
-    console.log('Matches Label:', matchesLabel);
 
     return matchesState && matchesLabel;
   });
@@ -71,7 +76,6 @@ const MissionsData = () => {
     const normalizedFilterLabel = filterLabel.trim().toLowerCase();
 
     const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
-    console.log('Matches Label:', matchesLabel);
 
     return matchesState && matchesLabel;
   });
@@ -105,7 +109,8 @@ const MissionsData = () => {
             bg-white 
             text-gray-700' 
           value={filterState} 
-          onChange={(e) => setFilterState(e.target.value)}>
+          onChange={(e) => setFilterState(e.target.value)}
+        >
           <option value='all'>All</option>
           <option value='open'>Open</option>
           <option value='closed'>Closed</option>
@@ -128,18 +133,12 @@ const MissionsData = () => {
             bg-white 
             text-gray-700' 
           value={filterLabel} 
-          onChange={(e) => setFilterLabel(e.target.value.trim().toLowerCase())}>
+          onChange={(e) => setFilterLabel(e.target.value.trim().toLowerCase())}
+        >
           <option value='all'>All</option>
-          <option value='good first issue'>Good First Issue</option>
-          <option value='help wanted'>Help Wanted</option>
-          <option value='priority high'>Priority High</option>
-          <option value='documentation'>Documentation</option>
-          <option value='bug'>Bug</option>
-          <option value='enhancement'>Enhancement</option>
-          <option value='question'>Question</option>
-          <option value='wontfix'>Wontfix</option>
-          <option value='duplicate'>Duplicate</option>
-          <option value='invalid'>Invalid</option>
+          {uniqueLabels.map(label => (
+            <option key={label} value={label}>{label.charAt(0).toUpperCase() + label.slice(1)}</option>
+          ))}
         </select>
       </div>
 
