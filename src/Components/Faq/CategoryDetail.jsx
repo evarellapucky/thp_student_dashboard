@@ -30,8 +30,13 @@ function CategoryDetails() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  // Trouver la catégorie correspondante
-  const category = faqData.categories.find(cat => encodeURIComponent(cat.name) === categoryName);
+  // Décoder le nom de la catégorie pour correspondre aux données
+  const decodedCategoryName = decodeURIComponent(categoryName);
+
+  // Trouver la catégorie correspondant au nom décodé
+  const category = faqData.categories.find(
+    cat => cat.name === decodedCategoryName
+  );
 
   if (!category) {
     return <div>Category not found.</div>;
