@@ -38,7 +38,6 @@ function Profile() {
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <Directory/>
-        <Table/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
