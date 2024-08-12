@@ -30,7 +30,7 @@ function Profile() {
         Tab content 4
       </div>
 
-      <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Mon parcours"/>
+      <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours"/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <MyJourney/>
       </div>
