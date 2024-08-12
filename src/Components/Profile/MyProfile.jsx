@@ -25,6 +25,14 @@ function MyProfile() {
   const handleSaveClick = () => {
     // Logique pour sauvegarder l'avatar
     console.log("Avatar sauvegardé");
+    setImagePreview(null)
+    setShowDropzone(false);
+  };
+
+  const handleCancel = () => {
+    console.log("Avatar annulé");
+    setImagePreview(null)
+    setShowDropzone(false);
   };
 
   return(
@@ -74,9 +82,12 @@ function MyProfile() {
               </div>
             )}
             {showDropzone && (
-              <div className="flex justify-center mt-2">
+              <div className="flex justify-center gap-2 mt-2">
                 <button className="border-2 p-2" onClick={handleSaveClick}>
                   Sauvegarder
+                </button>
+                <button className="border-2 p-2" onClick={handleCancel}>
+                  Annuler
                 </button>
               </div>
             )}
