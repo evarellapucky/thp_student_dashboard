@@ -56,7 +56,7 @@ function CategoryDetails() {
           <CollapseBar
             key={qIndex}
             title={q.question}
-            content={<div>{q.answer}</div>}
+            content={q.answer}
             borderColor="border-blue-500"
           />
         ))
