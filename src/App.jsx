@@ -5,6 +5,8 @@ import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
+import Missions from "./Pages/Missions";
+
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 function App() {
@@ -20,6 +22,7 @@ function App() {
             <Route path="/today" element={<Today />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/missions" element={<Missions />} />
             <Route path="/search" element={<Search />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
