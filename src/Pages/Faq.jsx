@@ -1,5 +1,5 @@
 import CategoryList from "../Components/Faq/CategoryList"
-import FaqData from "../Components/Faq/FaqData"
+
 
 function Faq() {
 

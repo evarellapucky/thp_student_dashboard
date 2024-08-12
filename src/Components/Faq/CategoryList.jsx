@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { fetchFaqData } from './FaqData';
+
 
 function CategoryList() {
   const [faqData, setFaqData] = useState({ categories: [] });
@@ -11,20 +11,22 @@ function CategoryList() {
 
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFaqData = async () => {
       try {
-        const data = await fetchFaqData();
-        setFaqData(data);
+        const response = await axios.get("https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/faq.json");
+        setFaqData(response.data);
         setError(null);
       } catch (err) {
         setError('Error fetching the data');
+        console.error('Error fetching the data', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    fetchFaqData();
   }, []);
+
 
   if (loading) {
     return <div>Loading...</div>;

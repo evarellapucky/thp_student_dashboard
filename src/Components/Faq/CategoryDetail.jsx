@@ -3,29 +3,31 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CollapseBar from '../CollapseBar';
 import BackButton from '../BackButton';
-import { fetchFaqData } from './FaqData';
+
 
 function CategoryDetails() {
-  const { categoryName } = useParams(); // Récupérer le nom de la catégorie depuis l'URL
+  const { categoryName } = useParams();
   const [faqData, setFaqData] = useState({ categories: [] });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFaqData = async () => {
       try {
-        const data = await fetchFaqData();
-        setFaqData(data);
+        const response = await axios.get("https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/faq.json");
+        setFaqData(response.data);
         setError(null);
       } catch (err) {
         setError('Error fetching the data');
+        console.error('Error fetching the data', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    fetchFaqData();
   }, []);
+
 
 
   if (loading) return <div>Loading...</div>;
