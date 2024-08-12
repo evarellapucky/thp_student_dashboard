@@ -5,15 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import BackButton from '../Components/BackButton';
 
 function Contact() {
-  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [object, setObject] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleBackClick = () => {
-    navigate(-1); // Go back one page
-  };
 
 const handleSubmit = (e) => {
   e.preventDefault()
