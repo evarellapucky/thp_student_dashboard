@@ -10,23 +10,38 @@ const MissionsData = () => {
   const [error, setError] = useState(null);
   const [filterState, setFilterState] = useState("all");
   const [filterLabel, setFilterLabel] = useState("all");
+  const [filterAssignees, setFilterAssignees] = useState("all");
   const [uniqueLabels, setUniqueLabels] = useState([]);
+  const [labelColors, setLabelColors] = useState({});
 
   const getUniqueLabels = (issues) => {
     const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
     return Array.from(new Set(allLabels));
   };
 
+  const getLabelColors = (issues) => {
+    const labels = issues.flatMap(issue => issue.labels);
+    const labelColors = {};
+    labels.forEach(label => {
+      labelColors[label.name.trim().toLowerCase()] = label.color;
+    });
+    return labelColors;
+  };
+
   useEffect(() => {
     const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json';
-    const owner = 'Marcaraph';
-    const repo = 'Missions';
+    // const owner = 'Marcaraph';
+    // const repo = 'Missions';
+    const owner = 'ethereum-optimism';
+    const repo = 'ecosystem-contributions';
 
     const fetchIssues = async () => {
       try {
         const response = await axios.get(url);
+        console.log('JSON', response.data)
         setIssues(response.data);
         setUniqueLabels(getUniqueLabels(response.data));
+        setLabelColors(getLabelColors(response.data));
       } catch (err) {
         setError('Error fetching the data');
         console.error(err);
@@ -34,14 +49,38 @@ const MissionsData = () => {
     };
 
     const fetchRepoIssues = async () => {
+      const allIssues = [];
+      let page = 1;
+      const perPage = 100;
+      let hasMoreIssues = true;
+
       try {
+        do {
         const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
           headers: {
             'Accept': 'application/vnd.github.v3+json'
+          },
+          params: {
+            per_page: perPage,
+            page: page,
           }
         });
-        setRepoIssues(response.data);
-        setUniqueLabels(prevLabels => [...new Set([...prevLabels, ...getUniqueLabels(response.data)])]);
+
+        const issues = response.data;
+
+        if (issues.length === 0) {
+          hasMoreIssues = false;
+        } else {
+          allIssues.push(...issues);
+          page++;
+        }
+      } while (hasMoreIssues);
+
+      allIssues.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        console.log('Issues', allIssues)
+        setRepoIssues(allIssues);
+        setUniqueLabels(prevLabels => [...new Set([...prevLabels, ...getUniqueLabels(allIssues)])]);
+        setLabelColors(prevColors => ({ ...prevColors, ...getLabelColors(allIssues) }));
       } catch (err) {
         setError('Error fetching the repository issues');
         console.error(err);
@@ -63,7 +102,9 @@ const MissionsData = () => {
     
     const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
 
-    return matchesState && matchesLabel;
+    const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
+
+    return matchesState && matchesLabel && matchesAssignees;
   });
 
   const filteredRepoIssues = repoIssues.filter(issue => {
@@ -77,8 +118,18 @@ const MissionsData = () => {
 
     const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
 
-    return matchesState && matchesLabel;
+    const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
+
+    return matchesState && matchesLabel && matchesAssignees;
   });
+
+    const tutorialText = `
+    1. Cliquez le bouton 'Créer une mission sur Github' pour accéder à la création d'une issue.
+
+    2. Remplissez le formulaire: Ajoutez un titre, une description (le markdown est supporté) et assignez les labels et les personnes concernées.
+
+    3. Soumettez l'issue: Cliquez sur 'Submit new issue' pour enregistrer et publier votre mission.
+    `
 
   return (
     <>
@@ -88,7 +139,7 @@ const MissionsData = () => {
 
       <div className='flex flex-row gap-3 items-center'>    
         <h1 className='font-bold text-black text-3xl ml-5'>MISSIONS</h1>
-        <TooltipIcon text="Explications d'une mission à completer" />
+        <TooltipIcon text={tutorialText} />
       </div>
 
       <div className='flex justify-end gap-2 items-center'>
@@ -140,16 +191,39 @@ const MissionsData = () => {
             <option key={label} value={label}>{label.charAt(0).toUpperCase() + label.slice(1)}</option>
           ))}
         </select>
+
+        <h1>Filter issues by Assignees</h1>
+        <select 
+          className='
+            px-3 
+            py-2 
+            border 
+            border-gray-300 
+            rounded-md 
+            shadow-sm 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-blue-500 
+            focus:border-blue-500 
+            text-sm
+            bg-white 
+            text-gray-700' 
+          value={filterAssignees} 
+          onChange={(e) => setFilterAssignees(e.target.value)}
+        >
+          <option value='all'>All</option>
+          <option value='unassigned'>No Assignees</option>
+        </select>
       </div>
 
-      <div className='flex flex-row'>
-        <div>
+      <div className=''>
+        {/* <div>
           <h1>Missions JSON</h1>
           {filteredIssues.map(issue => (
             <MissionCard
               key={issue.id}
-              id={issue.id}
-              date={new Date(issue.date).toLocaleDateString()}
+              number={issue.number}
+              update={new Date(issue.updated_at).toLocaleDateString()}
               title={issue.title}
               assignees={issue.assignees.map(assignee => assignee.login).join(', ') || "None"}
               assigneesCount={issue.assignees.length}
@@ -158,16 +232,17 @@ const MissionsData = () => {
               creator={issue.user.login}
               state={issue.state}
               labels={issue.labels.map(label => label.name.trim().toLowerCase()).join(', ') || "None"}
+              labelColors={labelColors}
+              commentsCount={issue.comments}
             />
           ))}
-        </div>
-        <div>
-          <h1>Missions Repo</h1>
+        </div> */}
+        <div className='flex flex-col items-center gap-5 mt-5'>
           {filteredRepoIssues.map(issue => (
             <MissionCard
               key={issue.id}
-              id={issue.id}
-              date={new Date(issue.created_at).toLocaleDateString()}
+              number={issue.number}
+              update={new Date(issue.updated_at).toLocaleDateString()}
               title={issue.title}
               assignees={issue.assignees.map(assignee => assignee.login).join(', ') || "None"}
               assigneesCount={issue.assignees.length}
@@ -176,6 +251,8 @@ const MissionsData = () => {
               creator={issue.user.login}
               state={issue.state}
               labels={issue.labels.map(label => label.name.trim().toLowerCase()).join(', ') || "None"}
+              labelColors={labelColors}
+              commentsCount={issue.comments}
             />
           ))}
         </div>
