@@ -11,6 +11,7 @@ import toggler_logo from "../../Assets/toggler.svg";
 import glass_logo from "../../Assets/magnifying_glass.svg";
 import favorite_logo from "../../Assets/favorites.svg";
 import faq_logo from "../../Assets/question_mark.svg";
+import contact_logo from "../../Assets/contact.svg";
 
 const Sidebar = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -29,7 +30,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar ouverte par défaut */}
       <aside
-        className={`text-white fixed top-3 left-3 h-full ${
+        className={`text-white fixed top-3 left-3 h-95 w-60 p-4 z-50 rounded-lg ${
           isSidebarMinimized ? "w-20 flex flex-col justify-between" : "w-64 bg-black"
         } p-4 z-50 rounded-lg transition-all duration-300`}
       >
@@ -109,6 +110,12 @@ const Sidebar = () => {
               link="/faq"
               text="FAQ / Aide"
               icon={<img src={faq_logo} alt="faq" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
+              isSidebarMinimized={isSidebarMinimized}
+            />
+            <SidebarItem
+              link="/contact"
+              text="Contact"
+              icon={ <img src={contact_logo} alt="contact" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />}
               isSidebarMinimized={isSidebarMinimized}
             />
             <SidebarItem
