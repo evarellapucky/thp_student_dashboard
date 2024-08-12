@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CollapseBar from '../CollapseBar';
+import BackButton from '../BackButton';
 
 function CategoryDetails() {
   const { categoryName } = useParams(); // Récupérer le nom de la catégorie depuis l'URL
@@ -38,7 +39,10 @@ function CategoryDetails() {
 
   return (
     <div>
-      <h1>{category.name}</h1>
+      <div className='flex flex-row mb-4'>
+      <BackButton />
+      <h1 className='text-3xl font-bold mb-4'>{category.name}</h1>
+      </div>
       {category.questions.length > 0 ? (
         category.questions.map((q, qIndex) => (
           <CollapseBar
