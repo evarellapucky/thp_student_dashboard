@@ -1,9 +1,12 @@
-import React from 'react'
+import { useState, useEffect } from "react"
+import axios from "axios"
+
 
 function Faq() {
+
   return (
     <div>
-      <h1>Faq</h1>
+      <h1>Aide / FAQ</h1>
     </div>
   )
 }
