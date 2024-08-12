@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function InputField({ placeholder, isTextArea }) {
+function InputField({ placeholder, value, onChange, isTextArea }) {
   return isTextArea ? (
     <div className="form-control mb-4">
       <label className="input-group">
@@ -8,6 +8,8 @@ function InputField({ placeholder, isTextArea }) {
           placeholder={placeholder}
           className="textarea textarea-bordered textarea-primary w-full"
           rows="4"
+          value={value}
+          onChange={onChange}
         />
       </label>
     </div>
@@ -18,6 +20,8 @@ function InputField({ placeholder, isTextArea }) {
           type="text"
           placeholder={placeholder}
           className="input input-bordered input-primary w-full"
+          value={value}
+          onChange={onChange}
         />
       </label>
     </div>
@@ -26,7 +30,9 @@ function InputField({ placeholder, isTextArea }) {
 
 InputField.propTypes = {
   placeholder: PropTypes.string,
-  isTextArea: PropTypes.bool
+  isTextArea: PropTypes.bool,
+  value: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default InputField;
