@@ -66,7 +66,7 @@ function CategoryList() {
           <div
             className={`transition-all duration-300 ease-in-out ${hoveredCategory === category.name ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}
           >
-            <div className="bg-white border-t border-gray-300 p-4">
+            <div className="bg-white">
               <ul className="list-disc pl-5">
                 {category.questions.map((q, qIndex) => (
                   <li key={qIndex} className="mb-1 text-gray-700">
