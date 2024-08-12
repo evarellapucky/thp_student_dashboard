@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import InputField from '../Components/InputField'
 import { useNavigate } from 'react-router-dom'
+import BackButton from '../Components/BackButton';
 
 function Contact() {
   const navigate = useNavigate();
@@ -28,18 +29,7 @@ const handleSubmit = (e) => {
       className="w-full w-full mx-auto px-4"
     >
       <div className="flex mb-6">
-      <button onClick={handleBackClick} className="focus:outline-none" aria-label="Go back">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 448 512"
-              className="w-6 h-6 mr-2"
-            >
-              <path
-                fill="#000000"
-                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-              />
-            </svg>
-          </button>
+      <BackButton />
       <h2 className="text-2xl font-bold mb-6">Nous contacter</h2>
       </div>
       
