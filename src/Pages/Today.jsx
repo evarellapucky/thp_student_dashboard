@@ -6,7 +6,7 @@ import CollapseBar from "../Components/CollapseBar";
 
 const Today = () => {
     const [resources, setResources] = useState([]);
-    const [dayState, setDayState] = useState('correction');
+    const [dayState, setDayState] = useState('');
 
     useEffect(() => {
         axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json')
@@ -23,8 +23,9 @@ const Today = () => {
 
     return (
         <>
-                    <h1 className="text-3xl font-bold">Aujourd'hui</h1>
             {dayState === 'withSubmission' && (
+                <div className='border border-gray-500 rounded-lg p-4'>
+                    <h1 className="text-3xl font-bold text-center">Projet à rendre </h1>
                 <div className="flex flex-row justify-center space-x-60 mt-6">
                     <div className="rendu flex flex-row justify-end">
                         <div className="rounded-lg bg-base-200 p-4 flex flex-col space-y-2 w-96">
@@ -41,16 +42,23 @@ const Today = () => {
                     </div>
                     <Countdown/>
                 </div>
+                </div>
             )}
             {dayState === 'correction' && (
-                                <div className="grid grid-cols-2 gap-4 mt-6">
-                    {Array.from({ length: 4 }, (_, index) => (
-                        <div key={index} className="flex items-center justify-center space-x-4 mb-4">
-                            <span>Utilisateur {index + 1}</span>
-                            <button className="btn bg-blue-500">Accepter</button>
-                            <button className="btn bg-red-500">Refuser</button>
+                <div className='border border-gray-500 rounded-lg p-4'>
+                    <h1 className="text-3xl font-bold mt-8 mb-6 text-center">Corrections</h1>
+                    <div className=" justify-between mt-6">
+                        <Countdown />
+                        <div className="grid grid-cols-2 flex justify-center items-center gap-4 w-3/4 mt-6 mb-8">
+                            {Array.from({ length: 4 }, (_, index) => (
+                                <div key={index} className="flex items-center justify-center space-x-4 mb-6">
+                                    <span>Utilisateur {index + 1}</span>
+                                    <button className="btn bg-blue-500">Accepter</button>
+                                    <button className="btn bg-red-500">Refuser</button>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
             )}
             <div className="flex justify-center p-4">
