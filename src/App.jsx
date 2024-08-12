@@ -7,6 +7,7 @@ import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
 import Missions from "./Pages/Missions";
 import Contact from "./Pages/Contact";
+import Faq from "./Pages/Faq";
 
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
@@ -25,6 +26,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<Faq />} />
             <Route path="/search" element={<Search />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
