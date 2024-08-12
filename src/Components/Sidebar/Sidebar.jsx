@@ -29,7 +29,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar ouverte par défaut */}
       <aside
-        className={`text-white fixed top-3 left-3 h-95 ${
+        className={`text-white fixed top-3 left-3 h-full ${
           isSidebarMinimized ? "w-20 flex flex-col justify-between" : "w-64 bg-black"
         } p-4 z-50 rounded-lg transition-all duration-300`}
       >
@@ -80,8 +80,8 @@ const Sidebar = () => {
                 onClick={handleToggleSearch}
                 className="cursor-pointer"
               >
-                <summary className="text-white flex items-center">
-                  <span className="mr-2 flex items-center">
+                <summary className={`text-white flex items-center ${!isSidebarMinimized && !isOpenSearch ? "hover:bg-blue-700" : "hover:scale-125"}`}>
+                  <span className={`mr-2 flex items-center`}>
                     <img src={search_logo} alt="rechercher" className={`w-6 h-6 mr-2 ${isSidebarMinimized ? "filter invert" : ""}`} />
                     {isSidebarMinimized ? "" : "Mes recherches"}
                   </span>
@@ -114,7 +114,7 @@ const Sidebar = () => {
             <SidebarItem
               link="/logout"
               text="Déconnexion"
-              icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2" />}
+              icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2 hover:scale-125 transition-transform duration-200" />}
               textColor="text-red-500"
               isSidebarMinimized={isSidebarMinimized}
             />
