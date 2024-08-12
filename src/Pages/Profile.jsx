@@ -1,8 +1,8 @@
-import MyProfile from "../Components/MyProfile";
-import MyDocuments from "../Components/MyDocuments";
-import Leaderboard from "../Components/Leaderboard";
+import MyProfile from "../Components/Profile/MyProfile";
+import MyDocuments from "../Components/Profile/MyDocuments";
+import Leaderboard from "../Components/Profile/Leaderboard";
 import Table from "../Components/Table";
-import MyJourney from "../Components/MyJourney";
+import MyJourney from "../Components/Profile/MyJourney";
 import MyBumpChart from "../Components/BumpChart";
 import Handshakes from "../Components/Dashboard/Handshakes";
 
