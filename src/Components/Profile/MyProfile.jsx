@@ -1,6 +1,39 @@
 import React from "react";
+import { useState } from "react";
+import { useDropzone } from 'react-dropzone';
 
 function MyProfile() {
+  const [showDropzone, setShowDropzone] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleButtonClick = () => {
+    setShowDropzone(!showDropzone);
+  };
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreview(previewUrl);
+    console.log(acceptedFiles);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    maxFiles: 1
+  });
+
+  const handleSaveClick = () => {
+    // Logique pour sauvegarder l'avatar
+    console.log("Avatar sauvegardé");
+    setImagePreview(null)
+    setShowDropzone(false);
+  };
+
+  const handleCancel = () => {
+    console.log("Avatar annulé");
+    setImagePreview(null)
+    setShowDropzone(false);
+  };
 
   return(
     <>
@@ -28,17 +61,37 @@ function MyProfile() {
           </div>
         </div>
 
-        <div>
-          <div className="w-72">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
-          <button className="flex border-2 p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-            </svg>
-            Modifier mon avatar
-          </button>
-          <div className="flex">
+        <div className="text-center">
+            <div className="h-72 w-full overflow-hidden">
+              <img src={imagePreview || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt="Avatar" className="w-full h-full object-cover" />
+            </div>
+            {!showDropzone && (
+            <button className="flex border-2 p-2 mt-2" onClick={handleButtonClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+              </svg>
+              Modifier mon avatar
+            </button>
+            )}
+            {showDropzone && (
+              <div {...getRootProps({ className: 'dropzone' })} className="flex border-2 p-2 cursor-pointer mt-2">
+                <input {...getInputProps()} />
+                <div className="border-2 border-dashed p-5">
+                  <p>Déposez les fichiers ici, ou cliquez pour sélectionner des fichiers</p>
+                </div>
+              </div>
+            )}
+            {showDropzone && (
+              <div className="flex justify-center gap-2 mt-2">
+                <button className="border-2 p-2" onClick={handleSaveClick}>
+                  Sauvegarder
+                </button>
+                <button className="border-2 p-2" onClick={handleCancel}>
+                  Annuler
+                </button>
+              </div>
+            )}
+          <div className="flex justify-around m-5">
             <a href="https://github.com/evarellapucky/thp_student_dashboard">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="80" height="80"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
             </a>
