@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Table2 from "./TableComponents";
+import Table from "./TableComponents";
 
 const UsersTable = () => {
     const [users, setUsers] = useState([]);
@@ -25,7 +25,7 @@ const UsersTable = () => {
     return (
         <div>
             <h1>Users</h1>
-            <Table2 data={users} itemsPerPage={5} />
+            <Table data={users} itemsPerPage={5} />
         </div>
     );
 };
