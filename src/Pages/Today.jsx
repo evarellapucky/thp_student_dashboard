@@ -3,6 +3,7 @@ import axios from 'axios';
 import Countdown from "../Components/Countdown";
 import InputField from "../Components/InputField";
 import CollapseBar from "../Components/CollapseBar";
+import Modal from '../Components/Modal';
 
 const Today = () => {
     const [resources, setResources] = useState([]);
@@ -51,6 +52,9 @@ const Today = () => {
                         />
                     ))}
                 </div>
+            </div>
+            <div className='flex justify-center'>
+            <Modal/>
             </div>
         </>
     );

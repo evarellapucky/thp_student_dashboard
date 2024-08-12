@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className="bg-black text-white fixed top-3 left-3 h-screen w-64 p-4 z-50 rounded-lg">
+      <aside className="bg-black text-white fixed top-3 left-3 h-95 w-60 p-4 z-50 rounded-lg">
         <div className="flex justify-center items-center my-4">
           <div className="avatar mb-6">
             <div className="w-24 rounded-full">
@@ -198,8 +198,8 @@ const Sidebar = () => {
               textColor="text-red-500"
             />
           </ul>
-          <div className="flex justify-center items-center mb-4 mt-20">
-            <a className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-44">
+            <a href="https://www.thehackingproject.org" className="flex justify-center items-center">
               <img src={logo} alt="Logo" />
             </a>
           </div>

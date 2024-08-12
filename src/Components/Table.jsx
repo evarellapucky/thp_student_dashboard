@@ -1,78 +1,105 @@
-import React from "react";
-import { useState } from "react";
+import { useState } from 'react';
+import Modal from './Modal';
 
-function Table({ columns, data }) {
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+const Table = () => {
+    const data = [ 
+        { name: "Hart Hagerty", date: "01-08-2024", comment: "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem." },
+        { name: "Brice Swyre", date: "01-08-2024", comment: "Red" },
+        { name: "Marjy Ferencz", date: "01-08-2024", comment: "Crimson" },
+        { name: "Yancy Tear", date: "01-08-2024", comment: "Indigo" },
+        { name: "Alice Johnson", date: "01-08-2024", comment: "Green" },
+        { name: "Bob Smith", date: "01-08-2024", comment: "Blue" },
+        { name: "Charlie Brown", date: "01-08-2024", comment: "Yellow" },
+        { name: "Diana Prince", date: "01-08-2024", comment: "Pink" },
+        { name: "Ethan Hunt", date: "01-08-2024", comment: "Orange" },
+        { name: "Fiona Gallagher", date: "01-08-2024", comment: "Violet" },
+    ];
 
-  const sortedData = [...data].sort((a, b) => {
-    if (sortConfig.key === null) {
-      return 0;
-    }
-    if (a[sortConfig.key] < b[sortConfig.key]) {
-      return sortConfig.direction === 'ascending' ? -1 : 1;
-    }
-    if (a[sortConfig.key] > b[sortConfig.key]) {
-      return sortConfig.direction === 'ascending' ? 1 : -1;
-    }
-    return 0;
-  });
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('');
 
-  const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  const resetSort = () => {
-    setSortConfig({ key: null, direction: 'ascending' });
-  };
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
-  return(
-    <div className="overflow-x-auto my-5">
-    <button onClick={resetSort} className="underline">Reset Sort</button>
-    <table className="table">
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={column.key} scope="col">
-              <button onClick={() => requestSort(column.key)} className="flex">
-                <p>{column.label}</p>
-                <div className="w-8 flex justify-center items-center">
-                  {sortConfig.key === null && (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                      <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                    </svg>
-                  )}
-                  {sortConfig.key === column.key && sortConfig.direction === 'ascending' && (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                      <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-                    </svg>
-                  )}
-                  {sortConfig.key === column.key && sortConfig.direction === 'descending' && (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                      <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-                    </svg>
-                  )}
-                </div>
-              </button>
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {sortedData.map((item, index) => (
-          <tr key={index} className="hover">
-            {columns.map((column) => (
-              <td key={column.key} dangerouslySetInnerHTML={{ __html: item[column.key] }}></td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  )
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
+    const openModal = (comment) => {
+        setModalContent(comment);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+
+    const headers = Object.keys(data[0]);
+
+    return (
+        <div className="overflow-x-auto mt-6">
+            <table className="table">
+                {/* head */}
+                <thead>
+                    <tr>
+                        {headers.map((header, index) => (
+                            <th key={index}>{header.charAt(0).toUpperCase() + header.slice(1)}</th>
+                        ))}
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {currentItems.map((entry, index) => ( 
+                        <tr key={index}>
+                            <td>
+                                <div className="flex items-center gap-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle h-12 w-12">
+                                            <img
+                                                src={`https://img.daisyui.com/images/profile/demo/${index + 2}@94.webp`}
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">{entry.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{entry.date}<br /></td>
+                            <th>
+                                <button 
+                                    className="btn btn-ghost btn-xs" 
+                                    onClick={() => openModal(entry.comment)}
+                                >
+                                    details
+                                </button>
+                            </th>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <div className="flex justify-center mt-4">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`btn btn-sm ${currentPage === index + 1 ? 'btn-active' : ''}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
+
+            {/* Modal pour afficher le contenu du commentaire */}
+            <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
+        </div>
+    )
 }
 
 export default Table;

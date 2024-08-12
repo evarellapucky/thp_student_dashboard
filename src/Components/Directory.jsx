@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
-import Table from "./Table";
+import DirectoryTable from "./DirectoryTable";
 
 function Directory() {
   const [isFiltered, setIsFiltered] = useState(false);
@@ -37,7 +37,7 @@ function Directory() {
           {isFiltered ? "Afficher tout" : "Ma promo"}
         </button>
       </div>
-      <Table columns={columns} data={filteredData}/>
+      <DirectoryTable columns={columns} data={filteredData}/>
     </>
   )
 }
