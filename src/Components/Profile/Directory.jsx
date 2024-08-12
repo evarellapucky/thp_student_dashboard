@@ -15,9 +15,8 @@ function Directory() {
               const response = await axios.get(
                   "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Users.json"
               );
-              console.log(response.data);
-              setUsers(response.data);
-              setData(response.data);
+              console.log(response.data.users);
+              setData(response.data.users);
           } catch (error) {
               console.error("Erreur lors de la récupération des users :", error);
           }
@@ -48,7 +47,7 @@ function Directory() {
           {isFiltered ? "Afficher tout" : "Ma promo"}
         </button>
       </div>
-      {/* <DirectoryTable data={filteredData}/> */}
+      <DirectoryTable data={filteredData}/>
     </>
   )
 }
