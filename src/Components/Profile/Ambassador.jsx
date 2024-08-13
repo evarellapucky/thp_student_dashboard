@@ -5,8 +5,10 @@ import TooltipIcon from "../TooltipIcon/TooltipIcon";
 
 function Ambassador() {
   const [godchildren, setGodchildren] = useState([]);
-  const [godchildrenNumber, setGodchildrenNumber] = useState(0)
-
+  const [godchildrenNumber, setGodchildrenNumber] = useState(0);
+  const [moneyEarned, setMoneyEarned] = useState(0);
+  const [pointWon, setPointWon] = useState(0);
+  const [ambassadorUrl, setAmbassadorUrl] = useState("")
 
   const tutorialText = `
   Pourquoi parrainer ?
@@ -25,7 +27,10 @@ function Ambassador() {
             );
             console.log(response.data);
             setGodchildren(response.data.godchildren);
-            // setGodchildrenNumber(response.data.godchildren.length);
+            setGodchildrenNumber(response.data.godchildren.length);
+            setMoneyEarned(response.data.money_earned);
+            setPointWon(response.data.point_won);
+            setAmbassadorUrl(response.data.ambassador_url)
         } catch (error) {
             console.error("Erreur lors de la récupération des filleuls :", error);
         }
@@ -37,28 +42,28 @@ function Ambassador() {
 
   return(
     <>
-      <div className="flex justify-between">
+      <div className="flex flex-wrap justify-between">
         <div className='flex flex-row gap-3 items-center'>    
           <h1 className='font-bold text-black text-3xl ml-5'>Ambassadeur</h1>
           <TooltipIcon text={tutorialText} />
         </div>
         <div className="border-2 rounded-lg flex justify-between p-3">
           <p>Mon lien d'affiliation :</p>
-          <p className="mx-5 max-w-60 overflow-x-auto">https://www.thehackingproject.org/samanthaBelzebuth</p>
+          <p className="mx-5 max-w-60 overflow-x-auto">{ambassadorUrl}</p>
         </div>
       </div>
       <div>
-        <div className="flex justify-around my-5">
+        <div className="flex flex-wrap justify-around my-5">
           <div className="border-2 flex gap-5 p-5">
             <p>Nombre de point THP gagnés :</p>
-            <p>3500</p>
+            <p>{pointWon}</p>
           </div>
           <div className="border-2 flex gap-5 p-5">
             <p>Montant de ma gagnotte :</p>
-            <p>350€</p>
+            <p>{moneyEarned}€</p>
           </div>
           <div className="border-2 flex gap-5 p-5">
-            <p>Nombre de filleuls :</p>          
+            <p>Nombre de filleuls :</p>
             <p>{godchildrenNumber}</p>
           </div>
         </div>
