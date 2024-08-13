@@ -5,3 +5,29 @@
 :root {
   background-color: #f8f9fa;
 }
+
+/*⇣ Shop ⇣*/
+
+.tableitems {
+  background-color: #333;
+  color: white;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tableitems th, .tableitems td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.tableitems tr:hover {
+  background-color: #444;
+}
+
+.tableitems th, .tableitems td {
+  padding: 10px; 
+  border-bottom: 1px solid #444;
+  text-align: center;
+}
