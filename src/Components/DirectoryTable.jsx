@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 function DirectoryTable({ data }) {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 2;
 
   //extraire les clés des objets pour les utiliser dans les en-tetes de colonne
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
@@ -33,6 +33,71 @@ function DirectoryTable({ data }) {
 
   const handlePageChange = (pageNumber) => {
       setCurrentPage(pageNumber);
+  };
+
+  const renderPagination = () => {
+    const pages = [];
+
+    if (currentPage > 2) {
+      pages.push(
+        <button
+          key="first"
+          onClick={() => handlePageChange(1)}
+          className="btn btn-sm"
+        >
+          1
+        </button>
+      );
+      if (currentPage > 3) {
+        pages.push(<span key="dots-before" className="px-2"> ... </span>);
+      }
+    }
+    
+    if (currentPage > 1) {
+      pages.push(
+        <button
+          key="prev"
+          onClick={() => handlePageChange(currentPage - 1)}
+          className="btn btn-sm"
+        >
+          {currentPage - 1}
+        </button>
+      );
+    }
+
+    pages.push(
+      <button key="current" className="btn btn-sm btn-active">
+        {currentPage}
+      </button>
+    );
+
+    if (currentPage < totalPages) {
+      if (currentPage < totalPages - 1) {
+        pages.push(
+          <button
+            key="next"
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="btn btn-sm"
+          >
+            {currentPage + 1}
+          </button>
+        );
+      }
+      if (currentPage < totalPages - 2) {
+        pages.push(<span key="dots" className="px-2"> ... </span>);
+      }
+      pages.push(
+        <button
+          key="last"
+          onClick={() => handlePageChange(totalPages)}
+          className="btn btn-sm"
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return pages;
   };
 
   //fonction pour trier des colonnes
@@ -93,15 +158,7 @@ function DirectoryTable({ data }) {
       </table>
 
       <div className="flex justify-center mt-4">
-          {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                  key={index + 1}
-                  onClick={() => handlePageChange(index + 1)}
-                  className={`btn btn-sm ${currentPage === index + 1 ? "btn-active" : ""}`}
-              >
-                  {index + 1}
-              </button>
-          ))}
+        {renderPagination()}
       </div>
     </div>
   )
