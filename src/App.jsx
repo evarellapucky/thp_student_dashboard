@@ -10,14 +10,26 @@ import Contact from "./Pages/Contact";
 import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
+import { useState } from "react";
 
 function App() {
+
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(true);
+
+  const handleSidebarToggle = () => {
+    setIsSidebarMinimized(prev => !prev);
+  };
+
   return (
     <>
   <BrowserRouter>
-      <div className="flex h-screen">
-        <Sidebar className="w-1/4" />
-        <main className="w-3/4 p-4 overflow-auto">
+  <div className="flex h-screen">
+        <Sidebar isMinimized={isSidebarMinimized} onToggle={handleSidebarToggle} />
+        <main
+          className={`flex-1 p-6 transition-all duration-300 ${
+            isSidebarMinimized ? 'ml-20' : 'ml-64'
+          }`}
+        >
           <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
