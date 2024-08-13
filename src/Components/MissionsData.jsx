@@ -13,6 +13,8 @@ const MissionsData = () => {
   const [filterAssignees, setFilterAssignees] = useState("all");
   const [uniqueLabels, setUniqueLabels] = useState([]);
   const [labelColors, setLabelColors] = useState({});
+  const [currentPage, setCurrentpage] = useState(1);
+  const [issuesPerPage, setIssuesPerPage] = useState(20);
 
   const getUniqueLabels = (issues) => {
     const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
@@ -35,18 +37,18 @@ const MissionsData = () => {
     const owner = 'ethereum-optimism';
     const repo = 'ecosystem-contributions';
 
-    const fetchIssues = async () => {
-      try {
-        const response = await axios.get(url);
-        console.log('JSON', response.data)
-        setIssues(response.data);
-        setUniqueLabels(getUniqueLabels(response.data));
-        setLabelColors(getLabelColors(response.data));
-      } catch (err) {
-        setError('Error fetching the data');
-        console.error(err);
-      }
-    };
+    // const fetchIssues = async () => {
+    //   try {
+    //     const response = await axios.get(url);
+    //     console.log('JSON', response.data)
+    //     setIssues(response.data);
+    //     setUniqueLabels(getUniqueLabels(response.data));
+    //     setLabelColors(getLabelColors(response.data));
+    //   } catch (err) {
+    //     setError('Error fetching the data');
+    //     console.error(err);
+    //   }
+    // };
 
     const fetchRepoIssues = async () => {
       const allIssues = [];
@@ -87,25 +89,26 @@ const MissionsData = () => {
       }
     };
 
-    fetchIssues();
+    // fetchIssues();
     fetchRepoIssues();
   }, []);
 
-  const filteredIssues = issues.filter(issue => {
-    const matchesState = filterState === 'all' || issue.state === filterState;
+  // const for JSON file
+  // const filteredIssues = issues.filter(issue => {
+  //   const matchesState = filterState === 'all' || issue.state === filterState;
 
-    const issueLabels = Array.isArray(issue.labels)
-      ? issue.labels.map(label => label.name.trim().toLowerCase())
-      : [];
+  //   const issueLabels = Array.isArray(issue.labels)
+  //     ? issue.labels.map(label => label.name.trim().toLowerCase())
+  //     : [];
 
-    const normalizedFilterLabel = filterLabel.trim().toLowerCase();
+  //   const normalizedFilterLabel = filterLabel.trim().toLowerCase();
     
-    const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
+  //   const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
 
-    const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
+  //   const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
 
-    return matchesState && matchesLabel && matchesAssignees;
-  });
+  //   return matchesState && matchesLabel && matchesAssignees;
+  // });
 
   const filteredRepoIssues = repoIssues.filter(issue => {
     const matchesState = filterState === 'all' || issue.state === filterState;
@@ -122,6 +125,28 @@ const MissionsData = () => {
 
     return matchesState && matchesLabel && matchesAssignees;
   });
+
+    const indexOfLastIssue = currentPage * issuesPerPage;
+    const indexOfFirstIssue = indexOfLastIssue - issuesPerPage;
+    const currentRepoIssues = filteredRepoIssues.slice(indexOfFirstIssue, indexOfLastIssue);
+    const totalPages = Math.ceil(filteredRepoIssues.length / issuesPerPage);
+
+    const handleNextPage = () => {
+      if (currentPage < totalPages) {
+        setCurrentpage(prevPage => prevPage + 1);
+      }
+    };
+
+    const handlePreviousPage = () => {
+      if (currentPage > 1) {
+        setCurrentpage(prevPage => prevPage - 1);
+      }
+    };
+
+    const handleIssuesPerPageChange = (e) => {
+      setIssuesPerPage(Number(e.target.value));
+      setCurrentpage(1);
+    }
 
     const tutorialText = `
     1. Cliquez le bouton 'Créer une mission sur Github' pour accéder à la création d'une issue.
@@ -214,6 +239,31 @@ const MissionsData = () => {
           <option value='all'>All</option>
           <option value='unassigned'>No Assignees</option>
         </select>
+
+        <h1>Issues per Page</h1>
+        <select 
+          className='
+            px-3 
+            py-2 
+            border 
+            border-gray-300 
+            rounded-md 
+            shadow-sm 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-blue-500 
+            focus:border-blue-500 
+            text-sm
+            bg-white 
+            text-gray-700' 
+          value={issuesPerPage} 
+          onChange={handleIssuesPerPageChange}
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={50}>50</option>
+        </select>
       </div>
 
       <div className=''>
@@ -238,7 +288,7 @@ const MissionsData = () => {
           ))}
         </div> */}
         <div className='flex flex-col items-center gap-5 mt-5'>
-          {filteredRepoIssues.map(issue => (
+          {currentRepoIssues.map(issue => (
             <MissionCard
               key={issue.id}
               number={issue.number}
@@ -256,6 +306,24 @@ const MissionsData = () => {
             />
           ))}
         </div>
+
+        <div className='flex justify-between items-center mt-4 mb-4'>
+        <button 
+          onClick={handlePreviousPage} 
+          disabled={currentPage === 1}
+          className={`px-4 py-2 text-white bg-blue-500 rounded-md ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button 
+          onClick={handleNextPage} 
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 text-white bg-blue-500 rounded-md ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+          Next
+        </button>
+      </div>
       </div>
     </>
   );
