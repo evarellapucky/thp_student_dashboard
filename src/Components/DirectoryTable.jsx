@@ -10,7 +10,7 @@ function DirectoryTable({ data }) {
   //extraire les clés des objets pour les utiliser dans les en-tetes de colonne
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
-  //fonction pour configurer les tris des colonnes
+  //fonction pour configurer les tris des colonnes par ordre ascendant ou descendant
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key === null) {
       return 0;
