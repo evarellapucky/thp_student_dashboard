@@ -46,11 +46,11 @@ function Directory() {
   //   { eleve:"Edward King", role:"Product owner", entreprise:"Doctolib", promo:"été 2019", github:"<a href='https://github.com/eking' class='hover:underline'>eKing</a>", linkedin:"<a href='https://linkedin.com/in/EdwardKing' class='hover:underline'>Edward King</a>" },
   // ];
 
-  //je filtre sur ma promo
+  //fonction pour afficher les liste filtrée sur ma promo ou non
   const toggleFilter = () => {
     setIsFiltered(!isFiltered);
   };
-
+  //je filtre sur ma promo
   const filteredData = isFiltered ? data.filter(item => item.season === mySeason && item.year === myYear) : data;
 
   return (

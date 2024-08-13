@@ -7,18 +7,10 @@ function DirectoryTable({ data }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  //extraire les clés des objets pour les utiliser dans les en-tetes de colonne
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  const handlePageChange = (pageNumber) => {
-      setCurrentPage(pageNumber);
-  };
-
+  //fonction pour configurer les tris des colonnes
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key === null) {
       return 0;
@@ -32,6 +24,18 @@ function DirectoryTable({ data }) {
     return 0;
   });
 
+  //pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+  };
+
+  //fonction pour trier des colonnes
   const requestSort = (key) => {
     let direction = 'ascending';
     if (sortConfig.key === key && sortConfig.direction === 'ascending') {
@@ -40,6 +44,7 @@ function DirectoryTable({ data }) {
     setSortConfig({ key, direction });
   };
 
+  //reinitialiser les tris
   const resetSort = () => {
     setSortConfig({ key: null, direction: 'ascending' });
   };
@@ -77,7 +82,7 @@ function DirectoryTable({ data }) {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((item, index) => (
+        {currentItems.map((item, index) => (
           <tr key={index} className="hover">
             {columns.map((column,index) => (
               <td key={index}>{parse(item[column])}</td>
