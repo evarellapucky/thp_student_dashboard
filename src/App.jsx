@@ -9,6 +9,7 @@ import Missions from "./Pages/Missions";
 import Contact from "./Pages/Contact";
 import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
+import Shop from "./Pages/Shop";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/faq/:categoryName" element={<CategoryDetail />} />
+            <Route path="/shop" element={<Shop />} />
           </Routes>
         </main>
       </div>
