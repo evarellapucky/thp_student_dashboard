@@ -12,7 +12,7 @@ function Week() {
           Dates semaines
         </h2>
       </div>
-      <div className='flex flex-row justify-around mt-5'>
+      <div className='flex flex-wrap gap-10 justify-around mt-5'>
         <DayCard />
         <DayCard />
         <DayCard />

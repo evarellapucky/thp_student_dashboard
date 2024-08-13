@@ -4,7 +4,7 @@ import MissionCard from './MissionCard'
 
 function BottomCards() {
   return (
-    <div className="flex flex-row justify-around">
+    <div className="flex flex-wrap gap-10 justify-center">
       <ProjectCard />
       <MissionCard />
     </div>

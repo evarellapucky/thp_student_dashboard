@@ -9,7 +9,7 @@ function TopCards() {
 
   return (
     <>
-      <div className="flex flex-row justify-around">
+      <div className="flex flex-wrap gap-10 justify-center">
         <Journey />
         <Points />
         <MyJokers />
