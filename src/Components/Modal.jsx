@@ -30,7 +30,7 @@ Modal.propTypes = { // Added prop validation
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    content: PropTypes.node.isRequired,
+    content: PropTypes.element.isRequired,
 };
 
 export default Modal;
