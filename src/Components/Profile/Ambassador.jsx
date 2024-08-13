@@ -1,6 +1,27 @@
 import React from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 function Ambassador() {
+  const [godchildren, setGodchildren] = useState([]);
+
+  useEffect(() => {
+    
+    const fetchGodchildren = async () => {
+        try {
+            const response = await axios.get(
+              "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Godchildren.json"
+            );
+            console.log(response.data);
+            setGodchildren(response.data.godchildren);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des users :", error);
+        }
+    };
+
+    fetchGodchildren();
+
+}, []);
+
   return(
     <>
       <h1>Ambassadeur</h1>
