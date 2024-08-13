@@ -24,10 +24,13 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
             <span className="flex items-center text-white justify-between w-full">
               {title}
               <img
-                src={isOpen ? toggler_logo : toggler_logo}
-                alt="toggle"
-                className="w-4 h-4 ml-2"
-              />
+                  src={toggler_logo}
+                  alt="toggle"
+                  className={`w-4 h-4 ml-2 transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+
             </span>
           )}
         </div>
