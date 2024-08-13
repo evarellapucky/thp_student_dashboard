@@ -7,8 +7,8 @@ import axios from "axios";
 function Directory() {
   const [isFiltered, setIsFiltered] = useState(false);
   const [myClass, setMyClass] = useState("été 2019")
-
   const [data, setData] = useState([])
+
   useEffect(() => {
       const fetchUsers = async () => {
           try {
@@ -16,13 +16,25 @@ function Directory() {
                   "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Users.json"
               );
               console.log(response.data.users);
-              setData(response.data.users);
+              const selectedData = response.data.users.map(user => ({
+                nom: user.nom,
+                prenom: user.prenom,
+                github: user.github,
+                linkedin: user.linkedin,
+                journay: user.journay,
+                season: user.season,
+                year: user.year,
+                job: user.job,
+                company: user.company
+              }));
+              setData(selectedData);
           } catch (error) {
               console.error("Erreur lors de la récupération des users :", error);
           }
       };
 
       fetchUsers();
+      
   }, []);
 
   // const data = [
