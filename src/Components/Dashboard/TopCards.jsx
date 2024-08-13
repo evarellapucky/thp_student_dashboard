@@ -12,7 +12,7 @@ function TopCards() {
       <div className="flex flex-row justify-around">
         <Journey />
         <Points />
-        <MyJokers />
+        <MyJokers count={2} total={3} />
         <Handshakes />
       </div>
     </>
