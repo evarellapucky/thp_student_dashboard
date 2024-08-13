@@ -38,6 +38,9 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
       {!isSidebarMinimized && isOpen && (
         <ul className="ml-6 space-y-1">{children}</ul>
       )}
+      {isSidebarMinimized && isOpen && (
+        <ul >{children}</ul>
+      )}
     </>
   );
 };

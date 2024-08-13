@@ -23,7 +23,7 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`fixed top-3 left-3 h-[95vh] ${
+        className={`fixed top-3 left-3 h-95 ${
           isSidebarMinimized ? "w-20" : "w-64"
         } bg-black p-4 z-50 rounded-lg transition-all duration-300`}
       >
