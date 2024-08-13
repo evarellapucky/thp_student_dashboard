@@ -5,6 +5,7 @@ import Table from "../Components/Table";
 import MyJourney from "../Components/Profile/MyJourney";
 import MyBumpChart from "../Components/BumpChart";
 import Handshakes from "../Components/Dashboard/Handshakes";
+import Ambassador from "../Components/Profile/Ambassador";
 
 function Profile() {
   return (
@@ -26,7 +27,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambassadeur" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Tab content 4
+        <Ambassador/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours"/>
