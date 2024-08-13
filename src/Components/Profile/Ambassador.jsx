@@ -1,8 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TooltipIcon from "../TooltipIcon/TooltipIcon";
+
 function Ambassador() {
   const [godchildren, setGodchildren] = useState([]);
+
+  const tutorialText = `
+  Pourquoi parrainer ?
+
+  On te verse 5% du montant de la formation choisie par le parrainé 
+  ex: Jean-Paul parraine Elodie, qui choisit la formation Dev++ à 3000 euros, c'est donc 150 € dans la poche de J-P.
+  ⚠️ Le programme n'est pas rétroactif : cela ne concerne que les nouvelles inscriptions.
+  `
 
   useEffect(() => {
     
@@ -24,7 +34,16 @@ function Ambassador() {
 
   return(
     <>
-      <h1>Ambassadeur</h1>
+      <div className="flex justify-between">
+        <div className='flex flex-row gap-3 items-center'>    
+          <h1 className='font-bold text-black text-3xl ml-5'>Ambassadeur</h1>
+          <TooltipIcon text={tutorialText} />
+        </div>
+        <div className="border-2 rounded-lg flex justify-between p-3">
+          <p>Mon lien d'affiliation :</p>
+          <p className="mx-5 max-w-60 overflow-x-auto">https://www.thehackingproject.org/samanthaBelzebuth</p>
+        </div>
+      </div>
       <div>
         <div className="flex justify-around my-5">
           <div className="border-2 flex gap-5 p-5">
