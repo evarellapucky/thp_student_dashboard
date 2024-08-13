@@ -37,7 +37,7 @@ function CategoryList() {
   }
 
   return (
-    <div className="w-full max-w-4xl">
+    <div className="w-full">
     {faqData.categories.length > 0 ? (
       faqData.categories.map((category, index) => (
         <div
