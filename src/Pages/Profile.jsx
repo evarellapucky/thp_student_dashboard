@@ -1,6 +1,7 @@
 import MyProfile from "../Components/Profile/MyProfile";
 import MyDocuments from "../Components/Profile/MyDocuments";
 import Leaderboard from "../Components/Profile/Leaderboard";
+import Directory from "../Components/Profile/Directory";
 import Table from "../Components/Table";
 import MyJourney from "../Components/Profile/MyJourney";
 import MyBumpChart from "../Components/BumpChart";
@@ -36,7 +37,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <Table/>
+        <Directory/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
