@@ -8,6 +8,7 @@ import Today from "./Pages/Today";
 import Missions from "./Pages/Missions";
 import Contact from "./Pages/Contact";
 import Faq from "./Pages/Faq";
+import CategoryDetail from "./Components/Faq/CategoryDetail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/missions" element={<Missions />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/faq/:categoryName" element={<CategoryDetail />} />
           </Routes>
         </main>
       </div>
