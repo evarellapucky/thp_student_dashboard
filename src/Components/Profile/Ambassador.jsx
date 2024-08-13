@@ -27,7 +27,7 @@ function Ambassador() {
               "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Godchildren.json"
             );
             console.log(response.data);
-            // setGodchildren(response.data.godchildren);
+            setGodchildren(response.data.godchildren);
             setGodchildrenNumber(response.data.godchildren.length);
             setMoneyEarned(response.data.money_earned);
             setPointWon(response.data.point_won);
@@ -37,13 +37,13 @@ function Ambassador() {
               prenom: user.prenom,
               github: user.github,
               linkedin: user.linkedin,
-              journay: user.journay,
+              journey: user.journey,
               season: user.season,
               year: user.year,
               job: user.job,
               company: user.company
             }));
-            setGodchildren(selectedData);
+            // setGodchildren(selectedData);
         } catch (error) {
             console.error("Erreur lors de la récupération des filleuls :", error);
         }
@@ -82,7 +82,7 @@ function Ambassador() {
         </div>
         <div>
           <h2>Liste de parrainage</h2>
-          <DirectoryTable data={godchildren}/>
+          {/* <DirectoryTable data={godchildren}/> */}
         </div>
       </div>
     </>
