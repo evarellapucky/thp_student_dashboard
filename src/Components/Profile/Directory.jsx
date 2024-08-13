@@ -6,7 +6,8 @@ import axios from "axios";
 
 function Directory() {
   const [isFiltered, setIsFiltered] = useState(false);
-  const [myClass, setMyClass] = useState("été 2019")
+  const [myYear, setMyYear] = useState("2024")
+  const [mySeason, setMySeason] = useState("hiver")
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -15,7 +16,8 @@ function Directory() {
               const response = await axios.get(
                   "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Users.json"
               );
-              console.log(response.data.users);
+              // console.log(response.data.users);
+              // Je ne prends que les colonne que je souhaite
               const selectedData = response.data.users.map(user => ({
                 nom: user.nom,
                 prenom: user.prenom,
@@ -34,7 +36,7 @@ function Directory() {
       };
 
       fetchUsers();
-      
+
   }, []);
 
   // const data = [
@@ -44,11 +46,12 @@ function Directory() {
   //   { eleve:"Edward King", role:"Product owner", entreprise:"Doctolib", promo:"été 2019", github:"<a href='https://github.com/eking' class='hover:underline'>eKing</a>", linkedin:"<a href='https://linkedin.com/in/EdwardKing' class='hover:underline'>Edward King</a>" },
   // ];
 
+  //je filtre sur ma promo
   const toggleFilter = () => {
     setIsFiltered(!isFiltered);
   };
 
-  const filteredData = isFiltered ? data.filter(item => item.promo === myClass) : data;
+  const filteredData = isFiltered ? data.filter(item => item.season === mySeason && item.year === myYear) : data;
 
   return (
     <>
