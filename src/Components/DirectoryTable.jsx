@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 function DirectoryTable({ data }) {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   //extraire les clés des objets pour les utiliser dans les en-tetes de colonne
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
@@ -52,7 +52,7 @@ function DirectoryTable({ data }) {
         pages.push(<span key="dots-before" className="px-2"> ... </span>);
       }
     }
-    
+
     if (currentPage > 1) {
       pages.push(
         <button
