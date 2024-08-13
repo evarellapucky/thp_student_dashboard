@@ -26,7 +26,8 @@
             "nom": "Scherer",
             "prenom": "Alexia",
             "email": "Scherer.alexia@example.com",
-            "ville": "Cambrousse (Lyon)"
+            "ville": "Cambrousse (Lyon)",
+            "github": "https://github.com/evarellapucky"
         },
         {
             "nom": "Marcarini",

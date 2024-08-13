@@ -7,6 +7,8 @@ import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
 import Missions from "./Pages/Missions";
 import Contact from "./Pages/Contact";
+import Faq from "./Pages/Faq";
+import CategoryDetail from "./Components/Faq/CategoryDetail";
 
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
@@ -27,6 +29,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/search" element={<Search />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/faq/:categoryName" element={<CategoryDetail />} />
           </Routes>
         </main>
       </div>

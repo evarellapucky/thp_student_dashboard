@@ -1,3 +1,8 @@
+import MyProfile from "../Components/Profile/MyProfile";
+import MyDocuments from "../Components/Profile/MyDocuments";
+import Leaderboard from "../Components/Profile/Leaderboard";
+import Table from "../Components/Table";
+import MyJourney from "../Components/Profile/MyJourney";
 import MyProfile from "../Components/MyProfile";
 import MyDocuments from "../Components/MyDocuments";
 import Leaderboard from "../Components/Leaderboard";
@@ -13,7 +18,7 @@ function Profile() {
     <div role="tablist" className="tabs tabs-lifted">
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Profil" defaultChecked />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <MyProfile  />
+        <MyProfile/>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Documents" />
@@ -31,7 +36,7 @@ function Profile() {
         <h1>Ambassadeur</h1>
       </div>
 
-      <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Mon parcours"/>
+      <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours"/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <MyJourney/>
       </div>

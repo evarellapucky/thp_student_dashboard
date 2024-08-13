@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "name": "Inscription",
+      "questions": [
+        {
+          "question": "Il me faut une attestation d'inscription",
+          "answer": "Tu peux obtenir une attestation d'inscription dans la rubrique 'Mes documents'."
+        },
+        {
+          "question": "Il me faudrait une attestation d'entrée en formation pour Pôle Emploi",
+          "answer": "Nous pouvons signer vos attestations d'inscription à un stage de formation. Afin d'obtenir l'attestation dans les plus brefs délais, voici la meilleure façon pour obtenir l'attestation :\n\n- Remplis l'attestation de façon à ce que nous n'ayons que le tampon et la signature à apposer. Nous avons fait un tutoriel pour t'aider à remplir les champs obscurs. Si l'attestation te demande un numéro de déclaration d'activité, le numéro est : 11755738375. Enfin, si certaines parties sont encore floues, n'hésite pas à nous demander sur #code-moussaillons. Nous te répondrons et mettrons à jour cette fiche.\n- Scanne cette fiche remplie et envoie-nous le scan.\n- Nous y apposerons le tampon ainsi que la signature et nous te renverrons le document.\n\nPuis à toi la gloire !"
+        }
+      ]
+    },
+    {
+      "name": "Formation",
+      "questions": [
+        {
+          "question": "Je n'ai pas compris un énoncé d'un projet ?",
+          "answer": "Si cela arrive, c'est que nous avons mal fait notre travail de relecture. Si jamais tu as le moindre souci de compréhension d'un projet, nous t'invitons à nous en faire part sur #code-moussaillons. Nous te répondrons dans les plus brefs délais et améliorerons de ce pas l'énoncé pour le rendre plus clair 😇"
+        },
+        {
+          "question": "J'ai une autre question concernant le cursus",
+          "answer": "Si tu as une autre question par rapport au calendrier qui n'est pas répondue ici, n'hésite pas à la poster sur #code-cursus. Nous y répondrons rapidement et mettrons si besoin cette FAQ à jour :)"
+        }
+      ]
+    },
+    {
+      "name": "Outils",
+      "questions": [
+        {
+          "question": "Je ne comprends pas comment Slack ou Discord marchent, avez-vous un tutoriel ?",
+          "answer": "Bien sûr ! Nous avons fait un tutoriel pour le Slack de la semaine d'intro. Ce dernier marche très bien pour notre grand Slack. Tu peux le suivre sur ce lien.\nPour Discord, voici le tutoriel."
+        },
+        {
+          "question": "Puis-je envoyer un MP aux membres de l'administration de The Hacking Project ?",
+          "answer": "The Hacking Project est une formation en peer-learning qui veut au maximum donner le pouvoir à la communauté. Ainsi, les messages privés pour demander quelque chose qui est répondu ici ou qui a une réponse que la communauté pourrait profiter sont en général assez mal vus. C'est super sympa de se répéter, mais vous êtes plusieurs centaines les loulous, on ne s'en sort plus si tout le monde vient nous demander en MP si vous pouvez vous absenter tel jour 😁\nVoici les types de messages qui sont bienvenus en MP :\n\n- Tout message pour nous annoncer des problèmes de personnalité dans ton groupe. C'est un point très important à The Hacking Project et si tu as le moindre problème de groupe n'hésite absolument pas à venir nous voir. Nous prendrons le temps nécessaire pour résoudre la situation et faire en sorte que tu passes un excellent moment à The Hacking Project.\n- Être décalé de session suite à un problème grave.\n- Venir nous raconter ta journée ou ta semaine, qu'elle soit bonne ou mauvaise : nous adorons quand des personnes nous font des retours. Soit ils nous permettent de nous améliorer, soit ils nous encouragent dans les moments de doute. N'hésite pas à venir nous parler pour nous dire ce qui te passe par la tête ☺️ Par exemple, si le projet est trop dur, viens te défouler en MP 😋"
+        }
+      ]
+    },
+    {
+      "name": "Après THP",
+      "questions": [
+        {
+          "question": "Freelance",
+          "answer": "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem."
+        },
+        {
+          "question": "pas freelance",
+          "answer": "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem."
+        }
+      ]
+    }
+  ]
+}

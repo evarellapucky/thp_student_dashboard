@@ -14,7 +14,7 @@ function CollapseBar({ title, content, borderColor }) {
 
 CollapseBar.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.element.isRequired,
+  content: PropTypes.node.isRequired,
   borderColor: PropTypes.string
 };
 
