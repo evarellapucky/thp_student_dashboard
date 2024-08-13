@@ -37,18 +37,18 @@ const MissionsData = () => {
     const owner = 'ethereum-optimism';
     const repo = 'ecosystem-contributions';
 
-    const fetchIssues = async () => {
-      try {
-        const response = await axios.get(url);
-        console.log('JSON', response.data)
-        setIssues(response.data);
-        setUniqueLabels(getUniqueLabels(response.data));
-        setLabelColors(getLabelColors(response.data));
-      } catch (err) {
-        setError('Error fetching the data');
-        console.error(err);
-      }
-    };
+    // const fetchIssues = async () => {
+    //   try {
+    //     const response = await axios.get(url);
+    //     console.log('JSON', response.data)
+    //     setIssues(response.data);
+    //     setUniqueLabels(getUniqueLabels(response.data));
+    //     setLabelColors(getLabelColors(response.data));
+    //   } catch (err) {
+    //     setError('Error fetching the data');
+    //     console.error(err);
+    //   }
+    // };
 
     const fetchRepoIssues = async () => {
       const allIssues = [];
@@ -89,26 +89,26 @@ const MissionsData = () => {
       }
     };
 
-    fetchIssues();
+    // fetchIssues();
     fetchRepoIssues();
   }, []);
 
   // const for JSON file
-  const filteredIssues = issues.filter(issue => {
-    const matchesState = filterState === 'all' || issue.state === filterState;
+  // const filteredIssues = issues.filter(issue => {
+  //   const matchesState = filterState === 'all' || issue.state === filterState;
 
-    const issueLabels = Array.isArray(issue.labels)
-      ? issue.labels.map(label => label.name.trim().toLowerCase())
-      : [];
+  //   const issueLabels = Array.isArray(issue.labels)
+  //     ? issue.labels.map(label => label.name.trim().toLowerCase())
+  //     : [];
 
-    const normalizedFilterLabel = filterLabel.trim().toLowerCase();
+  //   const normalizedFilterLabel = filterLabel.trim().toLowerCase();
     
-    const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
+  //   const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
 
-    const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
+  //   const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
 
-    return matchesState && matchesLabel && matchesAssignees;
-  });
+  //   return matchesState && matchesLabel && matchesAssignees;
+  // });
 
   const filteredRepoIssues = repoIssues.filter(issue => {
     const matchesState = filterState === 'all' || issue.state === filterState;
