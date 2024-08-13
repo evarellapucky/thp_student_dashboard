@@ -14,7 +14,7 @@ const MissionsData = () => {
   const [uniqueLabels, setUniqueLabels] = useState([]);
   const [labelColors, setLabelColors] = useState({});
   const [currentPage, setCurrentpage] = useState(1);
-  const issuesPerPage = 20;
+  const [issuesPerPage, setIssuesPerPage] = useState(20);
 
   const getUniqueLabels = (issues) => {
     const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
@@ -143,6 +143,11 @@ const MissionsData = () => {
       }
     };
 
+    const handleIssuesPerPageChange = (e) => {
+      setIssuesPerPage(Number(e.target.value));
+      setCurrentpage(1);
+    }
+
     const tutorialText = `
     1. Cliquez le bouton 'Créer une mission sur Github' pour accéder à la création d'une issue.
 
@@ -234,6 +239,31 @@ const MissionsData = () => {
           <option value='all'>All</option>
           <option value='unassigned'>No Assignees</option>
         </select>
+
+        <h1>Issues per Page</h1>
+        <select 
+          className='
+            px-3 
+            py-2 
+            border 
+            border-gray-300 
+            rounded-md 
+            shadow-sm 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-blue-500 
+            focus:border-blue-500 
+            text-sm
+            bg-white 
+            text-gray-700' 
+          value={issuesPerPage} 
+          onChange={handleIssuesPerPageChange}
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={50}>50</option>
+        </select>
       </div>
 
       <div className=''>
@@ -277,7 +307,7 @@ const MissionsData = () => {
           ))}
         </div>
 
-        <div className='flex justify-between items-center mt-4'>
+        <div className='flex justify-between items-center mt-4 mb-4'>
         <button 
           onClick={handlePreviousPage} 
           disabled={currentPage === 1}
