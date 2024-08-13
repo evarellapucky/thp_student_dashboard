@@ -17,7 +17,7 @@ function App() {
   <BrowserRouter>
       <div className="flex h-screen">
         <Sidebar />
-        <main className="flex-1 ml-64 p-6">
+        <main className="flex flex-col flex-1 ml-64 p-6">
           <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
