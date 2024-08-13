@@ -27,7 +27,7 @@ const ShopItems = () => {
                 <tr >
                     <td>T-shirt THP</td>
                     <td>Goodies</td>
-                    <td>15000</td>
+                    <td>15000pts</td>
                 </tr>
               </>
             ))}
