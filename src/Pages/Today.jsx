@@ -1,12 +1,30 @@
-import Countdown from "../Components/Countdown"
-import InputField from "../Components/InputField"
-import CollapseBar from "../Components/CollapseBar"
-import data from '../../Data.json';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Countdown from "../Components/Countdown";
+import InputField from "../Components/InputField";
+import CollapseBar from "../Components/CollapseBar";
+import Modal from '../Components/Modal';
 
 const Today = () => {
+    const [resources, setResources] = useState([]);
+
+    useEffect(() => {
+
+        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json')
+            .then(response => {
+                const content = response.data.content;
+
+                // Décodage du contenu base64
+                const decodedContent = JSON.parse(decodeURIComponent(escape(atob(content))));
+
+                setResources(decodedContent.resources);
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données:', error));
+    }, []);
+
     return (
         <>
-        <h1 className="text-3xl text-center">Titre de la journée</h1>
+            <h1 className="text-3xl text-center">Titre de la journée</h1>
             <div className="flex flex-row justify-center space-x-60 mt-6">
                 <div className="flex flex-row justify-end">
                     <div className="rounded-lg bg-base-200 p-4 flex flex-col space-y-2 w-96">
@@ -25,7 +43,7 @@ const Today = () => {
             </div>
             <div className="flex justify-center p-4">
                 <div className="w-full max-w-4xl">
-                    {data.resources.map((resource, index) => (
+                    {resources.map((resource, index) => (
                         <CollapseBar 
                             key={index}
                             title={resource.title}
@@ -35,8 +53,11 @@ const Today = () => {
                     ))}
                 </div>
             </div>
+            <div className='flex justify-center'>
+            <Modal/>
+            </div>
         </>
-    )
+    );
 }
 
-export default Today
+export default Today;
