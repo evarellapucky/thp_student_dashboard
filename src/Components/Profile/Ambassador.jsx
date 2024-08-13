@@ -5,6 +5,8 @@ import TooltipIcon from "../TooltipIcon/TooltipIcon";
 
 function Ambassador() {
   const [godchildren, setGodchildren] = useState([]);
+  const [godchildrenNumber, setGodchildrenNumber] = useState(0)
+
 
   const tutorialText = `
   Pourquoi parrainer ?
@@ -23,8 +25,9 @@ function Ambassador() {
             );
             console.log(response.data);
             setGodchildren(response.data.godchildren);
+            // setGodchildrenNumber(response.data.godchildren.length);
         } catch (error) {
-            console.error("Erreur lors de la récupération des users :", error);
+            console.error("Erreur lors de la récupération des filleuls :", error);
         }
     };
 
@@ -56,7 +59,7 @@ function Ambassador() {
           </div>
           <div className="border-2 flex gap-5 p-5">
             <p>Nombre de filleuls :</p>          
-            <p>4</p>
+            <p>{godchildrenNumber}</p>
           </div>
         </div>
         <div>
