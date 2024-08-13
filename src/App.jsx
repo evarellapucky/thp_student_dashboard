@@ -16,8 +16,8 @@ function App() {
     <>
   <BrowserRouter>
       <div className="flex h-screen">
-        <Sidebar />
-        <main className="flex flex-col flex-1 ml-64 p-6">
+        <Sidebar className="w-1/4" />
+        <main className="w-3/4 p-4 overflow-auto">
           <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
