@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Table2 from "./TableComponents";
+import DirectoryTable from "./DirectoryTable";
 
 
 const HandshakesTable = () => {
@@ -26,7 +26,7 @@ const HandshakesTable = () => {
     return (
         <div>
             <h1 className="text-2xl mt-6">Handshakes</h1>
-            <Table2 data={handshakes} itemsPerPage={5} />
+            <DirectoryTable data={handshakes} itemsPerPage={5} />
         </div>
     );
 };
