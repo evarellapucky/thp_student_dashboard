@@ -6,7 +6,7 @@ function CollapseBar({ title, content, borderColor }) {
         {title}
         </summary>
       <div className="collapse-content bg-white">
-        <p>{content}</p>
+        <div>{content}</div>
       </div>
     </details>
   )

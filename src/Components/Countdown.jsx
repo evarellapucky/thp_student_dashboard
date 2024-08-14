@@ -36,7 +36,7 @@ const Countdown = () => {
     const closeModal = () => setShowModal(false); // Fonction pour fermer la modal
 
     return (
-        <div className='flex flex-col justify-center items-center h-full mr-8'>
+        <div className='flex flex-col justify-center items-center'>
             <h1>Temps restant :</h1>
             <span className="countdown font-mono text-2xl">
                 <span style={{ "--value": hours }}></span>h

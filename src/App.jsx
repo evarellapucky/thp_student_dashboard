@@ -12,6 +12,8 @@ import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
 import { useState } from "react";
 
+import Search from "./Pages/Search";
+import Favorites from "./Pages/Favorites";
 function App() {
 
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(true);
@@ -38,6 +40,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/faq/:categoryName" element={<CategoryDetail />} />
             <Route path="/shop" element={<Shop />} />
