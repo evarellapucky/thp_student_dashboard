@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import RedirectButton from './RedirectButton';
-import TooltipIcon from './TooltipIcon/TooltipIcon';
+import RedirectButton from '../RedirectButton';
+import TooltipIcon from '../TooltipIcon/TooltipIcon';
 import MissionCard from './MissionCard';
+import Pagination from './Pagination';
 
 const MissionsData = () => {
   const [issues, setIssues] = useState([]);
@@ -287,7 +288,15 @@ const MissionsData = () => {
             />
           ))}
         </div> */}
-        <div className='flex flex-col items-center gap-5 mt-5'>
+        <div className='flex justify-center my-4'>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentpage} 
+          />
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-5'>
           {currentRepoIssues.map(issue => (
             <MissionCard
               key={issue.id}
@@ -307,23 +316,13 @@ const MissionsData = () => {
           ))}
         </div>
 
-        <div className='flex justify-between items-center mt-4 mb-4'>
-        <button 
-          onClick={handlePreviousPage} 
-          disabled={currentPage === 1}
-          className={`px-4 py-2 text-white bg-blue-500 rounded-md ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Previous
-        </button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <button 
-          onClick={handleNextPage} 
-          disabled={currentPage === totalPages}
-          className={`px-4 py-2 text-white bg-blue-500 rounded-md ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Next
-        </button>
-      </div>
+        <div className='flex justify-center my-4'>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentpage} 
+          />
+        </div>
       </div>
     </>
   );
