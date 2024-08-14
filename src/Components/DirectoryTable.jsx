@@ -117,11 +117,11 @@ function DirectoryTable({ data }) {
   return(
     <div className="overflow-x-auto my-5">
       <button onClick={resetSort} className="underline">Reset Sort</button>
-      <table className="table">
+      <table className="table-auto w-full">
         <thead>
           <tr>
             {columns.map((column,index) => (
-              <th key={index} scope="col">
+              <th key={index} scope="col" className="px-4 py-2">
                 <button onClick={() => requestSort(column)} className="flex">
                   <p>{column.charAt(0).toUpperCase() + column.slice(1)}</p>
                   <div className="w-8 flex justify-center items-center">
@@ -150,7 +150,7 @@ function DirectoryTable({ data }) {
           {currentItems.map((item, index) => (
             <tr key={index} className="hover">
               {columns.map((column,index) => (
-                <td key={index}>{typeof item[column] === 'string' ? parse(item[column]) : item[column]}</td>
+                <td key={index} className="px-4 py-2">{typeof item[column] === 'string' ? parse(item[column]) : item[column]}</td>
               ))}
             </tr>
           ))}
