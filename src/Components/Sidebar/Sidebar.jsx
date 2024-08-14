@@ -111,10 +111,14 @@ const Sidebar = ({ isMinimized, onToggle }) => {
           </ul>
 
           {/* Logo ou autre contenu */}
-          <div className={`flex justify-center items-center mt-10 ${isMinimized ? "hidden" : ""}`}>
-            <a href="https://www.thehackingproject.org">
-              <img src={logo} alt="Logo" className={`transition-all duration-300 w-54`} />
-            </a>
+          <div className="flex justify-center items-center">
+            {/* Contenu principal de la sidebar */}
+            
+            <div className={`flex justify-center items-center bottom-0 absolute w-full p-4 ${isMinimized ? "hidden" : ""}`}>
+              <a href="https://www.thehackingproject.org">
+                <img src={logo} alt="Logo" className={`transition-all duration-300 w-54`} />
+              </a>
+            </div>
           </div>
         </nav>
       </div>
