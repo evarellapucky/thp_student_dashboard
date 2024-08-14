@@ -56,21 +56,32 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
           </button>
           {totalPages > 1 && (
             <button
-              className={`join-item btn ${
-                currentPage === 2 ? "btn-active" : ""
-              }`}
+              className={`join-item btn ${currentPage === 2 ? "btn-active" : ""}`}
               onClick={() => handlePageChange(2)}
             >
               2
             </button>
           )}
           {totalPages > 4 && (
-            <button
-              className="join-item btn"
-              onClick={() => setIsInputVisible(!isInputVisible)}
-            >
-              ...
-            </button>
+            <>
+              {(currentPage > 2 && currentPage < totalPages - 1) ? (
+                // Si la currentPage est entre 3 et l'avant-dernière page, affiche currentPage
+                <button 
+                className="join-item btn btn-active"
+                onClick={() => setIsInputVisible(!isInputVisible)}
+                >
+                  {currentPage}
+                </button>
+              ) : (
+                // Sinon, affiche '...' et toggle l'input
+                <button
+                  className="join-item btn"
+                  onClick={() => setIsInputVisible(!isInputVisible)}
+                >
+                  ...
+                </button>
+              )}
+            </>
           )}
           {isInputVisible && (
             <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded shadow-lg z-10">
@@ -115,9 +126,6 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
           >
             Suivant
           </button>
-        </div>
-        <div className="flex justify-center ml-5">
-          <span>{currentPage}</span>
         </div>
       </div>
     </>

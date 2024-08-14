@@ -132,18 +132,6 @@ const MissionsData = () => {
     const currentRepoIssues = filteredRepoIssues.slice(indexOfFirstIssue, indexOfLastIssue);
     const totalPages = Math.ceil(filteredRepoIssues.length / issuesPerPage);
 
-    const handleNextPage = () => {
-      if (currentPage < totalPages) {
-        setCurrentpage(prevPage => prevPage + 1);
-      }
-    };
-
-    const handlePreviousPage = () => {
-      if (currentPage > 1) {
-        setCurrentpage(prevPage => prevPage - 1);
-      }
-    };
-
     const handleIssuesPerPageChange = (e) => {
       setIssuesPerPage(Number(e.target.value));
       setCurrentpage(1);
