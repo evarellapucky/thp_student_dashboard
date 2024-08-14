@@ -24,7 +24,7 @@ function Directory() {
                 prenom: user.prenom,
                 github: user.github,
                 linkedin: user.linkedin,
-                journay: user.journay,
+                journey: user.journey,
                 season: user.season,
                 year: user.year,
                 job: user.job,
