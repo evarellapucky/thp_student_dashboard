@@ -17,7 +17,7 @@ const DailyTab = ({ onSelect }) => {
 
   const handleClick = (tab) => {
     setSelectedTab(tab);
-    onSelect(tab); // Notifie le composant parent de la sélection
+    onSelect(tab);
   };
 
   return (
@@ -38,9 +38,13 @@ const DailyTab = ({ onSelect }) => {
         className={`rounded-box bg-base-100 border border-base-300 h-52 w-80 cursor-pointer ${selectedTab === 'difficults' ? 'shadow-inner' : 'shadow-out'} ${selectedTab === 'difficults' ? 'border-red-300' : ''}`}
         onClick={() => handleClick('difficults')}
       >
-          <div className='flex justify-center items-center h-full'>
-            <p className='text-xl font-bold'>Difficultées rencontrées</p>
+<div className='flex flex-col justify-center items-center h-full space-y-8'>
+          <h1 className="text-xl font-bold">Difficultées rencontrées</h1>
+          <div className='flex flex-row space-x-4'>
+            <img src="/src/Public/Images/compteur.avif" className='w-20 h-12' alt="compteur" />
+          <p className='text-3xl font-bold'>{handshakesData ? handshakesData.length : 0}</p>
           </div>
+        </div>
 
       </div>
     </div>
