@@ -6,7 +6,6 @@ import Leaderboard from "../Components/Profile/Leaderboard";
 import Directory from "../Components/Profile/Directory";
 import HandshakesTable from "../Components/HandshakeTable";
 import MyBumpChart from "../Components/BumpChart";
-import Handshakes from "../Components/Dashboard/Handshakes";
 import Ambassador from "../Components/Profile/Ambassador";
 import DailyTab from "../Components/DailyTab.jsx";
 
@@ -33,7 +32,6 @@ function Profile() {
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambassadeur" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <Ambassador/>
-        <h1>Ambassadeur</h1>
       </div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours"/>
