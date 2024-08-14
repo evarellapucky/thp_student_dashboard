@@ -11,13 +11,13 @@ const DailyTab = ({ onSelect }) => {
   return (
     <div className="flex flex-row space-x-48">
       <div 
-        className={`rounded-box bg-base-100 border border-base-300 h-52 w-64 cursor-pointer ${selectedTab === 'handshakes' ? 'shadow-inner' : 'shadow-out'} ${selectedTab === 'handshakes' ? 'border-red-200' : ''}`}
+        className={`rounded-box bg-base-100 border border-base-300 h-52 w-80 cursor-pointer ${selectedTab === 'handshakes' ? 'shadow-inner' : 'shadow-out'} ${selectedTab === 'handshakes' ? 'border-red-200' : ''}`}
         onClick={() => handleClick('handshakes')}
       >
         
       </div>
       <div 
-        className={`rounded-box bg-base-100 border border-base-300 h-52 w-64 cursor-pointer ${selectedTab === 'difficults' ? 'shadow-inner' : 'shadow-out'} ${selectedTab === 'difficults' ? 'border-red-200' : ''}`}
+        className={`rounded-box bg-base-100 border border-base-300 h-52 w-80 cursor-pointer ${selectedTab === 'difficults' ? 'shadow-inner' : 'shadow-out'} ${selectedTab === 'difficults' ? 'border-red-200' : ''}`}
         onClick={() => handleClick('difficults')}
       >
         
