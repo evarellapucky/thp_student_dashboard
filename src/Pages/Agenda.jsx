@@ -38,6 +38,7 @@ function Agenda() {
                   ))}
                 </div>
               }
+              borderColor="border-blue-500"
             />
           ))}
         </div>
