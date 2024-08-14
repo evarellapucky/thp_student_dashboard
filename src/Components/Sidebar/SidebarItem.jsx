@@ -5,17 +5,22 @@ const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMini
   <li className={`p-2 rounded ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-blue-700"}`}>
     <Link to={link} className={`flex items-center ${textColor}`}>
       {icon}
-      {!isSidebarMinimized && text}
+      <span
+        className={`ml-2 transition-all duration-300 ${isSidebarMinimized ? "hidden" : "inline-block"} whitespace-nowrap overflow-hidden`}
+        style={{ flexShrink: 0 }}
+      >
+        {text}
+      </span>
     </Link>
   </li>
 );
 
 SidebarItem.propTypes = {
-  link: PropTypes.string.isRequired,  // link must be a string and is required
-  text: PropTypes.string.isRequired,  // text must be a string and is required
-  icon: PropTypes.node.isRequired,    // icon can be any renderable node (e.g., JSX element)
-  textColor: PropTypes.string,        // textColor is optional and must be a string
-  isSidebarMinimized: PropTypes.bool.isRequired // New prop to handle the minimized state
+  link: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  textColor: PropTypes.string,
+  isSidebarMinimized: PropTypes.bool.isRequired,
 };
 
 export default SidebarItem;
