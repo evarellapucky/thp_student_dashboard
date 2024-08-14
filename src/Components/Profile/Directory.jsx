@@ -17,7 +17,7 @@ function Directory() {
                   // "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Users.json"
                   "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json"
               );
-              console.log(response.data.users);
+              // console.log(response.data.users);
               // Je ne prends que les colonne que je souhaite
               const selectedData = response.data.users.map(user => ({
                 nom: user.nom,
