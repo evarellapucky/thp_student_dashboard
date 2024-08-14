@@ -2,6 +2,10 @@ import CollapseBar from '../Components/CollapseBar'
 import DayCard from '../Components/Dashboard/DayCard'
 
 const modules = {
+  Introduction: [
+    { week: "Semaine 1", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
+    { week: "Semaine 2", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
+  ],
   Fullstack: [
     { week: "Semaine 1", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
     { week: "Semaine 2", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
@@ -34,6 +38,7 @@ function Agenda() {
                   ))}
                 </div>
               }
+              borderColor="border-blue-500"
             />
           ))}
         </div>

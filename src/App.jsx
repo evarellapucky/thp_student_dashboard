@@ -10,14 +10,28 @@ import Contact from "./Pages/Contact";
 import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
+import { useState } from "react";
 
+import Search from "./Pages/Search";
+import Favorites from "./Pages/Favorites";
 function App() {
+
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(true);
+
+  const handleSidebarToggle = () => {
+    setIsSidebarMinimized(prev => !prev);
+  };
+
   return (
     <>
   <BrowserRouter>
-      <div className="flex h-screen">
-        <Sidebar />
-        <main className="flex flex-col flex-1 ml-64 p-6">
+  <div className="flex h-screen">
+        <Sidebar isMinimized={isSidebarMinimized} onToggle={handleSidebarToggle} />
+        <main
+          className={`flex-1 p-6 transition-all duration-300 ${
+            isSidebarMinimized ? 'ml-20' : 'ml-64'
+          }`}
+        >
           <DateTime />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
@@ -26,6 +40,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/missions" element={<Missions />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/faq/:categoryName" element={<CategoryDetail />} />
             <Route path="/shop" element={<Shop />} />
