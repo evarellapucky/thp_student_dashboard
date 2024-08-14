@@ -39,7 +39,9 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
         <ul className="ml-6 space-y-1">{children}</ul>
       )}
       {isSidebarMinimized && isOpen && (
+        <div className='border border-white rounded-md '>
         <ul >{children}</ul>
+        </div>
       )}
     </>
   );

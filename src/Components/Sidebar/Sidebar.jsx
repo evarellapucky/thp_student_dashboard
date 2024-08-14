@@ -12,24 +12,24 @@ import favorite_logo from "../../Assets/favorites.svg";
 import faq_logo from "../../Assets/question_mark.svg";
 import contact_logo from "../../Assets/contact.svg";
 import SidebarDropdown from "./SidebarDropdown";
+import HamburgerIcon from './HamburgerIcon';
 
 const Sidebar = ({ isMinimized, onToggle }) => {
-  
+
   return (
     <>
-       <aside
-      className={`fixed top-3 left-3 h-95 ${
-        isMinimized ? "w-20" : "w-64"
-      } bg-black p-4 z-50 rounded-lg transition-all duration-300`}
-    >
-      {/* Bouton pour minimiser/maximiser la Sidebar */}
-      <button
-        onClick={onToggle}
-        className="absolute top-2 right-2 w-8 h-8 bg-gray-700 text-white p-1 rounded-full flex items-center justify-center transition-transform duration-200"
+      <aside
+        className={`fixed top-3 left-3 h-95 ${
+          isMinimized ? "w-20" : "w-64"
+        } bg-black p-4 z-50 rounded-lg transition-all duration-300`}
       >
-        {isMinimized ? ">" : "<"}
-      </button>
-
+        {/* Bouton pour minimiser/maximiser la Sidebar */}
+        <button
+          onClick={onToggle}
+          className="absolute top-2 right-2 w-8 h-8 text-white p-1 rounded-full flex items-center justify-center transition-transform duration-200"
+        >
+          <HamburgerIcon isOpen={!isMinimized} />
+        </button>
       {/* Contenu de la sidebar */}
       <div className="flex flex-col mt-10 h-full">
         {/* Profil */}
@@ -111,10 +111,14 @@ const Sidebar = ({ isMinimized, onToggle }) => {
           </ul>
 
           {/* Logo ou autre contenu */}
-          <div className={`flex justify-center items-center mt-10 ${isMinimized ? "hidden" : ""}`}>
-            <a href="https://www.thehackingproject.org">
-              <img src={logo} alt="Logo" className={`transition-all duration-300 w-24`} />
-            </a>
+          <div className="flex justify-center items-center">
+            {/* Contenu principal de la sidebar */}
+            
+            <div className={`flex justify-center items-center bottom-0 absolute w-full p-4 ${isMinimized ? "hidden" : ""}`}>
+              <a href="https://www.thehackingproject.org">
+                <img src={logo} alt="Logo" className={`transition-all duration-300 w-54`} />
+              </a>
+            </div>
           </div>
         </nav>
       </div>
