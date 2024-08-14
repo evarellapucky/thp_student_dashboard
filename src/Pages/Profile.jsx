@@ -4,8 +4,7 @@ import MyProfile from "../Components/Profile/MyProfile";
 import MyDocuments from "../Components/Profile/MyDocuments";
 import Leaderboard from "../Components/Profile/Leaderboard";
 import Directory from "../Components/Profile/Directory";
-import Table from "../Components/Table";
-import MyJourney from "../Components/Profile/MyJourney";
+import HandshakesTable from "../Components/HandshakeTable";
 import MyBumpChart from "../Components/BumpChart";
 import DailyTab from "../Components/DailyTab.jsx";
 
@@ -57,7 +56,7 @@ function Profile() {
         )}
         {selectedDailyTab === 'difficults' && (
           <div>
-            <h1>Difficultes</h1>
+            <MyBumpChart/>
           </div>
         )}
       </div>

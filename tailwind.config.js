@@ -8,6 +8,17 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        inner :`
+         inset 8px 8px 16px rgba(0, 0, 0, 0.25), 
+    inset -8px -8px 16px rgba(255, 255, 255, 0.8)
+    `,
+        out : `
+    8px 8px 16px rgba(0, 0, 0, 0.25), 
+    -8px -8px 16px rgba(255, 255, 255, 0.8)
+    `
+      },
+
       height: {
         '95': '97%',
       },
