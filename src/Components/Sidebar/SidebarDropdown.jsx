@@ -39,7 +39,7 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
         </div>
 
         {isSidebarMinimized && isOpen && (
-          <div className="absolute left-full top-0 ml-2 bg-gray-800 p-2 rounded shadow-lg z-50">
+          <div className="absolute left-full top-0 ml-2 bg-gray-800 pr-6 rounded shadow-lg z-50">
             <ul className="space-y-1 text-white">
               {React.Children.map(children, (child) =>
                 React.cloneElement(child, { isSidebarMinimized: false })
