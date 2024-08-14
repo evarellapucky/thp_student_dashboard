@@ -21,7 +21,7 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
         <div className="flex items-center">
           {icon}
           {!isSidebarMinimized && (
-            <span className="flex items-center text-white justify-between w-full">
+            <span className={`flex items-center text-white justify-between w-full ml-2 transition-all duration-300 ${isSidebarMinimized ? "hidden" : "inline-block"} whitespace-nowrap overflow-hidden`} style={{ flexShrink: 0 }}>
               {title}
               <img
                   src={toggler_logo}

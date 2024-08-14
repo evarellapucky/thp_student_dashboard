@@ -104,7 +104,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
             <SidebarItem
               link="/logout"
               text="Déconnexion"
-              icon={<img src={disconnect} alt="disconnect" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"} hover:scale-110 transition-transform duration-200`} />}
+              icon={<img src={disconnect} alt="disconnect" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
               textColor="text-red-500"
               isSidebarMinimized={isMinimized}
             />
