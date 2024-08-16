@@ -172,7 +172,7 @@ function EditPassword() {
 
           <div className="md:absolute bottom-0 left-0 right-0 flex justify-center gap-3 p-4 bg-white">
               <button type="submit" className="btn btn-primary">Valider</button>
-              <button className="btn btn-error" onClick={handleCloseModal}>Annuler</button>
+              <button type="button" className="btn btn-error" onClick={handleCloseModal}>Annuler</button>
           </div>
       </form>
     </div>

@@ -33,8 +33,4 @@ const BigModal = () => {
     );
 };
 
-BigModal.propTypes = { // Added prop validation
-    content: PropTypes.element.isRequired,
-};
-
 export default BigModal;
