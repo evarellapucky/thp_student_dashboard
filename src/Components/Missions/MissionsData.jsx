@@ -71,10 +71,12 @@ const MissionsData = () => {
 
         const issues = response.data;
 
-        if (issues.length === 0) {
+        const filteredIssues = issues.filter(issue => !issue.pull_request)
+
+        if (filteredIssues.length === 0) {
           hasMoreIssues = false;
         } else {
-          allIssues.push(...issues);
+          allIssues.push(...filteredIssues);
           page++;
         }
       } while (hasMoreIssues);
@@ -248,7 +250,7 @@ const MissionsData = () => {
           value={issuesPerPage} 
           onChange={handleIssuesPerPageChange}
         >
-          <option value={5}>5</option>
+          <option value={6}>6</option>
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={50}>50</option>
