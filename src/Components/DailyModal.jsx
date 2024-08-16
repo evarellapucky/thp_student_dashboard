@@ -29,7 +29,7 @@ const DailyModal = () => {
     const handleOpenModal = () => {
         setModalContent(
             <div>
-                <h1 className='text-2xl font-bold'>Comment s'est passée votre journée d'hier ?</h1>
+                <h1 className='text-2xl font-bold'>Bonjour Mousaillon !</h1>
                 <div className='flex flex-row justify-between'>
                     <Dropdown 
                         options={users}

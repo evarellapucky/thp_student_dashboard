@@ -25,7 +25,7 @@ const HandshakesTable = () => {
 
     return (
         <div>
-            <h1 className="text-2xl mt-6">Handshakes</h1>
+            <h1 className="text-center text-2xl font-bold mt-8">Liste des Coup de Mains donnés</h1>
             <DirectoryTable data={handshakes} itemsPerPage={5} />
         </div>
     );

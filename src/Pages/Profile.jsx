@@ -1,18 +1,15 @@
-import { useState } from 'react';
 import MyJourney from "../Components/Profile/MyJourney";
 import MyProfile from "../Components/Profile/MyProfile";
 import MyDocuments from "../Components/Profile/MyDocuments";
 import Leaderboard from "../Components/Profile/Leaderboard";
 import Directory from "../Components/Profile/Directory";
-import HandshakesTable from "../Components/HandshakeTable";
-import MyBumpChart from "../Components/BumpChart";
 import Ambassador from "../Components/Profile/Ambassador";
-import DailyTab from "../Components/DailyTab.jsx";
+import Daily from '../Components/Profile/Daily.jsx';
 
 function Profile() {
-  const [selectedDailyTab, setSelectedDailyTab] = useState('handshakes');
 
   return (
+    
     <div role="tablist" className="tabs tabs-lifted">
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Profil" defaultChecked />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
@@ -46,20 +43,7 @@ function Profile() {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <div className="flex flex-row justify-around mt-6">
-          <DailyTab onSelect={(tab) => setSelectedDailyTab(tab)} />
-        </div>
-        {selectedDailyTab === 'handshakes' && (
-          <div>
-            <MyBumpChart/>
-            <HandshakesTable/>
-          </div>
-        )}
-        {selectedDailyTab === 'difficults' && (
-          <div>
-            <MyBumpChart/>
-          </div>
-        )}
+       <Daily/>
       </div>
     </div>
   );

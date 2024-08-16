@@ -6,6 +6,10 @@
   background-color: #f8f9fa;
 }
 
+body {
+  color: var(--color-primary);
+}
+
 /*⇣ Shop ⇣*/
 
 .tableitems {
