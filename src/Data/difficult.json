@@ -1,0 +1,60 @@
+{
+    "Difficults": [
+      {
+          "date": "2024-06-01",
+          "rate": "1",
+          "content": "Description de la difficulte 1."
+      },
+      {
+          "date": "2024-06-10",
+          "rate": "3",
+          "content": "Description de la difficulte 2."
+      },
+      {
+          "date": "2024-06-20",
+          "rate": "5",
+          "content": "Description de la difficulte 3."
+      },
+      {
+          "date": "2024-06-30",
+          "rate": "4",
+          "content": "Description de la difficulte 4."
+      },
+      {
+          "date": "2024-07-05",
+          "rate": "3",
+          "content": "Description de la difficulte 5."
+      },
+      {
+          "date": "2024-07-15",
+          "rate": "2",
+          "content": "Description de la difficulte 6."
+      },
+      {
+          "date": "2024-07-25",
+          "rate": "3",
+          "content": "Description de la difficulte 7."
+      },
+      {
+          "date": "2024-08-01",
+          "rate": "5",
+          "content": "Description de la difficulte 8."
+      },
+      {
+          "date": "2024-08-10",
+          "rate": "1",
+          "content": "Description de la difficulte 9."
+      },
+      {
+          "date": "2024-08-20",
+          "rate": "4",
+          "content": "Description de la difficulte 10."
+      },
+      {
+          "date": "2024-08-30",
+          "rate": "3",
+          "content": "Description de la difficulte 11."
+      }
+    ]
+  }
+  
