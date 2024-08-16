@@ -1,5 +1,5 @@
 import React from 'react'
-import MissionsData from '../Components/MissionsData'
+import MissionsData from '../Components/Missions/MissionsData'
 
 function Missions() {
   return (
