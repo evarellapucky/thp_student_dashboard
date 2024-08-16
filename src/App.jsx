@@ -3,7 +3,7 @@ import Dashboard from "./Pages/Dashboard";
 import Agenda from "./Pages/Agenda";
 import Profile from "./Pages/Profile";
 import Sidebar from "./Components/Sidebar/Sidebar";
-import MobileSidebar from "./Components/Sidebar/SidebarMobile";  // Ajuste ici si nécessaire
+import MobileSidebar from "./Components/Sidebar/SidebarMobile";
 import HamburgerIcon from './Components/Sidebar/HamburgerIcon'; 
 import DateTime from "./Components/DateTime";
 import Today from "./Pages/Today";
@@ -44,7 +44,7 @@ function App() {
               onClick={handleMobileSidebarToggle}
               className="fixed top-3 left-3 z-50"
             >
-              <HamburgerIcon isOpen={isMobileSidebarOpen} />
+              <HamburgerIcon isOpen={isMobileSidebarOpen} color={isMobileSidebarOpen ? "white" : "black"}/>
             </button>
             <MobileSidebar isOpen={isMobileSidebarOpen} onToggle={handleMobileSidebarToggle} />
           </div>

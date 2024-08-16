@@ -27,9 +27,9 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
         {/* Bouton pour fermer la Sidebar */}
         <button
           onClick={onToggle}
-          className="absolute top-2 right-2 w-8 h-8 text-white p-1 rounded-full flex items-center justify-center"
+          className="absolute top-2 right-2 w-8 h-8 p-1 rounded-full flex items-center justify-center"
         >
-          <HamburgerIcon isOpen={isOpen} />
+          <HamburgerIcon isOpen={isOpen} color={isOpen ? "white" : "black"} />
         </button>
 
         {/* Contenu de la sidebar */}
@@ -74,7 +74,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <li className="text-white">
                 <a href="/search" className="flex items-center p-2">
                   <img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2" />
-                  Rechercher
+                  
                 </a>
               </li>
               <li className="text-white">
