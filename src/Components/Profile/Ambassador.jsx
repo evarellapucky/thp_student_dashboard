@@ -60,22 +60,22 @@ function Ambassador() {
           <h1 className='font-bold text-black text-3xl ml-5'>Ambassadeur</h1>
           <TooltipIcon text={tutorialText} />
         </div>
-        <div className="border-2 rounded-xl flex justify-between p-3 w-full sm:w-auto">
+        <div className="border-1 rounded-lg flex justify-between p-3 w-full sm:w-auto">
           <p>Mon lien d'affiliation :</p>
-          <p className="mx-5 max-w-sm sm:max-w-60 overflow-x-auto">{ambassadorUrl}</p>
+          <p className="ml-5 mt-0 max-w-sm sm:max-w-60 overflow-x-auto">{ambassadorUrl}</p>
         </div>
       </div>
       <div>
         <div className="flex flex-wrap justify-around my-5">
-          <div className="border-2 flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Nombre de point THP gagnés :<span className="m-3">{pointWon}</span></p>
             
           </div>
-          <div className="border-2 flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Montant de ma gagnotte :<span className="m-3">{moneyEarned}€</span></p>
             
           </div>
-          <div className="border-2 flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Nombre de filleuls :<span className="m-3">{godchildrenNumber}</span></p>
             
           </div>

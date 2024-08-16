@@ -1,27 +1,13 @@
 import { ResponsiveBump } from '@nivo/bump';
+import PropTypes from 'prop-types';
 
-const data = [
-    {
-        "id": "Nb de Coups de mains",
-        "data": [
-            { "x": "01 08 2024", "y": 5 },
-            { "x": "02 08 2024", "y": 2 },
-            { "x": "03 08 2024", "y": 5 },
-            { "x": "04 08 2024", "y": 1 },
-            { "x": "05 08 2024", "y": 3 }
-        ]
-    },
-   
-    // Plus de séries de données...
-];
-
-const MyBumpChart = () => (
+const MyBumpChart = ({ data }) => (
     <div style={{ height: 300, marginTop: 20 }}>
         <ResponsiveBump
             data={data}
             margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
             xScale={{ type: 'point' }}
-            yScale={{ type: 'linear', min: 1, max: 10}}
+            yScale={{ type: 'linear', min: 1, max: 10 }}
             colors={{ scheme: 'spectral' }}
             lineWidth={4}
             activeLineWidth={6}
@@ -64,5 +50,19 @@ const MyBumpChart = () => (
         />
     </div>
 );
+
+MyBumpChart.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            data: PropTypes.arrayOf(
+                PropTypes.shape({
+                    x: PropTypes.string.isRequired,
+                    y: PropTypes.number.isRequired
+                })
+            ).isRequired
+        })
+    ).isRequired
+};
 
 export default MyBumpChart;
