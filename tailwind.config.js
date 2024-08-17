@@ -8,17 +8,21 @@ export default {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        inner :`
-         inset 8px 8px 16px rgba(0, 0, 0, 0.25), 
-    inset -8px -8px 16px rgba(255, 255, 255, 0.8)
-    `,
-        out : `
-    8px 8px 16px rgba(0, 0, 0, 0.25), 
-    -8px -8px 16px rgba(255, 255, 255, 0.8)
-    `
+      backgroundImage: {
+        'rainbow-gradient': 'linear-gradient(90deg, #ff0000 0%, #ff4500 10%, #ff6347 20%, #ff7f50 30%, #ffa07a 40%, #ffff00 50%, #00ff00 60%, #0000ff 70%, #4b0082 80%, #8b00ff 90%, #ff00ff 100%)',
+        'blue-gradient': 'linear-gradient(135deg, #0057FF 0%, #00BFFF 100%)',
+        'gray-gradient': 'linear-gradient(135deg, #2D3748 0%, #4A5568 100%)',
       },
-
+      boxShadow: {
+        inner: `
+          inset 8px 8px 16px rgba(0, 0, 0, 0.25), 
+          inset -8px -8px 16px rgba(255, 255, 255, 0.8)
+        `,
+        out: `
+          8px 8px 16px rgba(0, 0, 0, 0.25), 
+          -8px -8px 16px rgba(255, 255, 255, 0.8)
+        `,
+      },
       height: {
         '95': '97%',
       },
@@ -58,10 +62,6 @@ export default {
         },
         black: '#000000',
         white: '#FFFFFF',
-      },
-      backgroundImage: {
-        'blue-gradient': 'linear-gradient(135deg, #0057FF 0%, #00BFFF 100%)',
-        'gray-gradient': 'linear-gradient(135deg, #2D3748 0%, #4A5568 100%)',
       },
     },
   },
