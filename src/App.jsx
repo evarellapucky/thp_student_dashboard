@@ -13,6 +13,7 @@ import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
 import { useState } from "react";
+
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
