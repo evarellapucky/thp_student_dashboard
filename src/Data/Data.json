@@ -117,5 +117,39 @@
           "date": "01-08-2024", 
           "comment": "Violet" 
         }
+    ],
+    "Difficults": [
+        {
+            "date": "Difficulte 1",
+            "rate": "3",
+            "content": "Description de la difficulte 1."
+        },
+        {
+            "date": "Difficulte 2",
+            "rate": "3",
+            "content": "Description de la difficulte 2."
+        },
+        {
+            "date": "Difficulte 3",
+            "rate": "3",
+            "content": "Description de la difficulte 3."
+        },
+        {
+            "date": "Difficulte 4",
+            "rate": "3",
+            "probleme": "Description de la difficulte 4."
+        },
+        {
+            "date": "Difficulte 5",
+            "rate": "3",
+            "probleme": "Description de la difficulte 5."
+        },
+        {
+            "date": "Difficulte 6",
+            "rate": "3",
+            "probleme": "Description de la difficulte 6."
+        }
     ]
+
+
 }

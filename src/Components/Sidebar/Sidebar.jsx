@@ -28,7 +28,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
           onClick={onToggle}
           className="absolute top-2 right-2 w-8 h-8 text-white p-1 rounded-full flex items-center justify-center transition-transform duration-200"
         >
-          <HamburgerIcon isOpen={!isMinimized} />
+          <HamburgerIcon isOpen={!isMinimized} color="white" />
         </button>
       {/* Contenu de la sidebar */}
       <div className="flex flex-col mt-10 h-full">
