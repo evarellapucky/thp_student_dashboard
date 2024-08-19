@@ -60,9 +60,9 @@ function Ambassador() {
           <h1 className='font-bold text-black text-3xl ml-5'>Ambassadeur</h1>
           <TooltipIcon text={tutorialText} />
         </div>
-        <div className="border-1 rounded-lg flex justify-between p-3 w-full sm:w-auto">
+        <div className="border-1 rounded-lg flex flex-wrap justify-between p-3 w-full sm:w-auto gap-2">
           <p>Mon lien d'affiliation :</p>
-          <p className="ml-5 mt-0 max-w-sm sm:max-w-60 overflow-x-auto">{ambassadorUrl}</p>
+          <p className="mt-0 max-w-sm sm:max-w-60 overflow-x-auto">{ambassadorUrl}</p>
         </div>
       </div>
       <div>

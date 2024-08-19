@@ -4,9 +4,8 @@ function MyJourney() {
   return (
     <>
       <h1>Mon parcours</h1>
-      <div className="flex gap-5">
+      <div className="flex flex-col lg:flex-row gap-5">
         <div>
-
           <ul className="steps steps-vertical">
             <li data-content="✓" className="step step-primary my-1">
               <div className="border-2 p-3">
@@ -27,7 +26,7 @@ function MyJourney() {
             <li data-content="✓" className="step step-primary my-1">
               <div className="border-2 p-3">
                 <h4 className="text-left">FULLSTACK</h4>
-                <div className="flex">
+                <div className="flex flex-wrap">
                   <div className="text-left">
                     <p>12 semaines intenses</p>
                     <p>En 12 semaines de formation intensive, vous pourrez :</p> 
@@ -39,7 +38,7 @@ function MyJourney() {
                     <p>Apprenez à coder et construisez votre expertise</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2">Poursuivre</button>
+                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
                   </div>
                 </div>
               </div>
@@ -48,7 +47,7 @@ function MyJourney() {
             <li data-content="..." className="step step-primary my-1">
               <div className="border-2 p-3">
                 <h4 className="text-left">DEVELOPPEUR</h4>
-                <div className="flex">
+                <div className="flex flex-wrap">
                   <div className="text-left">
                     <p>12 semaines intenses</p>
                     <p>En 24 semaines de formation intensive, vous pourrez :</p> 
@@ -60,7 +59,7 @@ function MyJourney() {
                     <p>Devenez dév web et construisez votre expertise</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2">Poursuivre</button>
+                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
                   </div>
                 </div>
               </div>
@@ -69,7 +68,7 @@ function MyJourney() {
             <li data-content="✕" className="step my-1">
               <div className="border-2 p-3">
                 <h4 className="text-left">DELOPPEUR++</h4>
-                <div className="flex">
+                <div className="flex flex-wrap">
                   <div className="text-left">
                     <p>12 semaines intenses et 8 semaines d'insertion pro</p>
                     <p>En 32 semaines de formation intensive, vous pourrez :</p> 
@@ -81,7 +80,7 @@ function MyJourney() {
                     <p>Devenez dév web inséré sur le marché du travail</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2">Poursuivre</button>
+                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
                   </div>
                 </div>
               </div>
