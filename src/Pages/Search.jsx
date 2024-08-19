@@ -28,7 +28,7 @@ const Search = () => {
       );
   }, []);
 
-  useEffect(() => {
+  const handleSearch = () => {
     if (searchTerm) {
       const regex = buildSearchRegex(searchTerm.toLowerCase());
       const filtered = resources.filter(
@@ -40,7 +40,12 @@ const Search = () => {
     } else {
       setFilteredResources([]);
     }
-  }, [searchTerm, resources]);
+  }; 
+
+  const handleInputClick = () => {
+    setSearchTerm("");
+    setFilteredResources([]);
+  };
 
   const buildSearchRegex = (term) => {
     const andTerms = term.split(/\s+AND\s+/i).map((subTerm) => {
@@ -88,7 +93,14 @@ const Search = () => {
             className="input input-bordered w-96 pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onClick={handleInputClick}
           />
+          <button
+            className="btn btn-primary ml-2"
+            onClick={handleSearch}
+          >
+            Chercher
+          </button>
           <svg
             className="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-100"
             xmlns="http://www.w3.org/2000/svg"
