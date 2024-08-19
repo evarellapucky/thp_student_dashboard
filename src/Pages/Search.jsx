@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CollapseBar from "../Components/CollapseBar";
+import { Link } from 'react-router-dom';
 
 
 const Search = () => {
@@ -38,6 +39,19 @@ const Search = () => {
                             borderColor="border-blue-500" 
                         />
                     ))}
+
+                      <CollapseBar
+                        title="Je ne trouve pas ce que je recherche"
+                        borderColor="border-red-500"
+                        content={
+                            <div>
+                                <p>Aucune ressource ne correspond à ta recherche, tu peux réaliser une <Link to="/missions" className="text-blue-500 underline">
+                                    mission
+                                </Link> pour créer une resource</p>
+                                
+                            </div>
+                        }
+                    />
                 </div>
             </div>
             
