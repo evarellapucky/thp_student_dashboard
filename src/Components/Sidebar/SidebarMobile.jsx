@@ -50,25 +50,25 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
           <nav className="flex-1">
             <ul className="space-y-1">
               <li className="text-white">
-                <a href="/profile" className="flex items-center p-2">
+                <a href="/profile" className="flex items-center p-2" onClick={onToggle}>
                   <img src={profile} alt="mon profil" className="w-6 h-6 mr-2" />
                   Profil
                 </a>
               </li>
               <li className="text-white">
-                <a href="/dashboard" className="flex items-center p-2">
+                <a href="/dashboard" className="flex items-center p-2" onClick={onToggle}>
                   <img src={dashboard_logo} alt="dashboard" className="w-6 h-6 mr-2" />
                   Dashboard
                 </a>
               </li>
               <li className="text-white">
-                <a href="/today" className="flex items-center p-2">
+                <a href="/today" className="flex items-center p-2" onClick={onToggle}>
                   <img src={today_logo} alt="aujourd'hui" className="w-6 h-6 mr-2" />
                   Aujourd'hui
                 </a>
               </li>
               <li className="text-white">
-                <a href="/agenda" className="flex items-center p-2">
+                <a href="/agenda" className="flex items-center p-2" onClick={onToggle}>
                   <img src={agenda_logo} alt="agenda" className="w-6 h-6 mr-2" />
                   Agenda
                 </a>
@@ -84,28 +84,30 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                   text="Recherche"
                   icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
                   isSidebarMinimized={false}
+                  onClick={onToggle} // Fermer la sidebar après le clic
                 />
                 <SidebarItem
                   link="/favorites"
                   text="Mes favoris"
                   icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2" />}
                   isSidebarMinimized={false}
+                  onClick={onToggle} // Fermer la sidebar après le clic
                 />
               </SidebarDropdown>
               <li className="text-white">
-                <a href="/faq" className="flex items-center p-2">
+                <a href="/faq" className="flex items-center p-2" onClick={onToggle}>
                   <img src={faq_logo} alt="faq" className="w-6 h-6 mr-2" />
                   FAQ / Aide
                 </a>
               </li>
               <li className="text-white">
-                <a href="/contact" className="flex items-center p-2">
+                <a href="/contact" className="flex items-center p-2" onClick={onToggle}>
                   <img src={contact_logo} alt="contact" className="w-6 h-6 mr-2" />
                   Contact
                 </a>
               </li>
               <li className="text-red-500">
-                <a href="/logout" className="flex items-center p-2">
+                <a href="/logout" className="flex items-center p-2" onClick={onToggle}>
                   <img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2" />
                   Déconnexion
                 </a>
