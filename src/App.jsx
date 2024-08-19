@@ -16,7 +16,7 @@ import { useState } from "react";
 
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
-
+import Projets from "./Pages/Projets";
 function App() {
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // État pour la sidebar mobile
@@ -61,6 +61,7 @@ function App() {
               <Route path="/agenda" element={<Agenda />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/missions" element={<Missions />} />
+              <Route path="/projets" element={<Projets />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/search" element={<Search />} />
               <Route path="/favorites" element={<Favorites />} />
