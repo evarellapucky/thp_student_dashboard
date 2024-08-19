@@ -9,7 +9,7 @@ const Today = () => {
     const [dayState, setDayState] = useState('correction');
 
     useEffect(() => {
-        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json')
+        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/src/Data/Data.json?ref=dev')
             .then(response => {
                 const content = response.data.content;
 

@@ -10,11 +10,9 @@ const HandshakesTable = () => {
         const fetchHandshakes = async () => {
             try {
                 const response = await axios.get(
-                    "https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json"
+                    "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Data.json"
                 );
-
-                const decodedContent = JSON.parse(atob(response.data.content));
-                setHandshakes(decodedContent.handshakes);
+                setHandshakes(response.data.handshakes);
             } catch (error) {
                 console.error("Erreur lors de la récupération des users :", error);
             }

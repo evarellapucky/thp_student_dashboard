@@ -8,7 +8,7 @@ const MyBumpChart = ({ data }) => (
             margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
             xScale={{ type: 'point' }}
             yScale={{ type: 'linear', min: 1, max: 10 }}
-            colors={{ scheme: 'spectral' }}
+            colors={{ scheme: 'category10' }}
             lineWidth={4}
             activeLineWidth={6}
             inactiveLineWidth={3}
