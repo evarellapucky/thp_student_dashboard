@@ -34,12 +34,12 @@ function App() {
       <BrowserRouter>
         <div className="flex h-screen">
           {/* Sidebar pour les grands écrans */}
-          <div className="hidden md:block">
+          {/* <div className="hidden md:block">
             <Sidebar isMinimized={isSidebarMinimized} onToggle={handleSidebarToggle} />
-          </div>
+          </div> */}
 
           {/* Sidebar pour les petits écrans */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <button
               onClick={handleMobileSidebarToggle}
               className="fixed top-3 left-3 z-50"
@@ -47,12 +47,10 @@ function App() {
               <HamburgerIcon isOpen={isMobileSidebarOpen} color={isMobileSidebarOpen ? "white" : "black"}/>
             </button>
             <MobileSidebar isOpen={isMobileSidebarOpen} onToggle={handleMobileSidebarToggle} />
-          </div>
+          </div> */}
 
           <main
-            className={`flex-1 p-6 transition-all duration-300 ${
-              isSidebarMinimized ? 'ml-20' : 'ml-64'
-            }`}
+            className={`container mx-auto flex-1 p-6 transition-all duration-300`}
           >
             <DateTime />
             <Routes>
