@@ -8,7 +8,7 @@ const Search = () => {
 
     useEffect(() => {
 
-        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/Data.json')
+        axios.get('https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/src/Data/Data.json')
             .then(response => {
                 const content = response.data.content;
 
