@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMinimized }) => (
   <li className={`p-2 rounded ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-blue-700"}`}>
-    <Link to={link} className={`flex items-center ${textColor}`}>
+    <Link to={link} className={`flex items-center ${textColor} `}>
       {icon}
       <span
-        className={`ml-2 transition-all duration-300 ${isSidebarMinimized ? "hidden" : "inline-block"} whitespace-nowrap overflow-hidden`}
+        className={`ml-2 transition-all duration-300 ${isSidebarMinimized ? "hidden" : "inline-block"} whitespace-nowrap overflow-hidden ${textColor}`}
         style={{ flexShrink: 0 }}
       >
         {text}
