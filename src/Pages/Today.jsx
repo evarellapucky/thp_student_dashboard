@@ -6,7 +6,7 @@ import CollapseBar from "../Components/CollapseBar";
 
 const Today = () => {
     const [resources, setResources] = useState([]);
-    const [dayState, setDayState] = useState('');
+    const [dayState, setDayState] = useState('correction');
 
     useEffect(() => {
         axios.get('https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Data.json')
