@@ -61,8 +61,7 @@ const MissionsData = () => {
         do {
         const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
           headers: {
-            'Accept': 'application/vnd.github.v3+json',
-            'Authorization': 'token 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',
+            'Accept': 'application/vnd.github.v3+json'
           },
           params: {
             per_page: perPage,
