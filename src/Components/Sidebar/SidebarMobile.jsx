@@ -11,6 +11,8 @@ import favorite_logo from "../../Assets/favorites.svg";
 import faq_logo from "../../Assets/question_mark.svg";
 import contact_logo from "../../Assets/contact.svg";
 import HamburgerIcon from './HamburgerIcon';
+import SidebarItem from './SidebarItem'; // Importation du composant SidebarItem
+import SidebarDropdown from './SidebarDropdown'; // Importation du composant SidebarDropdown
 
 const SidebarMobile = ({ isOpen, onToggle }) => {
   return (
@@ -71,18 +73,25 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                   Agenda
                 </a>
               </li>
-              <li className="text-white">
-                <a href="/search" className="flex items-center p-2">
-                  <img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2" />
-                  
-                </a>
-              </li>
-              <li className="text-white">
-                <a href="/favorites" className="flex items-center p-2">
-                  <img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2" />
-                  Mes favoris
-                </a>
-              </li>
+              {/* Dropdown */}
+              <SidebarDropdown
+                title="Mes recherches"
+                icon={<img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
+                isSidebarMinimized={false}  // En mobile, ce sera toujours déplié comme en mode sidebar ouverte
+              >
+                <SidebarItem
+                  link="/search"
+                  text="Recherche"
+                  icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
+                  isSidebarMinimized={false}
+                />
+                <SidebarItem
+                  link="/favorites"
+                  text="Mes favoris"
+                  icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2" />}
+                  isSidebarMinimized={false}
+                />
+              </SidebarDropdown>
               <li className="text-white">
                 <a href="/faq" className="flex items-center p-2">
                   <img src={faq_logo} alt="faq" className="w-6 h-6 mr-2" />
