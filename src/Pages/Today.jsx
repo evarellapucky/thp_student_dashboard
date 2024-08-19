@@ -6,7 +6,7 @@ import CollapseBar from "../Components/CollapseBar";
 
 const Today = () => {
     const [resources, setResources] = useState([]);
-    const [dayState, setDayState] = useState('withSubmission');
+    const [dayState, setDayState] = useState('');
 
     useEffect(() => {
         axios.get('https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Data.json')
@@ -52,7 +52,7 @@ const Today = () => {
         <h1 className="text-2xl md:text-3xl font-bold mt-8 mb-6 text-center">Corrections</h1>
         <div className="flex flex-col items-center mt-6 space-y-6">
             <Countdown />
-            <div className="w-full md:w-3/4 lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 mb-8">
+            <div className="w-full md:w-3/4 lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:space-x-6 gap-4 mt-6 mb-8">
                 {/* Colonne pour corriger */}
                 <div className="flex flex-col items-center space-y-4">
                     <h2 className="text-xl font-semibold mb-4">Corriger</h2>
@@ -71,7 +71,7 @@ const Today = () => {
                         <div key={index + 2} className="flex flex-col sm:flex-row items-center justify-center space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
                             <span className="text-center sm:text-left">Utilisateur {index + 3}</span>
                             <button className="btn bg-blue-500 w-full sm:w-auto">GitHub</button>
-                            <button className="btn bg-red-500 w-full sm:w-auto">Donne ton retour</button>
+                            <button className="btn bg-red-500 w-full sm:w-auto">Évaluer</button>
                         </div>
                     ))}
                 </div>
@@ -81,7 +81,7 @@ const Today = () => {
 )}
 
             <div className="flex justify-center p-4">
-                <div className="w-full max-w-4xl">
+                <div className="w-full max-w-6xl">
                     {resources.map((resource, index) => (
                         <CollapseBar 
                             key={index}
