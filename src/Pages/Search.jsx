@@ -57,8 +57,23 @@ const Search = () => {
       return orTerms.length > 1 ? `(${orTerms.join("|")})` : orTerms[0];
     });
 
-    return new RegExp(andTerms.join(".*"), "i");
+    return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   };
+
+  const highlightText = (text, terms) => {
+    // Escape special characters in search terms
+    const escapedTerms = terms.map(term =>
+        term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    );
+
+    // Create a regex pattern from the search terms
+    const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+
+    // Replace matches with highlighted versions
+    return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
+};
+
+
 
   return (
     <div>
@@ -94,9 +109,10 @@ const Search = () => {
             filteredResources.map((resource, index) => (
               <CollapseBar
                 key={index}
-                title={resource.title}
-                content={resource.content}
+                title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, searchTerm.split(/\s+/)) }} />}
+                content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, searchTerm.split(/\s+/)) }} />}
                 borderColor="border-blue-500"
+
               />
             ))
           ) : (
