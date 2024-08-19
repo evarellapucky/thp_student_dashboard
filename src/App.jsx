@@ -50,8 +50,8 @@ function App() {
           </div>
 
           <main
-            className={`flex-1 p-6 transition-all duration-300 ${
-              isSidebarMinimized ? 'ml-20' : 'ml-64'
+            className={`flex-1 transition-all duration-300 ${
+              isSidebarMinimized && !isMobileSidebarOpen? 'ml-20' : 'ml-64'
             }`}
           >
             <DateTime />
