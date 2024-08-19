@@ -12,14 +12,30 @@ import Contact from "./Pages/Contact";
 import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile;
+}
+
 function App() {
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(true);
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // État pour la sidebar mobile
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const isMobile = useIsMobile(); // Utiliser le hook pour vérifier si on est en mode mobile
 
   const handleSidebarToggle = () => {
     setIsSidebarMinimized(prev => !prev);
@@ -51,7 +67,7 @@ function App() {
 
           <main
             className={`flex-1 transition-all duration-300 ${
-              isSidebarMinimized && !isMobileSidebarOpen? 'ml-20' : 'ml-64'
+              isMobile ? '' : (isSidebarMinimized ? 'ml-20 p-6' : 'ml-64 p-6 ')
             }`}
           >
             <DateTime />
@@ -61,7 +77,6 @@ function App() {
               <Route path="/agenda" element={<Agenda />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/missions" element={<Missions />} />
-              <Route path="/projets" element={<Projets />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/search" element={<Search />} />
               <Route path="/favorites" element={<Favorites />} />
@@ -77,3 +92,4 @@ function App() {
 }
 
 export default App;
+
