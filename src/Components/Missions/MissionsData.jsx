@@ -74,112 +74,121 @@ const MissionsData = () => {
 
   return (
     <>
-      <div className='flex justify-end'>
-        <RedirectButton url="https://github.com/Marcaraph/Missions/issues/new" text="Créer une mission via Github" />
-      </div>
-
-      <div className='flex flex-row gap-3 items-center'>    
-        <h1 className='font-bold text-black text-3xl ml-5'>MISSIONS</h1>
+      <div className='flex justify-center items-center lg:justify-start gap-4 mb-4'>    
+        <h1 className='font-bold text-black text-2xl md:text-3xl'>MISSIONS</h1>
         <TooltipIcon text={tutorialText} />
       </div>
 
-      <div className='flex justify-end gap-2 items-center'>
-        <h1>Filter issues by State</h1>
-        <select 
-          className='
-            px-3 
-            py-2 
-            border 
-            border-gray-300 
-            rounded-md 
-            shadow-sm 
-            focus:outline-none 
-            focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
-            text-sm
-            bg-white 
-            text-gray-700' 
-          value={filterState} 
-          onChange={(e) => setFilterState(e.target.value)}
-        >
-          <option value='all'>All</option>
-          <option value='open'>Open</option>
-          <option value='closed'>Closed</option>
-        </select>
+      <div className='flex justify-center mb-4 lg:justify-end'>
+        <RedirectButton url="https://github.com/Marcaraph/Missions/issues/new" text="Créer une mission via Github" />
+      </div>
 
-        <h1>Filter issues by Labels</h1>
-        <select 
-          className='
-            px-3 
-            py-2 
-            border 
-            border-gray-300 
-            rounded-md 
-            shadow-sm 
-            focus:outline-none 
-            focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
-            text-sm
-            bg-white 
-            text-gray-700' 
-          value={filterLabel} 
-          onChange={(e) => setFilterLabel(e.target.value.trim().toLowerCase())}
-        >
-          <option value='all'>All</option>
-          {uniqueLabels.map(label => (
-            <option key={label} value={label}>{label.charAt(0).toUpperCase() + label.slice(1)}</option>
-          ))}
-        </select>
 
-        <h1>Filter issues by Assignees</h1>
-        <select 
-          className='
-            px-3 
-            py-2 
-            border 
-            border-gray-300 
-            rounded-md 
-            shadow-sm 
-            focus:outline-none 
-            focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
-            text-sm
-            bg-white 
-            text-gray-700' 
-          value={filterAssignees} 
-          onChange={(e) => setFilterAssignees(e.target.value)}
-        >
-          <option value='all'>All</option>
-          <option value='unassigned'>No Assignees</option>
-        </select>
+      <div className='flex flex-col md:flex-row gap-4 mb-4'>
+        <div className='flex items-center gap-2'>
+          <label htmlFor="filterState" className='text-sm'>Filter issues by State:</label>
+          <select 
+            className='
+              px-3 
+              py-2 
+              border 
+              border-gray-300 
+              rounded-md 
+              shadow-sm 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              text-sm
+              bg-white 
+              text-gray-700' 
+            value={filterState} 
+            onChange={(e) => setFilterState(e.target.value)}
+          >
+            <option value='all'>All</option>
+            <option value='open'>Open</option>
+            <option value='closed'>Closed</option>
+          </select>
+        </div>
 
-        <h1>Issues per Page</h1>
-        <select 
-          className='
-            px-3 
-            py-2 
-            border 
-            border-gray-300 
-            rounded-md 
-            shadow-sm 
-            focus:outline-none 
-            focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
-            text-sm
-            bg-white 
-            text-gray-700' 
-          value={issuesPerPage} 
-          onChange={handleIssuesPerPageChange}
-        >
-          <option value={6}>6</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={50}>50</option>
-        </select>
+        <div className='flex items-center gap-2'>
+          <label htmlFor="filterLabel" className='text-sm'>Filter issue by Labels:</label>
+          <select 
+            className='
+              px-3 
+              py-2 
+              border 
+              border-gray-300 
+              rounded-md 
+              shadow-sm 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              text-sm
+              bg-white 
+              text-gray-700' 
+            value={filterLabel} 
+            onChange={(e) => setFilterLabel(e.target.value.trim().toLowerCase())}
+          >
+            <option value='all'>All</option>
+            {uniqueLabels.map(label => (
+              <option key={label} value={label}>{label.charAt(0).toUpperCase() + label.slice(1)}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className='flex items-center gap-2'>
+          <label htmlFor="filterAssignees">Filter issues by Assignees:</label>
+          <select 
+            className='
+              px-3 
+              py-2 
+              border 
+              border-gray-300 
+              rounded-md 
+              shadow-sm 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              text-sm
+              bg-white 
+              text-gray-700' 
+            value={filterAssignees} 
+            onChange={(e) => setFilterAssignees(e.target.value)}
+          >
+            <option value='all'>All</option>
+            <option value='unassigned'>No Assignees</option>
+          </select>
+        </div>    
+
+        <div className='flex items-center gap-2'>
+          <label htmlFor="issuesPerPage" className='text-sm'>Issues per Page:</label>
+          <select 
+            className='
+              px-3 
+              py-2 
+              border 
+              border-gray-300 
+              rounded-md 
+              shadow-sm 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              text-sm
+              bg-white 
+              text-gray-700' 
+            value={issuesPerPage} 
+            onChange={handleIssuesPerPageChange}
+          >
+            <option value={6}>6</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+          </select>
+        </div>
       </div>
 
       <div className=''>        
@@ -191,7 +200,7 @@ const MissionsData = () => {
           />
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
           {currentRepoIssues.map(issue => (
             <MissionCard
               key={issue.id}
