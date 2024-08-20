@@ -1,6 +1,98 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function MyJourney() {
+  const [myId, setMyId] = useState("16");
+  const [myjourney, setMyjourney] = useState("");
+  const [introStatus, setIntroStatus] = useState("X");
+  const [fullstackStatus, setFullstackStatus] = useState("X");
+  const [devStatus, setDevStatus] = useState("X");
+  const [devplusplusStatus, setDevplusplusStatus] = useState("X");
+  const [introClass, setIntroClass] = useState("");
+  const [fullstackClass, setFullstackClass] = useState("");
+  const [devClass, setDevClass] = useState("");
+  const [devplusplusClass, setDevplusplusClass] = useState("");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get(
+                // "https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Users.json"
+                "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json"
+            );
+            // On ne peut pas utiliser une URL dynamique car on utilise un JSON statique sur Github. On doit d'abord récupérer le fichier JSON complet, puis filtrer les données pour obtenir l'utilisateur spécifique
+            const selectedUser = response.data.users.find(user => user.id === myId);
+            console.log(selectedUser.journey);
+            setMyjourney(selectedUser.journey);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des users :", error);
+        }
+    };
+
+    fetchUser();
+
+  }, [myId]);
+
+  const whichJourneyAmI = (journey) => {
+    switch(journey) {
+      case "INTRO":
+        setIntroStatus("...")
+        setFullstackStatus("✕")
+        setDevStatus("✕")
+        setDevplusplusStatus("✕")
+        setIntroClass("step-primary")
+        setFullstackClass("")
+        setDevClass("")
+        setDevplusplusClass("")
+        break
+      case "FULLSTACK":
+        setIntroStatus("✓")
+        setFullstackStatus("...")
+        setDevStatus("✕")
+        setDevplusplusStatus("✕")
+        setIntroClass("step-primary")
+        setFullstackClass("step-primary")
+        setDevClass("")
+        setDevplusplusClass("")
+        break
+      case "DEV":
+        setIntroStatus("✓")
+        setFullstackStatus("✓")
+        setDevStatus("...")
+        setDevplusplusStatus("✕")
+        setIntroClass("step-primary")
+        setFullstackClass("step-primary")
+        setDevClass("step-primary")
+        setDevplusplusClass("")
+        break
+      case "DEV++":
+        setIntroStatus("✓")
+        setFullstackStatus("✓")
+        setDevStatus("...")
+        setDevplusplusStatus("...")
+        setIntroClass("step-primary")
+        setFullstackClass("step-primary")
+        setDevClass("step-primary")
+        setDevplusplusClass("step-primary")
+        break
+      default:
+        setIntroStatus("✕")
+        setFullstackStatus("✕")
+        setDevStatus("✕")
+        setDevplusplusStatus("✕")
+        setIntroClass("")
+        setFullstackClass("")
+        setDevClass("")
+        setDevplusplusClass("")
+        break
+    }
+  }
+
+  useEffect(() => {
+    whichJourneyAmI(myjourney);
+  }, [myjourney]);
+
   return (
     <>
       <h1>Mon parcours</h1>
@@ -8,7 +100,7 @@ function MyJourney() {
         <div>
 
           <ul className="steps steps-vertical">
-            <li data-content="✓" className="step step-primary my-1">
+            <li data-content={`${introStatus}`} className={`step ${introClass} my-1`}>
               <div className="border-2 p-3">
                 <h4 className="text-left">INTRODUCTION</h4>
                 <div className="text-left">
@@ -24,7 +116,7 @@ function MyJourney() {
               </div>
             </li>
 
-            <li data-content="✓" className="step step-primary my-1">
+            <li data-content={`${fullstackStatus}`} className={`step ${fullstackClass} my-1`}>
               <div className="border-2 p-3">
                 <h4 className="text-left">FULLSTACK</h4>
                 <div className="flex">
@@ -45,7 +137,7 @@ function MyJourney() {
               </div>
             </li>
 
-            <li data-content="..." className="step step-primary my-1">
+            <li data-content={`${devStatus}`} className={`step ${devClass} my-1`}>
               <div className="border-2 p-3">
                 <h4 className="text-left">DEVELOPPEUR</h4>
                 <div className="flex">
@@ -66,7 +158,7 @@ function MyJourney() {
               </div>
             </li>
 
-            <li data-content="✕" className="step my-1">
+            <li data-content={`${devplusplusStatus}`} className={`step ${devplusplusClass} my-1`}>
               <div className="border-2 p-3">
                 <h4 className="text-left">DELOPPEUR++</h4>
                 <div className="flex">
