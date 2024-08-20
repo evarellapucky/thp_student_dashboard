@@ -68,10 +68,18 @@ const Search = () => {
   }, []);
 
   const highlightText = useCallback((text, terms) => {
-    const escapedTerms = terms.map(term =>
-      term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    );
-    const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+    const processedTerms = terms.map(term => {
+      if (term.startsWith('"') && term.endsWith('"')) {
+        return term.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      } else if (term.endsWith('*')) {
+        const baseTerm = term.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        return `\\b${baseTerm}\\w*\\b`;
+      } else {
+        return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+    });
+  
+    const regex = new RegExp(`(${processedTerms.join('|')})`, 'gi');
     return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
   }, []);
 
