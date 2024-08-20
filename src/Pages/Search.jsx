@@ -44,7 +44,8 @@ const Search = () => {
     return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   }, []);
 
-  const handleSearch = useCallback(() => {
+  const handleSearch = useCallback((e) => {
+    e.preventDefault();
     if (searchTerm) {
       const regex = buildSearchRegex(searchTerm.toLowerCase());
       const filtered = resources.filter(
@@ -83,20 +84,22 @@ const Search = () => {
           Rechercher une ressource
         </h1>
         <div className="relative">
-          <input
-            type="text"
-            placeholder="Recherche..."
-            className="input input-bordered w-96 pl-10"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onClick={handleInputClick}
-          />
-          <button
-            className="btn btn-primary ml-2"
-            onClick={handleSearch}
-          >
-            Chercher
-          </button>
+      <form onSubmit={handleSearch} className="flex flex-row items-center">
+        <input
+          type="text"
+          placeholder="Recherche..."
+          className="input input-bordered w-96 pl-10"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onClick={handleInputClick}
+        />
+        <button
+          type="submit"
+          className="btn btn-primary ml-2"
+        >
+          Chercher
+        </button>
+      </form>
         </div>
       </div>
       <div className="flex justify-center p-4">
