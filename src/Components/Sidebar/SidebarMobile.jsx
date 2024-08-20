@@ -13,9 +13,12 @@ import contact_logo from "../../Assets/contact.svg";
 import HamburgerIcon from './HamburgerIcon';
 import SidebarItem from './SidebarItem'; 
 import SidebarDropdown from './SidebarDropdown'; 
+import { useLocation } from 'react-router-dom';
 
 const SidebarMobile = ({ isOpen, onToggle }) => {
+  const location = useLocation(); // Obtenir l'URL actuelle
   const isMobile = true; // On peut aussi détecter dynamiquement si besoin
+
   return (
     <div className={`fixed inset-0 z-50 ${isOpen ? "block" : "hidden"}`}>
       <div
@@ -55,6 +58,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/profile"}
               />
               <SidebarItem
                 link="/dashboard"
@@ -63,6 +67,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/dashboard"}
               />
               <SidebarItem
                 link="/today"
@@ -71,6 +76,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/today"}
               />
               <SidebarItem
                 link="/agenda"
@@ -79,6 +85,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/agenda"}
               />
               <SidebarDropdown
                 title="Mes recherches"
@@ -92,6 +99,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                   isSidebarMinimized={false}
                   onClick={onToggle}
                   isMobile={isMobile}
+                  isActive={location.pathname === "/search"}
                 />
                 <SidebarItem
                   link="/favorites"
@@ -100,6 +108,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                   isSidebarMinimized={false}
                   onClick={onToggle}
                   isMobile={isMobile}
+                  isActive={location.pathname === "/favorites"}
                 />
               </SidebarDropdown>
               <SidebarItem
@@ -109,6 +118,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/faq"}
               />
               <SidebarItem
                 link="/contact"
@@ -117,6 +127,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
+                isActive={location.pathname === "/contact"}
               />
               <SidebarItem
                 link="/logout"
@@ -130,7 +141,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
             </ul>
           </nav>
 
-          <div className="flex justify-center items-center mt-auto">
+          <div className="flex justify-center items-center mb-auto">
             <a href="https://www.thehackingproject.org">
               <img src={logo} alt="Logo" className="w-32" />
             </a>
@@ -147,4 +158,3 @@ SidebarMobile.propTypes = {
 };
 
 export default SidebarMobile;
-

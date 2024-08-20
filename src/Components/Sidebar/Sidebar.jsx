@@ -13,8 +13,10 @@ import faq_logo from "../../Assets/question_mark.svg";
 import contact_logo from "../../Assets/contact.svg";
 import SidebarDropdown from "./SidebarDropdown";
 import HamburgerIcon from './HamburgerIcon';
+import { useLocation } from "react-router-dom";
 
 const Sidebar = ({ isMinimized, onToggle }) => {
+  const location = useLocation(); // Obtenir l'URL actuelle
 
   return (
     <>
@@ -30,99 +32,105 @@ const Sidebar = ({ isMinimized, onToggle }) => {
         >
           <HamburgerIcon isOpen={!isMinimized} color="white" />
         </button>
-      {/* Contenu de la sidebar */}
-      <div className="flex flex-col mt-10 h-full">
-        {/* Profil */}
-        <div className={`flex justify-center items-center my-4 ${isMinimized ? "hidden" : ""}`}>
-          <div className="avatar mb-6">
-            <div className="w-24 rounded-full">
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                alt="Profile"
-              />
+        {/* Contenu de la sidebar */}
+        <div className="flex flex-col mt-5 h-full">
+          {/* Profil */}
+          <div className={`flex justify-center items-center my-4 ${isMinimized ? "hidden" : ""}`}>
+            <div className="avatar mb-4">
+              <div className="w-24 rounded-full">
+                <img
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  alt="Profile"
+                />
+              </div>
             </div>
           </div>
+
+          {/* Navigation */}
+          <nav className="flex-1">
+            <ul className="space-y-1">
+              <SidebarItem
+                link="/profile"
+                text="Profil"
+                icon={<img src={profile} alt="mon profil" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/profile"} // Ajouter la prop isActive
+              />
+              <SidebarItem
+                link="/dashboard"
+                text="Dashboard"
+                icon={<img src={dashboard_logo} alt="dashboard" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/dashboard"} // Ajouter la prop isActive
+              />
+              <SidebarItem
+                link="/today"
+                text="Aujourd'hui"
+                icon={<img src={today_logo} alt="aujourd'hui" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/today"} // Ajouter la prop isActive
+              />
+              <SidebarItem
+                link="/agenda"
+                text="Agenda"
+                icon={<img src={agenda_logo} alt="agenda" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/agenda"} // Ajouter la prop isActive
+              />
+              <SidebarDropdown
+                title="Mes recherches"
+                icon={<img src={search_logo} alt="rechercher" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+              >
+                <SidebarItem
+                  link="/search"
+                  text="Recherche"
+                  icon={<img src={glass_logo} alt="rechercher" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                  isSidebarMinimized={isMinimized}
+                  isActive={location.pathname === "/search"} // Ajouter la prop isActive
+                />
+                <SidebarItem
+                  link="/favorites"
+                  text="Mes favoris"
+                  icon={<img src={favorite_logo} alt="favorites" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                  isSidebarMinimized={isMinimized}
+                  isActive={location.pathname === "/favorites"} // Ajouter la prop isActive
+                />
+              </SidebarDropdown>
+              <SidebarItem
+                link="/faq"
+                text="FAQ / Aide"
+                icon={<img src={faq_logo} alt="faq" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/faq"} // Ajouter la prop isActive
+              />
+              <SidebarItem
+                link="/contact"
+                text="Contact"
+                icon={<img src={contact_logo} alt="contact" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                isSidebarMinimized={isMinimized}
+                isActive={location.pathname === "/contact"} // Ajouter la prop isActive
+              />
+              <SidebarItem
+                link="/logout"
+                text="Déconnexion"
+                icon={<img src={disconnect} alt="disconnect" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
+                textColor="text-red-500"
+                isSidebarMinimized={isMinimized}
+              />
+            </ul>
+
+            {/* Logo ou autre contenu */}
+            <div className="flex justify-center items-center">
+              <div className={`flex justify-center items-center bottom-0 absolute w-full p-4 ${isMinimized ? "hidden" : ""}`}>
+                <a href="https://www.thehackingproject.org">
+                  <img src={logo} alt="Logo" className={`transition-all duration-300 w-54`} />
+                </a>
+              </div>
+            </div>
+          </nav>
         </div>
-
-        {/* Navigation */}
-        <nav className="flex-1">
-          <ul className="space-y-1">
-            <SidebarItem
-              link="/profile"
-              text="Profil"
-              icon={<img src={profile} alt="mon profil" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarItem
-              link="/dashboard"
-              text="Dashboard"
-              icon={<img src={dashboard_logo} alt="dashboard" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarItem
-              link="/today"
-              text="Aujourd'hui"
-              icon={<img src={today_logo} alt="aujourd'hui" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarItem
-              link="/agenda"
-              text="Agenda"
-              icon={<img src={agenda_logo} alt="agenda" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarDropdown
-              title="Mes recherches"
-              icon={<img src={search_logo} alt="rechercher" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            >
-              <SidebarItem
-                link="/search"
-                text="Recherche"
-                icon={<img src={glass_logo} alt="rechercher" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-                isSidebarMinimized={isMinimized}
-              />
-              <SidebarItem
-                link="/favorites"
-                text="Mes favoris"
-                icon={<img src={favorite_logo} alt="favorites" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-                isSidebarMinimized={isMinimized}
-              />
-            </SidebarDropdown>
-            <SidebarItem
-              link="/faq"
-              text="FAQ / Aide"
-              icon={<img src={faq_logo} alt="faq" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarItem
-              link="/contact"
-              text="Contact"
-              icon={<img src={contact_logo} alt="contact" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              isSidebarMinimized={isMinimized}
-            />
-            <SidebarItem
-              link="/logout"
-              text="Déconnexion"
-              icon={<img src={disconnect} alt="disconnect" className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`} />}
-              textColor="text-red-500"
-              isSidebarMinimized={isMinimized}
-            />
-          </ul>
-
-          {/* Logo ou autre contenu */}
-          <div className="flex justify-center items-center">
-            {/* Contenu principal de la sidebar */}
-            
-            <div className={`flex justify-center items-center bottom-0 absolute w-full p-4 ${isMinimized ? "hidden" : ""}`}>
-              <a href="https://www.thehackingproject.org">
-                <img src={logo} alt="Logo" className={`transition-all duration-300 w-54`} />
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </aside>
+      </aside>
     </>
   );
 };
