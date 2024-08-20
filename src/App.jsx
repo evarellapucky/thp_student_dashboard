@@ -13,10 +13,10 @@ import Faq from "./Pages/Faq";
 import CategoryDetail from "./Components/Faq/CategoryDetail";
 import Shop from "./Pages/Shop";
 import { useEffect, useState } from "react";
-
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
+import Resource from "./Pages/Resource";
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -85,7 +85,9 @@ function App() {
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/projects" element={<Projets />} />
+              <Route path="/resource" element={<Resource />} />
             </Routes>
+            <footer className="py-5"></footer>
           </main>
         </div>
       </BrowserRouter>
