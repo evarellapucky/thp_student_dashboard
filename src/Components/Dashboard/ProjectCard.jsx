@@ -35,11 +35,8 @@ function ProjectCard() {
       </div>
       <div className="card-body">
         <div className="flex flex-col items-center p-2 mt-5 gap-5">
-          <Link to="/projets_fullstack">
-            <div className="font-semibold">Projets Finaux Fullstack</div>
-          </Link>
-          <Link to="/projets_developpeurs">
-            <div className="font-semibold">Projets Finaux Développeurs</div>
+          <Link to="/projets">
+            <div className="font-semibold">Projets Finaux</div>
           </Link>
         </div>
 

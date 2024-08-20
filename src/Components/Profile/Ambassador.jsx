@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TooltipIcon from "../TooltipIcon/TooltipIcon";
@@ -67,15 +66,15 @@ function Ambassador() {
       </div>
       <div>
         <div className="flex flex-wrap justify-around my-5">
-          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-lightInner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Nombre de point THP gagnés :<span className="m-3">{pointWon}</span></p>
             
           </div>
-          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-lightInner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Montant de ma gagnotte :<span className="m-3">{moneyEarned}€</span></p>
             
           </div>
-          <div className="border-1 shadow-inner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
+          <div className="border-1 shadow-lightInner rounded-lg flex-col sm:flex-row p-5 w-full sm:w-auto">
             <p>Nombre de filleuls :<span className="m-3">{godchildrenNumber}</span></p>
             
           </div>
