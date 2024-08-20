@@ -5,11 +5,11 @@ import Week from "../Components/Dashboard/Week";
 
 function Dashboard() {
   return (
-    <>
+    <div className="flex flex-col">
       <TopCards />
       <Week />
       <BottomCards />
-    </>
+    </div>
   );
 }
 
