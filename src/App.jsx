@@ -43,7 +43,7 @@ function App() {
   const isMobile = useIsMobile(); // Utiliser le hook pour vérifier si on est en mode mobile
   const [, setTotalMissionsCount] = useAtom(totalMissionCountAtom);
   const [, setIssues] = useAtom(issuesAtom);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   useEffect(() => {
     const fetchIssuesCount = async () => {

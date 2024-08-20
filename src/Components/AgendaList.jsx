@@ -39,7 +39,7 @@ const AgendaList = ({ moduleName, weekIndex }) => {
   }
 
   return (
-    <div className="flex flex-row flex-wrap gap-4 justify-center mt-6">
+    <div className="flex flex-row flex-wrap gap-4 justify-evenly mt-6">
       {agendaItems.map((item, index) => {
         const { day, ToRender, ToCorrect, resources } = item;
         
