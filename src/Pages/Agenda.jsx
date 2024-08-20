@@ -1,27 +1,27 @@
-import CollapseBar from '../Components/CollapseBar'
-import DayCard from '../Components/Dashboard/DayCard'
-
-const modules = {
-  Introduction: [
-    { week: "Semaine 1", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-    { week: "Semaine 2", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-  ],
-  Fullstack: [
-    { week: "Semaine 1", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-    { week: "Semaine 2", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-  ],
-  Développeur: [
-    { week: "Semaine 3", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-    { week: "Semaine 4", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-  ],
-  DéveloppeurPlus: [
-    { week: "Semaine 5", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-    { week: "Semaine 6", days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] },
-  ],
-};
-
+import { useEffect, useState } from 'react';
+import CollapseBar from '../Components/CollapseBar';
+import AgendaList from '../Components/AgendaList';
 
 function Agenda() {
+  const [modules, setModules] = useState(null);
+
+  useEffect(() => {
+    // Fetch the modules data from the remote JSON file
+    fetch('https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json')
+      .then((response) => response.json())
+      .then((data) => {
+        // Set the modules data to state
+        setModules(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching the data:', error);
+      });
+  }, []);
+
+  if (!modules) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       {Object.entries(modules).map(([moduleName, weeks]) => (
@@ -31,20 +31,14 @@ function Agenda() {
             <CollapseBar 
               key={index}
               title={weekData.week}
-              content={
-                <div className="flex flex-row">
-                  {weekData.days.map((day, dayIndex) => (
-                    <DayCard key={dayIndex} day={day} />
-                  ))}
-                </div>
-              }
+              content={<AgendaList days={weekData.days} moduleName={moduleName} weekIndex={index} />} 
               borderColor="border-blue-500"
             />
           ))}
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Agenda
+export default Agenda;

@@ -84,6 +84,7 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/projects" element={<Projets />} />
             </Routes>
           </main>
         </div>
