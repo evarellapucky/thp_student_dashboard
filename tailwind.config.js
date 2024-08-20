@@ -15,13 +15,21 @@ export default {
       },
       boxShadow: {
         inner: `
-          inset 8px 8px 16px rgba(0, 0, 0, 0.25), 
-          inset -8px -8px 16px rgba(255, 255, 255, 0.8)
+          inset 6px 6px 12px rgba(0, 0, 0, 0.25), 
+          inset -6px -6px 12px rgba(255, 255, 255, 0.8)
         `,
         out: `
           8px 8px 16px rgba(0, 0, 0, 0.25), 
           -8px -8px 16px rgba(255, 255, 255, 0.8)
         `,
+        lightInner: `
+        inset 4px 4px 8px rgba(0, 0, 0, 0.15), 
+        inset -4px -4px 8px rgba(255, 255, 255, 0.5)
+      `,
+      lightOut: `
+        4px 4px 8px rgba(0, 0, 0, 0.15), 
+        -4px -4px 8px rgba(255, 255, 255, 0.5)
+      `,
       },
       height: {
         '95': '97%',

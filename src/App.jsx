@@ -122,6 +122,7 @@ function App() {
           >
             <DateTime />
             <Routes>
+              <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/today" element={<Today />} />
               <Route path="/agenda" element={<Agenda />} />
