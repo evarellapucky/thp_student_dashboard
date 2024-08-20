@@ -1,10 +1,13 @@
 import { useState } from 'react'; 
 import { Link } from 'react-router-dom';
 import Modal from '../Modal';
+import { useAtom } from 'jotai';
+import { totalMissionCountAtom } from '../Atom/atoms';
 
 function MissionCard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null); // État pour le contenu du modal
+  const [totalMissionCount] = useAtom(totalMissionCountAtom);
 
   const handleOpenModal = () => {
     setModalContent(<p>Contenu spécifique pour Missions THP</p>); // Définir le contenu
@@ -38,7 +41,7 @@ function MissionCard() {
           <Link to="/missions">
             <div className="font-semibold">Liste des missions</div>
           </Link>
-          <div className='font-semibold'>258</div>
+          <div className='font-semibold'>{totalMissionCount}</div>
         </div>
       </div>
       {isModalOpen && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} content={modalContent} />} {/* Passer le contenu ici */}
