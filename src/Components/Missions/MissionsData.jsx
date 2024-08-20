@@ -72,6 +72,10 @@ const MissionsData = () => {
     3. Soumettez l'issue: Cliquez sur 'Submit new issue' pour enregistrer et publier votre mission.
     `
 
+  const refreshPage = () => {
+    window.location.reload();
+  }
+  
   return (
     <>
       <div className='flex justify-center items-center lg:justify-start gap-4 mb-4'>    
@@ -199,6 +203,13 @@ const MissionsData = () => {
             setCurrentPage={setCurrentpage} 
           />
         </div>
+        <div className='flex justify-end items-center'>
+          <button className='btn btn-primary' onClick={refreshPage}>
+            Refresh la page
+          </button>
+        </div>
+
+
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
           {currentRepoIssues.map(issue => (
