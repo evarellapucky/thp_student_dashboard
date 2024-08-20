@@ -5,7 +5,6 @@ function Points() {
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
     <Link to="/shop">
-      <div className="card bg-base-100 w-96">
         <div className="relative">
           <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-yellow-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
             <svg
@@ -23,7 +22,6 @@ function Points() {
             </svg>
           </div>
         </div>
-      </div>
       <div className="card-body">
         <h2 className="card-title">Mes points</h2>
         <div className="flex flex-col items-center p-2 mt-2 gap-5">
