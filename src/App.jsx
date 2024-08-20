@@ -17,7 +17,7 @@ import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
 import { useAtom } from "jotai";
-import { totalMissionCountAtom } from "./Components/Atom/atoms";
+import { totalMissionCountAtom, issuesAtom } from "./Components/Atom/atoms";
 import axios from "axios";
 
 function useIsMobile() {
@@ -41,13 +41,14 @@ function App() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // État pour la sidebar mobile
   const isMobile = useIsMobile(); // Utiliser le hook pour vérifier si on est en mode mobile
   const [, setTotalMissionsCount] = useAtom(totalMissionCountAtom);
+  const [, setIssues] = useAtom(issuesAtom);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchIssuesCount = async () => {
       const owner = 'ethereum-optimism';
       const repo = 'ecosystem-contributions';
-      let totalIssues = 0;
+      let allIssues = [];
       let page = 1;
       const perPage = 100;
       let hasMoreIssues = true;
@@ -56,8 +57,7 @@ function App() {
         do {
           const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
           headers: {
-            'Accept': 'application/vnd.github.v3+json',
-            'Authorization': 'token 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'
+            'Accept': 'application/vnd.github.v3+json'
           },
           params: {
             per_page: perPage,
@@ -72,12 +72,13 @@ function App() {
         if (filteredIssues.length === 0) {
           hasMoreIssues = false ;
         } else {
-          totalIssues += filteredIssues.length;
+          allIssues = [...allIssues, ...filteredIssues];
           page++;
         }
         } while (hasMoreIssues);
         
-        setTotalMissionsCount(totalIssues);
+        setIssues(allIssues)
+        setTotalMissionsCount(allIssues.length);
       } catch (err) {
         setError('Error lors de la récupération des issues');
         console.error(err);
@@ -85,7 +86,7 @@ function App() {
     };
 
     fetchIssuesCount();
-  }, [setTotalMissionsCount]);
+  }, [setIssues, setTotalMissionsCount]);
 
   const handleSidebarToggle = () => {
     setIsSidebarMinimized(prev => !prev);

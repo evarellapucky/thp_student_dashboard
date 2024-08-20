@@ -4,11 +4,11 @@ import RedirectButton from '../RedirectButton';
 import TooltipIcon from '../TooltipIcon/TooltipIcon';
 import MissionCard from './MissionCard';
 import Pagination from './Pagination';
+import { useAtom } from 'jotai';
+import { issuesAtom } from '../Atom/atoms';
 
 const MissionsData = () => {
-  const [issues, setIssues] = useState([]);
-  const [repoIssues, setRepoIssues] = useState([]);
-  const [error, setError] = useState(null);
+  const [issues] = useAtom(issuesAtom);
   const [filterState, setFilterState] = useState("all");
   const [filterLabel, setFilterLabel] = useState("all");
   const [filterAssignees, setFilterAssignees] = useState("all");
@@ -16,6 +16,13 @@ const MissionsData = () => {
   const [labelColors, setLabelColors] = useState({});
   const [currentPage, setCurrentpage] = useState(1);
   const [issuesPerPage, setIssuesPerPage] = useState(20);
+
+  useEffect(() => {
+    if (issues.length > 0) {
+      setUniqueLabels(getUniqueLabels(issues));
+      setLabelColors(getLabelColors(issues));
+    }
+  }, [issues]);
 
   const getUniqueLabels = (issues) => {
     const allLabels = issues.flatMap(issue => issue.labels.map(label => label.name.trim().toLowerCase()));
@@ -31,90 +38,7 @@ const MissionsData = () => {
     return labelColors;
   };
 
-  useEffect(() => {
-    const url = 'https://raw.githubusercontent.com/Marcaraph/Missions/main/Issues.json';
-    // const owner = 'Marcaraph';
-    // const repo = 'Missions';
-    const owner = 'ethereum-optimism';
-    const repo = 'ecosystem-contributions';
-
-    // const fetchIssues = async () => {
-    //   try {
-    //     const response = await axios.get(url);
-    //     console.log('JSON', response.data)
-    //     setIssues(response.data);
-    //     setUniqueLabels(getUniqueLabels(response.data));
-    //     setLabelColors(getLabelColors(response.data));
-    //   } catch (err) {
-    //     setError('Error fetching the data');
-    //     console.error(err);
-    //   }
-    // };
-
-    const fetchRepoIssues = async () => {
-      const allIssues = [];
-      let page = 1;
-      const perPage = 100;
-      let hasMoreIssues = true;
-
-      try {
-        do {
-        const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
-          headers: {
-            'Accept': 'application/vnd.github.v3+json',
-            'Authorization': 'token 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'
-          },
-          params: {
-            per_page: perPage,
-            page: page,
-          }
-        });
-
-        const issues = response.data;
-
-        const filteredIssues = issues.filter(issue => !issue.pull_request)
-
-        if (filteredIssues.length === 0) {
-          hasMoreIssues = false;
-        } else {
-          allIssues.push(...filteredIssues);
-          page++;
-        }
-      } while (hasMoreIssues);
-
-      allIssues.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-        console.log('Issues', allIssues)
-        setRepoIssues(allIssues);
-        setUniqueLabels(prevLabels => [...new Set([...prevLabels, ...getUniqueLabels(allIssues)])]);
-        setLabelColors(prevColors => ({ ...prevColors, ...getLabelColors(allIssues) }));
-      } catch (err) {
-        setError('Error fetching the repository issues');
-        console.error(err);
-      }
-    };
-
-    // fetchIssues();
-    fetchRepoIssues();
-  }, []);
-
-  // const for JSON file
-  // const filteredIssues = issues.filter(issue => {
-  //   const matchesState = filterState === 'all' || issue.state === filterState;
-
-  //   const issueLabels = Array.isArray(issue.labels)
-  //     ? issue.labels.map(label => label.name.trim().toLowerCase())
-  //     : [];
-
-  //   const normalizedFilterLabel = filterLabel.trim().toLowerCase();
-    
-  //   const matchesLabel = filterLabel === 'all' || issueLabels.includes(normalizedFilterLabel);
-
-  //   const matchesAssignees = filterAssignees === 'all' || (filterAssignees === 'unassigned' && issue.assignees.length === 0);
-
-  //   return matchesState && matchesLabel && matchesAssignees;
-  // });
-
-  const filteredRepoIssues = repoIssues.filter(issue => {
+  const filteredRepoIssues = issues.filter(issue => {
     const matchesState = filterState === 'all' || issue.state === filterState;
 
     const issueLabels = Array.isArray(issue.labels)
@@ -258,27 +182,7 @@ const MissionsData = () => {
         </select>
       </div>
 
-      <div className=''>
-        {/* <div>
-          <h1>Missions JSON</h1>
-          {filteredIssues.map(issue => (
-            <MissionCard
-              key={issue.id}
-              number={issue.number}
-              update={new Date(issue.updated_at).toLocaleDateString()}
-              title={issue.title}
-              assignees={issue.assignees.map(assignee => assignee.login).join(', ') || "None"}
-              assigneesCount={issue.assignees.length}
-              description={issue.description || "No description"}
-              html_url={issue.html_url}
-              creator={issue.user.login}
-              state={issue.state}
-              labels={issue.labels.map(label => label.name.trim().toLowerCase()).join(', ') || "None"}
-              labelColors={labelColors}
-              commentsCount={issue.comments}
-            />
-          ))}
-        </div> */}
+      <div className=''>        
         <div className='flex justify-center my-4'>
           <Pagination
             totalPages={totalPages}
