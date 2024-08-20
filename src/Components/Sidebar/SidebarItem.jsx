@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMinimized }) => (
-  <li className={`p-2 rounded ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-blue-700"}`}>
+const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMinimized, isMobile, onClick }) => (
+  <li 
+    className={`p-2 rounded ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-blue-700"}`}
+    onClick={isMobile ? onClick : null} // Fermer la sidebar si mobile
+  >
     <Link to={link} className={`flex items-center ${textColor} `}>
       {icon}
       <span
@@ -21,6 +24,8 @@ SidebarItem.propTypes = {
   icon: PropTypes.node.isRequired,
   textColor: PropTypes.string,
   isSidebarMinimized: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool, // Ajouter une prop pour détecter le contexte mobile
+  onClick: PropTypes.func, // Ajouter une prop pour gérer la fermeture de la sidebar
 };
 
 export default SidebarItem;
