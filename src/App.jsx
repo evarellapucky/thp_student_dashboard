@@ -85,6 +85,7 @@ function App() {
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
             </Routes>
+            <footer className="py-5"></footer>
           </main>
         </div>
       </BrowserRouter>
