@@ -16,14 +16,11 @@ import { useEffect, useState } from "react";
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
-<<<<<<< HEAD
 import Resource from "./Pages/Resource";
-=======
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom } from "./Components/Atom/atoms";
 import axios from "axios";
 
->>>>>>> dev
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
