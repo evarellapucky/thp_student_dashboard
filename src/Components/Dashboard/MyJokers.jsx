@@ -31,7 +31,7 @@ const MyJokers = ({ count = 3, total = 3 }) => {
       <div className="card-body">
         <h2 className="card-title text-lg sm:text-xl">Mes jokers</h2>
         <div className="flex items-center justify-center"></div>
-        <div className="flex flex-row gap-2 mt-2">
+        <div className="flex flex-row justify-center gap-2 mt-2">
           {jokersToDisplay.map((_, index) => (
             <Joker key={index} />
           ))}
