@@ -2,11 +2,15 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Pagination from "../Missions/Pagination";
 
 function Leaderboard() {
   const [data, setData] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' });
+  const [currentPage, setCurrentpage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1)
+  const [linesPerPage, setlinesPerPage] = useState(20);
+
   useEffect(() => {
     const fetchUser = async () => {
         try {
@@ -23,6 +27,7 @@ function Leaderboard() {
               points: Number(user.points)
             }));
             setData(selectedData);
+            setTotalPages(Math.ceil(selectedData.length / linesPerPage))
         } catch (error) {
             console.error("Erreur lors de la récupération des users :", error);
         }
@@ -30,7 +35,7 @@ function Leaderboard() {
 
     fetchUser();
 
-  }, []);
+  }, [linesPerPage]);
 
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key === null) {
@@ -57,12 +62,50 @@ function Leaderboard() {
     setSortConfig({ key: null, direction: 'ascending' });
   };
 
+  const indexOfLastLine = currentPage * linesPerPage;
+  const indexOfFirstLine = indexOfLastLine - linesPerPage;
+  const dataSortedByLines = sortedData.slice(indexOfFirstLine, indexOfLastLine);
+
+  const handlelinesPerPageChange = (e) => {
+    setlinesPerPage(Number(e.target.value));
+    setCurrentpage(1);
+  }
+
   return(
     <>
-      <h1>Leaderboard</h1>
-      <Link to="/shop" className="border-2 px-3">Boutique</Link>
+      <div className="flex flex-wrap justify-between items-center">
+        <h1>Leaderboard</h1>
+        <Link to="/shop" className="border-2 p-3">Boutique</Link>
+      </div>
       <div className="overflow-x-auto">
         <button onClick={resetSort} className="underline">Reset Sort</button>
+        <div className='flex items-center gap-2'>
+          <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>
+
+          <select 
+            className='
+              px-3 
+              py-2 
+              border 
+              border-gray-300 
+              rounded-md 
+              shadow-sm 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-blue-500 
+              focus:border-blue-500 
+              text-sm
+              bg-white 
+              text-gray-700' 
+            value={linesPerPage} 
+            onChange={handlelinesPerPageChange}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+          </select>
+        </div>
+
         <table className="table">
           <thead>
             <tr>
@@ -163,17 +206,22 @@ function Leaderboard() {
           </thead>
           <tbody>
 
-            {sortedData.map((data, index) => (
+            {dataSortedByLines.map((data, index) => (
               <tr key={index} className="hover">
                 <th scope="row">{data.rank}</th>
                 <td>{data.past_30_days}</td>
-                <td>{data.prenom}</td>
+                <td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>
                 <td>{data.points}</td>
               </tr>
             ))}
 
           </tbody>
         </table>
+        <Pagination 
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentpage} 
+        />
       </div>
     </>
 
