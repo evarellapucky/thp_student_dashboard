@@ -9,21 +9,33 @@ const Search = () => {
   const [filteredResources, setFilteredResources] = useState([]);
   const [searchOk, setSearchOk] = useState(false);
 
+
   useEffect(() => {
-    axios
-      .get(
-        "https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/src/Data/Data.json"
-      )
-      .then((response) => {
-        const content = response.data.content;
-        const decodedContent = JSON.parse(
-          decodeURIComponent(escape(atob(content)))
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
         );
-        setResources(decodedContent.resources);
-      })
-      .catch((error) =>
-        console.error("Erreur lors de la récupération des données:", error)
-      );
+
+        // Extraire toutes les ressources de la nouvelle structure JSON
+        const newResources = [];
+        Object.values(response.data).forEach(category => {
+          category.forEach(week => {
+            week.days.forEach(day => {
+              if (day.resources) {
+                newResources.push(...day.resources);
+              }
+            });
+          });
+        });
+
+        setResources(newResources);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const buildSearchRegex = useCallback((term) => {

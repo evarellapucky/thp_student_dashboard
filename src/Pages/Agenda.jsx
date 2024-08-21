@@ -7,7 +7,8 @@ function Agenda() {
 
   useEffect(() => {
     // Fetch the modules data from the remote JSON file
-    fetch('https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json')
+    // fetch('https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json')
+    fetch('https://raw.githubusercontent.com/evarellapucky/Favorites/master/favorites.json')
       .then((response) => response.json())
       .then((data) => {
         // Set the modules data to state
