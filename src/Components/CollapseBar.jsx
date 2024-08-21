@@ -34,7 +34,7 @@ function CollapseBar({ title, content, borderColor, isFavorite, toggleFavorite, 
         </button>
         <span className="text-lg md:text-xl font-medium">{title}</span>
       </summary>
-      <div className="collapse-content bg-white p-4">
+      <div className="collapse-content bg-white p-4 ">
         <div className="text-sm md:text-base">
           {content}
         </div>

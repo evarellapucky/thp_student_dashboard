@@ -23,7 +23,7 @@ function MyJourney() {
             );
             // On ne peut pas utiliser une URL dynamique car on utilise un JSON statique sur Github. On doit d'abord récupérer le fichier JSON complet, puis filtrer les données pour obtenir l'utilisateur spécifique
             const selectedUser = response.data.users.find(user => user.id === myId);
-            console.log(selectedUser.journey);
+            // console.log(selectedUser.journey);
             setMyjourney(selectedUser.journey);
         } catch (error) {
             console.error("Erreur lors de la récupération des users :", error);
