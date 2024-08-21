@@ -50,7 +50,7 @@ function Directory() {
   return (
     <>
       <h1>Annuaire</h1>
-      <div className="flex justify-between">
+      <div className="flex flex-wrap justify-between gap-2">
         <SearchBar/>
         <button className="border-2 px-2" onClick={toggleFilter}>
           {isFiltered ? "Afficher tout" : "Ma promo"}

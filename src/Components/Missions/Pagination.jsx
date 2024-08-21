@@ -38,16 +38,15 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center sm:flex-row ">
+        <button
+              className="join-item btn"
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
+              Précédent
+        </button>
         <div className="relative flex justify-center mt-4 mb-4">
-          <button
-            className="join-item btn"
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-          >
-            Précédent
-          </button>
-
           <button
             className={`join-item btn ${currentPage === 1 ? "btn-active" : ""}`}
             onClick={() => handlePageChange(1)}
@@ -118,15 +117,14 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
               </button>
             </>
           )}
-
-          <button
+        </div>
+        <button
             className="join-item btn"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >
             Suivant
           </button>
-        </div>
       </div>
     </>
   );
