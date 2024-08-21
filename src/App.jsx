@@ -18,7 +18,7 @@ import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
 import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
-import { totalMissionCountAtom, issuesAtom } from "./Components/Atom/atoms";
+import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
 
 function useIsMobile() {
@@ -43,22 +43,26 @@ function App() {
   const isMobile = useIsMobile(); // Utiliser le hook pour vérifier si on est en mode mobile
   const [, setTotalMissionsCount] = useAtom(totalMissionCountAtom);
   const [, setIssues] = useAtom(issuesAtom);
-  const [, setError] = useState(null);
-
+  const [error, setError] = useState(null);
+  const token = useAtom(tokenAtom)[0];
+  
   useEffect(() => {
     const fetchIssuesCount = async () => {
       const owner = 'ethereum-optimism';
       const repo = 'ecosystem-contributions';
+      // const owner = 'Marcaraph';
+      // const repo = 'Missions';
       let allIssues = [];
       let page = 1;
       const perPage = 100;
       let hasMoreIssues = true;
-
+      
       try {
         do {
           const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
           headers: {
-            'Accept': 'application/vnd.github.v3+json'
+            'Accept': 'application/vnd.github.v3+json',
+            'Authorization': `token ${token}`
           },
           params: {
             per_page: perPage,
@@ -130,6 +134,7 @@ function App() {
               <Route path="/agenda" element={<Agenda />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/missions" element={<Missions />} />
+              <Route path="/projets" element={<Projets />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/search" element={<Search />} />
               <Route path="/favorites" element={<Favorites />} />
