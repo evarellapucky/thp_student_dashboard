@@ -10,6 +10,12 @@ function Leaderboard() {
   const [currentPage, setCurrentpage] = useState(1);
   const [totalPages, setTotalPages] = useState(1)
   const [linesPerPage, setlinesPerPage] = useState(20);
+  const [visibleColumns, setVisibleColumns] = useState({
+    rank: true,
+    past_30_days: true,
+    name: true,
+    points: true
+  });
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -71,6 +77,14 @@ function Leaderboard() {
     setCurrentpage(1);
   }
 
+  const handleColumnChange = (e) => {
+    const { name, checked } = e.target;
+    setVisibleColumns(prevState => ({
+      ...prevState,
+      [name]: checked
+    }));
+  }
+  
   return(
     <>
       <div className="flex flex-wrap justify-between items-center">
@@ -78,7 +92,7 @@ function Leaderboard() {
         <Link to="/shop" className="border-2 p-3">Boutique</Link>
       </div>
       <div className="overflow-x-auto">
-        <button onClick={resetSort} className="underline">Reset Sort</button>
+        
         <div className='flex items-center gap-2'>
           <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>
 
@@ -106,122 +120,166 @@ function Leaderboard() {
           </select>
         </div>
 
+        <div className="flex gap-4 my-4">
+          <label>
+            <input 
+              type="checkbox" 
+              name="rank" 
+              checked={visibleColumns.rank} 
+              onChange={handleColumnChange} 
+              className="checkbox"
+            /> Rank
+          </label>
+          <label>
+            <input 
+              type="checkbox" 
+              name="past_30_days" 
+              checked={visibleColumns.past_30_days} 
+              onChange={handleColumnChange} 
+              className="checkbox"
+            /> Past 30 days
+          </label>
+          <label>
+            <input 
+              type="checkbox" 
+              name="name" 
+              checked={visibleColumns.name} 
+              onChange={handleColumnChange} 
+              className="checkbox"
+            /> Name
+          </label>
+          <label>
+            <input 
+              type="checkbox" 
+              name="points" 
+              checked={visibleColumns.points} 
+              onChange={handleColumnChange} 
+              className="checkbox"
+            /> Points
+          </label>
+        </div>
+        <button onClick={resetSort} className="underline">Reset Sort</button>
         <table className="table">
           <thead>
             <tr>
-
-              <th scope="col">                
-                <button onClick={() => requestSort('rank')} className="flex"> 
-                  <p>Rank</p>
-                  <div className="w-8 flex justify-center items-center">
-                    {sortConfig.key === null && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'rank' && sortConfig.direction === 'ascending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'rank' && sortConfig.direction === 'descending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              </th>
-
-              <th scope="col">                
-                <button onClick={() => requestSort('past_30_days')} className="flex">
-                  <p>Past 30 days</p>
-                  <div className="w-8 flex justify-center items-center">
-                    {sortConfig.key === null && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'past_30_days' && sortConfig.direction === 'ascending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'past_30_days' && sortConfig.direction === 'descending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              </th>
-
-              <th scope="col">
-                <button onClick={() => requestSort('prenom')} className="flex">
-                  <p>Name</p>
-                  <div className="w-8 flex justify-center items-center">
-                    {sortConfig.key === null && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'prenom' && sortConfig.direction === 'ascending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'prenom' && sortConfig.direction === 'descending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              </th>
-
-              <th scope="col">
-                <button onClick={() => requestSort('points')} className="flex">
-                  <p>Points</p>
-                  <div className="w-8 flex justify-center items-center">
-                    {sortConfig.key === null && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'points' && sortConfig.direction === 'ascending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-                      </svg>
-                    )}
-                    {sortConfig.key === 'points' && sortConfig.direction === 'descending' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
-                        <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
-                      </svg>
-                    )}
-                  </div>
-                </button>
-              </th>
-
+              {visibleColumns.rank && (
+                <th scope="col">                
+                  <button onClick={() => requestSort('rank')} className="flex"> 
+                    <p>Rank</p>
+                    <div className="w-8 flex justify-center items-center">
+                      {sortConfig.key === null && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'rank' && sortConfig.direction === 'ascending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'rank' && sortConfig.direction === 'descending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                </th>
+              )}
+              {visibleColumns.past_30_days && (
+                <th scope="col">                
+                  <button onClick={() => requestSort('past_30_days')} className="flex">
+                    <p>Past 30 days</p>
+                    <div className="w-8 flex justify-center items-center">
+                      {sortConfig.key === null && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'past_30_days' && sortConfig.direction === 'ascending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'past_30_days' && sortConfig.direction === 'descending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                </th>
+              )}
+              {visibleColumns.name && (
+                <th scope="col">
+                  <button onClick={() => requestSort('prenom')} className="flex">
+                    <p>Name</p>
+                    <div className="w-8 flex justify-center items-center">
+                      {sortConfig.key === null && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'prenom' && sortConfig.direction === 'ascending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'prenom' && sortConfig.direction === 'descending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                </th>
+              )}
+              {visibleColumns.points && (
+                <th scope="col">
+                  <button onClick={() => requestSort('points')} className="flex">
+                    <p>Points</p>
+                    <div className="w-8 flex justify-center items-center">
+                      {sortConfig.key === null && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M137.4 41.4c12.5-12.5 32.8-12.5 45.3 0l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8L32 224c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128zm0 429.3l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128c-12.5 12.5-32.8 12.5-45.3 0z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'points' && sortConfig.direction === 'ascending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+                        </svg>
+                      )}
+                      {sortConfig.key === 'points' && sortConfig.direction === 'descending' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="15" height="15">
+                          <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/>
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
 
             {dataSortedByLines.map((data, index) => (
               <tr key={index} className="hover">
-                <th scope="row">{data.rank}</th>
-                <td>{data.past_30_days}</td>
-                <td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>
-                <td>{data.points}</td>
+                {visibleColumns.rank && (<th scope="row">{data.rank}</th>)}
+                {visibleColumns.past_30_days && (<td>{data.past_30_days}</td>)}
+                {visibleColumns.name && (<td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>)}
+                {visibleColumns.points && (<td>{data.points}</td>)}
               </tr>
             ))}
 
           </tbody>
         </table>
-        <Pagination 
-          totalPages={totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentpage} 
-        />
+        <div className='flex justify-center my-4'>
+          <Pagination 
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentpage}
+          />
+        </div>
       </div>
     </>
 
