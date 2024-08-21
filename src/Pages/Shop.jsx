@@ -1,4 +1,4 @@
-import ShopItems from "../Components/ShopItems";
+import ShopItems from "../Components/Shop/ShopItems";
 
 function shop() {
   return (
