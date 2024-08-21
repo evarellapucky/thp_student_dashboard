@@ -3,19 +3,14 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../Missions/Pagination";
+import Multiselect from 'multiselect-react-dropdown';
 
 function Leaderboard() {
   const [data, setData] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' });
   const [currentPage, setCurrentpage] = useState(1);
   const [totalPages, setTotalPages] = useState(1)
-  const [linesPerPage, setlinesPerPage] = useState(20);
-  const [visibleColumns, setVisibleColumns] = useState({
-    rank: true,
-    past_30_days: true,
-    name: true,
-    points: true
-  });
+  const [linesPerPage, setlinesPerPage] = useState(10);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -43,6 +38,7 @@ function Leaderboard() {
 
   }, [linesPerPage]);
 
+  // sorted data for each column
   const sortedData = [...data].sort((a, b) => {
     if (sortConfig.key === null) {
       return 0;
@@ -63,27 +59,22 @@ function Leaderboard() {
     }
     setSortConfig({ key, direction });
   };
-
+  
   const resetSort = () => {
     setSortConfig({ key: null, direction: 'ascending' });
   };
 
+  //pagination calculation
   const indexOfLastLine = currentPage * linesPerPage;
   const indexOfFirstLine = indexOfLastLine - linesPerPage;
   const dataSortedByLines = sortedData.slice(indexOfFirstLine, indexOfLastLine);
 
+  //change nombre of line per page and number of page
   const handlelinesPerPageChange = (e) => {
     setlinesPerPage(Number(e.target.value));
     setCurrentpage(1);
   }
 
-  const handleColumnChange = (e) => {
-    const { name, checked } = e.target;
-    setVisibleColumns(prevState => ({
-      ...prevState,
-      [name]: checked
-    }));
-  }
   
   return(
     <>
@@ -91,78 +82,38 @@ function Leaderboard() {
         <h1>Leaderboard</h1>
         <Link to="/shop" className="border-2 p-3">Boutique</Link>
       </div>
+      <div className='flex items-center gap-2'>
+        <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>
+
+        <select 
+          className='
+            px-3 
+            py-2 
+            border 
+            border-gray-300 
+            rounded-md 
+            shadow-sm 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-blue-500 
+            focus:border-blue-500 
+            text-sm
+            bg-white 
+            text-gray-700' 
+          value={linesPerPage} 
+          onChange={handlelinesPerPageChange}
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+        </select>
+      </div>
+
       <div className="overflow-x-auto">
-        
-        <div className='flex items-center gap-2'>
-          <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>
-
-          <select 
-            className='
-              px-3 
-              py-2 
-              border 
-              border-gray-300 
-              rounded-md 
-              shadow-sm 
-              focus:outline-none 
-              focus:ring-2 
-              focus:ring-blue-500 
-              focus:border-blue-500 
-              text-sm
-              bg-white 
-              text-gray-700' 
-            value={linesPerPage} 
-            onChange={handlelinesPerPageChange}
-          >
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-          </select>
-        </div>
-
-        <div className="flex gap-4 my-4">
-          <label>
-            <input 
-              type="checkbox" 
-              name="rank" 
-              checked={visibleColumns.rank} 
-              onChange={handleColumnChange} 
-              className="checkbox"
-            /> Rank
-          </label>
-          <label>
-            <input 
-              type="checkbox" 
-              name="past_30_days" 
-              checked={visibleColumns.past_30_days} 
-              onChange={handleColumnChange} 
-              className="checkbox"
-            /> Past 30 days
-          </label>
-          <label>
-            <input 
-              type="checkbox" 
-              name="name" 
-              checked={visibleColumns.name} 
-              onChange={handleColumnChange} 
-              className="checkbox"
-            /> Name
-          </label>
-          <label>
-            <input 
-              type="checkbox" 
-              name="points" 
-              checked={visibleColumns.points} 
-              onChange={handleColumnChange} 
-              className="checkbox"
-            /> Points
-          </label>
-        </div>
         <button onClick={resetSort} className="underline">Reset Sort</button>
         <table className="table">
           <thead>
             <tr>
-              {visibleColumns.rank && (
                 <th scope="col">                
                   <button onClick={() => requestSort('rank')} className="flex"> 
                     <p>Rank</p>
@@ -185,8 +136,6 @@ function Leaderboard() {
                     </div>
                   </button>
                 </th>
-              )}
-              {visibleColumns.past_30_days && (
                 <th scope="col">                
                   <button onClick={() => requestSort('past_30_days')} className="flex">
                     <p>Past 30 days</p>
@@ -209,8 +158,6 @@ function Leaderboard() {
                     </div>
                   </button>
                 </th>
-              )}
-              {visibleColumns.name && (
                 <th scope="col">
                   <button onClick={() => requestSort('prenom')} className="flex">
                     <p>Name</p>
@@ -233,8 +180,6 @@ function Leaderboard() {
                     </div>
                   </button>
                 </th>
-              )}
-              {visibleColumns.points && (
                 <th scope="col">
                   <button onClick={() => requestSort('points')} className="flex">
                     <p>Points</p>
@@ -257,17 +202,16 @@ function Leaderboard() {
                     </div>
                   </button>
                 </th>
-              )}
             </tr>
           </thead>
           <tbody>
 
             {dataSortedByLines.map((data, index) => (
               <tr key={index} className="hover">
-                {visibleColumns.rank && (<th scope="row">{data.rank}</th>)}
-                {visibleColumns.past_30_days && (<td>{data.past_30_days}</td>)}
-                {visibleColumns.name && (<td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>)}
-                {visibleColumns.points && (<td>{data.points}</td>)}
+                <th scope="row">{data.rank}</th>
+                <td>{data.past_30_days}</td>
+                <td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>
+                <td>{data.points}</td>
               </tr>
             ))}
 
