@@ -36,8 +36,7 @@ const Favorites = () => {
     return (
        <div className="p-4 md:p-8">
       <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Mes Favoris</h1>
-      <div className="flex justify-center p-2 md:p-4">
-        <div className="w-full max-w-full md:max-w-4xl">
+      <div className="flex flex-col p-2 md:p-4">
           {resources.length > 0 ? (
             resources.map((resource) => (
               <CollapseBarWithFavorite
@@ -52,7 +51,6 @@ const Favorites = () => {
           ) : (
             <p className="text-gray-500">Vous n'avez aucun favori pour le moment.</p>
           )}
-        </div>
       </div>
     </div>
     )

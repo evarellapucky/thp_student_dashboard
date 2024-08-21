@@ -109,7 +109,7 @@ const Search = () => {
           Rechercher une ressource
         </h1>
         <div className="w-full md:w-auto">
-          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center p-2 md:p-4">
             <input
               type="text"
               placeholder="Recherche..."
@@ -127,8 +127,7 @@ const Search = () => {
           </form>
         </div>
       </div>
-      <div className="flex justify-center p-2 md:p-4">
-        <div className="w-full max-w-full md:max-w-4xl">
+      <div className="flex flex-col p-2 md:p-4">
           {searchTerm === "" ? (
             <p className="text-gray-500">
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
@@ -166,7 +165,7 @@ const Search = () => {
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           )}
-        </div>
+
       </div>
     </div>
   );
