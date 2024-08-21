@@ -48,10 +48,10 @@ function App() {
   
   useEffect(() => {
     const fetchIssuesCount = async () => {
-      // const owner = 'ethereum-optimism';
-      // const repo = 'ecosystem-contributions';
-      const owner = 'Marcaraph';
-      const repo = 'Missions';
+      const owner = 'ethereum-optimism';
+      const repo = 'ecosystem-contributions';
+      // const owner = 'Marcaraph';
+      // const repo = 'Missions';
       let allIssues = [];
       let page = 1;
       const perPage = 100;
