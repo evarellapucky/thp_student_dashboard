@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
+import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom } from "./Components/Atom/atoms";
 import axios from "axios";
@@ -42,7 +43,7 @@ function App() {
   const isMobile = useIsMobile(); // Utiliser le hook pour vérifier si on est en mode mobile
   const [, setTotalMissionsCount] = useAtom(totalMissionCountAtom);
   const [, setIssues] = useAtom(issuesAtom);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   useEffect(() => {
     const fetchIssuesCount = async () => {
@@ -135,6 +136,8 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/projects" element={<Projets />} />
+              <Route path="/resource" element={<Resource />} />
             </Routes>
             <footer className="py-5"></footer>
           </main>
