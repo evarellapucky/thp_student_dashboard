@@ -2,12 +2,14 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import axios from "axios";
 import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
+import useFavorites from "../Components/useFavorites";
 
 const Search = () => {
   const [resources, setResources] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredResources, setFilteredResources] = useState([]);
   const [searchOk, setSearchOk] = useState(false);
+  const { favorites, toggleFavorite } = useFavorites();
 
 
   useEffect(() => {
@@ -135,6 +137,9 @@ const Search = () => {
                 title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, termsArray) }} />}
                 content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, termsArray) }} />}
                 borderColor="border-blue-500"
+                isFavorite={favorites.includes(resource.id)}
+                toggleFavorite={() => toggleFavorite(resource.id)}
+              
               />
             ))
           ) : searchOk && filteredResources.length === 0 ? (
