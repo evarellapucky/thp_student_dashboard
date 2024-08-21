@@ -1,20 +1,12 @@
-// Resource.jsx
-import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import '../index.css'
 
-const Resource = (isFavorite, toggleFavorite) => {
-  const location = useLocation();
-  const { resource } = location.state || {};
-
-  console.log({ resource });
-
-  if (!resource) {
-    return <p>Aucune ressource trouvée.</p>;
-  }
-
+function CollapseBarWithFavorite({ title, content, borderColor, isFavorite, toggleFavorite, }) {
+  
   return (
-    <div className="flex justify-center ">
-    <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
-    <button
+    <details className={`collapse collapse-arrow mb-4 bg-slate-100 hover:bg-blue-500 border ${borderColor} w-full max-w-lg  sm:min-w-full md:min-w-lg lg:min-w-1xl xl:min-w-lg 2xl:min-w-full mx-auto`}>
+     <summary className="collapse-title text-lg md:text-xl font-medium p-4 flex items-start">
+        <button
           onClick={(e) => {
             e.stopPropagation();
             toggleFavorite();
@@ -40,12 +32,21 @@ const Resource = (isFavorite, toggleFavorite) => {
             </svg>
           )}
         </button>
-      <h1 className="text-2xl md:text-3xl font-bold text-center">{resource.title}</h1>
-      <p className="mt-4">{resource.content}</p>
-      <p>{resource.id}</p>
-    </div>
-  </div>
+        <span className="text-lg md:text-xl font-medium">{title}</span>
+      </summary>
+      <div className="collapse-content bg-white p-4 ">
+        <div className="text-sm md:text-base">
+          {content}
+        </div>
+      </div>
+    </details>
   );
+}
+
+CollapseBarWithFavorite.propTypes = {
+  title: PropTypes.node.isRequired,
+  content: PropTypes.node.isRequired,
+  borderColor: PropTypes.string.isRequired,
 };
 
-export default Resource;
+export default CollapseBarWithFavorite;

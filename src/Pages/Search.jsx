@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import axios from "axios";
+import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
 import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
 import useFavorites from "../Components/useFavorites";
@@ -134,7 +135,7 @@ const Search = () => {
             </p>
           ) : searchOk && filteredResources.length > 0 ? (
             filteredResources.map((resource, index) => (
-              <CollapseBar
+              <CollapseBarWithFavorite
                 key={index}
                 title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, termsArray) }} />}
                 content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, termsArray) }} />}

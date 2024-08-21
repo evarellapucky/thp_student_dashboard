@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useFavorites from "../Components/useFavorites";
-import CollapseBar from "../Components/CollapseBar";
-
+import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
 const Favorites = () => {  
   const { favorites, toggleFavorite } = useFavorites();
   const [resources, setResources] = useState([]);
@@ -41,7 +40,7 @@ const Favorites = () => {
         <div className="w-full max-w-full md:max-w-4xl">
           {resources.length > 0 ? (
             resources.map((resource) => (
-              <CollapseBar
+              <CollapseBarWithFavorite
                 key={resource.id}
                 title={resource.title}
                 content={resource.content}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Countdown from "../Components/Countdown";
 import InputField from "../Components/InputField";
-import CollapseBar from "../Components/CollapseBar";
+import CollapseBarWithFavorite from '../Components/CollapseBarWithFavorite';
 
 const Today = () => {
     const [resources, setResources] = useState([]);
@@ -83,7 +83,7 @@ const Today = () => {
             <div className="flex justify-center p-4">
                 <div className="w-full max-w-6xl">
                     {resources.map((resource, index) => (
-                        <CollapseBar 
+                        <CollapseBarWithFavorite 
                             key={index}
                             title={resource.title}
                             content={resource.content}
