@@ -1,5 +1,5 @@
 import React from 'react'
-import JokerImage from '../../Public/Images/Joker.png';
+import JokerImage from '../../Assets/Joker.png';
 
 const Joker = () => {
   return (
