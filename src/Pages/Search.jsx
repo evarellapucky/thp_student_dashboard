@@ -86,36 +86,35 @@ const Search = () => {
   const termsArray = useMemo(() => searchTerm.split(/\s+/), [searchTerm]);
 
   return (
-    <div>
-      <div className="flex flex-row justify-between items-center">
-        <h1 className="text-3xl font-bold mt-8 mb-8">
+    <div className="p-4 md:p-8">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start flex-wrap">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">
           Rechercher une ressource
         </h1>
-        <div className="relative">
-      <form onSubmit={handleSearch} className="flex flex-row items-center">
-        <input
-          type="text"
-          placeholder="Recherche..."
-          className="input input-bordered w-96 pl-10"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onClick={handleInputClick}
-        />
-        <button
-          type="submit"
-          className="btn btn-primary ml-2"
-        >
-          Chercher
-        </button>
-      </form>
+        <div className="w-full md:w-auto">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center">
+            <input
+              type="text"
+              placeholder="Recherche..."
+              className="input input-bordered w-full md:w-96 mb-2 md:mb-0 md:pl-10"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onClick={handleInputClick}
+            />
+            <button
+              type="submit"
+              className="btn btn-primary md:ml-2"
+            >
+              Chercher
+            </button>
+          </form>
         </div>
       </div>
-      <div className="flex justify-center p-4">
-        <div className="w-full max-w-4xl">
+      <div className="flex justify-center p-2 md:p-4">
+        <div className="w-full max-w-full md:max-w-4xl">
           {searchTerm === "" ? (
             <p className="text-gray-500">
-              Tape un mot-clé dans la barre de recherche pour rechercher une
-              ressource.
+              Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           ) : searchOk && filteredResources.length > 0 ? (
             filteredResources.map((resource, index) => (
@@ -133,8 +132,7 @@ const Search = () => {
               content={
                 <div>
                   <p>
-                    Aucune ressource ne correspond à ta recherche, tu peux
-                    réaliser une{" "}
+                    Aucune ressource ne correspond à ta recherche, tu peux réaliser une{" "}
                     <Link to="/missions" className="text-blue-500 underline">
                       mission
                     </Link>{" "}
@@ -145,8 +143,7 @@ const Search = () => {
             />
           ) : (
             <p className="text-gray-500">
-              Tape un mot-clé dans la barre de recherche pour rechercher une
-              ressource.
+              Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           )}
         </div>
