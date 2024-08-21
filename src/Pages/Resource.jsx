@@ -10,8 +10,8 @@ const Resource = () => {
   }
 
   return (
-    <div className="flex justify-center">
-    <div className="w-5/6 p-4 border-2 border-gray-200 rounded-lg">
+    <div className="flex justify-center ">
+    <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
       <h1 className="text-2xl md:text-3xl font-bold text-center">{resource.title}</h1>
       <p className="mt-4">{resource.content}</p>
     </div>
