@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../Missions/Pagination";
-import Multiselect from 'multiselect-react-dropdown';
 
 function Leaderboard() {
   const [data, setData] = useState([]);
