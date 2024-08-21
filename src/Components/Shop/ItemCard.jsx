@@ -27,7 +27,7 @@ ItemCard.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string // L'image est optionnelle, donc pas `.isRequired`
+  image: PropTypes.string.isRequired,
 };
 
 export default ItemCard;
