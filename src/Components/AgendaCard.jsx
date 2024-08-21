@@ -12,7 +12,7 @@ const AgendaCard = ({ title, date, resources, toCorrect, toRender }) => {
 
 
   return (
-    <div className="relative card bg-base-100 shadow-md rounded-lg p-4 flex items-cente mt-6">
+    <div className="relative card bg-base-100 shadow-lg rounded-lg p-4 flex items-cente mt-6">
       {/* Conditionally render the icon */}
       {toCorrect && (
         <div className="absolute top-2 right-2 z-10">

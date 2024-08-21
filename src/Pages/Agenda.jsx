@@ -10,6 +10,7 @@ function Agenda() {
     fetch('https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json')
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         // Set the modules data to state
         setModules(data);
       })
@@ -32,7 +33,11 @@ function Agenda() {
             <CollapseBar 
               key={index}
               title={weekData.week}
-              content={<AgendaList days={weekData.days} moduleName={moduleName} weekIndex={index} />} 
+              content={
+              <div>
+                <p className="mb-4">{weekData.descritption}</p>
+                <AgendaList days={weekData.days} moduleName={moduleName} weekIndex={index} />
+              </div>} 
               borderColor="border-blue-500"
             />
           ))}
