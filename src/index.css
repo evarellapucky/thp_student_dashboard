@@ -2,9 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-:root {
-  background-color: #f8f9fa;
-}
 
 body {
   color: var(--color-primary);
@@ -13,7 +10,7 @@ body {
 /*⇣ Shop ⇣*/
 
 .tableitems {
-  background-color: #333;
+  background-color: #333333;
   color: white;
   border-collapse: collapse;
   border-radius: 10px;
@@ -47,4 +44,27 @@ a:focus,
 a:visited {
   text-decoration: none; /* Empêche le soulignement dans tous les états */
   color: inherit; /* Empêche tout changement de couleur dans tous les états */
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.5); /* Gray-500 with transparency */
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background-color: transparent;
 }

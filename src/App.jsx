@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import Search from "./Pages/Search";
 import Favorites from "./Pages/Favorites";
 import Projets from "./Pages/Projets";
+import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
@@ -140,7 +141,10 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/projects" element={<Projets />} />
+              <Route path="/resource" element={<Resource />} />
             </Routes>
+            <footer className="py-5"></footer>
           </main>
         </div>
       </BrowserRouter>
