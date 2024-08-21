@@ -18,11 +18,17 @@ const MissionsData = () => {
   const [issuesPerPage, setIssuesPerPage] = useState(20);
   const [inputValue, setInputValue] = useState('');
   const [token, setToken] = useAtom(tokenAtom);
+  const [tokenCreationDate, setTokenCreationDate] = useState(null);
 
   useEffect(() => {
     if (issues.length > 0) {
       setUniqueLabels(getUniqueLabels(issues));
       setLabelColors(getLabelColors(issues));
+    }
+
+    const savedTokenCreationDate = localStorage.getItem('tokenCreationDate');
+    if (savedTokenCreationDate) {
+      setTokenCreationDate(new Date(savedTokenCreationDate));
     }
   }, [issues]);
 
@@ -91,12 +97,19 @@ const MissionsData = () => {
   }
 
   const handlePat = () => {
+    const now = new Date();
     setToken(inputValue);
+    setTokenCreationDate(now);
+    localStorage.setItem('tokenCreationDate', now.toISOString());
     refreshPage();
   }
 
-  useEffect(() => {
-  }, [token]);
+  const getDaysSinceTokenCreate = () => {
+    if (!tokenCreationDate) return null;
+    const now = new Date();
+    const timeDifference = now - tokenCreationDate;
+    return Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  }
 
   return (
     <>
@@ -244,23 +257,25 @@ const MissionsData = () => {
           </button>
         </div>
 
-        <div className="flex flex-col items-center mt-5 gap-3">
-          <div>
-            <RedirectButton url="https://github.com/settings/tokens/new" text="Générer un nouveau token" />
+        {tokenCreationDate && getDaysSinceTokenCreate() > 28 && (    
+          <div className="flex flex-col items-center mt-5 gap-3">
+            <div>
+              <RedirectButton url="https://github.com/settings/tokens/new" text="Générer un nouveau token" />
+            </div>
+            <div className="flex gap-5">
+              <label className="form-control w-full max-w-xs">
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  className="input input-bordered w-full max-w-xs"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <button className="btn btn-primary" onClick={handlePat}>Valider</button>
+            </div>
           </div>
-          <div className="flex gap-5">
-            <label className="form-control w-full max-w-xs">
-              <input
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full max-w-xs"
-                value={inputValue}
-                onChange={handleInputChange}
-              />
-            </label>
-            <button className="btn btn-primary" onClick={handlePat}>Valider</button>
-          </div>
-        </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {currentRepoIssues.map((issue) => (
