@@ -5,6 +5,8 @@ const Resource = () => {
   const location = useLocation();
   const { resource } = location.state || {};
 
+  console.log({ resource });
+
   if (!resource) {
     return <p>Aucune ressource trouvée.</p>;
   }
@@ -14,6 +16,7 @@ const Resource = () => {
     <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
       <h1 className="text-2xl md:text-3xl font-bold text-center">{resource.title}</h1>
       <p className="mt-4">{resource.content}</p>
+      <p>{resource.id}</p>
     </div>
   </div>
   );
