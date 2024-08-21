@@ -32,6 +32,7 @@ const Search = () => {
         });
 
         setResources(newResources);
+        console.log('Fetched resources:', newResources);
       } catch (error) {
         console.error("Erreur lors de la récupération des données:", error);
       }
@@ -69,6 +70,7 @@ const Search = () => {
       );
       setFilteredResources(filtered);
       setSearchOk(true);
+      console.log('Filtered resources:', filtered); 
     } else {
       setFilteredResources([]);
       setSearchOk(false);

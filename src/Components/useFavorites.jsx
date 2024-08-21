@@ -8,8 +8,10 @@ function useFavorites() {
   const toggleFavorite = (resourceId) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(resourceId)) {
+        console.log(`Removing ${resourceId} from favorites`);
         return prevFavorites.filter((id) => id !== resourceId);
       } else {
+        console.log(`Adding ${resourceId} to favorites`);
         return [...prevFavorites, resourceId];
       }
     });
