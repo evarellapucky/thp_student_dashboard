@@ -25,10 +25,13 @@ function Agenda() {
 
   return (
     <div>
-      <h1 className='text-4xl font-bold ml-6 mb-6'>Agenda</h1>
+      <div className='p-6'>
+      <h1 className='text-4xl font-bold'>Agenda</h1>
+      <p className='text-lg mt-4'>Voici le condensé du parcours sélectionné avec l'enchainement des cours disponibles !</p>
+      </div>
       {Object.entries(modules).map(([moduleName, weeks]) => (
         <div key={moduleName}>
-          <h1 className='text-2xl font-bold text-center m-6'>{moduleName}</h1>
+          <h1 className='text-2xl font-bold text-center m-6'>{moduleName} <span className='text-sm'>01/01/2024 au 31/03/2024</span> </h1>
           {weeks.map((weekData, index) => (
             <CollapseBar 
               key={index}
