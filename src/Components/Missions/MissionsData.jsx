@@ -16,7 +16,7 @@ const MissionsData = () => {
   const [labelColors, setLabelColors] = useState({});
   const [currentPage, setCurrentpage] = useState(1);
   const [issuesPerPage, setIssuesPerPage] = useState(20);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [token, setToken] = useAtom(tokenAtom);
   const [tokenCreationDate, setTokenCreationDate] = useState(null);
 
@@ -26,7 +26,7 @@ const MissionsData = () => {
       setLabelColors(getLabelColors(issues));
     }
 
-    const savedTokenCreationDate = localStorage.getItem('tokenCreationDate');
+    const savedTokenCreationDate = localStorage.getItem("tokenCreationDate");
     if (savedTokenCreationDate) {
       setTokenCreationDate(new Date(savedTokenCreationDate));
     }
@@ -94,22 +94,22 @@ const MissionsData = () => {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-  }
+  };
 
   const handlePat = () => {
     const now = new Date();
     setToken(inputValue);
     setTokenCreationDate(now);
-    localStorage.setItem('tokenCreationDate', now.toISOString());
+    localStorage.setItem("tokenCreationDate", now.toISOString());
     refreshPage();
-  }
+  };
 
   const getDaysSinceTokenCreate = () => {
     if (!tokenCreationDate) return null;
     const now = new Date();
     const timeDifference = now - tokenCreationDate;
     return Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  }
+  };
 
   return (
     <>
@@ -242,75 +242,78 @@ const MissionsData = () => {
         </div>
       </div>
 
-      <div className="">
-        <div className="flex justify-center my-4">
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentpage}
-          />
-        </div>
+      <div className="flex justify-center my-4">
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentpage}
+        />
+      </div>
 
-        <div className="flex justify-center items-center sm:justify-end">
-          <button className="btn btn-primary" onClick={refreshPage}>
-            Refresh la page
-          </button>
-        </div>
+      <div className="flex justify-center items-center sm:justify-end">
+        <button className="btn btn-primary" onClick={refreshPage}>
+          Refresh la page
+        </button>
+      </div>
 
-        {tokenCreationDate && getDaysSinceTokenCreate() > 28 && (    
-          <div className="flex flex-col items-center mt-5 gap-3">
-            <div>
-              <RedirectButton url="https://github.com/settings/tokens/new" text="Générer un nouveau token" />
-            </div>
-            <div className="flex gap-5">
-              <label className="form-control w-full max-w-xs">
-                <input
-                  type="text"
-                  placeholder="Type here"
-                  className="input input-bordered w-full max-w-xs"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <button className="btn btn-primary" onClick={handlePat}>Valider</button>
-            </div>
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {currentRepoIssues.map((issue) => (
-            <MissionCard
-              key={issue.id}
-              number={issue.number}
-              update={new Date(issue.updated_at).toLocaleDateString()}
-              title={issue.title}
-              assignees={
-                issue.assignees.map((assignee) => assignee.login).join(", ") ||
-                "None"
-              }
-              assigneesCount={issue.assignees.length}
-              description={issue.body || "No description"}
-              html_url={issue.html_url}
-              creator={issue.user.login}
-              state={issue.state}
-              labels={
-                issue.labels
-                  .map((label) => label.name.trim().toLowerCase())
-                  .join(", ") || "None"
-              }
-              labelColors={labelColors}
-              commentsCount={issue.comments}
+      {tokenCreationDate && getDaysSinceTokenCreate() > 28 && (
+        <div className="flex flex-col items-center mt-5 gap-3">
+          <div>
+            <RedirectButton
+              url="https://github.com/settings/tokens/new"
+              text="Générer un nouveau token"
             />
-          ))}
+          </div>
+          <div className="flex gap-5">
+            <label className="form-control w-full max-w-xs">
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full max-w-xs"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+            </label>
+            <button className="btn btn-primary" onClick={handlePat}>
+              Valider
+            </button>
+          </div>
         </div>
+      )}
 
-        <div className="flex justify-center my-4">
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentpage}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        {currentRepoIssues.map((issue) => (
+          <MissionCard
+            key={issue.id}
+            number={issue.number}
+            update={new Date(issue.updated_at).toLocaleDateString()}
+            title={issue.title}
+            assignees={
+              issue.assignees.map((assignee) => assignee.login).join(", ") ||
+              "None"
+            }
+            assigneesCount={issue.assignees.length}
+            description={issue.body || "No description"}
+            html_url={issue.html_url}
+            creator={issue.user.login}
+            state={issue.state}
+            labels={
+              issue.labels
+                .map((label) => label.name.trim().toLowerCase())
+                .join(", ") || "None"
+            }
+            labelColors={labelColors}
+            commentsCount={issue.comments}
           />
-        </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center my-4">
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentpage}
+        />
       </div>
     </>
   );
