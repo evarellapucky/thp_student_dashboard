@@ -45,9 +45,7 @@ const Search = () => {
   const buildSearchRegex = useCallback((term) => {
     const andTerms = term.split(/\s+AND\s+/i).map((subTerm) => {
       const orTerms = subTerm.split(/\s+OR\s+/i).map((part) => {
-        if (part.startsWith('"') && part.endsWith('"')) {
-          return part.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        } else if (part.includes('*')) {
+        if (part.includes('*')) {
           const regexPart = part.split('*').map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*');
           return regexPart;
         } else {
@@ -59,6 +57,7 @@ const Search = () => {
 
     return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   }, []);
+  
 
   const handleSearch = useCallback((e) => {
     e.preventDefault();
@@ -84,11 +83,10 @@ const Search = () => {
     setSearchOk(false);
   }, []);
 
+
   const highlightText = useCallback((text, terms) => {
     const processedTerms = terms.map(term => {
-      if (term.startsWith('"') && term.endsWith('"')) {
-        return term.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      } else if (term.endsWith('*')) {
+      if (term.endsWith('*')) {
         const baseTerm = term.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         return `\\b${baseTerm}\\w*\\b`;
       } else {
