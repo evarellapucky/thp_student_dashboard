@@ -1,10 +1,16 @@
 import ShopItems from "../Components/Shop/ShopItems";
-import HistoriqueButton from "../Components/Shop/HistoriqueButton";
+import { Link } from "react-router-dom";
+import DefaultButton from "../Components/DefaultButton";
 
 function shop() {
   return (
     <>
-      <HistoriqueButton />
+      <div className="flex justify-between">
+        <h1 className="text-4xl font-bold">Shop</h1>
+        <Link to="/historique">
+          <DefaultButton name="Historique" />
+        </Link>
+      </div>
       <ShopItems />
     </>
   );
