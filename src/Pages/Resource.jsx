@@ -19,9 +19,9 @@ const Resource = () => {
 
   return (
     <>
-    <BackButton />
     <div className="flex justify-center ">
     <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
+    <BackButton />  
     <button
           onClick={(e) => {
             e.stopPropagation();
