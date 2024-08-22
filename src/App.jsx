@@ -20,7 +20,6 @@ import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
-import Historique from "./Components/Shop/Historique";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -102,7 +101,7 @@ function App() {
     setIsMobileSidebarOpen(prev => !prev);
   };
 
-   return (
+  return (
     <>
       <BrowserRouter>
           {/* Sidebar pour les grands écrans */}
@@ -143,10 +142,9 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/projects" element={<Projets />} />
               <Route path="/resource" element={<Resource />} />
-              <Route path="/historique" element={<Historique />} />
             </Routes>
-            <footer className="py-5"></footer>
           </main>
+          <footer className="py-5"></footer>
       </BrowserRouter>
     </>
   );
