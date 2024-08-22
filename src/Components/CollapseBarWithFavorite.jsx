@@ -5,14 +5,15 @@ function CollapseBarWithFavorite({ title, content, borderColor, isFavorite, togg
   
   return (
     <details className={`collapse collapse-arrow mb-4 bg-slate-100 hover:bg-blue-500 border ${borderColor} w-full max-w-lg  sm:min-w-full md:min-w-lg lg:min-w-1xl xl:min-w-lg 2xl:min-w-full mx-auto`}>
-     <summary className="collapse-title text-lg md:text-xl font-medium p-4 flex items-start">
+     <summary className="collapse-title text-lg md:text-xl font-medium p-4 flex items-start relative">
+      {/* ajout du className relative, car la balise summary empêche l'uilitsation du flex pour que le bouton favoris et le titre s'affichent l'un à côté de l'autre */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             toggleFavorite();
           }}
           aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
-          className="flex items-center mr-3"
+          className="flex items-center mr-3 absolute top-1/2 transform -translate-y-1/2"
         >
           {isFavorite ? (
             <svg
@@ -32,7 +33,7 @@ function CollapseBarWithFavorite({ title, content, borderColor, isFavorite, togg
             </svg>
           )}
         </button>
-        <span className="text-lg md:text-xl font-medium">{title}</span>
+        <div className=" ml-10 text-lg md:text-xl font-medium">{title}</div>
       </summary>
       <div className="collapse-content bg-white p-4 ">
         <div className="text-sm md:text-base">
