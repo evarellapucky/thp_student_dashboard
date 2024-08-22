@@ -1,9 +1,12 @@
 // Resource.jsx
 import { useLocation } from 'react-router-dom';
+import useFavorites from '../Components/useFavorites';
 
-const Resource = (isFavorite, toggleFavorite) => {
+const Resource = () => {
   const location = useLocation();
   const { resource } = location.state || {};
+  const { favorites, toggleFavorite } = useFavorites();
+
 
   console.log({ resource });
 
@@ -11,18 +14,20 @@ const Resource = (isFavorite, toggleFavorite) => {
     return <p>Aucune ressource trouvée.</p>;
   }
 
+  const favorite = favorites.includes(resource.id);
+
   return (
     <div className="flex justify-center ">
     <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
     <button
           onClick={(e) => {
             e.stopPropagation();
-            toggleFavorite();
+            toggleFavorite(resource.id);
           }}
-          aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+          aria-label={favorite ? "Retirer des favoris" : "Ajouter aux favoris"}
           className="flex items-center mr-3"
         >
-          {isFavorite ? (
+          {favorite ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 512"
@@ -42,7 +47,6 @@ const Resource = (isFavorite, toggleFavorite) => {
         </button>
       <h1 className="text-2xl md:text-3xl font-bold text-center">{resource.title}</h1>
       <p className="mt-4">{resource.content}</p>
-      <p>{resource.id}</p>
     </div>
   </div>
   );
