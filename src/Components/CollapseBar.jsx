@@ -3,7 +3,7 @@ import '../index.css'
 
 function CollapseBar({ title, content, borderColor }) {
   return (
-    <details className={`collapse collapse-arrow mb-4 bg-slate-100 hover:bg-blue-500 border ${borderColor} w-full max-w-lg  sm:min-w-full md:min-w-lg lg:min-w-1xl xl:min-w-lg 2xl:min-w-full mx-auto`}>
+    <details className={`collapse collapse-arrow mb-4 bg-slate-100 hover:bg-blue-500 border ${borderColor} max-w-[95%] xs:max-w-[90%] sm:min-w-[90%] md:min-w-[90%] lg:min-w-[90%] xl:min-w-[90%] 2xl:min-w-[85%] mx-auto`}>
       <summary className=" collapse-title text-lg md:text-xl font-medium p-4">
         {title}
       </summary>

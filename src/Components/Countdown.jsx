@@ -71,12 +71,21 @@ const Countdown = ({ mode, onCountdownEnd }) => {
   }
 
   return (
-    <div className='flex flex-col items-center w-1/3'>
-      <h1 className='text-2xl'style={{ fontWeight: 'bold', fontFamily: 'chakra petch' }}>
-        {mode === 'untilMidnight' ? "Temps restant :" : "Temps restant jusqu'à midi"}
-      </h1>
-      <p className='text-xl' style={{ color: 'red', fontFamily: 'chakra petch' }}>{formatTime(timeLeft)}</p>
-    </div>
+<div className="flex flex-col items-center w-full sm:w-2/3 md:w-5/6 lg:w-2/3 px-4">
+  <h1
+    className="text-lg sm:text-xl md:text-1xl lg:text-2xl font-bold"
+    style={{ fontFamily: 'chakra petch' }}
+  >
+    {mode === 'untilMidnight' ? 'Temps restant :' : "Temps restant jusqu'à midi"}
+  </h1>
+  <p
+    className="text-base sm:text-lg md:text-xl lg:text-2xl"
+    style={{ color: 'red', fontFamily: 'chakra petch' }}
+  >
+    {formatTime(timeLeft)}
+  </p>
+</div>
+
   );
 };
 
