@@ -3,25 +3,41 @@ import axios from 'axios';
 import Countdown from "../Components/Countdown";
 import InputField from "../Components/InputField";
 import CollapseBarWithFavorite from '../Components/CollapseBarWithFavorite';
+import useFavorites from '../Components/useFavorites';
 
 const Today = () => {
     const [resources, setResources] = useState([]);
     const [dayState, setDayState] = useState('correction');
+    const { favorites, toggleFavorite } = useFavorites();
 
     useEffect(() => {
-        axios.get('https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Data.json')
-            .then(response => {
-                console.log(response.data); // Voir la structure exacte des données
-                const data = response.data;
+      const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
+        );
 
-                if (data && data.resources) { // Vérifiez que resources existent
-                    setResources(data.resources);
-                } else {
-                    console.error('Resources non trouvés dans la réponse:', response.data);
-                }
-            })
-            .catch(error => console.error('Erreur lors de la récupération des données:', error));
-    }, []);
+        // Extraire toutes les ressources de la nouvelle structure JSON
+        const newResources = [];
+        Object.values(response.data).forEach(category => {
+          category.forEach(week => {
+            week.days.forEach(day => {
+              if (day.resources) {
+                newResources.push(...day.resources);
+              }
+            });
+          });
+        });
+
+        setResources(newResources);
+        console.log('Fetched resources:', newResources);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
     return (
         <>
@@ -82,12 +98,16 @@ const Today = () => {
 
             <div className="flex justify-center p-4">
                 <div className="w-full max-w-6xl">
-                    {resources.map((resource, index) => (
+                    {resources
+                    .filter(resource => resource.id.startsWith('intro-1-1-'))
+                    .map((resource, index) => (
                         <CollapseBarWithFavorite 
                             key={index}
                             title={resource.title}
                             content={resource.content}
                             borderColor="border-blue-500" 
+                            isFavorite={favorites.includes(resource.id)}
+                            toggleFavorite={() => toggleFavorite(resource.id)}
                         />
                     ))}
                 </div>
