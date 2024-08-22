@@ -1,6 +1,7 @@
 // Resource.jsx
 import { useLocation } from 'react-router-dom';
 import useFavorites from '../Components/useFavorites';
+import BackButton from '../Components/BackButton';
 
 const Resource = () => {
   const location = useLocation();
@@ -17,6 +18,8 @@ const Resource = () => {
   const favorite = favorites.includes(resource.id);
 
   return (
+    <>
+    <BackButton />
     <div className="flex justify-center ">
     <div className="w-5/6 p-4 rounded-lg shadow-lightInner p-6">
     <button
@@ -49,6 +52,7 @@ const Resource = () => {
       <p className="mt-4">{resource.content}</p>
     </div>
   </div>
+  </>
   );
 };
 
