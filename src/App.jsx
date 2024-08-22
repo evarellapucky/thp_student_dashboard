@@ -105,7 +105,6 @@ function App() {
    return (
     <>
       <BrowserRouter>
-        <div className="flex h-screen">
           {/* Sidebar pour les grands écrans */}
           <div className="hidden md:block">
             <Sidebar isMinimized={isSidebarMinimized} onToggle={handleSidebarToggle} />
@@ -148,7 +147,6 @@ function App() {
             </Routes>
             <footer className="py-5"></footer>
           </main>
-        </div>
       </BrowserRouter>
     </>
   );
