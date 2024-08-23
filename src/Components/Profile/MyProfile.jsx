@@ -137,7 +137,7 @@ function MyProfile() {
           {showDropzone && (
             <div className="flex justify-center gap-2 mt-2">
               <DefaultButton name="Sauvegarder" onClick={handleSaveClick}/>
-              <DefaultButton name="Annuer" onClick={handleCancel}/>
+              <DefaultButton name="Annuler" onClick={handleCancel}/>
             </div>
           )}
           <div className="flex justify-around m-5">
