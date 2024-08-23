@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Countdown from "../Components/Countdown";
 import InputField from "../Components/InputField";
@@ -9,18 +9,19 @@ const Today = () => {
   const [resources, setResources] = useState([]);
   const [dayState, setDayState] = useState('withSubmission');
   const [isCountdownActive, setIsCountdownActive] = useState(true);
-    const { favorites, toggleFavorite } = useFavorites();
+  const { favorites, toggleFavorite } = useFavorites();
+  const [fileName, setFileName] = useState('');
+  const [fileLink, setFileLink] = useState('');
+  const [projectTitle, setProjectTitle] = useState('');
+  const [projectLink, setProjectLink] = useState('');
 
-
-
-    useEffect(() => {
-      const fetchData = async () => {
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(
           "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
         );
 
-        // Extraire toutes les ressources de la nouvelle structure JSON
         const newResources = [];
         Object.values(response.data).forEach(category => {
           category.forEach(week => {
@@ -43,14 +44,26 @@ const Today = () => {
   }, []);
 
   const countdownMode = dayState === 'withSubmission'
-  ? 'untilMidnight'
-  : dayState === 'correction'
-  ? 'untilNoon'
-  : null;
+    ? 'untilMidnight'
+    : dayState === 'correction'
+    ? 'untilNoon'
+    : null;
 
-const handleCountdownEnd = () => {
-  setIsCountdownActive(false);
-};
+  const handleCountdownEnd = () => {
+    setIsCountdownActive(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Empêche le rechargement de la page
+
+    // Mettre à jour les états d'affichage avec les valeurs saisies
+    setProjectTitle(fileName);
+    setProjectLink(fileLink);
+
+    // Réinitialiser les champs d'input
+    setFileName('');
+    setFileLink('');
+  };
 
   return (
     <>
@@ -65,15 +78,32 @@ const handleCountdownEnd = () => {
           <div className="flex flex-col md:flex-row justify-center items-center mt-6 space-y-6 md:space-y-0 md:space-x-12 ">
             <div className="flex flex-col items-center md:flex-row md:justify-end">
               <div className="rounded-lg bg-base-200 p-4 flex flex-col space-y-2 sm:w-96">
-                <InputField placeholder="Le nom du fichier" />
-                <InputField placeholder="Le lien du fichier" />
+                <InputField
+                  type="text"
+                  value={fileName}
+                  onChange={(e) => setFileName(e.target.value)}
+                  placeholder="Le nom du fichier"
+                />
+                <InputField
+                  type="text"
+                  value={fileLink}
+                  onChange={(e) => setFileLink(e.target.value)}
+                  placeholder="Le lien du fichier"
+                />
               </div>
               <div className="flex items-center mt-2 md:mt-0 md:ml-6">
-                <button className="btn bg-green-500 btn-circle shadow-lg hover:bg-white hover:border-green-500 border border-transparent group">
+                <button
+                  onClick={handleSubmit}
+                  className="btn bg-green-500 btn-circle shadow-lg hover:bg-white hover:border-green-500 border border-transparent group"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className="size-6 group-hover:stroke-green-500">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
                 </button>
+              </div>
+              <div className='ml-6 flex flex-col justify-evenly'>
+                <h4 className='text-lg'><strong>Nom du fichier : </strong>{projectTitle}</h4>
+                <h4 className='text-lg'><strong>Lien du fichier : </strong>{projectLink}</h4>
               </div>
             </div>
           </div>
@@ -115,24 +145,24 @@ const handleCountdownEnd = () => {
         </div>
       )}
 
-            <div className="flex justify-center p-4">
-                <div className="w-full max-w-6xl">
-                    {resources
-                    .filter(resource => resource.id.startsWith('intro-1-1-'))
-                    .map((resource, index) => (
-                        <CollapseBarWithFavorite 
-                            key={index}
-                            title={resource.title}
-                            content={resource.content}
-                            borderColor="border-blue-500" 
-                            isFavorite={favorites.includes(resource.id)}
-                            toggleFavorite={() => toggleFavorite(resource.id)}
-                        />
-                    ))}
-                </div>
-            </div>
-        </>
-    );
+      <div className="flex justify-center p-4">
+        <div className="w-full max-w-6xl">
+          {resources
+            .filter(resource => resource.id.startsWith('intro-1-1-'))
+            .map((resource, index) => (
+              <CollapseBarWithFavorite 
+                key={index}
+                title={resource.title}
+                content={resource.content}
+                borderColor="border-blue-500" 
+                isFavorite={favorites.includes(resource.id)}
+                toggleFavorite={() => toggleFavorite(resource.id)}
+              />
+            ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Today;
