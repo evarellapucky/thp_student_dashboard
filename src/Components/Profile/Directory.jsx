@@ -3,6 +3,7 @@ import SearchBar from "../SearchBar";
 import { useState, useEffect } from "react";
 import DirectoryTable from "../DirectoryTable";
 import axios from "axios";
+import DefaultButton from "../DefaultButton";
 
 function Directory() {
   const [isFiltered, setIsFiltered] = useState(false);
@@ -52,9 +53,7 @@ function Directory() {
       <h1>Annuaire</h1>
       <div className="flex flex-wrap justify-between gap-2">
         <SearchBar/>
-        <button className="border-2 px-2" onClick={toggleFilter}>
-          {isFiltered ? "Afficher tout" : "Ma promo"}
-        </button>
+        <DefaultButton color="info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
       </div>
       <DirectoryTable data={filteredData}/>
     </>
