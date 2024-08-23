@@ -276,9 +276,6 @@ const MissionsData = () => {
               />
             </label>
             <DefaultButton name="Valider" onClick={handlePat}/>
-            <button className="btn btn-primary" onClick={handlePat}>
-              Valider
-            </button>
           </div>
         </div>
       )}

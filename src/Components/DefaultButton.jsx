@@ -1,9 +1,9 @@
 import React from "react";
 
-function DefaultButton({name, onClick = () => {}}) {
+function DefaultButton({children, ...props}) {
   return (
-      <button className="btn btn-primary" onClick={onClick}>
-        {name}
+      <button className="btn btn-primary ml-2 md:ml-4" {...props}>
+        {children}
       </button>
   );
 }
