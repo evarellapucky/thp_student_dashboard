@@ -111,9 +111,9 @@ function MyProfile() {
           </div>
         </div>
 
-        <div className="text-center p-5">
-          <div className="h-72 w-full overflow-hidden">
-            <img src={imagePreview || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt="Avatar" className="w-full h-full object-cover" />
+        <div className="max-w-80 p-5 border-4 my-3">
+          <div className="w-full overflow-hidden mask mask-squircle">
+            <img src={imagePreview || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt="Avatar" className="w-full max-h-80 object-contain" />
           </div>
           {!showDropzone && (
             <button className="flex border-2 p-2 mt-2" onClick={handleButtonClick}>

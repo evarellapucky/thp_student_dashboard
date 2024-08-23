@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MyJourney from "../Components/Profile/MyJourney";
 import MyProfile from "../Components/Profile/MyProfile";
 import MyDocuments from "../Components/Profile/MyDocuments";
@@ -7,9 +7,25 @@ import Directory from "../Components/Profile/Directory";
 import Ambassador from "../Components/Profile/Ambassador";
 import Daily from '../Components/Profile/Daily.jsx';
 
+const useIsLargeScreen = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isLargeScreen;
+};
+
 function Profile() {
   const [selectedTab, setSelectedTab] = useState('Profil');
-
+  const isLargeScreen = useIsLargeScreen();
+  
   const renderContent = () => {
     switch (selectedTab) {
       case 'Profil':
@@ -33,9 +49,11 @@ function Profile() {
 
   return (
     <>
-      <div className="dropdown lg:hidden">
+
+      {!isLargeScreen && (
+      <div className="dropdown">
         <select
-          className="dropdown-select bg-base-100 rounded-box z-[1] p-2 shadow mb-1"
+          className="dropdown-select bg-base-100 rounded-box z-[1] p-2 shadow m-1"
           value={selectedTab}
           onChange={(e) => setSelectedTab(e.target.value)}
         >
@@ -47,10 +65,15 @@ function Profile() {
           <option value="Annuaire">Annuaire</option>
           <option value="Daily">Daily</option>
         </select>
-      </div>
-    
 
-      <div role="tablist" className="hidden lg:tabs tabs-lifted">
+        <div className="w-screen bg-base-100 border-base-300 rounded-box p-6">
+        {renderContent()}
+        </div>
+      </div>
+      )}
+
+      {isLargeScreen && (
+      <div role="tablist" className="tabs tabs-lifted">
         <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Profil" defaultChecked onClick={() => setSelectedTab('Profil')}/>
         {selectedTab === "Profil" && 
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6" >
@@ -100,10 +123,7 @@ function Profile() {
         </div>
         }
       </div>
-
-      <div className="w-screen lg:hidden bg-base-100 border-base-300 rounded-box p-6">
-        {renderContent()}
-      </div>
+      )}
 
     </>
   );
