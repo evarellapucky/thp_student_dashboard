@@ -252,9 +252,7 @@ const MissionsData = () => {
       </div>
 
       <div className="flex justify-center items-center sm:justify-end">
-        <button className="btn btn-primary" onClick={refreshPage}>
-          Refresh la page
-        </button>
+        <DefaultButton onClick={refreshPage}>{"Refresh la page"}</DefaultButton>
       </div>
 
       {tokenCreationDate && getDaysSinceTokenCreate() > 28 && (
