@@ -9,7 +9,7 @@ const Dropdown = ({ options, label, onSelect }) => {
 
     return (
         <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">{label}</label>
             <select onChange={handleChange} className="border border-gray-300 rounded p-2">
                 <option value="">-- Sélectionnez --</option>
                 {options.map(option => (
