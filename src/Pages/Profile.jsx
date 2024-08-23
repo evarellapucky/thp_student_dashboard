@@ -52,41 +52,55 @@ function Profile() {
     
 
       <div role="tablist" className="hidden lg:tabs tabs-lifted">
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Profil" defaultChecked />
-        <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <MyProfile/>
-        </div>
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Profil" defaultChecked onClick={() => setSelectedTab('Profil')}/>
+        {selectedTab === "Profil" && 
+          <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6" >
+            <MyProfile/>
+          </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Documents" />
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Documents" onClick={() => setSelectedTab('Documents')}/>
+        {selectedTab === "Documents" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <MyDocuments/>
         </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Leaderboard" />
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Leaderboard" onClick={() => setSelectedTab('Leaderboard')}/>
+        {selectedTab === "Leaderboard" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <Leaderboard/>
         </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambassadeur" />
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Ambassadeur" onClick={() => setSelectedTab('Ambassadeur')}/>
+        {selectedTab === "Ambassadeur" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <Ambassador/>
         </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours"/>
+        <input type="radio" name="my_tabs_2" role="tab" className="tab whitespace-nowrap" aria-label="Mon parcours" onClick={() => setSelectedTab('Mon parcours')}/>
+        {selectedTab === "Mon parcours" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <MyJourney/>
         </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" />
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Annuaire" onClick={() => setSelectedTab('Annuaire')}/>
+        {selectedTab === "Annuaire" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <Directory/>
         </div>
+        }
 
-        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" />
+        <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Daily" onClick={() => setSelectedTab('Daily')}/>
+        {selectedTab === "Daily" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <Daily/>
           <DailyModal/>
         </div>
+        }
       </div>
 
       <div className="w-screen lg:hidden bg-base-100 border-base-300 rounded-box p-6">

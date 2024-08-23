@@ -1,37 +1,51 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import axios from "axios";
+import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
 import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
+import useFavorites from "../Components/useFavorites";
 
 const Search = () => {
   const [resources, setResources] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredResources, setFilteredResources] = useState([]);
   const [searchOk, setSearchOk] = useState(false);
+  const { favorites, toggleFavorite } = useFavorites();
+
 
   useEffect(() => {
-    axios
-      .get(
-        "https://api.github.com/repos/evarellapucky/thp_student_dashboard/contents/src/Data/Data.json"
-      )
-      .then((response) => {
-        const content = response.data.content;
-        const decodedContent = JSON.parse(
-          decodeURIComponent(escape(atob(content)))
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
         );
-        setResources(decodedContent.resources);
-      })
-      .catch((error) =>
-        console.error("Erreur lors de la récupération des données:", error)
-      );
+
+        // Extraire toutes les ressources de la nouvelle structure JSON
+        const newResources = [];
+        Object.values(response.data).forEach(category => {
+          category.forEach(week => {
+            week.days.forEach(day => {
+              if (day.resources) {
+                newResources.push(...day.resources);
+              }
+            });
+          });
+        });
+
+        setResources(newResources);
+        console.log('Fetched resources:', newResources);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const buildSearchRegex = useCallback((term) => {
     const andTerms = term.split(/\s+AND\s+/i).map((subTerm) => {
       const orTerms = subTerm.split(/\s+OR\s+/i).map((part) => {
-        if (part.startsWith('"') && part.endsWith('"')) {
-          return part.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        } else if (part.includes('*')) {
+        if (part.includes('*')) {
           const regexPart = part.split('*').map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*');
           return regexPart;
         } else {
@@ -43,6 +57,7 @@ const Search = () => {
 
     return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   }, []);
+  
 
   const handleSearch = useCallback((e) => {
     e.preventDefault();
@@ -55,6 +70,7 @@ const Search = () => {
       );
       setFilteredResources(filtered);
       setSearchOk(true);
+      console.log('Filtered resources:', filtered); 
     } else {
       setFilteredResources([]);
       setSearchOk(false);
@@ -67,11 +83,10 @@ const Search = () => {
     setSearchOk(false);
   }, []);
 
+
   const highlightText = useCallback((text, terms) => {
     const processedTerms = terms.map(term => {
-      if (term.startsWith('"') && term.endsWith('"')) {
-        return term.slice(1, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      } else if (term.endsWith('*')) {
+      if (term.endsWith('*')) {
         const baseTerm = term.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         return `\\b${baseTerm}\\w*\\b`;
       } else {
@@ -92,7 +107,7 @@ const Search = () => {
           Rechercher une ressource
         </h1>
         <div className="w-full md:w-auto">
-          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center p-2 md:p-4">
             <input
               type="text"
               placeholder="Recherche..."
@@ -110,19 +125,21 @@ const Search = () => {
           </form>
         </div>
       </div>
-      <div className="flex justify-center p-2 md:p-4">
-        <div className="w-full max-w-full md:max-w-4xl">
+      <div className="flex flex-col p-2 md:p-4">
           {searchTerm === "" ? (
             <p className="text-gray-500">
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           ) : searchOk && filteredResources.length > 0 ? (
             filteredResources.map((resource, index) => (
-              <CollapseBar
+              <CollapseBarWithFavorite
                 key={index}
                 title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, termsArray) }} />}
                 content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, termsArray) }} />}
                 borderColor="border-blue-500"
+                isFavorite={favorites.includes(resource.id)}
+                toggleFavorite={() => toggleFavorite(resource.id)}
+              
               />
             ))
           ) : searchOk && filteredResources.length === 0 ? (
@@ -146,7 +163,7 @@ const Search = () => {
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           )}
-        </div>
+
       </div>
     </div>
   );

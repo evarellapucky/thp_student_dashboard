@@ -2,36 +2,55 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Countdown from "../Components/Countdown";
 import InputField from "../Components/InputField";
-import CollapseBar from "../Components/CollapseBar";
+import CollapseBarWithFavorite from '../Components/CollapseBarWithFavorite';
+import useFavorites from '../Components/useFavorites';
 
 const Today = () => {
   const [resources, setResources] = useState([]);
   const [dayState, setDayState] = useState('withSubmission');
   const [isCountdownActive, setIsCountdownActive] = useState(true);
+    const { favorites, toggleFavorite } = useFavorites();
 
-  useEffect(() => {
-    axios.get('https://raw.githubusercontent.com/evarellapucky/thp_student_dashboard/dev/src/Data/Data.json')
-      .then(response => {
-        const data = response.data;
 
-        if (data && data.resources) { 
-          setResources(data.resources);
-        } else {
-          console.error('Resources non trouvés dans la réponse:', response.data);
-        }
-      })
-      .catch(error => console.error('Erreur lors de la récupération des données:', error));
+
+    useEffect(() => {
+      const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
+        );
+
+        // Extraire toutes les ressources de la nouvelle structure JSON
+        const newResources = [];
+        Object.values(response.data).forEach(category => {
+          category.forEach(week => {
+            week.days.forEach(day => {
+              if (day.resources) {
+                newResources.push(...day.resources);
+              }
+            });
+          });
+        });
+
+        setResources(newResources);
+        console.log('Fetched resources:', newResources);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const countdownMode = dayState === 'withSubmission'
-    ? 'untilMidnight'
-    : dayState === 'correction'
-    ? 'untilNoon'
-    : null;
+  ? 'untilMidnight'
+  : dayState === 'correction'
+  ? 'untilNoon'
+  : null;
 
-  const handleCountdownEnd = () => {
-    setIsCountdownActive(false);
-  };
+const handleCountdownEnd = () => {
+  setIsCountdownActive(false);
+};
 
   return (
     <>
@@ -96,20 +115,24 @@ const Today = () => {
         </div>
       )}
 
-      <div className="flex justify-center mt-6 p-4 ">
-        <div className="w-full min-w-[95%]">
-          {resources.map((resource, index) => (
-            <CollapseBar 
-              key={index}
-              title={resource.title}
-              content={resource.content}
-              borderColor="border-blue-500" 
-            />
-          ))}
-        </div>
-      </div>
-    </>
-  );
+            <div className="flex justify-center p-4">
+                <div className="w-full max-w-6xl">
+                    {resources
+                    .filter(resource => resource.id.startsWith('intro-1-1-'))
+                    .map((resource, index) => (
+                        <CollapseBarWithFavorite 
+                            key={index}
+                            title={resource.title}
+                            content={resource.content}
+                            borderColor="border-blue-500" 
+                            isFavorite={favorites.includes(resource.id)}
+                            toggleFavorite={() => toggleFavorite(resource.id)}
+                        />
+                    ))}
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default Today;
