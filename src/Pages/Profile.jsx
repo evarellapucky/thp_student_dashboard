@@ -6,6 +6,7 @@ import Leaderboard from "../Components/Profile/Leaderboard";
 import Directory from "../Components/Profile/Directory";
 import Ambassador from "../Components/Profile/Ambassador";
 import Daily from '../Components/Profile/Daily.jsx';
+import DailyModal from '../Components/DailyModal.jsx';
 
 function Profile() {
   const [selectedTab, setSelectedTab] = useState('Profil');
@@ -97,6 +98,7 @@ function Profile() {
         {selectedTab === "Daily" && 
         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <Daily/>
+          <DailyModal/>
         </div>
         }
       </div>
