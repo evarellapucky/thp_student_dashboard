@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../Missions/Pagination";
+import DefaultButton from "../DefaultButton";
 
 function Leaderboard() {
   const [data, setData] = useState([]);
@@ -79,7 +80,9 @@ function Leaderboard() {
     <>
       <div className="flex flex-wrap justify-between items-center">
         <h1>Leaderboard</h1>
-        <Link to="/shop" className="border-2 p-3">Boutique</Link>
+        <Link to="/shop">
+          <DefaultButton name="Boutique" color="info"/>
+        </Link>
       </div>
       <div className='flex items-center gap-2'>
         <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>

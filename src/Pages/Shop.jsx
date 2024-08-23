@@ -8,7 +8,7 @@ function shop() {
       <div className="flex justify-between">
         <h1 className="text-4xl font-bold">Shop</h1>
         <Link to="/historique">
-          <DefaultButton name="Historique" />
+          <DefaultButton name="Historique"/>
         </Link>
       </div>
       <ShopItems />

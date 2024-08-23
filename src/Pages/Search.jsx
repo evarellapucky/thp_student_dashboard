@@ -4,6 +4,7 @@ import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
 import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
 import useFavorites from "../Components/useFavorites";
+import DefaultButton from "../Components/DefaultButton";
 
 const Search = () => {
   const [resources, setResources] = useState([]);
@@ -116,12 +117,8 @@ const Search = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               onClick={handleInputClick}
             />
-            <button
-              type="submit"
-              className="btn btn-primary md:ml-2"
-            >
-              Chercher
-            </button>
+            
+            <DefaultButton type="submit">Rechercher</DefaultButton>
           </form>
         </div>
       </div>

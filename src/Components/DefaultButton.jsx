@@ -1,8 +1,9 @@
 import React from "react";
 
-function DefaultButton({name}) {
+function DefaultButton({children, name, color = "primary", ...props}) {
   return (
-      <button className="btn btn-primary">
+      <button className={`btn btn-${color} ml-2 md:ml-4`} {...props}>
+        {children}
         {name}
       </button>
   );

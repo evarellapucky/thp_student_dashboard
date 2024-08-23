@@ -6,6 +6,7 @@ import MissionCard from "./MissionCard";
 import Pagination from "./Pagination";
 import { useAtom } from "jotai";
 import { issuesAtom, tokenAtom } from "../Atom/atoms";
+import DefaultButton from "../DefaultButton";
 
 const MissionsData = () => {
   const [issues] = useAtom(issuesAtom);
@@ -274,9 +275,7 @@ const MissionsData = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <button className="btn btn-primary" onClick={handlePat}>
-              Valider
-            </button>
+            <DefaultButton name="Valider" onClick={handlePat}/>
           </div>
         </div>
       )}

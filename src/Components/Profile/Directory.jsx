@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import DirectoryTable from "../DirectoryTable";
 import axios from "axios";
+import DefaultButton from "../DefaultButton";
 
 function Directory() {
   const [isFiltered, setIsFiltered] = useState(false);
@@ -94,9 +95,8 @@ function Directory() {
               </svg>
           </label>
         </div>
-        <button className="border-2 px-2 rounded-lg" onClick={toggleFilter}>
-          {isFiltered ? "Afficher tout" : "Ma promo"}
-        </button>
+
+        <DefaultButton color="info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
       </div>
       <DirectoryTable data={searchedData}/>
     </>
