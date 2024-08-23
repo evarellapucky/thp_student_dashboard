@@ -7,7 +7,7 @@ import useFavorites from '../Components/useFavorites';
 
 const Today = () => {
   const [resources, setResources] = useState([]);
-  const [dayState, setDayState] = useState('correction');
+  const [dayState, setDayState] = useState('withSubmission');
   const [isCountdownActive, setIsCountdownActive] = useState(true);
   const [showCorrections, setShowCorrections] = useState(true);
   const { favorites, toggleFavorite } = useFavorites();
@@ -73,13 +73,13 @@ const Today = () => {
 {/* // Afficher la section projet à rendre uniquement si le compte à rebours est actif et la valeur de dayState est 'withSubmission' */}
       {dayState === 'withSubmission' && (
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-center">Projet à rendre</h1>
+          <h1 className="text-2xl md:text-5xl font-bold text-center">Projet à rendre</h1>
           {countdownMode && isCountdownActive && (
             <div className="w-full flex justify-center mt-4">
               <Countdown mode={countdownMode} onCountdownEnd={handleCountdownEnd} />
             </div>
           )}
-          <div className="flex flex-col md:flex-row justify-start items-center mt-6 space-y-6 md:space-y-0 md:space-x-12 p-6 w-full max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-start items-center mt-6 space-y-6 md:space-y-0 md:space-x-12 w-full max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row md:justify-between w-full">
               <div className="rounded-lg p-4 flex flex-col space-y-2 w-full md:w-1/2">
                 <InputField
@@ -105,7 +105,7 @@ const Today = () => {
                   </svg>
                 </button>
               </div>
-              <div className="flex flex-col md:flex-row md:justify-around w-full md:w-1/2 mt-4 md:flex-col md:mt-0 md:ml-6">
+              <div className="flex flex-col  md:flex-row md:justify-around w-full md:w-1/2 mt-4 md:flex-col md:mt-0 md:ml-6">
                 <h4 className="text-lg sm:text-md"><span className='font-bold'>Nom du fichier : </span>{projectTitle}</h4>
                 <h4 className="text-lg sm:text-md"><span className='font-bold'>Lien du fichier : </span>{projectLink}</h4>
               </div>
