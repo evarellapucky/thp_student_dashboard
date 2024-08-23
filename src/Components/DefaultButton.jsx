@@ -1,8 +1,8 @@
 import React from "react";
 
-function DefaultButton({name}) {
+function DefaultButton({name, onClick = () => {}}) {
   return (
-      <button className="btn btn-primary">
+      <button className="btn btn-primary" onClick={onClick}>
         {name}
       </button>
   );
