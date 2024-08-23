@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import GaugeChart from 'react-gauge-chart';
+import Handshake from '../../src/Public/Images/Handshake.png';
 
 const DailyTab = ({ onSelect }) => {
   const [selectedTab, setSelectedTab] = useState('handshakes');
@@ -51,7 +52,7 @@ const DailyTab = ({ onSelect }) => {
       <div className='flex flex-col justify-center items-center h-full space-y-4 md:space-y-8'>
         <h1 className="text-xl font-bold">Coups de Mains</h1>
         <div className='flex flex-row space-x-4 items-center'>
-          <img src="/src/Public/Images/Handshake.png" className='w-14 h-14' alt="Handshake" />
+          <img src={Handshake} className='w-14 h-14' alt="Handshake" />
           <p className='text-3xl font-bold'>{handshakesData ? handshakesData.length : 0}</p>
         </div>
       </div>
