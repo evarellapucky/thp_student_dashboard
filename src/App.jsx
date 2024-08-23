@@ -20,6 +20,7 @@ import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
+import SignIn from "./Pages/SignIn";
 import Historique from "./Components/Shop/Historique";
 
 function useIsMobile() {
@@ -144,6 +145,7 @@ function App() {
               <Route path="/historique" element={<Historique />} />
               <Route path="/projects" element={<Projets />} />
               <Route path="/resource" element={<Resource />} />
+              <Route path="/sign_in" element={<SignIn />} />
             </Routes>
           </main>
           <footer className="py-5"></footer>
