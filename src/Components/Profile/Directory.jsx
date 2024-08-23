@@ -95,9 +95,8 @@ function Directory() {
               </svg>
           </label>
         </div>
-        <button className="border-2 px-2 rounded-lg" onClick={toggleFilter}>
-          {isFiltered ? "Afficher tout" : "Ma promo"}
-        </button>
+
+        <DefaultButton color="info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
       </div>
       <DirectoryTable data={searchedData}/>
     </>
