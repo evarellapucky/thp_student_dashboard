@@ -14,7 +14,7 @@ const Modal = ({ isOpen, onClose, content, title }) => {
     return (
         <>
             <dialog id="my_modal_2" className="modal">
-                <div className="modal-box">
+                <div className="modal-box max-w-[90%] min-h-[90%]">
                     {title}
                     {content}
                 </div>

@@ -6,7 +6,16 @@
 body {
   min-height: 100vh;
   height: auto;
-  color: var(--color-primary);
+  color: var(--color-primary); 
+}
+
+h1, h2 {
+  font-family: chakra petch, sans-serif;
+  font-weight: 700;
+}
+
+input {
+  font-weight: 600;
 }
 
 /*⇣ Shop ⇣*/
