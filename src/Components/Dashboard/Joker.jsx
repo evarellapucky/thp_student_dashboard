@@ -1,4 +1,3 @@
-import React from 'react'
 import JokerImage from '../../Assets/Joker.png';
 
 const Joker = () => {
