@@ -4,6 +4,7 @@ import BigModal from "../BigModal";
 import { useAtom } from 'jotai';
 import { modalOpenAtom } from "../Atom/atoms";
 import { useResetAtom } from "jotai/utils";
+import DefaultButton from "../DefaultButton";
 
 function EditProfile() {
   const [, setIsOpen] = useAtom(modalOpenAtom);
@@ -109,8 +110,8 @@ function EditProfile() {
           
           </div>
           <div className="md:absolute bottom-0 left-0 right-0 flex justify-center gap-3 p-4 bg-white">
-              <button type="submit" className="btn btn-primary">Valider</button>
-              <button type="button" className="btn btn-error" onClick={handleCloseModal}>Annuler</button>
+              <DefaultButton type="submit" name="Valider"/>
+              <DefaultButton type="submit" name="Annuler" color="error" onClick={handleCloseModal} />
           </div>
         </form>
       </div>

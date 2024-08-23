@@ -1,6 +1,6 @@
 import BackButton from "../BackButton";
 
-const ShopItems = () => {
+const Historique = () => {
   const data = [ 
     { Article: "Joker", Description: "récupére un joker grâce a tes points THP", Valeur: "2000pts" },
   ];
@@ -42,4 +42,4 @@ const ShopItems = () => {
   );
 }
 
-export default ShopItems;
+export default Historique;

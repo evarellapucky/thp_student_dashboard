@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import InputField from '../Components/InputField'
-import { useNavigate } from 'react-router-dom'
 import BackButton from '../Components/BackButton';
+import DefaultButton from '../Components/DefaultButton';
 
 function Contact() {
   const [name, setName] = useState('');
@@ -35,12 +35,7 @@ const handleSubmit = (e) => {
       <InputField placeholder="Message" isTextArea={true} value={message} onChange={(e) => setMessage(e.target.value)} />
       
       <div className="flex justify-end">
-          <button
-            type="submit"
-            className="btn btn-primary mt-4"
-          >
-            Envoyer
-          </button>
+          <DefaultButton type="submit">Envoyer</DefaultButton>
         </div>
     </form>
   </div>

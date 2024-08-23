@@ -21,6 +21,7 @@ import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
 import SignIn from "./Pages/SignIn";
+import Historique from "./Components/Shop/Historique";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -141,6 +142,7 @@ function App() {
               <Route path="/faq" element={<Faq />} />
               <Route path="/faq/:categoryName" element={<CategoryDetail />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/historique" element={<Historique />} />
               <Route path="/projects" element={<Projets />} />
               <Route path="/resource" element={<Resource />} />
               <Route path="/sign_in" element={<SignIn />} />
