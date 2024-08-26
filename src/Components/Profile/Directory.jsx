@@ -96,7 +96,7 @@ function Directory() {
           </label>
         </div>
 
-        <DefaultButton color="info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
+        <DefaultButton color="btn-info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
       </div>
       <DirectoryTable data={searchedData}/>
     </>

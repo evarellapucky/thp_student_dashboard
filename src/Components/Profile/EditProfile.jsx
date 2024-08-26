@@ -110,8 +110,8 @@ function EditProfile() {
           
           </div>
           <div className="md:absolute bottom-0 left-0 right-0 flex justify-center gap-3 p-4 bg-white">
-            <DefaultButton type="submit" name="Valider"/>
-            <DefaultButton type="button" name="Annuler" color="error" onClick={handleCloseModal} />
+              <DefaultButton type="submit" name="Valider"/>
+              <DefaultButton type="submit" name="Annuler" color="btn-error" onClick={handleCloseModal} />
           </div>
         </form>
       </div>
