@@ -112,6 +112,7 @@ function App() {
           </div>
 
           {/* Sidebar pour les petits écrans */}
+          {isMobile && (
           <div>
             <button
               onClick={handleMobileSidebarToggle}
@@ -121,6 +122,7 @@ function App() {
             </button>
             <MobileSidebar isOpen={isMobileSidebarOpen} onToggle={handleMobileSidebarToggle} />
           </div>
+          )}
 
           <main
             className={`flex-1 transition-all duration-300 ${
