@@ -37,15 +37,9 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
           <HamburgerIcon isOpen={isOpen} color={isOpen ? "white" : "black"} />
         </button>
 
-<<<<<<< HEAD
         <div className="flex flex-col flex-1 mt-12">
           <div className="flex justify-center items-center mb-8">
             <div className="avatar">
-=======
-        <div className="flex flex-col h-full">
-          <div className="flex justify-center items-center my-4">
-            <div className="avatar mb-6">
->>>>>>> dev
               <div className="w-16 rounded-full">
                 <img
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
