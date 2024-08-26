@@ -8,7 +8,7 @@ import useFavorites from "../Components/useFavorites";
 
 const Today = () => {
   const [resources, setResources] = useState([]);
-  const [dayState, setDayState] = useState("withSubmission"); // "withSubmission" ou "correction" pour verifier le fonctionnement selon le dayState (avec ou sans correction)
+  const [dayState, setDayState] = useState("correction"); // "withSubmission" ou "correction" pour verifier le fonctionnement selon le dayState (avec ou sans correction)
   const [isCountdownActive, setIsCountdownActive] = useState(true);
   const [showCorrections, setShowCorrections] = useState(() => {
     const savedShowCorrections = localStorage.getItem("showCorrections");
@@ -57,6 +57,13 @@ const Today = () => {
     }
   };
 
+  //Fonction pour forcer l'affichage des corrections ( décommenter pour activer)
+//   const toggleShowCorrections = () => {
+//     const newShowCorrections = !showCorrections;
+//     setShowCorrections(newShowCorrections);
+//     localStorage.setItem("showCorrections", JSON.stringify(newShowCorrections));
+//   };
+
   return (
     <>
       {dayState === "withSubmission" && (
@@ -75,6 +82,17 @@ const Today = () => {
           showCorrections={showCorrections}
         />
       )}
+
+      {/* Ajouter un bouton pour activer/désactiver l'affichage des corrections , decommenter pour activer */} 
+
+      {/* <div className="flex justify-center p-4 mt-6">
+        <button
+          onClick={toggleShowCorrections}
+          className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700"
+        >
+          {showCorrections ? "Masquer les corrections" : "Afficher les corrections"}
+        </button>
+      </div> */}
 
       <div className="flex justify-center p-4 mt-6">
         <div className="w-full max-w-6xl">
