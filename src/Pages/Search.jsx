@@ -34,7 +34,6 @@ const Search = () => {
         });
 
         setResources(newResources);
-        console.log('Fetched resources:', newResources);
       } catch (error) {
         console.error("Erreur lors de la récupération des données:", error);
       }
@@ -69,7 +68,7 @@ const Search = () => {
         const isContentSearch = searchTerm.toLowerCase().startsWith("content:");
         
         // Nettoyer la chaîne de recherche des préfixes
-        let cleanTerm = searchTerm.replace(/^(title:|content:)/i, "").trim();
+        const cleanTerm = searchTerm.replace(/^(title:|content:)/i, "").trim();
         const regex = buildSearchRegex(cleanTerm);
   
         if (isTitleSearch) {
@@ -92,13 +91,11 @@ const Search = () => {
     }
   }, [searchTerm, resources, buildSearchRegex]);
 
-
   const handleInputClick = useCallback(() => {
     setSearchTerm("");
     setFilteredResources([]);
     setSearchOk(false);
   }, []);
-
 
   const highlightText = useCallback((text, terms) => {
     const processedTerms = terms.map(term => {
@@ -109,12 +106,26 @@ const Search = () => {
         return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       }
     });
-  
+
     const regex = new RegExp(`(${processedTerms.join('|')})`, 'gi');
     return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
   }, []);
 
-  const termsArray = useMemo(() => searchTerm.split(/\s+/), [searchTerm]);
+  const termsArray = useMemo(() => {
+    return searchTerm.replace(/^(title:|content:)/i, "").trim().split(/\s+/);
+  }, [searchTerm]);
+
+  const context = useMemo(() => {
+    if (searchTerm.toLowerCase().startsWith("title:")) {
+      return 'title';
+    } else if (searchTerm.toLowerCase().startsWith("content:")) {
+      return 'content';
+    } else {
+      return 'both';
+    }
+  }, [searchTerm]);
+
+  
 
   return (
     <div className="p-4 md:p-8">
@@ -146,9 +157,9 @@ const Search = () => {
             filteredResources.map((resource, index) => (
               <CollapseBarWithFavorite
                 key={index}
-                title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, termsArray) }} />}
-                content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, termsArray) }} />}
-                borderColor="border-blue-500"
+                title={<span dangerouslySetInnerHTML={{ __html: context === 'title' || context === 'both' ? highlightText(resource.title, termsArray) : resource.title }} />}
+              content={<span dangerouslySetInnerHTML={{ __html: context === 'content' || context === 'both' ? highlightText(resource.content, termsArray) : resource.content }} />}
+              borderColor="border-blue-500"
                 isFavorite={favorites.includes(resource.id)}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               
