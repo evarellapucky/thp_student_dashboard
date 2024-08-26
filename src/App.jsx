@@ -112,7 +112,7 @@ function App() {
           </div>
 
           {/* Sidebar pour les petits écrans */}
-          <div className="md:hidden">
+          <div>
             <button
               onClick={handleMobileSidebarToggle}
               className="fixed top-3 left-3 z-50"
@@ -124,8 +124,7 @@ function App() {
 
           <main
             className={`flex-1 transition-all duration-300 ${
-              isMobile ? '' : (isSidebarMinimized ? 'ml-20 p-6' : 'ml-64 p-6 ')
-            }`}
+              isMobile ? '' : 'ml-20 p-6'}`}
           >
             <DateTime />
             <Routes>

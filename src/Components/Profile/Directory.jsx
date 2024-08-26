@@ -71,7 +71,7 @@ function Directory() {
       <div className="flex flex-wrap justify-between gap-2">
         <div className="flex flex-col md:flex-row gap-1">
           <select className="select select-bordered w-full max-w-xs" onChange={handleColumnChange}>
-            <option selected value="nom">Recherche par nom</option>
+            <option value="nom">Recherche par nom</option>
             <option value="prenom">Recherche par prénom</option>
           </select>
           <label className="input input-bordered flex items-center gap-2">
@@ -96,7 +96,7 @@ function Directory() {
           </label>
         </div>
 
-        <DefaultButton color="info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
+        <DefaultButton color="btn-info" onClick={toggleFilter}>{isFiltered ? "Afficher tout" : "Ma promo"}</DefaultButton>
       </div>
       <DirectoryTable data={searchedData}/>
     </>
