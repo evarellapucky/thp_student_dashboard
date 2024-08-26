@@ -1,6 +1,5 @@
 import CategoryList from "../Components/Faq/CategoryList"
 
-
 function Faq() {
 
   return (

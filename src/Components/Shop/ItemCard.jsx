@@ -16,7 +16,7 @@ const ItemCard = (props) => {
         <p className="text-gray-700 mb-4">{props.description}</p>
         <p className="text-blue-600 font-semibold">{props.price} pts</p>
         <div className="flex justify-center mt-4">
-        <DefaultButton name="acheter" color="info" />
+        <DefaultButton name="acheter" color="btn-info" />
         </div>
       </div>
     </div>
