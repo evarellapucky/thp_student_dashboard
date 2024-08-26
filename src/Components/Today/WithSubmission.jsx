@@ -20,7 +20,6 @@ const WithSubmission = ({
   const [projectTitle, setProjectTitle] = useState(fileName);
   const [projectLink, setProjectLink] = useState(fileLink);
 
-  // Effect pour mettre à jour le local storage lorsqu'il y a des changements dans fileName ou fileLink
   useEffect(() => {
     localStorage.setItem("fileName", projectTitle);
     localStorage.setItem("fileLink", projectLink);
@@ -34,7 +33,6 @@ const WithSubmission = ({
       setProjectTitle(fileName);
       setProjectLink(fileLink);
 
-      // Clear input fields
       setFileName("");
       setFileLink("");
     } else {
@@ -70,8 +68,8 @@ const WithSubmission = ({
           </div>
           <div className="flex items-center justify-center md:justify-start mt-2 md:mt-0 md:ml-6 w-full md:w-auto">
             <button
-              type="button"  // type "button" pour empêcher la soumission par défaut
-              onClick={handleSubmit}  // Utilisez onClick pour appeler handleSubmit
+              type="button"
+              onClick={handleSubmit}
               className="btn bg-green-500 btn-circle shadow-lg hover:bg-white hover:border-green-500 border border-transparent group"
             >
               <svg
