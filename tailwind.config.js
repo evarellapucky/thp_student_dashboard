@@ -72,4 +72,14 @@ export default {
     },
   },
   plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#1A202C", // Utilise la couleur définie dans TailwindCSS
+          secondary: "#2D3748",
+        },
+      },
+    ],
+  },
 };
