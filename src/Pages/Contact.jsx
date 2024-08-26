@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import InputField from "../Components/InputField";
 import BackButton from "../Components/BackButton";
 import DefaultButton from "../Components/DefaultButton";
@@ -19,50 +18,54 @@ function Contact() {
   return (
     <>
       <BackButton />
-      <img src={THPLogo} alt="Logo" className="w-1/3 mx-auto mb-10" />
-      <div className="flex flex-row justify-evenly">
-        <div className="flex flex-col w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lg p-6 mx-4 my-8">
-          <p className="text-center text-xl font-bold text-gray-800 mb-4">
+      <div className="flex justify-center mb-10">
+        <img src={THPLogo} alt="Logo" className="w-1/2 md:w-1/3 lg:w-1/4" />
+      </div>
+      <div className="flex flex-col md:flex-row justify-evenly items-start md:space-x-6 px-4">
+        {/* Information Section */}
+        <div className="flex flex-col w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
+          <p className="text-center text-lg md:text-xl font-bold text-gray-800 mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </p>
-          <p className=" text-lg text-gray-700 mb-4">
-            Pas de souci ! Nous sommes là pour vous aider.</p>
-            <p className=" text-lg text-gray-700 mb-4"> Si vous avez des
-            questions supplémentaires ou si vous avez besoin de plus
-            d'informations, c'est ici que ça se passe. N'hésitez pas à nous
-            contacter, et nous vous répondrons dans les plus brefs délais.
+          <p className="text-base md:text-lg text-gray-700 mb-4">
+            Pas de souci ! Nous sommes là pour vous aider.
           </p>
-          <button className="mx-auto bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300">
-            Contactez-nous
-          </button>
+          <p className="text-base md:text-lg text-gray-700 mb-4">
+            Si vous avez des questions supplémentaires ou si vous avez besoin de plus d'informations, c'est ici que ça se passe. N'hésitez pas à nous contacter, et nous vous répondrons dans les plus brefs délais.
+          </p>
         </div>
 
-        <div className="flex w-1/3 bg-gray-100 rounded-lg mr-6 mt-10">
-          <form onSubmit={handleSubmit} className="w-full w-full mx-auto p-8">
-            <div className="flex mb-6">
-              <h2 className="text-2xl font-bold mb-6">Nous contacter</h2>
+        {/* Form Section */}
+        <div className="flex w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6">
+          <form onSubmit={handleSubmit} className="w-full">
+            <div className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold mb-4">Nous contacter</h2>
             </div>
 
             <InputField
               placeholder="Prénom"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              className="mb-4"
             />
             <InputField
               placeholder="Nom"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              className="mb-4"
             />
             <InputField
               placeholder="Objet"
               value={object}
               onChange={(e) => setObject(e.target.value)}
+              className="mb-4"
             />
             <InputField
               placeholder="Message"
               isTextArea={true}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              className="mb-4"
             />
 
             <div className="flex justify-end">
