@@ -9,13 +9,11 @@ const WithSubmission = ({
 }) => {
   const [fileName, setFileName] = useState(() => {
     const savedFileName = localStorage.getItem("fileName");
-    console.log("Retrieved fileName from localStorage:", savedFileName);
     return savedFileName !== null ? savedFileName : "";
   });
 
   const [fileLink, setFileLink] = useState(() => {
     const savedFileLink = localStorage.getItem("fileLink");
-    console.log("Retrieved fileLink from localStorage:", savedFileLink);
     return savedFileLink !== null ? savedFileLink : "";
   });
 
