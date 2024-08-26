@@ -95,9 +95,9 @@ function App() {
     fetchIssuesCount();
   }, [setIssues, setTotalMissionsCount]);
 
-  // const handleSidebarToggle = () => {
-  //   setIsSidebarMinimized(prev => !prev);
-  // };
+  const handleSidebarToggle = () => {
+    setIsSidebarMinimized(prev => !prev);
+  };
 
   const handleMobileSidebarToggle = () => {
     setIsMobileSidebarOpen(prev => !prev);
@@ -107,9 +107,9 @@ function App() {
     <>
       <BrowserRouter>
           {/* Sidebar pour les grands écrans */}
-          {/* <div className="hidden md:block">
+          <div className="hidden md:block">
             <Sidebar isMinimized={isSidebarMinimized} onToggle={handleSidebarToggle} />
-          </div> */}
+          </div>
 
           {/* Sidebar pour les petits écrans */}
           <div>
@@ -123,7 +123,8 @@ function App() {
           </div>
 
           <main
-            className={`flex-1 transition-all duration-300`}
+            className={`flex-1 transition-all duration-300 ${
+              isMobile ? '' : 'ml-20 p-6'}`}
           >
             <DateTime />
             <Routes>
