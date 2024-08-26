@@ -38,7 +38,7 @@ export default {
       },
       colors: {
         primary: "#1A202C",
-        secondary: "#2D3748",
+        secondary: "#0685E5",
         accent: "#38B2AC",
         brand: "#0057FF",
         blue: {
@@ -77,7 +77,7 @@ export default {
       {
         mytheme: {
           primary: "#1A202C", // Utilise la couleur définie dans TailwindCSS
-          secondary: "#2D3748",
+          secondary: "#0685E5",
         },
       },
     ],
