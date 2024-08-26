@@ -8,7 +8,7 @@ import useFavorites from "../Components/useFavorites";
 
 const Today = () => {
   const [resources, setResources] = useState([]);
-  const [dayState, setDayState] = useState("withSubmission");
+  const [dayState, setDayState] = useState("withSubmission"); // "withSubmission" ou "correction" pour verifier le fonctionnement selon le dayState (avec ou sans correction)
   const [isCountdownActive, setIsCountdownActive] = useState(true);
   const [showCorrections, setShowCorrections] = useState(() => {
     const savedShowCorrections = localStorage.getItem("showCorrections");
