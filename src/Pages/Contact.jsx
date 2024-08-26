@@ -27,6 +27,7 @@ function Contact() {
           <p className="text-center text-lg md:text-xl font-bold text-gray-800 mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </p>
+          <p className="text-lg md:text-xl font-bold text-gray-800 mb-4">Bah merde alooors !!!</p>
           <p className="text-base md:text-lg text-gray-700 mb-4">
             Pas de souci ! Nous sommes là pour vous aider.
           </p>
