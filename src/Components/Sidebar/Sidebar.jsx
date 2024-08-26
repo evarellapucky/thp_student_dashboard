@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import logo from "../../Assets/logo_thp.png";
+import logo from "../../Assets/thpLogo.svg";
+import logo2 from "../../Assets/thpLogoMinimised.svg";
 import SidebarItem from "./SidebarItem";
 import disconnect from "../../Assets/disconnect.svg";
 import profile from "../../Assets/profile.svg";
@@ -11,10 +12,10 @@ import glass_logo from "../../Assets/magnifying_glass.svg";
 import favorite_logo from "../../Assets/favorites.svg";
 import faq_logo from "../../Assets/question_mark.svg";
 import contact_logo from "../../Assets/contact.svg";
-import logo2 from "../../Assets/thpLogo2.png";
 import SidebarDropdown from "./SidebarDropdown";
 import HamburgerIcon from "./HamburgerIcon";
 import { useLocation } from "react-router-dom";
+import "./sidebar.css";
 
 const Sidebar = ({ isMinimized, onToggle }) => {
   const location = useLocation(); // Obtenir l'URL actuelle
@@ -24,7 +25,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
       <aside
         className={`fixed top-3 left-3 h-95 ${
           isMinimized ? "w-20" : "w-64"
-        } bg-slate-700 p-4 z-50 rounded-lg transition-all duration-300`}
+        } bg-slate-700 p-4 z-50 rounded-lg transition-all duration-50`}
       >
         {/* Bouton pour minimiser/maximiser la Sidebar */}
         <button
@@ -180,7 +181,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 isSidebarMinimized={isMinimized}
                 isActive={location.pathname === "/contact"} // Ajouter la prop isActive
               />
-            </ul>
+          
             {/* Bouton de déconnexion séparé */}
             <div>
               <SidebarItem
@@ -197,21 +198,39 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 isSidebarMinimized={isMinimized}
               />
             </div>
+            </ul>
 
-            {/* Logo ou autre contenu */}
             <div
-              className={`flex justify-center items-center absolute bottom-2 w-[90%] ${
-                isMinimized ? { logo2 } : ""
-              }`}
+              className="logo-container"
+              style={{
+                position: "absolute",
+                bottom: "0",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: isMinimized ? "50px" : "200px", 
+                height: isMinimized ? "100px" : "100px", 
+                overflow: "hidden",
+              }}
             >
-              <a href="https://www.thehackingproject.org">
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className={`transition-all duration-300 w-54`}
-                />
+              <a href="https://www.thehackingproject.org/">
+              <img
+                src={isMinimized ? logo2 : logo}
+                alt="Logo"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  transition: "clip-path 0.9s ease",
+                  clipPath: isMinimized
+                    ? "inset(0 -100% 0 0)"
+                    : "inset(0 0 0 0)",  
+                  transform: isMinimized ? "scale(2.5)" : "scale(1)",
+                }}
+              />
               </a>
             </div>
+
+
           </nav>
         </div>
       </aside>
