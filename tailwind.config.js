@@ -8,8 +8,8 @@ export default {
       backgroundImage: {
         "rainbow-gradient":
           "linear-gradient(90deg, #ff0000 0%, #ff4500 10%, #ff6347 20%, #ff7f50 30%, #ffa07a 40%, #ffff00 50%, #00ff00 60%, #0000ff 70%, #4b0082 80%, #8b00ff 90%, #ff00ff 100%)",
-        "blue-gradient": "linear-gradient(135deg, #0057FF 0%, #00BFFF 100%)",
-        "gray-gradient": "linear-gradient(135deg, #2D3748 0%, #4A5568 100%)",
+        "blue-gradient": "linear-gradient(180deg, #15A3FF 0%, #0081E3 100%)",
+        "gray-gradient": "linear-gradient(135deg, #5C5F63 0%, #343A40 100%)",
       },
       boxShadow: {
         inner: `
