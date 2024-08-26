@@ -5,6 +5,7 @@ import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
 import useFavorites from "../Components/useFavorites";
 import DefaultButton from "../Components/DefaultButton";
+import TooltipIcon from "../Components/TooltipIcon/TooltipIcon";
 
 const Search = () => {
   const [resources, setResources] = useState([]);
@@ -13,6 +14,14 @@ const Search = () => {
   const [searchOk, setSearchOk] = useState(false);
   const { favorites, toggleFavorite } = useFavorites();
 
+  const tooltipText = `
+  La barre de recherche te permet d'effectuer 
+  des recherches parmi toutes les ressources de THP.
+  Tu peux utiliser la syntaxe suivante :
+  title: mot-clé (recherche dans le titre)
+  content: mot-clé (recherche dans le contenu)
+  par défaut, la recherche s'effectue sur le titre et le contenu
+  `
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +30,7 @@ const Search = () => {
           "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
         );
 
-        // Extraire toutes les ressources de la nouvelle structure JSON
+        // Extraire toutes les ressources de la structure JSON dans un tableau
         const newResources = [];
         Object.values(response.data).forEach(category => {
           category.forEach(week => {
@@ -34,7 +43,6 @@ const Search = () => {
         });
 
         setResources(newResources);
-        console.log('Fetched resources:', newResources);
       } catch (error) {
         console.error("Erreur lors de la récupération des données:", error);
       }
@@ -59,19 +67,33 @@ const Search = () => {
     return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   }, []);
   
-
   const handleSearch = useCallback((e) => {
     e.preventDefault();
+  
     if (searchTerm) {
-      const regex = buildSearchRegex(searchTerm.toLowerCase());
-      const filtered = resources.filter(
-        (resource) =>
-          regex.test(resource.title.toLowerCase()) ||
-          regex.test(resource.content.toLowerCase())
-      );
+      const filtered = resources.filter((resource) => {
+        // Vérifier les préfixes dans la recherche
+        const isTitleSearch = searchTerm.toLowerCase().startsWith("title:");
+        const isContentSearch = searchTerm.toLowerCase().startsWith("content:");
+        
+        // Nettoyer la chaîne de recherche des préfixes
+        const cleanTerm = searchTerm.replace(/^(title:|content:)/i, "").trim();
+        const regex = buildSearchRegex(cleanTerm);
+  
+        if (isTitleSearch) {
+          return regex.test(resource.title.toLowerCase());
+        } else if (isContentSearch) {
+          return regex.test(resource.content.toLowerCase());
+        } else {
+          return (
+            regex.test(resource.title.toLowerCase()) ||
+            regex.test(resource.content.toLowerCase())
+          );
+        }
+      });
+  
       setFilteredResources(filtered);
       setSearchOk(true);
-      console.log('Filtered resources:', filtered); 
     } else {
       setFilteredResources([]);
       setSearchOk(false);
@@ -84,7 +106,6 @@ const Search = () => {
     setSearchOk(false);
   }, []);
 
-
   const highlightText = useCallback((text, terms) => {
     const processedTerms = terms.map(term => {
       if (term.endsWith('*')) {
@@ -94,12 +115,26 @@ const Search = () => {
         return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       }
     });
-  
+
     const regex = new RegExp(`(${processedTerms.join('|')})`, 'gi');
     return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
   }, []);
 
-  const termsArray = useMemo(() => searchTerm.split(/\s+/), [searchTerm]);
+  const termsArray = useMemo(() => {
+    return searchTerm.replace(/^(title:|content:)/i, "").trim().split(/\s+/);
+  }, [searchTerm]);
+
+  const context = useMemo(() => {
+    if (searchTerm.toLowerCase().startsWith("title:")) {
+      return 'title';
+    } else if (searchTerm.toLowerCase().startsWith("content:")) {
+      return 'content';
+    } else {
+      return 'both';
+    }
+  }, [searchTerm]);
+
+  
 
   return (
     <div className="p-4 md:p-8">
@@ -108,10 +143,11 @@ const Search = () => {
           Rechercher une ressource
         </h1>
         <div className="w-full md:w-auto">
-          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center p-2 md:p-4">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center gap-2 p-2 md:p-4">
+          <TooltipIcon text={tooltipText} />
             <input
               type="text"
-              placeholder="Recherche..."
+              placeholder="title: javascript"
               className="input input-bordered w-full md:w-96 mb-2 md:mb-0 md:pl-10"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -131,9 +167,9 @@ const Search = () => {
             filteredResources.map((resource, index) => (
               <CollapseBarWithFavorite
                 key={index}
-                title={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.title, termsArray) }} />}
-                content={<span dangerouslySetInnerHTML={{ __html: highlightText(resource.content, termsArray) }} />}
-                borderColor="border-blue-500"
+                title={<span dangerouslySetInnerHTML={{ __html: context === 'title' || context === 'both' ? highlightText(resource.title, termsArray) : resource.title }} />}
+              content={<span dangerouslySetInnerHTML={{ __html: context === 'content' || context === 'both' ? highlightText(resource.content, termsArray) : resource.content }} />}
+              borderColor="border-blue-500"
                 isFavorite={favorites.includes(resource.id)}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               
