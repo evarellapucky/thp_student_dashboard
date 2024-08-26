@@ -5,6 +5,7 @@ import CollapseBar from "../Components/CollapseBar";
 import { Link } from "react-router-dom";
 import useFavorites from "../Components/useFavorites";
 import DefaultButton from "../Components/DefaultButton";
+import TooltipIcon from "../Components/TooltipIcon/TooltipIcon";
 
 const Search = () => {
   const [resources, setResources] = useState([]);
@@ -13,6 +14,14 @@ const Search = () => {
   const [searchOk, setSearchOk] = useState(false);
   const { favorites, toggleFavorite } = useFavorites();
 
+  const tooltipText = `
+  La barre de recherche te permet d'effectuer 
+  des recherches parmi toutes les ressources de THP.
+  Tu peux utiliser la syntaxe suivante :
+  title: mot-clé (recherche dans le titre)
+  content: mot-clé (recherche dans le contenu)
+  par défaut, la recherche s'effectue sur le titre et le contenu
+  `
 
   useEffect(() => {
     const fetchData = async () => {
@@ -134,10 +143,11 @@ const Search = () => {
           Rechercher une ressource
         </h1>
         <div className="w-full md:w-auto">
-          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center p-2 md:p-4">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center gap-2 p-2 md:p-4">
+          <TooltipIcon text={tooltipText} />
             <input
               type="text"
-              placeholder="Recherche..."
+              placeholder="title: javascript"
               className="input input-bordered w-full md:w-96 mb-2 md:mb-0 md:pl-10"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
