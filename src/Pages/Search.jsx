@@ -21,7 +21,7 @@ const Search = () => {
           "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
         );
 
-        // Extraire toutes les ressources de la nouvelle structure JSON
+        // Extraire toutes les ressources de la structure JSON dans un tableau
         const newResources = [];
         Object.values(response.data).forEach(category => {
           category.forEach(week => {
@@ -59,24 +59,39 @@ const Search = () => {
     return new RegExp(andTerms.map(term => `(?=.*${term})`).join(""), "i");
   }, []);
   
-
   const handleSearch = useCallback((e) => {
     e.preventDefault();
+  
     if (searchTerm) {
-      const regex = buildSearchRegex(searchTerm.toLowerCase());
-      const filtered = resources.filter(
-        (resource) =>
-          regex.test(resource.title.toLowerCase()) ||
-          regex.test(resource.content.toLowerCase())
-      );
+      const filtered = resources.filter((resource) => {
+        // Vérifier les préfixes dans la recherche
+        const isTitleSearch = searchTerm.toLowerCase().startsWith("title:");
+        const isContentSearch = searchTerm.toLowerCase().startsWith("content:");
+        
+        // Nettoyer la chaîne de recherche des préfixes
+        let cleanTerm = searchTerm.replace(/^(title:|content:)/i, "").trim();
+        const regex = buildSearchRegex(cleanTerm);
+  
+        if (isTitleSearch) {
+          return regex.test(resource.title.toLowerCase());
+        } else if (isContentSearch) {
+          return regex.test(resource.content.toLowerCase());
+        } else {
+          return (
+            regex.test(resource.title.toLowerCase()) ||
+            regex.test(resource.content.toLowerCase())
+          );
+        }
+      });
+  
       setFilteredResources(filtered);
       setSearchOk(true);
-      console.log('Filtered resources:', filtered); 
     } else {
       setFilteredResources([]);
       setSearchOk(false);
     }
   }, [searchTerm, resources, buildSearchRegex]);
+
 
   const handleInputClick = useCallback(() => {
     setSearchTerm("");
