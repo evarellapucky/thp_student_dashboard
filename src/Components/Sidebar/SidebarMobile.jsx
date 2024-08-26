@@ -26,9 +26,9 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
         onClick={onToggle}
       ></div>
       <aside
-        className={`fixed top-0 left-0 w-64 h-full bg-black p-4 z-50 transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-64 h-full bg-slate-800 p-4 z-50 transition-transform duration-300 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        } flex flex-col`}
       >
         <button
           onClick={onToggle}
@@ -37,9 +37,9 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
           <HamburgerIcon isOpen={isOpen} color={isOpen ? "white" : "black"} />
         </button>
 
-        <div className="flex flex-col h-full">
-          <div className="flex justify-center items-center my-4">
-            <div className="avatar mb-6">
+        <div className="flex flex-col flex-1 mt-12">
+          <div className="flex justify-center items-center mb-8">
+            <div className="avatar">
               <div className="w-16 rounded-full">
                 <img
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
@@ -141,7 +141,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
             </ul>
           </nav>
 
-          <div className="flex justify-center items-center mb-auto">
+          <div className="flex justify-center items-center mt-auto mb-4">
             <a href="https://www.thehackingproject.org">
               <img src={logo} alt="Logo" className="w-32" />
             </a>
