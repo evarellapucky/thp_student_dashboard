@@ -51,6 +51,84 @@
           "answer": "lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem."
         }
       ]
+    },
+    {
+      "name": "Projet",
+      "questions": [
+        {
+          "question": "Quels sont les projets les plus importants à réussir ?",
+          "answer": "Tous les projets sont importants pour votre apprentissage, mais certains, comme le projet final, auront plus de poids pour votre portfolio."
+        },
+        {
+          "question": "Puis-je soumettre un projet personnel pour validation ?",
+          "answer": "Oui, tu peux soumettre un projet personnel pour validation s'il respecte les critères d'évaluation de The Hacking Project."
+        }
+      ]
+    },
+    {
+      "name": "Mentorat",
+      "questions": [
+        {
+          "question": "Comment puis-je obtenir un mentor ?",
+          "answer": "Les mentors sont assignés en fonction de la disponibilité et de la demande. Tu peux faire une demande via la plateforme."
+        },
+        {
+          "question": "Quelle est la fréquence des sessions avec un mentor ?",
+          "answer": "La fréquence des sessions dépend de la disponibilité du mentor et de tes besoins spécifiques. En général, il est recommandé de planifier une session par semaine."
+        }
+      ]
+    },
+    {
+      "name": "Évaluations",
+      "questions": [
+        {
+          "question": "Comment se déroulent les évaluations ?",
+          "answer": "Les évaluations sont basées sur les projets soumis et incluent des critères comme la qualité du code, l'innovation, et la résolution de problèmes."
+        },
+        {
+          "question": "Puis-je refaire une évaluation si je n'obtiens pas la note souhaitée ?",
+          "answer": "Oui, tu peux refaire une évaluation, mais il est recommandé de bien revoir les points de correction avant de la soumettre à nouveau."
+        }
+      ]
+    },
+    {
+      "name": "Support technique",
+      "questions": [
+        {
+          "question": "Que faire si j'ai un problème technique avec un logiciel ?",
+          "answer": "Si tu rencontres un problème technique, poste-le sur #support-technique. L'équipe ou la communauté te répondra dès que possible."
+        },
+        {
+          "question": "Puis-je demander de l'aide pour configurer mon environnement de développement ?",
+          "answer": "Oui, il y a un guide complet pour configurer ton environnement, mais si tu as besoin d'aide supplémentaire, n'hésite pas à demander sur #support-technique."
+        }
+      ]
+    },
+    {
+      "name": "Communauté",
+      "questions": [
+        {
+          "question": "Comment puis-je participer aux événements de la communauté ?",
+          "answer": "Tu peux t'inscrire aux événements via la rubrique 'Événements' sur la plateforme. Des annonces sont également faites sur Slack et Discord."
+        },
+        {
+          "question": "Y a-t-il des rencontres en personne ?",
+          "answer": "Oui, des rencontres en personne sont organisées régulièrement dans plusieurs villes. Tu peux consulter le calendrier pour voir les prochaines rencontres près de chez toi."
+        }
+      ]
+    },
+    {
+      "name": "Carrière",
+      "questions": [
+        {
+          "question": "Comment puis-je obtenir de l'aide pour trouver un emploi après la formation ?",
+          "answer": "Nous offrons des sessions de coaching pour t'aider dans ta recherche d'emploi, y compris la rédaction de CV, la préparation aux entretiens, et la recherche d'opportunités."
+        },
+        {
+          "question": "Y a-t-il un réseau d'anciens élèves auquel je peux adhérer ?",
+          "answer": "Oui, nous avons un réseau actif d'anciens élèves avec des événements réguliers, des offres d'emploi, et des opportunités de mentorat."
+        }
+      ]
     }
   ]
 }

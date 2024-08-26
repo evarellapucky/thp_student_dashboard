@@ -7,8 +7,6 @@ function CategoryList() {
   const [faqData, setFaqData] = useState({ categories: [] });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-
 
   useEffect(() => {
     const fetchFaqData = async () => {
@@ -43,34 +41,15 @@ function CategoryList() {
         <div
           key={index}
           className="mb-4"
-          onMouseEnter={() => setHoveredCategory(category.name)}
-          onMouseLeave={() => setHoveredCategory(null)}
         >
           <Link 
             to={`/faq/${encodeURIComponent(category.name)}`}
-            className="collapse collapse-arrow bg-base-200 mb-4 border border-primary"
+            className="collapse bg-base-200 mb-4 border border-primary"
           >
             <div className="collapse-title text-xl font-medium bg-slate-100 hover:bg-blue-500 cursor-pointer">
               {category.name}
             </div>
           </Link>
-
-          {/* Previsualisation de la catégorie */}
-          <div
-            className={`transition-all duration-300 ease-in-out ${hoveredCategory === category.name ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}
-          >
-            <div className="bg-white">
-              <ul className="list-disc pl-5">
-                {category.questions.map((q, qIndex) => (
-                  <li key={qIndex} className="mb-1 text-gray-700">
-                    <p>
-                      {q.question}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
         </div>
       ))
     ) : (
