@@ -10,7 +10,7 @@ function Journey() {
     </div>
   </div>
   <div className="card-body">
-    <h2 className="card-title mb-2 text-lg sm:text-xl">Mon Parcours</h2>
+    <h4 className="card-title mb-2">Mon Parcours</h4>
     <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5">
       <div
         className="radial-progress text-blue-600"
@@ -19,9 +19,9 @@ function Journey() {
       >
         75%
       </div>
-      <div className="flex-1 text-sm sm:text-base">
+      <p className="flex-1">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </div>
+      </p>
     </div>
   </div>
 </div>

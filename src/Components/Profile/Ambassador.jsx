@@ -56,7 +56,7 @@ function Ambassador() {
     <>
       <div className="flex flex-wrap justify-between">
         <div className='flex flex-row gap-3 items-center'>    
-          <h1 className='font-bold text-black text-3xl ml-5'>Ambassadeur</h1>
+          <h1 className='ml-5'>Ambassadeur</h1>
           <TooltipIcon text={tutorialText} />
         </div>
         <div className="border-1 rounded-lg flex flex-wrap justify-between p-3 w-full sm:w-auto gap-2">

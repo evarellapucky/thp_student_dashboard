@@ -139,7 +139,7 @@ const Search = () => {
   return (
     <div className="p-4 md:p-8">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start flex-wrap">
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">
+        <h1 className="mb-4 md:mb-8">
           Rechercher une ressource
         </h1>
         <div className="w-full md:w-auto">

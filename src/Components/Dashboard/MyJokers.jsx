@@ -10,13 +10,13 @@ const MyJokers = ({ count = 3, total = 3 }) => {
   return (
     <div className="card bg-base-100 w-5/6 sm:w-80 h-56 shadow-out">
       <div className="relative">
-        <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-red-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
-         <img src={my_jokers_icon} alt="Icône jokers" />
+        <div className="absolute py-2 px-2 text-white top-0 left-0 bg-red-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
+          <img src={my_jokers_icon} alt="Icône jokers" />
         </div>
       </div>
 
       <div className="card-body">
-        <h2 className="card-title text-lg sm:text-xl">Mes jokers</h2>
+        <h4 className="card-title">Mes jokers</h4>
         <div className="flex items-center justify-center"></div>
         <div className="flex flex-row justify-center gap-2 mt-2">
           {jokersToDisplay.map((_, index) => (
