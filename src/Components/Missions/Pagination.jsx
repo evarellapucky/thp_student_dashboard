@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Pagination.css';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -40,7 +41,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     <>
       <div className="flex flex-col items-center sm:flex-row ">
         <button
-              className="join-item btn"
+              className="join-item btn disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
             >
@@ -119,7 +120,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
           )}
         </div>
         <button
-            className="join-item btn"
+            className="join-item btn disabled:bg-gray-300 disabled:cursor-not-allowed"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >
