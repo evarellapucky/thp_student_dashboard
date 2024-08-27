@@ -37,8 +37,12 @@ export default {
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       colors: {
-        primary: "#1A202C",
-        secondary: "#0685E5",
+        primary: "#343A40",
+        secondary: "#007BFF",
+        info: "#4EB8DF",
+        success: "#4ECB5A",
+        warning: "#D5C107",
+        error: "#E64B4B",
         accent: "#38B2AC",
         brand: "#0057FF",
         blue: {
@@ -76,8 +80,14 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#1A202C", // Utilise la couleur définie dans TailwindCSS
-          secondary: "#0685E5",
+        primary: "#343A40",
+        secondary: "#007BFF",
+        info: "#4EB8DF",
+        success: "#4ECB5A",
+        warning: "#D5C107",
+        error: "#E64B4B",
+        accent: "#38B2AC",
+        brand: "#0057FF",
         },
       },
     ],
