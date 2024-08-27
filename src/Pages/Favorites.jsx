@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import useFavorites from "../Components/useFavorites";
 import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
@@ -44,31 +44,31 @@ const Favorites = () => {
   }
 
   if (error) {
-    return <p className="text-red-500">{error}</p>;
+    return <p className="text-red">{error}</p>;
   }
 
 
   
     return (
-      <div className="p-4 md:p-8">
-        <h1 className="mb-4 md:mb-8">Mes Favoris</h1>
-        <div className="flex flex-col p-2 md:p-4">
-            {favoriteResources.length > 0 ? (
-              favoriteResources.map((resource) => (
-                <CollapseBarWithFavorite
-                  key={resource.id}
-                  title={resource.title}
-                  content={resource.content}
-                  borderColor="border-blue-500"
-                  isFavorite={true}
-                  toggleFavorite={() => toggleFavorite(resource.id)}
-                />
-              ))
-            ) : (
-              <p className="text-gray-500">Vous n'avez aucun favori pour le moment.</p>
-            )}
-        </div>
+       <div className="p-4 md:p-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Mes Favoris</h1>
+      <div className="flex flex-col p-2 md:p-4">
+          {favoriteResources.length > 0 ? (
+            favoriteResources.map((resource) => (
+              <CollapseBarWithFavorite
+                key={resource.id}
+                title={resource.title}
+                content={resource.content}
+                borderColor="border-secondary"
+                isFavorite={true}
+                toggleFavorite={() => toggleFavorite(resource.id)}
+              />
+            ))
+          ) : (
+            <p className="text-gray-darker">Vous n'avez aucun favori pour le moment.</p>
+          )}
       </div>
+    </div>
     )
 }
 

@@ -117,7 +117,7 @@ const Search = () => {
     });
 
     const regex = new RegExp(`(${processedTerms.join('|')})`, 'gi');
-    return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
+    return text.replace(regex, match => `<span class="bg-yellow">${match}</span>`);
   }, []);
 
   const termsArray = useMemo(() => {
@@ -160,7 +160,7 @@ const Search = () => {
       </div>
       <div className="flex flex-col p-2 md:p-4">
           {searchTerm === "" ? (
-            <p className="text-gray-500">
+            <p className="text-gray-dark">
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           ) : searchOk && filteredResources.length > 0 ? (
@@ -169,7 +169,7 @@ const Search = () => {
                 key={index}
                 title={<span dangerouslySetInnerHTML={{ __html: context === 'title' || context === 'both' ? highlightText(resource.title, termsArray) : resource.title }} />}
               content={<span dangerouslySetInnerHTML={{ __html: context === 'content' || context === 'both' ? highlightText(resource.content, termsArray) : resource.content }} />}
-              borderColor="border-blue-500"
+              borderColor="border-secondary"
                 isFavorite={favorites.includes(resource.id)}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               
@@ -178,12 +178,12 @@ const Search = () => {
           ) : searchOk && filteredResources.length === 0 ? (
             <CollapseBar
               title="Je ne trouve pas ce que je recherche"
-              borderColor="border-red-500"
+              borderColor="border-secondary"
               content={
                 <div>
                   <p>
                     Aucune ressource ne correspond à ta recherche, tu peux réaliser une{" "}
-                    <Link to="/missions" className="text-blue-500 underline">
+                    <Link to="/missions" className="underline">
                       mission
                     </Link>{" "}
                     pour créer une ressource.
@@ -192,7 +192,7 @@ const Search = () => {
               }
             />
           ) : (
-            <p className="text-gray-500">
+            <p className="text-gray">
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           )}

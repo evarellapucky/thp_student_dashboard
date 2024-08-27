@@ -7,10 +7,13 @@ import DefaultButton from "../DefaultButton";
 
 function Leaderboard() {
   const [data, setData] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' }); //tri par defaut sur 'rank'
   const [currentPage, setCurrentpage] = useState(1);
   const [totalPages, setTotalPages] = useState(1)
   const [linesPerPage, setlinesPerPage] = useState(10);
+  const [myPrenom, setMyPrenom] = useState('');
+  const [myId, setMyId] = useState("16"); // l'utilisateur par defaut
+  const [myData, setMyData] = useState({})
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,6 +23,9 @@ function Leaderboard() {
                 "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json"
             );
             // console.log(response.data.users);
+            const getMyData = response.data.users.find(data => data.id === myId);
+            setMyData(getMyData);
+            setMyPrenom(getMyData.prenom)
             const selectedData = response.data.users.map(user => ({
               nom: user.nom,
               prenom: user.prenom,
@@ -74,34 +80,35 @@ function Leaderboard() {
     setlinesPerPage(Number(e.target.value));
     setCurrentpage(1);
   }
-
   
   return(
     <>
       <div className="flex flex-wrap justify-between items-center">
         <h1>Leaderboard</h1>
         <Link to="/shop">
-          <DefaultButton name="Boutique" color="btn-info"/>
+          <DefaultButton name="Boutique" color="btn-primary"/>
         </Link>
+      </div>
+      <div className="text-center flex justify-center">
+        <h3 className="border-1 shadow-lightInner rounded-lg flex-col sm:flex-row p-3 w-full sm:w-auto">Mon rang : {myData.rank}</h3>
       </div>
       <div className='flex items-center gap-2'>
         <label htmlFor="linesPerPage">Ligne par Page:</label>
-
         <select 
           className='
             px-3 
             py-2 
             border 
-            border-gray-300 
+            border-gray-medium 
             rounded-md 
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary
             text-sm
             bg-white 
-            text-gray-700' 
+            text-gray-darker' 
           value={linesPerPage} 
           onChange={handlelinesPerPageChange}
         >
@@ -209,7 +216,10 @@ function Leaderboard() {
           <tbody>
 
             {dataSortedByLines.map((data, index) => (
-              <tr key={index} className="hover">
+              <tr 
+                key={index} 
+                className={`${data.prenom === myPrenom ? 'bg-blue-light' : ''} hover:bg-gray-light`}
+              >
                 <th scope="row">{data.rank}</th>
                 <td>{data.past_30_days}</td>
                 <td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>

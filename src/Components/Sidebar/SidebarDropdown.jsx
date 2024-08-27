@@ -14,7 +14,7 @@ const SidebarDropdown = ({ title, icon, isSidebarMinimized, children }) => {
     <>
       <li
         className={`p-2 rounded cursor-pointer transition-transform duration-200 ${
-          isSidebarMinimized ? "hover:scale-125" : "hover:bg-blue-700"
+          isSidebarMinimized ? "hover:scale-125" : "hover:bg-secondary"
         }`}
         onClick={handleToggle}
       >

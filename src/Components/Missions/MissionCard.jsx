@@ -39,24 +39,24 @@ const MissionCard = ({
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-5xl mx-auto p-4">
       <div className="flex h-full">
         {/* Section de gauche (1/3) */}
-        <div className="p-6 bg-gray-100 w-2/5">
-          <p className="text-gray-600 text-sm mb-2"># {number}</p>
-          <h4 className="font-bold text-gray-800 mb-2">
+        <div className="p-6 bg-gray-light w-2/5">
+          <p className="text-gray-darker text-sm mb-2"># {number}</p>
+          <h4 className="font-bold text-gray-darker mb-2">
             <a href={html_url} target="_blank" rel="noopener noreferrer">
               {title}
             </a>
           </h4>
-          <p className="text-gray-600 text-sm mb-2">Last Updated: {update}</p>
-          <p className="text-gray-600 text-sm mb-2">State: {state}</p>
-          <p className="text-gray-600 text-sm mb-2 flex flew-row items-center gap-2">
+          <p className="text-gray-darker text-sm mb-2">Last Updated: {update}</p>
+          <p className="text-gray-darker text-sm mb-2">State: {state}</p>
+          <p className="text-gray-darker text-sm mb-2 flex flew-row items-center gap-2">
             <img src={assignees_icon} alt="Assignees icon"/>
             <span>{assigneesCount}</span>
           </p>
-          <p className="text-gray-600 text-sm mb-2 flex flex-row items-center gap-2">
+          <p className="text-gray-darker text-sm mb-2 flex flex-row items-center gap-2">
             <img src={comments_icon} alt="Comments icon"/>
             <span>{commentsCount}</span>
           </p>
-          <div className="text-gray-600 text-sm">
+          <div className="text-gray-darker text-sm">
             <p>Labels:</p>
             <div className="flex flex-wrap gap-2 mt-2">
               {labelArray.length > 0 ? (
@@ -79,14 +79,14 @@ const MissionCard = ({
         </div>
         {/* Section de droite (2/3) */}
         <div className="flex flex-col p-6 w-3/5">
-          <p className="text-gray-600 text-sm mb-2 flex justify-end">
+          <p className="text-gray-darker text-sm mb-2 flex justify-end">
             Assignees: {assignees || "None"}
           </p>
-          <p className="block text-gray-600">Description:</p>
+          <p className="block text-gray-darker">Description:</p>
           {/* <div className='truncate'> */}
           <ReactMarkdown>{trucatedDescription}</ReactMarkdown>
           {/* </div> */}
-          <p className="text-gray-600 text-sm mb-2 mt-auto flex justify-end items-end">
+          <p className="text-gray-darker text-sm mb-2 mt-auto flex justify-end items-end">
             Created by: {creator}
           </p>
         </div>

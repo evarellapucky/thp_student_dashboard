@@ -71,7 +71,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
       <aside
         className={`fixed top-3 left-3 h-95 ${
           isMinimized ? "w-20" : "w-64"
-        } bg-slate-700 p-4 z-50 rounded-lg transition-all duration-50`}
+        } bg-gray-gradient p-4 z-50 rounded-lg transition-all duration-50`}
       >
         <button
           onClick={onToggle}
@@ -224,22 +224,23 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 isSidebarMinimized={isMinimized}
                 isActive={location.pathname === "/contact"}
               />
-
-              <div>
-                <SidebarItem
-                  link="/logout"
-                  text="Déconnexion"
-                  icon={
-                    <img
-                      src={disconnect}
-                      alt="disconnect"
-                      className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
-                    />
-                  }
-                  textColor="text-red-500"
-                  isSidebarMinimized={isMinimized}
-                />
-              </div>
+          
+            {/* Bouton de déconnexion séparé */}
+            <div>
+              <SidebarItem
+                link="/logout"
+                text="Déconnexion"
+                icon={
+                  <img
+                    src={disconnect}
+                    alt="disconnect"
+                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  />
+                }
+                textColor="text-red"
+                isSidebarMinimized={isMinimized}
+              />
+            </div>
             </ul>
 
             <div
