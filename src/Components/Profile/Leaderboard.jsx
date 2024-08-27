@@ -11,6 +11,7 @@ function Leaderboard() {
   const [currentPage, setCurrentpage] = useState(1);
   const [totalPages, setTotalPages] = useState(1)
   const [linesPerPage, setlinesPerPage] = useState(10);
+  const myPrenom = "Samantha";
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -209,7 +210,10 @@ function Leaderboard() {
           <tbody>
 
             {dataSortedByLines.map((data, index) => (
-              <tr key={index} className="hover">
+              <tr 
+                key={index} 
+                className={`${data.prenom === myPrenom ? 'bg-blue-200' : ''} hover:bg-gray-200`}
+              >
                 <th scope="row">{data.rank}</th>
                 <td>{data.past_30_days}</td>
                 <td>{`${data.prenom} ${data.nom.charAt(0).toUpperCase()}.`}</td>

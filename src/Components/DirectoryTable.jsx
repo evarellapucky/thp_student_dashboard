@@ -117,7 +117,7 @@ function DirectoryTable({ data }) {
   return(
     <div className="overflow-x-auto my-5">
       <button onClick={resetSort} className="underline">Reset Sort</button>
-      <table className="table-auto w-full">
+      <table className="table w-full">
         <thead>
           <tr>
             {columns.map((column,index) => (
@@ -148,7 +148,7 @@ function DirectoryTable({ data }) {
         </thead>
         <tbody>
           {currentItems.map((item, index) => (
-            <tr key={index} className="hover">
+            <tr key={index} className="hover:bg-gray-200">
               {columns.map((column,index) => (
                 <td key={index} className="px-4 py-2">{typeof item[column] === 'string' ? parse(item[column]) : item[column]}</td>
               ))}

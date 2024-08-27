@@ -9,6 +9,7 @@ const Historique = () => {
 
   return (
     <div className="overflow-x-auto">
+      <h1>Historique</h1>
       <div className='flex justify-end items-center mb-4'>
       <BackButton />
       </div>
