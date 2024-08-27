@@ -12,6 +12,8 @@ function Leaderboard() {
   const [totalPages, setTotalPages] = useState(1)
   const [linesPerPage, setlinesPerPage] = useState(10);
   const myPrenom = "Samantha";
+  const [myId, setMyId] = useState("16");
+  const [myData, setMyData] = useState({})
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,6 +23,8 @@ function Leaderboard() {
                 "https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json"
             );
             // console.log(response.data.users);
+            const getMyData = response.data.users.find(data => data.id === myId);
+            setMyData(getMyData);
             const selectedData = response.data.users.map(user => ({
               nom: user.nom,
               prenom: user.prenom,
@@ -75,7 +79,6 @@ function Leaderboard() {
     setlinesPerPage(Number(e.target.value));
     setCurrentpage(1);
   }
-
   
   return(
     <>
@@ -85,9 +88,11 @@ function Leaderboard() {
           <DefaultButton name="Boutique" color="btn-info"/>
         </Link>
       </div>
+      <div className="text-center flex justify-center">
+        <h3 className="border-1 shadow-lightInner rounded-lg flex-col sm:flex-row p-3 w-full sm:w-auto">Mon rang : {myData.rank}</h3>
+      </div>
       <div className='flex items-center gap-2'>
         <label htmlFor="linesPerPage">Ligne par Page:</label>
-
         <select 
           className='
             px-3 
@@ -212,7 +217,7 @@ function Leaderboard() {
             {dataSortedByLines.map((data, index) => (
               <tr 
                 key={index} 
-                className={`${data.prenom === myPrenom ? 'bg-blue-200' : ''} hover:bg-gray-200`}
+                className={`${data.prenom === myPrenom ? 'bg-blue-light' : ''} hover:bg-gray-light`}
               >
                 <th scope="row">{data.rank}</th>
                 <td>{data.past_30_days}</td>

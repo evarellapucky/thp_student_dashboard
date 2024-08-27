@@ -148,7 +148,7 @@ function DirectoryTable({ data }) {
         </thead>
         <tbody>
           {currentItems.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-200">
+            <tr key={index} className="hover:bg-gray-light">
               {columns.map((column,index) => (
                 <td key={index} className="px-4 py-2">{typeof item[column] === 'string' ? parse(item[column]) : item[column]}</td>
               ))}
