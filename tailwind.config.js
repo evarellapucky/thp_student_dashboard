@@ -45,6 +45,7 @@ export default {
         error: "#E64B4B",
         accent: "#38B2AC",
         brand: "#0057FF",
+        lightgray: "#E0E0E0", // pour les tabs du profil, car le composant tab récupère la couleur ds la confid tailwind et non daisy + "gray-light" ne fonctionne pas
         blue: {
           light: "#E6F1FF",
           DEFAULT: "#0057FF",
@@ -90,6 +91,7 @@ export default {
         error: "#E64B4B",
         accent: "#38B2AC",
         brand: "#0057FF",
+        
         },
       },
     ],

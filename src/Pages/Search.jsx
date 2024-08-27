@@ -117,7 +117,7 @@ const Search = () => {
     });
 
     const regex = new RegExp(`(${processedTerms.join('|')})`, 'gi');
-    return text.replace(regex, match => `<span class="bg-yellow-300">${match}</span>`);
+    return text.replace(regex, match => `<span class="bg-yellow">${match}</span>`);
   }, []);
 
   const termsArray = useMemo(() => {
