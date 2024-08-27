@@ -42,7 +42,7 @@ function Agenda() {
                 <p className="mb-4">{weekData.descritption}</p>
                 <AgendaList days={weekData.days} moduleName={moduleName} weekIndex={index} />
               </div>} 
-              borderColor="border-blue-500"
+              borderColor="border-secondary"
             />
           ))}
         </div>
