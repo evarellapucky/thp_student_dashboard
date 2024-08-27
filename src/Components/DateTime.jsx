@@ -15,8 +15,8 @@ const DateTime = () => {
   }, []);
 
   return (
-    <div className="flex flex-row justify-center items-center text-center mb-12 text-gray-800 rounded-lg">
-      <div className='mr-2 bg-gray-100 p-2 rounded-lg'>
+    <div className="flex flex-row justify-center items-center text-center mt-2 mb-12 text-gray-800 rounded-lg">
+      <div className="ml-2 bg-gray-100 p-2 rounded-lg">
       <p className="text-1xl font-normal">
         {format(currentDateTime, 'dd MMMM yyyy', { locale: fr })}
       </p>

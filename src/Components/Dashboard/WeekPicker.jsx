@@ -50,7 +50,7 @@ const WeekPicker = ({ onWeekChange }) => {
   };
 
   return (
-    <div className='WeekPicker ml-4 flex items-center gap-3'>
+    <div className='WeekPicker ml-4 flex flex-col md:flex-row justify-center items-center gap-3'>
       <h2>Semaine :</h2>
       <DatePicker
         placeholder='Week picker'
@@ -58,6 +58,8 @@ const WeekPicker = ({ onWeekChange }) => {
         value={objWeek.date}
         onChange={onChange}
         renderValue={renderValue}
+        className="relative"
+        menuClassName="absolute left-1/2 transform -translate-x-7"
       />
     </div>
   );
