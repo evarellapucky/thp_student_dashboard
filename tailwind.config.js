@@ -31,6 +31,7 @@ export default {
       },
       height: {
         95: "98%",  // Remplacé par 95% pour cohérence avec votre intention
+        88: "360px",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
