@@ -50,7 +50,7 @@ const WeekPicker = ({ onWeekChange }) => {
   };
 
   return (
-    <div className='WeekPicker mr-12 flex items-center gap-3'>
+    <div className='WeekPicker ml-4 flex items-center gap-3'>
       <h2>Semaine :</h2>
       <DatePicker
         placeholder='Week picker'
