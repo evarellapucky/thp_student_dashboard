@@ -7,8 +7,8 @@ function Points() {
 <div className="card bg-base-100 w-5/6 sm:w-80 h-44 shadow-out">
   
     <div className="relative">
-      <div className="absolute py-2 px-2 text-white top-0 left-0 bg-yellow-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
-        <img src={mes_points_icon} alt="Icône points" />
+      <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-warning rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
+    <img src={mes_points_icon} alt="Icône points" />
       </div>
     </div>
     <Link to="/shop">

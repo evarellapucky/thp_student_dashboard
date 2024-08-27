@@ -70,7 +70,7 @@ const WithSubmission = ({
             <button
               type="button"
               onClick={handleSubmit}
-              className="btn bg-green-500 btn-circle shadow-lg hover:bg-white hover:border-green-500 border border-transparent group"
+              className="btn bg-green btn-circle shadow-lg hover:bg-white hover:border-green border border-transparent group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ const WithSubmission = ({
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="white"
-                className="size-6 group-hover:stroke-green-500"
+                className="size-6 group-hover:stroke-green"
               >
                 <path
                   strokeLinecap="round"
@@ -99,7 +99,7 @@ const WithSubmission = ({
                 href={projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+                className="text-blue hover:underline"
               >
                 {projectLink}
               </a>

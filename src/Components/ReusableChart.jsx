@@ -1,4 +1,5 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import PropTypes from 'prop-types';
 
 const ReusableChart = ({ data, xAxisKey, yAxisKey, chartColor, tooltipFormatter }) => {
     return (
@@ -28,6 +29,14 @@ const ReusableChart = ({ data, xAxisKey, yAxisKey, chartColor, tooltipFormatter 
             </ResponsiveContainer>
         </div>
     );
+};
+
+ReusableChart.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  xAxisKey: PropTypes.string.isRequired,
+  yAxisKey: PropTypes.string.isRequired, 
+  chartColor: PropTypes.string.isRequired,
+  tooltipFormatter: PropTypes.func, 
 };
 
 export default ReusableChart;
