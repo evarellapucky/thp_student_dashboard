@@ -10,14 +10,16 @@ function Journey({ percentage, journey }) {
     </div>
   </div>
   <div className="card-body">
-    <h4 className="card-title mb-2">Mon Parcours</h4>
+    <h4 className="card-title mb-2">
+      Mon Parcours
+    </h4>
     <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
       <div
         className="radial-progress text-secondary"
         style={{ "--value": percentage }}
         role="progressbar"
       >
-        {percentage}%
+      {percentage}%
       </div>
       <p className="flex-1 flex justify-center">
         {journey}
@@ -25,8 +27,6 @@ function Journey({ percentage, journey }) {
       </div>
     </div>
   </div>
-</div>
-
   );
 }
 
