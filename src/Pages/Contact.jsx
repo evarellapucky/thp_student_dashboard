@@ -24,14 +24,13 @@ function Contact() {
       <div className="flex flex-col md:flex-row justify-evenly items-start md:space-x-6 px-4">
         {/* Information Section */}
         <div className="flex flex-col w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
-          <p className="text-center text-lg md:text-xl font-bold text-gray-800 mb-4">
+          <h4 className="text-center font-bold text-gray-800 mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
-          </p>
-          <p className="text-lg md:text-xl font-bold text-gray-800 mb-4">Bah merde alooors !!!</p>
-          <p className="text-base md:text-lg text-gray-700 mb-4">
+          </h4>
+          <p className="mb-4">
             Pas de souci ! Nous sommes là pour vous aider.
           </p>
-          <p className="text-base md:text-lg text-gray-700 mb-4">
+          <p className="mb-4">
             Si vous avez des questions supplémentaires ou si vous avez besoin de plus d'informations, c'est ici que ça se passe. N'hésitez pas à nous contacter, et nous vous répondrons dans les plus brefs délais.
           </p>
         </div>
@@ -40,7 +39,7 @@ function Contact() {
         <div className="flex w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="mb-6">
-              <h2 className="text-xl md:text-2xl font-bold mb-4">Nous contacter</h2>
+              <h2 className="font-bold mb-4">Nous contacter</h2>
             </div>
 
             <InputField

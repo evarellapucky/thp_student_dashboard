@@ -50,25 +50,25 @@ const Favorites = () => {
 
   
     return (
-       <div className="p-4 md:p-8">
-      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">Mes Favoris</h1>
-      <div className="flex flex-col p-2 md:p-4">
-          {favoriteResources.length > 0 ? (
-            favoriteResources.map((resource) => (
-              <CollapseBarWithFavorite
-                key={resource.id}
-                title={resource.title}
-                content={resource.content}
-                borderColor="border-blue-500"
-                isFavorite={true}
-                toggleFavorite={() => toggleFavorite(resource.id)}
-              />
-            ))
-          ) : (
-            <p className="text-gray-500">Vous n'avez aucun favori pour le moment.</p>
-          )}
+      <div className="p-4 md:p-8">
+        <h1 className="mb-4 md:mb-8">Mes Favoris</h1>
+        <div className="flex flex-col p-2 md:p-4">
+            {favoriteResources.length > 0 ? (
+              favoriteResources.map((resource) => (
+                <CollapseBarWithFavorite
+                  key={resource.id}
+                  title={resource.title}
+                  content={resource.content}
+                  borderColor="border-blue-500"
+                  isFavorite={true}
+                  toggleFavorite={() => toggleFavorite(resource.id)}
+                />
+              ))
+            ) : (
+              <p className="text-gray-500">Vous n'avez aucun favori pour le moment.</p>
+            )}
+        </div>
       </div>
-    </div>
     )
 }
 

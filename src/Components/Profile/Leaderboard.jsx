@@ -85,7 +85,7 @@ function Leaderboard() {
         </Link>
       </div>
       <div className='flex items-center gap-2'>
-        <label htmlFor="linesPerPage" className='text-sm'>Ligne par Page:</label>
+        <label htmlFor="linesPerPage">Ligne par Page:</label>
 
         <select 
           className='

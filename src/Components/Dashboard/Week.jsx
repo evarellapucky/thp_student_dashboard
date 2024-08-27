@@ -43,7 +43,7 @@ const Week = () => {
   return (
     <div className='flex flex-col flex-1 gap-6'>
       <div className='flex flex-row justify-between mt-10'>
-        <h2 className='text-2xl text-black font-bold'>
+        <h2>
            Title {/*(nom de la semaine du module : exemple => Semaine 1 - Semaine d'introduction au code) */}
         </h2>
         <WeekPicker onWeekChange={handleWeekChange} />

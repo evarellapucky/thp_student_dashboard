@@ -62,7 +62,7 @@ const DailyModal = () => {
 
     return (
         <div>
-            <h1 className="text-2xl mb-4">Daily Modal</h1>
+            <h2 className="mb-4">Daily Modal</h2>
             <button 
                 onClick={handleOpenModal} 
                 className="px-6 py-3 bg-blue-500 text-white rounded"
@@ -77,11 +77,11 @@ const DailyModal = () => {
                     <div className="flex flex-col gap-6 justify-between">
                         <div className='flex flex-col gap-2 items-center'>
                             <div className='flex flex-row gap-2 items-center'>
-                                <h1 className='text-3xl font-bold'>Bonjour Mousaillon !</h1>
+                                <h1>Bonjour Mousaillon !</h1>
                                 <img src={pirateImage} alt="Pirate" />
                             </div>
-                            <p className='text-lg'>Comment s'est passée ta journée d'hier ?</p>
-                            <p className='text-lg'>Tu peux remercier les autres Camarades pour leur aide. (2 max)</p>
+                            <h5>Comment s'est passée ta journée d'hier ?</h5>
+                            <h5>Tu peux remercier les autres Camarades pour leur aide. (2 max)</h5>
                         </div>
                         <div className='flex flex-row justify-around gap-4 mt-6'>
                             {helpers.map((helper, index) => (
@@ -114,7 +114,7 @@ const DailyModal = () => {
                                 className="shadow-out rounded-lg" 
                             />
                             <div className='flex flex-col justify-center max-h-[150px]'>
-                                <h2 className='text-lg text-center font-bold'>Notez votre expérience :</h2>
+                                <h3 className='text-center'>Notez votre expérience :</h3>
                                 <div className="rating gap-2 mb-6 flex justify-center">
                                     {Array.from({ length: 5 }, (_, index) => (
                                         <label 
@@ -140,7 +140,7 @@ const DailyModal = () => {
                             </div>
                         </div>
                         <div className="flex flex-row justify-evenly shadow-out rounded-lg p-4">
-                            <h3 className='text-lg font-bold'>Sélection actuelle :</h3>
+                            <h4 className='font-bold'>Sélection actuelle :</h4>
                             <p>Note : {rating > 0 ? rating : "Aucune sélection"}</p>
                             <p>Difficulté : {difficulty ? difficulty : "Aucune sélection"}</p>
                             <p>Camarades : {helpers.length > 0 ? helpers.map(helper => helper?.label).join(', ') : "Aucune sélection"}</p>

@@ -96,14 +96,14 @@ const Today = () => {
 
       <div className="flex justify-center p-4 mt-6">
         <div className="w-full max-w-6xl">
-          <h1 className="text-5xl text-center">BLABLA du jour</h1>
-          <p className="text-center text-lg semibold m-6">
+          <h1 className="text-center">BLABLA du jour</h1>
+          <h5 className="text-center m-6">
             Le blabla du jour est le blabla qui va suivre le blabla du jour.
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
             cupiditate eveniet repellendus tempora similique, dolores magni
             ducimus beatae deserunt at odio hic quam tenetur itaque quisquam.
             Cumque quo hic itaque.
-          </p>
+          </h5>
           {resources
             .filter((resource) => resource.id.startsWith("intro-1-1-"))
             .map((resource, index) => (
