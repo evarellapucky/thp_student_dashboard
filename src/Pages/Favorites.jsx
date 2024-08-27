@@ -59,13 +59,13 @@ const Favorites = () => {
                 key={resource.id}
                 title={resource.title}
                 content={resource.content}
-                borderColor="border-blue-500"
+                borderColor="border-secondary"
                 isFavorite={true}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               />
             ))
           ) : (
-            <p className="text-gray-500">Vous n'avez aucun favori pour le moment.</p>
+            <p className="text-gray-dark">Vous n'avez aucun favori pour le moment.</p>
           )}
       </div>
     </div>
