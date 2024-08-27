@@ -19,8 +19,8 @@ function MissionCard() {
     <div className="card top-7 bg-gray-light w-80 max-w-[85%] max-h-36 shadow-out">
       <div className="card bg-gray-light">
         <div className="relative">
-          <div className="flex absolute items-center h-12 py-2 px-2 text-lg font-bold text-white top-0 left-0 bg-gray-gradient rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
-            <h1 className='mr-4'>Missions THP</h1>
+          <div className="flex absolute items-center h-12 py-2 px-2 text-white top-0 left-0 bg-gray-gradient rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
+            <h4 className='mr-4'>Missions THP</h4>
             <div className='flex items-center'>
             <img 
                 src={lightbulb_icon} 
@@ -33,11 +33,11 @@ function MissionCard() {
         </div>
       </div>
       <div className="card-body">
-        <div className="flex flex-col items-center p-2 mt-5 gap-5">
-          <Link to="/missions">
-            <div className="font-semibold">Liste des missions</div>
+        <div className="flex flex-col items-center p-2 mt-5 gap-1">
+          <Link to="/missions" className='hover:underline'>
+            <h5>Liste des missions</h5>
           </Link>
-          <div className='font-semibold'>{totalMissionCount}</div>
+          <h5>{totalMissionCount}</h5>
         </div>
       </div>
       {isModalOpen && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} content={modalContent} />} {/* Passer le contenu ici */}

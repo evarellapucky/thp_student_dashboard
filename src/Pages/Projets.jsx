@@ -3,7 +3,7 @@ import ProjectsData from '../Components/Projets/ProjectsData'
 
 function Projets() {
   return (
-    <ProjectsData />
+    <h1>EN CONSTRUCTION</h1>
   )
 }
 

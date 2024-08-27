@@ -7,14 +7,14 @@ const Correction = ({ countdownMode, isCountdownActive, onCountdownEnd, showCorr
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl md:text-3xl font-bold mt-8 mb-6 text-center">
+      <h1 className="mt-8 mb-6 text-center">
         Corrections
       </h1>
       <div className="flex flex-col items-center w-full px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center mt-6 space-y-6 w-full max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             <div className="flex flex-col items-center p-4 bg-gray-light rounded-lg shadow-lightOut">
-              <h2 className="text-xl font-semibold mb-4">Corriger</h2>
+              <h4 className="font-semibold mb-4">Corriger</h4>
               {Array.from({ length: 2 }, (_, index) => (
                 <div
                   key={index}
@@ -31,7 +31,7 @@ const Correction = ({ countdownMode, isCountdownActive, onCountdownEnd, showCorr
               ))}
             </div>
             <div className="flex flex-col items-center p-4 bg-gray-light rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Être corrigé</h2>
+              <h4 className="font-semibold mb-4">Être corrigé</h4>
               {Array.from({ length: 2 }, (_, index) => (
                 <div
                   key={index + 2}

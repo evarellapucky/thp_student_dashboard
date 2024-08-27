@@ -22,6 +22,7 @@ import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/
 import axios from "axios";
 import SignIn from "./Pages/SignIn";
 import Historique from "./Components/Shop/Historique";
+import KitUI from "./Pages/KitUI";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -147,6 +148,8 @@ function App() {
               <Route path="/projects" element={<Projets />} />
               <Route path="/resource" element={<Resource />} />
               <Route path="/sign_in" element={<SignIn />} />
+
+              <Route path="/kit_ui" element={<KitUI />} />
             </Routes>
           </main>
           <footer className="py-5"></footer>

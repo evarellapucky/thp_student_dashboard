@@ -33,12 +33,12 @@ function CollapseBarWithFavorite({ title, content, borderColor, isFavorite, togg
             </svg>
           )}
         </button>
-        <div className=" ml-10 text-lg md:text-xl font-medium">{title}</div>
+        <h4 className="ml-10 font-medium">{title}</h4>
       </summary>
       <div className="collapse-content bg-white p-4 ">
-        <div className="text-sm md:text-base">
+        <p>
           {content}
-        </div>
+        </p>
       </div>
     </details>
   );

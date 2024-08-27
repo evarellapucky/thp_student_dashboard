@@ -25,8 +25,8 @@ const AgendaCard = ({ title, date, resources, toCorrect, toRender }) => {
           <img src={rocketSvg} alt="To Render" className="w-6 h-6 text-error" />
         </div>
       )}
-        <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-blue-gradient rounded-md -translate-x-3 -translate-y-7 w-18 h-8 flex justify-center items-center">
-      <h3 className="text-xl font-semibold ">{title}</h3>
+      <div className="absolute py-2 px-2 text-white top-0 left-0 bg-blue-gradient rounded-md -translate-x-3 -translate-y-7 w-18 h-8 flex justify-center items-center">
+        <h4>{title}</h4>
       </div>
       <p className="text-sm text-gray-darker mb-4">{date}</p>
       <div className="flex flex-col gap-2 max-h-56 overflow-y-auto min-h-56 scrollbar-thin scrollbar-track-transparent">

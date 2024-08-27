@@ -49,7 +49,7 @@ function CategoryDetails() {
     <div>
       <div className='flex flex-row mb-4'>
       <BackButton />
-      <h1 className='text-3xl font-bold mb-4'>{category.name}</h1>
+      <h1 className='mb-4'>{category.name}</h1>
       </div>
       {category.questions.length > 0 ? (
         category.questions.map((q, qIndex) => (

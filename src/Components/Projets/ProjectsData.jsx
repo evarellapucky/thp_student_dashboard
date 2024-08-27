@@ -120,12 +120,12 @@ const ProjectsData = () => {
       </div>
 
       <div className='flex flex-row gap-3 items-center'>    
-        <h1 className='font-bold text-black text-3xl ml-5'>PROJETS</h1>
+        <h1 className='ml-5'>PROJETS</h1>
         <TooltipIcon text={tutorialText} />
       </div>
 
       <div className='flex justify-end gap-2 items-center'>
-        <h1>Filter by Category</h1>
+        <p>Filter by Category</p>
         <select 
           className='
             px-3 
@@ -150,7 +150,7 @@ const ProjectsData = () => {
           ))}
         </select>
 
-        <h1>Filter by Labels</h1>
+        <p>Filter by Labels</p>
         <select 
           className='
             px-3 
@@ -175,7 +175,7 @@ const ProjectsData = () => {
           ))}
         </select>
 
-        <h1>Filter by Assignees</h1>
+        <p>Filter by Assignees</p>
         <select 
           className='
             px-3 
@@ -198,7 +198,7 @@ const ProjectsData = () => {
           <option value='unassigned'>No Assignees</option>
         </select>
 
-        <h1>Issues per Page</h1>
+        <p>Issues per Page</p>
         <select 
           className='
             px-3 

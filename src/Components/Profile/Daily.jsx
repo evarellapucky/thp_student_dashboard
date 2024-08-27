@@ -114,7 +114,7 @@ const Daily = () => {
             {selectedDailyTab === 'difficults' && (
                 <div>
                     <MyBumpChart data={difficultData} />
-                    <h1 className="text-center text-2xl font-bold mt-8">Liste des difficultés rencontrées</h1>
+                    <h2 className="text-center mt-8">Liste des difficultés rencontrées</h2>
                     <DirectoryTable data={tableData} />
                 </div>
             )}

@@ -46,9 +46,9 @@ function CategoryList() {
             to={`/faq/${encodeURIComponent(category.name)}`}
             className="collapse bg-gray-light mb-4 border border-secondary"
           >
-            <div className="collapse-title text-xl font-medium bg-gray-light hover:bg-blue-gradient cursor-pointer">
+            <h4 className="collapse-title bg-gray-light hover:bg-blue-gradient cursor-pointer">
               {category.name}
-            </div>
+            </h4>
           </Link>
         </div>
       ))

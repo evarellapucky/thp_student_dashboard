@@ -10,11 +10,11 @@ function Handshakes() {
               </div>
             </div>
           <div className="card-body">
-            <h2 className="card-title text-lg sm:text-xl">Mes coups de mains</h2>
+            <h4 className="card-title">Mes coups de mains</h4>
             <div className="flex items-center justify-around mt-5">
-              <div className="font-bold text-3xl">
+              <h2>
                 123
-              </div>
+              </h2>
               <div className="mr-5">
                 <img src={Handshake} alt="Poignées de mains" className="w-24"/>
               </div>

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import logo from "../../Assets/thpLogo.svg";
 import logo2 from "../../Assets/thpLogoMinimised.svg";
@@ -18,7 +19,38 @@ import { useLocation } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = ({ isMinimized, onToggle }) => {
-  const location = useLocation(); // Obtenir l'URL actuelle
+  const [currentLogo, setCurrentLogo] = useState(isMinimized ? logo2 : logo);
+  const [animationFinished, setAnimationFinished] = useState(false);
+  const location = useLocation();
+  const logoRef = useRef(null);
+
+  // Fonction pour détecter la fin de l'animation
+  const handleTransitionEnd = () => {
+    setAnimationFinished(true);
+  };
+
+  // Attacher le gestionnaire d'événement lors du montage du composant
+  useEffect(() => {
+    const logoElement = logoRef.current;
+    if (logoElement) {
+      logoElement.addEventListener("transitionend", handleTransitionEnd);
+    }
+
+    return () => {
+      if (logoElement) {
+        logoElement.removeEventListener("transitionend", handleTransitionEnd);
+      }
+    };
+  }, []);
+
+  // useEffect pour changer l'image à la fin de l'animation
+  useEffect(() => {
+    if (animationFinished) {
+      const newLogo = isMinimized ? logo2 : logo;
+      setCurrentLogo(newLogo);
+      setAnimationFinished(false);
+    }
+  }, [animationFinished, isMinimized]);
 
   return (
     <>
@@ -207,29 +239,29 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 bottom: "0",
                 left: "50%",
                 transform: "translateX(-50%)",
-                width: isMinimized ? "50px" : "200px", 
-                height: isMinimized ? "100px" : "100px", 
+                width: isMinimized ? "50px" : "200px",
+                height: 100,
                 overflow: "hidden",
               }}
             >
               <a href="https://www.thehackingproject.org/">
-              <img
-                src={isMinimized ? logo2 : logo}
-                alt="Logo"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  transition: "clip-path 0.9s ease",
-                  clipPath: isMinimized
-                    ? "inset(0 -100% 0 0)"
-                    : "inset(0 0 0 0)",  
-                  transform: isMinimized ? "scale(2.5)" : "scale(1)",
-                }}
-              />
+                <img
+                  ref={logoRef}  // Ref pour accéder directement à l'élément DOM
+                  src={currentLogo}
+                  alt="Logo"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    transition: "clip-path 0.1s ease",
+                    clipPath: isMinimized
+                      ? "inset(0 -100% 0 0)"
+                      : "inset(0 0 0 0)",
+                    transform: isMinimized ? "scale(2.5)" : "scale(1)",
+                  }}
+                />
               </a>
             </div>
-
 
           </nav>
         </div>

@@ -12,7 +12,7 @@ const ItemCard = (props) => {
         />
       )}
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-2">{props.name}</h2>
+        <h4 className="font-bold mb-2">{props.name}</h4>
         <p className="text-gray-darker mb-4">{props.description}</p>
         <p className="text-blue font-semibold">{props.price} pts</p>
         <div className="flex justify-center mt-4">
