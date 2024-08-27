@@ -10,7 +10,9 @@ const KitUI = () => {
       <h4>h4: Hello world</h4>
       <h5>h5: Hello world</h5>
       <p>p: Hello world</p>
+      <p>p span: <span>Hello world</span></p>
       <p><strong>p strong: Hello world</strong></p>
+      
     </>
   )
 }

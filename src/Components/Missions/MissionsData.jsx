@@ -128,7 +128,7 @@ const MissionsData = () => {
 
       <div className="flex flex-col justify-center md:flex-row gap-4 mb-4">
         <div className="flex items-center gap-2">
-          <label htmlFor="filterState" className="text-sm">
+          <label htmlFor="filterState">
             Filter issues by State:
           </label>
           <select
@@ -143,7 +143,6 @@ const MissionsData = () => {
               focus:ring-2 
               focus:ring-blue-500 
               focus:border-blue-500 
-              text-sm
               bg-white 
               text-gray-700"
             value={filterState}
@@ -156,7 +155,7 @@ const MissionsData = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <label htmlFor="filterLabel" className="text-sm">
+          <label htmlFor="filterLabel">
             Filter issue by Labels:
           </label>
           <select
@@ -171,7 +170,6 @@ const MissionsData = () => {
               focus:ring-2 
               focus:ring-blue-500 
               focus:border-blue-500 
-              text-sm
               bg-white 
               text-gray-700"
             value={filterLabel}
@@ -202,7 +200,6 @@ const MissionsData = () => {
               focus:ring-2 
               focus:ring-blue-500 
               focus:border-blue-500 
-              text-sm
               bg-white 
               text-gray-700"
             value={filterAssignees}
@@ -214,7 +211,7 @@ const MissionsData = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <label htmlFor="issuesPerPage" className="text-sm">
+          <label htmlFor="issuesPerPage">
             Issues per Page:
           </label>
           <select
@@ -229,7 +226,6 @@ const MissionsData = () => {
               focus:ring-2 
               focus:ring-blue-500 
               focus:border-blue-500 
-              text-sm
               bg-white 
               text-gray-700"
             value={issuesPerPage}

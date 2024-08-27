@@ -38,6 +38,16 @@ h5{
   line-height: 1.75rem; /* 28px */
 }
 
+p{
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+}
+
+span{
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+
 input {
   font-weight: 600;
 }
