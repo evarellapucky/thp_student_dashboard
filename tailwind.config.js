@@ -30,7 +30,7 @@ export default {
         `,
       },
       height: {
-        95: "98%",  // Remplacé par 95% pour cohérence avec votre intention
+        95: "98%", 
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -76,7 +76,7 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#1A202C", // Utilise la couleur définie dans TailwindCSS
+          primary: "#1A202C",
           secondary: "#0685E5",
         },
       },
