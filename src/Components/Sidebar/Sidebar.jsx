@@ -253,7 +253,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                     width: "100%",
                     height: "100%",
                     objectFit: "contain",
-                    transition: "clip-path 0.1s ease",
+                    transition: "clip-path 0.05s ease",
                     clipPath: isMinimized
                       ? "inset(0 -100% 0 0)"
                       : "inset(0 0 0 0)",
