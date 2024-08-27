@@ -41,11 +41,11 @@ const MissionCard = ({
         {/* Section de gauche (1/3) */}
         <div className="p-6 bg-gray-100 w-2/5">
           <p className="text-gray-600 text-sm mb-2"># {number}</p>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">
+          <h4 className="font-bold text-gray-800 mb-2">
             <a href={html_url} target="_blank" rel="noopener noreferrer">
               {title}
             </a>
-          </h2>
+          </h4>
           <p className="text-gray-600 text-sm mb-2">Last Updated: {update}</p>
           <p className="text-gray-600 text-sm mb-2">State: {state}</p>
           <p className="text-gray-600 text-sm mb-2 flex flew-row items-center gap-2">

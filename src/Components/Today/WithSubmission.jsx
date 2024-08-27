@@ -42,7 +42,7 @@ const WithSubmission = ({
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl md:text-5xl font-bold text-center">
+      <h1 className="text-center">
         Projet à rendre
       </h1>
       {countdownMode && isCountdownActive && (
@@ -88,12 +88,12 @@ const WithSubmission = ({
               </svg>
             </button>
           </div>
-          <div className="flex flex-col md:flex-row md:justify-around w-full md:w-1/2 mt-4 md:flex-col md:mt-0 md:ml-6">
-            <h4 className="text-lg sm:text-md">
+          <div className="flex flex-col md:flex-row md:justify-around w-full md:w-1/2 mt-4 md:mt-0 md:ml-6">
+            <h4>
               <span className="font-bold">Nom du fichier : </span>
               {projectTitle}
             </h4>
-            <h4 className="text-lg sm:text-md">
+            <h4>
               <span className="font-bold">Lien du fichier : </span>
               <a
                 href={projectLink}
