@@ -25,7 +25,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
       <aside
         className={`fixed top-3 left-3 h-95 ${
           isMinimized ? "w-20" : "w-64"
-        } bg-slate-700 p-4 z-50 rounded-lg transition-all duration-50`}
+        } bg-gray-gradient p-4 z-50 rounded-lg transition-all duration-50`}
       >
         {/* Bouton pour minimiser/maximiser la Sidebar */}
         <button
