@@ -62,7 +62,7 @@ const DailyModal = () => {
 
     return (
         <div>
-            <h1 className="text-2xl mb-4">Daily Modal</h1>
+            <h2 className="mb-4">Daily Modal</h2>
             <button 
                 onClick={handleOpenModal} 
                 className="px-6 py-3 bg-blue-500 text-white rounded"
@@ -77,7 +77,7 @@ const DailyModal = () => {
                     <div className="flex flex-col gap-6 justify-between">
                         <div className='flex flex-col gap-2 items-center'>
                             <div className='flex flex-row gap-2 items-center'>
-                                <h1 className='text-3xl font-bold'>Bonjour Mousaillon !</h1>
+                                <h1>Bonjour Mousaillon !</h1>
                                 <img src={pirateImage} alt="Pirate" />
                             </div>
                             <p className='text-lg'>Comment s'est passée ta journée d'hier ?</p>

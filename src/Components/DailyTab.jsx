@@ -50,7 +50,7 @@ const DailyTab = ({ onSelect }) => {
       onClick={() => handleClick('handshakes')}
     >
       <div className='flex flex-col justify-center items-center h-full space-y-4 md:space-y-8'>
-        <h1 className="text-xl font-bold">Coups de Mains</h1>
+        <h4 className="font-bold">Coups de Mains</h4>
         <div className='flex flex-row space-x-4 items-center'>
           <img src={Handshake} className='w-14 h-14' alt="Handshake" />
           <p className='text-3xl font-bold'>{handshakesData ? handshakesData.length : 0}</p>
@@ -62,7 +62,7 @@ const DailyTab = ({ onSelect }) => {
       onClick={() => handleClick('difficults')}
     >
       <div className='flex flex-col justify-center items-center h-full space-y-4 md:space-y-8'>
-        <h1 className="text-xl font-bold">Difficultés rencontrées</h1>
+        <h4 className="font-bold">Difficultés rencontrées</h4>
         <div className='flex flex-col items-center space-y-4'>
           {/* La jauge sera affichée en permanence ici */}
           <div className="w-40 h-20 flex flex-col items-center justify-center">

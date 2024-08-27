@@ -42,7 +42,7 @@ const WithSubmission = ({
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl md:text-5xl font-bold text-center">
+      <h1 className="text-center">
         Projet à rendre
       </h1>
       {countdownMode && isCountdownActive && (

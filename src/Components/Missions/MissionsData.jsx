@@ -115,7 +115,7 @@ const MissionsData = () => {
   return (
     <>
       <div className="flex justify-center items-center lg:justify-start gap-4 mb-4">
-        <h1 className="font-bold text-black text-2xl md:text-3xl">MISSIONS</h1>
+        <h1>MISSIONS</h1>
         <TooltipIcon text={tutorialText} />
       </div>
 

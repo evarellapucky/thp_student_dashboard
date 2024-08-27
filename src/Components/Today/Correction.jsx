@@ -6,7 +6,7 @@ const Correction = ({ countdownMode, isCountdownActive, onCountdownEnd, showCorr
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl md:text-3xl font-bold mt-8 mb-6 text-center">
+      <h1 className="mt-8 mb-6 text-center">
         Corrections
       </h1>
       <div className="flex flex-col items-center w-full px-4 sm:px-6 lg:px-8">
