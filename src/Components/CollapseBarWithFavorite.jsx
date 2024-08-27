@@ -4,7 +4,7 @@ import '../index.css'
 function CollapseBarWithFavorite({ title, content, borderColor, isFavorite, toggleFavorite, }) {
   
   return (
-    <details className={`collapse collapse-arrow mb-4 bg-gray-light hover:bg-blue-gradient border ${borderColor} w-full max-w-lg  sm:min-w-full md:min-w-lg lg:min-w-1xl xl:min-w-lg 2xl:min-w-full mx-auto`}>
+    <details className={`collapse collapse-arrow mb-4 bg-base-100 hover:bg-blue-gradient border ${borderColor} w-full max-w-lg  sm:min-w-full md:min-w-lg lg:min-w-1xl xl:min-w-lg 2xl:min-w-full mx-auto`}>
      <summary className="collapse-title text-lg md:text-xl font-medium p-4 flex items-start relative">
       {/* ajout du className relative, car la balise summary empêche l'uilitsation du flex pour que le bouton favoris et le titre s'affichent l'un à côté de l'autre */}
         <button

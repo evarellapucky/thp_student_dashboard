@@ -3,7 +3,7 @@ import MissionCard from './MissionCard'
 
 function BottomCards() {
   return (
-    <div className="flex flex-wrap justify-around gap-10">
+    <div className="flex flex-wrap justify-around gap-10 mt-10">
       <ProjectCard />
       <MissionCard />
     </div>
