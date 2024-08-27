@@ -81,7 +81,7 @@ function Leaderboard() {
       <div className="flex flex-wrap justify-between items-center">
         <h1>Leaderboard</h1>
         <Link to="/shop">
-          <DefaultButton name="Boutique" color="btn-info"/>
+          <DefaultButton name="Boutique" color="btn-primary"/>
         </Link>
       </div>
       <div className='flex items-center gap-2'>
