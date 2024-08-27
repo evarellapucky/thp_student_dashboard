@@ -76,10 +76,10 @@ const Daily = () => {
             <div className='rounded-lg border bg-white border-info shadow-sm p-2'>
                 <div className='grid grid-cols-2 gap-2'>
                     <div className='flex flex-col p-2'>
-                        <span className='text-xs text-gray uppercase font-semibold'>Date</span>
-                        <span className='font-bold text-sm text-gray-dark'>{payload[0].payload.name}</span>
-                        <span className='text-xs text-gray uppercase font-semibold'>Coups de Mains</span>
-                        <span className='font-bold text-sm text-gray-dark'>{payload[0].value}</span>
+                        <span className='text-xs text-gray-dark uppercase font-semibold'>Date</span>
+                        <span className='font-bold text-sm text-gray-darker'>{payload[0].payload.name}</span>
+                        <span className='text-xs text-gray-dark uppercase font-semibold'>Coups de Mains</span>
+                        <span className='font-bold text-sm text-gray-darker'>{payload[0].value}</span>
                     </div>
                 </div>
             </div>

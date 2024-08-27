@@ -140,7 +140,7 @@ const ProjectsData = () => {
             focus:border-secondary 
             text-sm
             bg-white 
-            text-gray-dark' 
+            text-gray-darker' 
           value={filterCategory} 
           onChange={(e) => setFilterCategory(e.target.value)}
         >
@@ -165,7 +165,7 @@ const ProjectsData = () => {
             focus:border-secondary 
             text-sm
             bg-white 
-            text-gray-dark' 
+            text-gray-darker' 
           value={filterLabel} 
           onChange={(e) => setFilterLabel(e.target.value.trim().toLowerCase())}
         >
@@ -190,7 +190,7 @@ const ProjectsData = () => {
             focus:border-secondary 
             text-sm
             bg-white 
-            text-gray-dark' 
+            text-gray-darker' 
           value={filterAssignees} 
           onChange={(e) => setFilterAssignees(e.target.value)}
         >
@@ -213,7 +213,7 @@ const ProjectsData = () => {
             focus:border-secondary 
             text-sm
             bg-white 
-            text-gray-dark' 
+            text-gray-darker' 
           value={issuesPerPage} 
           onChange={handleIssuesPerPageChange}
         >

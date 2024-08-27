@@ -97,11 +97,11 @@ function Leaderboard() {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue 
-            focus:border-blue 
+            focus:ring-secondary 
+            focus:border-secondary
             text-sm
             bg-white 
-            text-gray-dark' 
+            text-gray-darker' 
           value={linesPerPage} 
           onChange={handlelinesPerPageChange}
         >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import useFavorites from "../Components/useFavorites";
 import CollapseBarWithFavorite from "../Components/CollapseBarWithFavorite";
@@ -65,7 +65,7 @@ const Favorites = () => {
               />
             ))
           ) : (
-            <p className="text-gray-dark">Vous n'avez aucun favori pour le moment.</p>
+            <p className="text-gray-darker">Vous n'avez aucun favori pour le moment.</p>
           )}
       </div>
     </div>

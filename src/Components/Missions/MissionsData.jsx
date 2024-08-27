@@ -145,7 +145,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-dark"
+              text-gray-darker"
             value={filterState}
             onChange={(e) => setFilterState(e.target.value)}
           >
@@ -173,7 +173,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-dark"
+              text-gray-darker"
             value={filterLabel}
             onChange={(e) =>
               setFilterLabel(e.target.value.trim().toLowerCase())
@@ -204,7 +204,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-dark"
+              text-gray-darker"
             value={filterAssignees}
             onChange={(e) => setFilterAssignees(e.target.value)}
           >
@@ -231,7 +231,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-dark"
+              text-gray-darker"
             value={issuesPerPage}
             onChange={handleIssuesPerPageChange}
           >

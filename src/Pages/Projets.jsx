@@ -1,4 +1,3 @@
-import React from 'react'
 import ProjectsData from '../Components/Projets/ProjectsData'
 
 

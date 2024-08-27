@@ -22,11 +22,11 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
   return (
     <div className={`fixed inset-0 z-50 ${isOpen ? "block" : "hidden"}`}>
       <div
-        className="fixed inset-0 bg-black opacity-50"
+        className="fixed inset-0 bg-gray-darker opacity-50"
         onClick={onToggle}
       ></div>
       <aside
-        className={`fixed top-0 left-0 w-64 h-full bg-slate-800 p-4 z-50 transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-64 h-full bg-gray-gradient p-4 z-50 transition-transform duration-300 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } flex flex-col`}
       >

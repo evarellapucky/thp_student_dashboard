@@ -1,7 +1,7 @@
-import React from 'react'
 import logo from "../Assets/logo_thp.png";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import DefaultButton from "../Components/DefaultButton";
 
 export default function SignIn() {
   const [email,setEmail] = useState("")
@@ -77,7 +77,7 @@ export default function SignIn() {
                 }
               </button>
           </label>
-          <button type="submit" className='btn btn-primary w-full'>Connexion</button>
+          <DefaultButton type="submit" name="Connexion" color="btn-primary" />
         </form>
         <Link to="/" className='link link-hover'>Mot de passe oublié ?</Link>
         <Link to="/" className='link link-hover'>Email de confirmation non reçu ?</Link>

@@ -24,7 +24,7 @@ function Contact() {
       <div className="flex flex-col md:flex-row justify-evenly items-start md:space-x-6 px-4">
         {/* Information Section */}
         <div className="flex flex-col w-full md:w-1/2 bg-gray-light rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
-          <p className="text-center text-lg md:text-xl font-bold text-gray-dark mb-4">
+          <p className="text-center text-lg md:text-xl font-bold text-gray-darker mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </p>
           <p className="text-base md:text-lg text-gray-dark mb-4">

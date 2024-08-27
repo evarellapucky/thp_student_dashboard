@@ -13,10 +13,10 @@ const ItemCard = (props) => {
       )}
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{props.name}</h2>
-        <p className="text-gray-dark mb-4">{props.description}</p>
-        <p className="text-blue-600 font-semibold">{props.price} pts</p>
+        <p className="text-gray-darker mb-4">{props.description}</p>
+        <p className="text-blue font-semibold">{props.price} pts</p>
         <div className="flex justify-center mt-4">
-        <DefaultButton name="acheter" color="btn-info" />
+        <DefaultButton name="acheter" color="btn-success" />
         </div>
       </div>
     </div>

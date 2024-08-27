@@ -5,7 +5,7 @@ function Journey() {
   return (
 <div className="card bg-gray-light w-5/6 sm:w-80 h-50 shadow-out">
   <div className="relative">
-    <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-secondary rounded-md -translate-x-3 -translate-y-5 shadow-xl">
+    <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-secondary rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
       <img src={journey_icon} alt="Icône Parcours"/>
     </div>
   </div>
