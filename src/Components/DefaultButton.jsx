@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from 'prop-types';
 
 function DefaultButton({children, name, color = "btn-primary", ...props}) {
   return (
@@ -8,5 +8,11 @@ function DefaultButton({children, name, color = "btn-primary", ...props}) {
       </button>
   );
 }
+
+DefaultButton.propTypes = {
+  children: PropTypes.node,
+  name: PropTypes.string, 
+  color: PropTypes.string,
+};
 
 export default DefaultButton;

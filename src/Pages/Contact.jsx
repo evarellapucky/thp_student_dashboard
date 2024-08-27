@@ -23,20 +23,20 @@ function Contact() {
       </div>
       <div className="flex flex-col md:flex-row justify-evenly items-start md:space-x-6 px-4">
         {/* Information Section */}
-        <div className="flex flex-col w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
-          <h4 className="text-center font-bold text-gray-800 mb-4">
+        <div className="flex flex-col w-full md:w-1/2 bg-gray-light rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
+          <h4 className="text-center font-bold text-gray-darker mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </h4>
-          <p className="mb-4">
+          <p className="mb-4 text-gray-dark">
             Pas de souci ! Nous sommes là pour vous aider.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-gray-dark">
             Si vous avez des questions supplémentaires ou si vous avez besoin de plus d'informations, c'est ici que ça se passe. N'hésitez pas à nous contacter, et nous vous répondrons dans les plus brefs délais.
           </p>
         </div>
 
         {/* Form Section */}
-        <div className="flex w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6">
+        <div className="flex w-full md:w-1/2 bg-gray-light rounded-lg shadow-lightOut p-6">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="mb-6">
               <h2 className="font-bold mb-4">Nous contacter</h2>
@@ -69,7 +69,7 @@ function Contact() {
             />
 
             <div className="flex justify-end">
-              <DefaultButton type="submit">Envoyer</DefaultButton>
+              <DefaultButton type="submit" color="btn-success">Envoyer</DefaultButton>
             </div>
           </form>
         </div>

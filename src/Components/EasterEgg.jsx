@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Modal from './Modal'; // Assurez-vous que le composant Modal est correctement importé
+import Modal from './Modal';
+
 
 const EasterEgg = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

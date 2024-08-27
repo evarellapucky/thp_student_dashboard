@@ -88,7 +88,7 @@ const Today = () => {
       {/* <div className="flex justify-center p-4 mt-6">
         <button
           onClick={toggleShowCorrections}
-          className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700"
+          className="bg-gray text-white px-4 py-2 rounded-lg hover:bg-gray-dark"
         >
           {showCorrections ? "Masquer les corrections" : "Afficher les corrections"}
         </button>
@@ -111,7 +111,7 @@ const Today = () => {
                 key={index}
                 title={resource.title}
                 content={resource.content}
-                borderColor="border-blue-500"
+                borderColor="border-secondary"
                 isFavorite={favorites.includes(resource.id)}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               />
