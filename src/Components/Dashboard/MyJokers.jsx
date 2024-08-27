@@ -8,10 +8,10 @@ const MyJokers = ({ count = 3, total = 3 }) => {
   const jokersToDisplay = Array.from({ length: count });
 
   return (
-    <div className="card bg-base-100 w-5/6 sm:w-80 h-56 shadow-out">
+    <div className="card bg-gray-light w-5/6 sm:w-80 h-56 shadow-out">
       <div className="relative">
-        <div className="absolute py-2 px-2 text-white top-0 left-0 bg-red-600 rounded-md -translate-x-3 -translate-y-5 shadow-xl">
-          <img src={my_jokers_icon} alt="Icône jokers" />
+        <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-error rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
+         <img src={my_jokers_icon} alt="Icône jokers" />
         </div>
       </div>
 

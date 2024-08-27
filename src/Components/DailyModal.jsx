@@ -4,6 +4,7 @@ import Modal from './Modal';
 import Dropdown from './Dropdown';
 import CheckboxGroup from './Checkbox';
 import pirateImage from '/src/Assets/pirate48.png'; // Assurez-vous que le chemin est correct
+import DefaultButton from './DefaultButton';
 
 const DailyModal = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,12 +64,7 @@ const DailyModal = () => {
     return (
         <div>
             <h2 className="mb-4">Daily Modal</h2>
-            <button 
-                onClick={handleOpenModal} 
-                className="px-6 py-3 bg-blue-500 text-white rounded"
-            >
-                Ouvrir le Modal Manuellement
-            </button>
+            <DefaultButton onClick={handleOpenModal} name="Ouvrir le Modal manuellement" color="btn-primary"/>
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={handleCloseModal} 
@@ -146,12 +142,9 @@ const DailyModal = () => {
                             <p>Camarades : {helpers.length > 0 ? helpers.map(helper => helper?.label).join(', ') : "Aucune sélection"}</p>
                             <p>Commentaires : {helpers.filter(helper => helper.comment !== '').map(helper => `${helper.label}: ${helper.comment}`).join(', ') || "Aucun commentaire"}</p>
                         </div>
-                        <button 
-                            onClick={handleSubmit}
-                            className="px-6 py-3 bg-green-500 text-white rounded mt-10 self-center"
-                        >
-                            Soumettre
-                        </button>
+                        <div className='flex justify-center'>
+                        <DefaultButton name="Soumettre" onClick={handleSubmit} color="btn-success" />
+                        </div>
                     </div>
                 }
             />

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import DefaultButton from "../DefaultButton";
 
 function MyJourney() {
   const [myId, setMyId] = useState("16");
@@ -130,7 +131,7 @@ function MyJourney() {
                     <p>Apprenez à coder et construisez votre expertise</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
+                    <DefaultButton name="Poursuivre" />
                   </div>
                 </div>
               </div>
@@ -151,7 +152,7 @@ function MyJourney() {
                     <p>Devenez dév web et construisez votre expertise</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
+                  <DefaultButton name="Poursuivre" />
                   </div>
                 </div>
               </div>
@@ -172,7 +173,7 @@ function MyJourney() {
                     <p>Devenez dév web inséré sur le marché du travail</p>
                   </div>
                   <div className="flex items-end">
-                    <button className="border-2 my-3 p-3 rounded-lg">Poursuivre</button>
+                  <DefaultButton name="Poursuivre" />
                   </div>
                 </div>
               </div>

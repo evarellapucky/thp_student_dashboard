@@ -86,7 +86,7 @@ function Leaderboard() {
       <div className="flex flex-wrap justify-between items-center">
         <h1>Leaderboard</h1>
         <Link to="/shop">
-          <DefaultButton name="Boutique" color="btn-info"/>
+          <DefaultButton name="Boutique" color="btn-primary"/>
         </Link>
       </div>
       <div className="text-center flex justify-center">
@@ -99,16 +99,16 @@ function Leaderboard() {
             px-3 
             py-2 
             border 
-            border-gray-300 
+            border-gray-medium 
             rounded-md 
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary
             text-sm
             bg-white 
-            text-gray-700' 
+            text-gray-darker' 
           value={linesPerPage} 
           onChange={handlelinesPerPageChange}
         >
