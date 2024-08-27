@@ -144,7 +144,7 @@ const Search = () => {
         </h1>
         <div className="w-full md:w-auto">
           <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center gap-2 p-2 md:p-4">
-          <TooltipIcon text={tooltipText} />
+          <TooltipIcon text={tooltipText} direction="left"/>
             <input
               type="text"
               placeholder="title: javascript"
