@@ -22,7 +22,7 @@ const DateTime = () => {
       </p>
       </div>
       <div className='ml-2 bg-gray-100 p-2 rounded-lg'>
-      <p className="text-1xl font-normal text-blue-500">
+      <p className="text-1xl font-normal text-blue">
         {format(currentDateTime, 'HH:mm:ss')}
       </p>
       </div>

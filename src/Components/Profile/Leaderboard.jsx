@@ -97,8 +97,8 @@ function Leaderboard() {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-blue 
+            focus:border-blue 
             text-sm
             bg-white 
             text-gray-700' 

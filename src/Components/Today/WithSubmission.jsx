@@ -99,7 +99,7 @@ const WithSubmission = ({
                 href={projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+                className="text-blue hover:underline"
               >
                 {projectLink}
               </a>

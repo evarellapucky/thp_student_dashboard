@@ -73,7 +73,7 @@ const Daily = () => {
             return null;
         }
         return (
-            <div className='rounded-lg border bg-white border-cyan-600 shadow-sm p-2'>
+            <div className='rounded-lg border bg-white border-info shadow-sm p-2'>
                 <div className='grid grid-cols-2 gap-2'>
                     <div className='flex flex-col p-2'>
                         <span className='text-xs text-slate-500 uppercase font-semibold'>Date</span>

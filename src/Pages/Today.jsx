@@ -111,7 +111,7 @@ const Today = () => {
                 key={index}
                 title={resource.title}
                 content={resource.content}
-                borderColor="border-blue-500"
+                borderColor="border-blue"
                 isFavorite={favorites.includes(resource.id)}
                 toggleFavorite={() => toggleFavorite(resource.id)}
               />
