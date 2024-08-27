@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mes_points_icon from "../../Assets/mes_points_icon.svg";
 
-function Points() {
+function Points({ points, rank }) {
   return (
 <div className="card bg-base-100 w-5/6 sm:w-80 h-56 shadow-out">
   
@@ -15,8 +15,8 @@ function Points() {
       <div className="card-body">
         <h4 className="card-title">Mes points</h4>
         <div className="flex flex-col items-center p-2 mt-2 gap-3 sm:gap-5">
-          <h3 className="font-semibold custom-pulse">23 575</h3>
-          <h5 className="font-semibold">Rank : 10e</h5>
+          <h3 className="font-semibold custom-pulse">{points}</h3>
+          <h5 className="font-semibold">Rank : {rank}</h5>
         </div>
 
         <div className="card-actions justify-end"></div>

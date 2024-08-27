@@ -1,7 +1,7 @@
 import Handshake from "../../Public/Images/Handshake.png"
 import handshake_icon from "../../Assets/handshake_icon.svg"
 
-function Handshakes() {
+function Handshakes({ handshakes }) {
   return (
     <div className="card bg-base-100 w-5/6 sm:w-80 h-56 shadow-out">
             <div className="relative">
@@ -13,7 +13,7 @@ function Handshakes() {
             <h4 className="card-title">Mes coups de mains</h4>
             <div className="flex items-center justify-around mt-5">
               <h2>
-                123
+                {handshakes}
               </h2>
               <div className="mr-5">
                 <img src={Handshake} alt="Poignées de mains" className="w-24"/>

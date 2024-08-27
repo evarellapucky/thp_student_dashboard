@@ -1,7 +1,7 @@
 import journey_icon from "../../Assets/journey_icon.svg";
 
 
-function Journey() {
+function Journey({ percentage, journey }) {
   return (
 <div className="card bg-base-100 w-5/6 sm:w-80 h-50 shadow-out">
   <div className="relative">
@@ -11,16 +11,16 @@ function Journey() {
   </div>
   <div className="card-body">
     <h4 className="card-title mb-2">Mon Parcours</h4>
-    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5">
+    <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
       <div
         className="radial-progress text-blue-600"
-        style={{ "--value": 75 }}
+        style={{ "--value": percentage }}
         role="progressbar"
       >
-        75%
+        {percentage}%
       </div>
-      <p className="flex-1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <p className="flex-1 flex justify-center">
+        {journey}
       </p>
     </div>
   </div>
