@@ -39,9 +39,9 @@ const MissionCard = ({
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-5xl mx-auto p-4">
       <div className="flex h-full">
         {/* Section de gauche (1/3) */}
-        <div className="p-6 bg-gray-100 w-2/5">
+        <div className="p-6 bg-gray-light w-2/5">
           <p className="text-gray-600 text-sm mb-2"># {number}</p>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">
+          <h2 className="text-xl font-bold text-gray-dark mb-2">
             <a href={html_url} target="_blank" rel="noopener noreferrer">
               {title}
             </a>

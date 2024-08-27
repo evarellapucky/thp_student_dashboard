@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+import PropTypes from 'prop-types'
 
 const truncateText = (text, maxWords) => {
   const wordsArray = text.split(' ');
@@ -19,9 +20,9 @@ const ProjectCard = ({ number, update, title, assignees, assigneesCount, descrip
       <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 block max-w-7xl mx-auto p-4">
         <div className="flex">
           {/* Section de gauche (1/3) */}
-          <div className="w-1/3 p-6 bg-gray-100">
+          <div className="w-1/3 p-6 bg-gray-light">
             <p className="text-gray-600 text-sm mb-2"># {number}</p>
-            <h2 className="text-xl font-bold text-gray-800 mb-2">
+            <h2 className="text-xl font-bold text-gray-dark mb-2">
               <a href={html_url} target="_blank" rel="noopener noreferrer">
                 {title}
               </a>
@@ -67,6 +68,21 @@ const ProjectCard = ({ number, update, title, assignees, assigneesCount, descrip
         </div>
       </div>
   );
+};
+
+ProjectCard.propTypes = {
+  number: PropTypes.number.isRequired,
+  update: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  assignees: PropTypes.string,
+  assigneesCount: PropTypes.number.isRequired,
+  description: PropTypes.string,
+  html_url: PropTypes.string.isRequired,
+  creator: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  labels: PropTypes.string,
+  labelColors: PropTypes.objectOf(PropTypes.string),
+  commentsCount: PropTypes.number.isRequired,
 };
 
 export default ProjectCard;

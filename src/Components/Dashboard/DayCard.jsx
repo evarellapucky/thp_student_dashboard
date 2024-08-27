@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function DayCard() {
   return (
     <>
-    <div className="card left-3 bg-base-100 max-w-72 shadow-xl relative">
+    <div className="card left-3 bg-gray-light max-w-72 shadow-xl relative">
       <div className="flex justify-center items-center">
         <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-success rounded-md -translate-x-3 -translate-y-7 w-32">
           <div className="text-lg font-bold text-center">Jour</div>

@@ -136,8 +136,8 @@ const ProjectsData = () => {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary 
             text-sm
             bg-white 
             text-gray-700' 
@@ -161,8 +161,8 @@ const ProjectsData = () => {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary 
             text-sm
             bg-white 
             text-gray-700' 
@@ -186,8 +186,8 @@ const ProjectsData = () => {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary 
             text-sm
             bg-white 
             text-gray-700' 
@@ -209,8 +209,8 @@ const ProjectsData = () => {
             shadow-sm 
             focus:outline-none 
             focus:ring-2 
-            focus:ring-blue-500 
-            focus:border-blue-500 
+            focus:ring-secondary 
+            focus:border-secondary 
             text-sm
             bg-white 
             text-gray-700' 
