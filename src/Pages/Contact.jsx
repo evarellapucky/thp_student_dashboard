@@ -23,8 +23,8 @@ function Contact() {
       </div>
       <div className="flex flex-col md:flex-row justify-evenly items-start md:space-x-6 px-4">
         {/* Information Section */}
-        <div className="flex flex-col w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
-          <p className="text-center text-lg md:text-xl font-bold text-gray-800 mb-4">
+        <div className="flex flex-col w-full md:w-1/2 bg-gray-light rounded-lg shadow-lightOut p-6 mb-8 md:mb-0">
+          <p className="text-center text-lg md:text-xl font-bold text-gray-dark mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </p>
           <p className="text-base md:text-lg text-gray-700 mb-4">
@@ -36,7 +36,7 @@ function Contact() {
         </div>
 
         {/* Form Section */}
-        <div className="flex w-full md:w-1/2 bg-gray-100 rounded-lg shadow-lightOut p-6">
+        <div className="flex w-full md:w-1/2 bg-gray-light rounded-lg shadow-lightOut p-6">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="mb-6">
               <h2 className="text-xl md:text-2xl font-bold mb-4">Nous contacter</h2>
@@ -69,7 +69,7 @@ function Contact() {
             />
 
             <div className="flex justify-end">
-              <DefaultButton type="submit">Envoyer</DefaultButton>
+              <DefaultButton type="submit" color="btn-success">Envoyer</DefaultButton>
             </div>
           </form>
         </div>

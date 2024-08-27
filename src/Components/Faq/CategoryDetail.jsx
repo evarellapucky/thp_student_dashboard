@@ -57,7 +57,7 @@ function CategoryDetails() {
             key={qIndex}
             title={q.question}
             content={q.answer}
-            borderColor="border-blue-500"
+            borderColor="border-secondary"
           />
         ))
       ) : (
