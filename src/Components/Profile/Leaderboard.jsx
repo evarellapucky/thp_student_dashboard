@@ -92,7 +92,7 @@ function Leaderboard() {
             px-3 
             py-2 
             border 
-            border-gray-300 
+            border-gray-medium 
             rounded-md 
             shadow-sm 
             focus:outline-none 
@@ -101,7 +101,7 @@ function Leaderboard() {
             focus:border-blue 
             text-sm
             bg-white 
-            text-gray-700' 
+            text-gray-dark' 
           value={linesPerPage} 
           onChange={handlelinesPerPageChange}
         >

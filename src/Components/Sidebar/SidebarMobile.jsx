@@ -136,7 +136,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
-                textColor="text-red-500"
+                textColor="text-red"
               />
             </ul>
           </nav>

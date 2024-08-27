@@ -194,7 +194,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                     className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
-                textColor="text-red-500"
+                textColor="text-red"
                 isSidebarMinimized={isMinimized}
               />
             </div>

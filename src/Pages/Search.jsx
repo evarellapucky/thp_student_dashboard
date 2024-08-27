@@ -192,7 +192,7 @@ const Search = () => {
               }
             />
           ) : (
-            <p className="text-gray-500">
+            <p className="text-gray">
               Tape un mot-clé dans la barre de recherche pour rechercher une ressource.
             </p>
           )}

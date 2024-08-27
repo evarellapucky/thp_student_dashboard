@@ -27,10 +27,10 @@ function Contact() {
           <p className="text-center text-lg md:text-xl font-bold text-gray-dark mb-4">
             Vous n'avez pas trouvé la réponse à votre question dans notre FAQ ?
           </p>
-          <p className="text-base md:text-lg text-gray-700 mb-4">
+          <p className="text-base md:text-lg text-gray-dark mb-4">
             Pas de souci ! Nous sommes là pour vous aider.
           </p>
-          <p className="text-base md:text-lg text-gray-700 mb-4">
+          <p className="text-base md:text-lg text-gray-dark mb-4">
             Si vous avez des questions supplémentaires ou si vous avez besoin de plus d'informations, c'est ici que ça se passe. N'hésitez pas à nous contacter, et nous vous répondrons dans les plus brefs délais.
           </p>
         </div>

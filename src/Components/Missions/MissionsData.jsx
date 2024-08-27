@@ -136,7 +136,7 @@ const MissionsData = () => {
               px-3 
               py-2 
               border 
-              border-gray-300 
+              border-gray-medium 
               rounded-md 
               shadow-sm 
               focus:outline-none 
@@ -145,7 +145,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-700"
+              text-gray-dark"
             value={filterState}
             onChange={(e) => setFilterState(e.target.value)}
           >
@@ -164,7 +164,7 @@ const MissionsData = () => {
               px-3 
               py-2 
               border 
-              border-gray-300 
+              border-gray-medium 
               rounded-md 
               shadow-sm 
               focus:outline-none 
@@ -173,7 +173,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-700"
+              text-gray-dark"
             value={filterLabel}
             onChange={(e) =>
               setFilterLabel(e.target.value.trim().toLowerCase())
@@ -195,7 +195,7 @@ const MissionsData = () => {
               px-3 
               py-2 
               border 
-              border-gray-300 
+              border-gray-medium 
               rounded-md 
               shadow-sm 
               focus:outline-none 
@@ -204,7 +204,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-700"
+              text-gray-dark"
             value={filterAssignees}
             onChange={(e) => setFilterAssignees(e.target.value)}
           >
@@ -222,7 +222,7 @@ const MissionsData = () => {
               px-3 
               py-2 
               border 
-              border-gray-300 
+              border-gray-medium 
               rounded-md 
               shadow-sm 
               focus:outline-none 
@@ -231,7 +231,7 @@ const MissionsData = () => {
               focus:border-secondary 
               text-sm
               bg-white 
-              text-gray-700"
+              text-gray-dark"
             value={issuesPerPage}
             onChange={handleIssuesPerPageChange}
           >
