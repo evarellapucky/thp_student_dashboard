@@ -4,7 +4,7 @@ import JokerImage from '../../Assets/LostJoker.png';
 import my_jokers_icon from '../../Assets/my_jokers_icon.svg';
 
 
-const MyJokers = ({ count = 3, total = 3 }) => {
+const MyJokers = ({ count, total }) => {
   const jokersToDisplay = Array.from({ length: count });
 
   return (
