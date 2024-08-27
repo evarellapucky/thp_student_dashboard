@@ -7,12 +7,12 @@ import DefaultButton from "../DefaultButton";
 
 function Leaderboard() {
   const [data, setData] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'ascending' }); //tri par defaut sur 'rank'
   const [currentPage, setCurrentpage] = useState(1);
   const [totalPages, setTotalPages] = useState(1)
   const [linesPerPage, setlinesPerPage] = useState(10);
-  const myPrenom = "Samantha";
-  const [myId, setMyId] = useState("16");
+  const [myPrenom, setMyPrenom] = useState('');
+  const [myId, setMyId] = useState("16"); // l'utilisateur par defaut
   const [myData, setMyData] = useState({})
 
   useEffect(() => {
@@ -25,6 +25,7 @@ function Leaderboard() {
             // console.log(response.data.users);
             const getMyData = response.data.users.find(data => data.id === myId);
             setMyData(getMyData);
+            setMyPrenom(getMyData.prenom)
             const selectedData = response.data.users.map(user => ({
               nom: user.nom,
               prenom: user.prenom,
