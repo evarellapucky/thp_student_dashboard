@@ -18,23 +18,46 @@
 }
 
 .tooltip-text {
-  visibility: hidden;
-  width: 750px;
+  position: absolute;
   background-color: #333;
   color: #fff;
-  text-align: left;
+  padding: 5px;
   border-radius: 5px;
-  padding: 10px;
-  position: absolute;
-  left: 110%;
-  bottom: -150%;
+  white-space: nowrap;
+  z-index: 100;
   opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 1;
-  white-space: pre-wrap;
+  transition: opacity 0.3s ease;
 }
 
 .tooltip-container:hover .tooltip-text {
-  visibility: visible;
   opacity: 1;
+}
+
+/* Tooltip directions */
+.tooltip-right {
+  top: 50%;
+  left: 100%; /* Appears to the right of the icon */
+  transform: translateY(-50%);
+  margin-left: 5px;
+}
+
+.tooltip-left {
+  top: 50%;
+  right: 100%; /* Appears to the left of the icon */
+  transform: translateY(-50%);
+  margin-right: 5px;
+}
+
+.tooltip-top {
+  bottom: 100%; /* Appears above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 5px;
+}
+
+.tooltip-bottom {
+  top: 100%; /* Appears below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
 }
