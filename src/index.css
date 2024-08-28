@@ -6,6 +6,7 @@
 body {
   min-height: 100vh;
   height: auto;
+  background-color: #F5F5F5;
 }
 
 h1, h2 {
@@ -126,4 +127,9 @@ a:visited {
 
 .custom-pulse {
   animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* profile */
+.tabs-lifted > .tab {
+  border-bottom-color: var(--tab-border-color, #BDBDBD);
 }
