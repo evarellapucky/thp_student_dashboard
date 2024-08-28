@@ -16,7 +16,7 @@ import contact_logo from "../../Assets/contact.svg";
 import SidebarDropdown from "./SidebarDropdown";
 import HamburgerIcon from "./HamburgerIcon";
 import { useLocation } from "react-router-dom";
-import "./sidebar.css";
+import "./sidebar.css"; 
 
 const Sidebar = ({ isMinimized, onToggle }) => {
   const [currentLogo, setCurrentLogo] = useState(isMinimized ? logo2 : logo);
@@ -24,12 +24,14 @@ const Sidebar = ({ isMinimized, onToggle }) => {
   const location = useLocation();
   const logoRef = useRef(null);
 
-  // Fonction pour détecter la fin de l'animation
   const handleTransitionEnd = () => {
     setAnimationFinished(true);
+    if (logoRef.current) {
+      logoRef.current.classList.remove("rotate-disappear");
+      logoRef.current.classList.add("reveal-left-to-right");
+    }
   };
 
-  // Attacher le gestionnaire d'événement lors du montage du composant
   useEffect(() => {
     const logoElement = logoRef.current;
     if (logoElement) {
@@ -43,7 +45,6 @@ const Sidebar = ({ isMinimized, onToggle }) => {
     };
   }, []);
 
-  // useEffect pour changer l'image à la fin de l'animation
   useEffect(() => {
     if (animationFinished) {
       const newLogo = isMinimized ? logo2 : logo;
@@ -52,6 +53,19 @@ const Sidebar = ({ isMinimized, onToggle }) => {
     }
   }, [animationFinished, isMinimized]);
 
+  useEffect(() => {
+    if (!isMinimized) {
+      handleLogoTransition();
+    }
+  }, [isMinimized]);
+
+  const handleLogoTransition = () => {
+    if (logoRef.current) {
+      logoRef.current.classList.remove("reveal-left-to-right");
+      logoRef.current.classList.add("rotate-disappear");
+    }
+  };
+
   return (
     <>
       <aside
@@ -59,7 +73,6 @@ const Sidebar = ({ isMinimized, onToggle }) => {
           isMinimized ? "w-20" : "w-64"
         } bg-gray-gradient p-4 z-50 rounded-lg transition-all duration-50`}
       >
-        {/* Bouton pour minimiser/maximiser la Sidebar */}
         <button
           onClick={onToggle}
           className={`absolute top-2 right-2 w-8 h-8 ${
@@ -68,13 +81,12 @@ const Sidebar = ({ isMinimized, onToggle }) => {
         >
           <HamburgerIcon isOpen={!isMinimized} color="white" />
         </button>
-        {/* Contenu de la sidebar */}
+
         <div
           className={`flex flex-col h-full ${
             isMinimized ? "items-center justify-center" : ""
           }`}
         >
-          {/* Profil */}
           <div
             className={`flex justify-center items-center my-4 ${
               isMinimized ? "hidden" : ""
@@ -90,7 +102,6 @@ const Sidebar = ({ isMinimized, onToggle }) => {
             </div>
           </div>
 
-          {/* Navigation */}
           <nav
             className={`flex-1 ${
               isMinimized ? "flex flex-col items-center justify-center" : ""
@@ -108,7 +119,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/profile"} // Ajouter la prop isActive
+                isActive={location.pathname === "/profile"}
               />
               <SidebarItem
                 link="/dashboard"
@@ -121,7 +132,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/dashboard"} // Ajouter la prop isActive
+                isActive={location.pathname === "/dashboard"}
               />
               <SidebarItem
                 link="/today"
@@ -134,7 +145,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/today"} // Ajouter la prop isActive
+                isActive={location.pathname === "/today"}
               />
               <SidebarItem
                 link="/agenda"
@@ -147,7 +158,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/agenda"} // Ajouter la prop isActive
+                isActive={location.pathname === "/agenda"}
               />
               <SidebarDropdown
                 title="Mes recherches"
@@ -171,7 +182,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                     />
                   }
                   isSidebarMinimized={isMinimized}
-                  isActive={location.pathname === "/search"} // Ajouter la prop isActive
+                  isActive={location.pathname === "/search"}
                 />
                 <SidebarItem
                   link="/favorites"
@@ -184,7 +195,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                     />
                   }
                   isSidebarMinimized={isMinimized}
-                  isActive={location.pathname === "/favorites"} // Ajouter la prop isActive
+                  isActive={location.pathname === "/favorites"}
                 />
               </SidebarDropdown>
               <SidebarItem
@@ -198,7 +209,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/faq"} // Ajouter la prop isActive
+                isActive={location.pathname === "/faq"}
               />
               <SidebarItem
                 link="/contact"
@@ -211,7 +222,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   />
                 }
                 isSidebarMinimized={isMinimized}
-                isActive={location.pathname === "/contact"} // Ajouter la prop isActive
+                isActive={location.pathname === "/contact"}
               />
           
             {/* Bouton de déconnexion séparé */}
@@ -246,14 +257,14 @@ const Sidebar = ({ isMinimized, onToggle }) => {
             >
               <a href="https://www.thehackingproject.org/">
                 <img
-                  ref={logoRef}  // Ref pour accéder directement à l'élément DOM
+                  ref={logoRef}
                   src={currentLogo}
                   alt="Logo"
                   style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "contain",
-                    transition: "clip-path 0.1s ease",
+                    transition: !isMinimized? "clip-path 0.4s ease" : "clip-path 0.01s ease",
                     clipPath: isMinimized
                       ? "inset(0 -100% 0 0)"
                       : "inset(0 0 0 0)",
@@ -262,7 +273,6 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 />
               </a>
             </div>
-
           </nav>
         </div>
       </aside>
