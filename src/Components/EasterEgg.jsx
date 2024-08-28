@@ -7,7 +7,7 @@ const EasterEgg = () => {
   const [modalContent, setModalContent] = useState(null);
 
   const handleOpenModal = () => {
-    setModalContent(<p>Contenu spécifique pour EasterEgg</p>);
+    setModalContent(<h1>en construction</h1>);
     setIsModalOpen(true);
   };
 
