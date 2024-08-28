@@ -1,17 +1,16 @@
-import React from "react";
+import PropTypes from 'prop-types';  // Importation de PropTypes pour la validation des types
 import Joker from "./Joker";
 import JokerImage from '../../Assets/LostJoker.png';
 import my_jokers_icon from '../../Assets/my_jokers_icon.svg';
 
-
-const MyJokers = ({ count = 3, total = 3 }) => {
+const MyJokers = ({ count, total }) => {
   const jokersToDisplay = Array.from({ length: count });
 
   return (
     <div className="card bg-base-100 w-5/6 sm:w-80 h-44 shadow-out">
       <div className="relative">
         <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-error rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
-         <img src={my_jokers_icon} alt="Icône jokers" />
+          <img src={my_jokers_icon} alt="Icône jokers" />
         </div>
       </div>
 
@@ -32,6 +31,11 @@ const MyJokers = ({ count = 3, total = 3 }) => {
       </div>
     </div>
   );
+};
+
+MyJokers.propTypes = {
+  count: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default MyJokers;
