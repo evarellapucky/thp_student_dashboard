@@ -128,3 +128,8 @@ a:visited {
 .custom-pulse {
   animation: pulse 1.5s infinite ease-in-out;
 }
+
+/* profile */
+.tabs-lifted > .tab {
+  border-bottom-color: var(--tab-border-color, #BDBDBD);
+}

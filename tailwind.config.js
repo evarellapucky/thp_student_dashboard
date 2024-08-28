@@ -92,6 +92,7 @@ export default {
         error: "#E64B4B",
         accent: "#38B2AC",
         brand: "#0057FF",
+        mediumgray: "#BDBDBD",
         
         },
       },

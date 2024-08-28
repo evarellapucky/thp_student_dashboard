@@ -7,6 +7,7 @@ import Directory from "../Components/Profile/Directory";
 import Ambassador from "../Components/Profile/Ambassador";
 import Daily from '../Components/Profile/Daily.jsx';
 import DailyModal from '../Components/DailyModal.jsx';
+import './Profile.css'
 
 const useIsLargeScreen = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
