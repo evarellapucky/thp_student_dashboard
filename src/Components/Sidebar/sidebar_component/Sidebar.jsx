@@ -1,20 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import logo from "../../Assets/thpLogo.svg";
-import logo2 from "../../Assets/thpLogoMinimised.svg";
-import SidebarItem from "./SidebarItem";
-import disconnect from "../../Assets/disconnect.svg";
-import profile from "../../Assets/profile.svg";
-import dashboard_logo from "../../Assets/dashboard.svg";
-import Daylogo from "../../Assets/day.svg";
-import agenda_logo from "../../Assets/agenda.svg";
-import search_logo from "../../Assets/search.svg";
-import glass_logo from "../../Assets/magnifying_glass.svg";
-import favorite_logo from "../../Assets/favorites.svg";
-import faq_logo from "../../Assets/question_mark.svg";
-import contact_logo from "../../Assets/contact.svg";
-import SidebarDropdown from "./SidebarDropdown";
-import HamburgerIcon from "./HamburgerIcon";
+import logo from "../../../Assets/thpLogo.svg";
+import logo2 from "../../../Assets/thpLogoMinimised.svg";
+import SidebarItem from "../SidebarItem";
+import disconnect from "../../../Assets/disconnect.svg";
+import profile from "../../../Assets/profile.svg";
+import dashboard_logo from "../../../Assets/dashboard.svg";
+import Daylogo from "../../../Assets/day.svg";
+import agenda_logo from "../../../Assets/agenda.svg";
+import search_logo from "../../../Assets/search.svg";
+import glass_logo from "../../../Assets/magnifying_glass.svg";
+import favorite_logo from "../../../Assets/favorites.svg";
+import faq_logo from "../../../Assets/question_mark.svg";
+import contact_logo from "../../../Assets/contact.svg";
+import SidebarDropdown from "../SidebarDropdown";
+import HamburgerIcon from "../HamburgerIcon";
 import { useLocation } from "react-router-dom";
 import "./sidebar.css"; 
 
@@ -256,12 +256,21 @@ const Sidebar = ({ isMinimized, onToggle }) => {
               }}
             >
               <a href="https://www.thehackingproject.org/">
-              <img
-                ref={logoRef}
-                src={currentLogo}
-                alt="Logo"
-                className={`custom-logo ${isMinimized ? "custom-logo-minimized" : "custom-logo-expanded"}`}
-              />
+                <img
+                  ref={logoRef}
+                  src={currentLogo}
+                  alt="Logo"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    transition: !isMinimized? "clip-path 0.4s ease" : "clip-path 0.01s ease",
+                    clipPath: isMinimized
+                      ? "inset(0 -100% 0 0)"
+                      : "inset(0 0 0 0)",
+                    transform: isMinimized ? "scale(2.5)" : "scale(1)",
+                  }}
+                />
               </a>
             </div>
           </nav>
