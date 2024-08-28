@@ -1,5 +1,4 @@
 import JokerImage from '../../Assets/Joker.png';
-import './joker.css';
 
 const Joker = () => {
   return (
