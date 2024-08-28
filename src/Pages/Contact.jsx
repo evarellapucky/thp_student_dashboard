@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import{ useState } from "react";
 import InputField from "../Components/InputField";
 import BackButton from "../Components/BackButton";
 import DefaultButton from "../Components/DefaultButton";
-import THPLogo from "../Assets/thpLogo.png";
+import THPLogo from "../Assets/thpLogo.svg";
 
 function Contact() {
   const [name, setName] = useState("");
