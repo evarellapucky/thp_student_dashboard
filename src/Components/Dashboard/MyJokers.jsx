@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';  // Importation de PropTypes pour la validation des types
+import PropTypes from "prop-types"; // Importation de PropTypes pour la validation des types
 import Joker from "./Joker";
-import JokerImage from '../../Assets/LostJoker.png';
-import my_jokers_icon from '../../Assets/my_jokers_icon.svg';
+import JokerImage from "../../Assets/LostJoker.png";
+import my_jokers_icon from "../../Assets/my_jokers_icon.svg";
 
 const MyJokers = ({ count, total }) => {
   const jokersToDisplay = Array.from({ length: count });
@@ -17,13 +17,24 @@ const MyJokers = ({ count, total }) => {
       <div className="card-body">
         <h4 className="card-title">Mes jokers</h4>
         <div className="flex items-center justify-center"></div>
-        <div className="flex flex-row justify-center gap-2 ">
+        <div className="flex flex-row justify-center gap-2">
           {jokersToDisplay.map((_, index) => (
-            <Joker key={index} />
+            <div
+              key={index}
+              className="joker-container hover:scale-110 hover:rotate-3 transition-transform duration-300 ease-in-out"
+            >
+              <Joker />
+            </div>
           ))}
           {Array.from({ length: total - count }).map((_, index) => (
-            <div key={index} >
-              <img src={JokerImage} className="mt-3 h-16" alt="joker perdu" />
+            <div
+              key={index}
+            >
+              <img
+                src={JokerImage}
+                className="mt-3 h-16"
+                alt="joker perdu"
+              />
             </div>
           ))}
         </div>
