@@ -74,7 +74,7 @@ function Profile() {
       )}
 
       {isLargeScreen && (
-      <div role="tablist" className="tabs tabs-lifted">
+      <div role="tablist" className="tabs tabs-lifted [--tab-border-color:theme(colors.mediumgray)]">
         <input type="radio" name="my_tabs_2" role="tab" className={`tab ${selectedTab === 'Profil' ? 'tab-active [--tab-border-color:theme(colors.mediumgray)] ' : ''}`} aria-label="Profil" defaultChecked onClick={() => setSelectedTab('Profil')}/>
         {selectedTab === "Profil" && 
           <div role="tabpanel" className="tab-content bg-base-100 border-gray-medium rounded-box p-6" >
