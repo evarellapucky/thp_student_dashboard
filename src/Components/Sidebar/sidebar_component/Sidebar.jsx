@@ -244,33 +244,20 @@ const Sidebar = ({ isMinimized, onToggle }) => {
             </ul>
 
             <div
-              className="logo-container"
-              style={{
-                position: "absolute",
-                bottom: "0",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: isMinimized ? "50px" : "200px",
-                height: 100,
-                overflow: "hidden",
-              }}
+              className={`
+                logo-container
+                absolute bottom-0 left-1/2 transform -translate-x-1/2 overflow-hidden
+                ${isMinimized ? "w-12" : "w-52"} 
+                h-24
+              `}
             >
               <a href="https://www.thehackingproject.org/">
-                <img
+              <img
                   ref={logoRef}
                   src={currentLogo}
                   alt="Logo"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    transition: !isMinimized? "clip-path 0.4s ease" : "clip-path 0.01s ease",
-                    clipPath: isMinimized
-                      ? "inset(0 -100% 0 0)"
-                      : "inset(0 0 0 0)",
-                    transform: isMinimized ? "scale(2.5)" : "scale(1)",
-                  }}
-                />
+                  className={`custom-logo ${isMinimized ? "custom-logo-minimized" : "custom-logo-expanded"}`}
+              />
               </a>
             </div>
           </nav>
