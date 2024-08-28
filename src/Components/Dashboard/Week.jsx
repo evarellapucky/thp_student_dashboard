@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import {useState, useEffect } from 'react';
 import AgendaCard from '../AgendaCard';
 import WeekPicker from './WeekPicker';
 import moment from 'moment';

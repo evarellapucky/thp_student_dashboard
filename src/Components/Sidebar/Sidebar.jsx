@@ -256,21 +256,12 @@ const Sidebar = ({ isMinimized, onToggle }) => {
               }}
             >
               <a href="https://www.thehackingproject.org/">
-                <img
-                  ref={logoRef}
-                  src={currentLogo}
-                  alt="Logo"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    transition: !isMinimized? "clip-path 0.4s ease" : "clip-path 0.01s ease",
-                    clipPath: isMinimized
-                      ? "inset(0 -100% 0 0)"
-                      : "inset(0 0 0 0)",
-                    transform: isMinimized ? "scale(2.5)" : "scale(1)",
-                  }}
-                />
+              <img
+                ref={logoRef}
+                src={currentLogo}
+                alt="Logo"
+                className={`custom-logo ${isMinimized ? "custom-logo-minimized" : "custom-logo-expanded"}`}
+              />
               </a>
             </div>
           </nav>
