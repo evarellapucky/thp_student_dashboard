@@ -30,7 +30,7 @@ function TopCards() {
   return (
     <>
     {profileData? (
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 justify-items-center items-center mx-3">
         <Journey journey={profileData.journey} percentage={profileData.percentage}/>
         <Points points={profileData.points} rank={profileData.rank}/>
         <MyJokers count={profileData.joker} total={3} />
