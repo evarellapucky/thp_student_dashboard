@@ -51,8 +51,8 @@ const DailyTab = ({ onSelect }) => {
     >
       <div className='flex flex-col justify-center items-center h-full space-y-4 md:space-y-8'>
         <h4 className="font-bold">Coups de Mains</h4>
-        <div className='flex flex-row space-x-4 items-center'>
-          <img src={Handshake} className='w-14 h-14' alt="Handshake" />
+        <div className='flex flex-row space-x-4 items-center justify-center gap-2'>
+          <img src={Handshake} className='w-24 h-24' alt="Handshake" />
           <h2>{handshakesData ? handshakesData.length : 0}</h2>
         </div>
       </div>
@@ -65,7 +65,7 @@ const DailyTab = ({ onSelect }) => {
         <h4 className="font-bold">Difficultés rencontrées</h4>
         <div className='flex flex-col items-center space-y-4'>
           {/* La jauge sera affichée en permanence ici */}
-          <div className="w-40 h-20 flex flex-col items-center justify-center">
+          <div className="w-40 h-20 flex flex-row items-center justify-center">
             <GaugeChart 
               id="gauge-chart2" 
               nrOfLevels={10} 

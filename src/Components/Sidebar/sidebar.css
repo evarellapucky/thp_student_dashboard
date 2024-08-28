@@ -1,3 +1,37 @@
-.hex-mask {
-    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+/* Définition de l'animation keyframe pour le logo */
+@keyframes growRotateShrinkHorizontal {
+  /* État initial : le logo est à sa taille normale, centré horizontalement et pleinement visible */
+  0% {
+    transform: scale(1) translateX(0);
+    opacity: 1;
   }
+  
+  /* À 25% de l'animation : le logo grossit (1.7x) et se déplace de 41px vers la gauche */
+  25% {
+    transform: scale(1.7) translateX(-41px); /* Déplacement vers la gauche de 41px */
+    opacity: 1; /* Toujours visible */
+  }
+
+  /* À 50% de l'animation : le logo reste de la même taille et à la même position, pas de changement */
+  50% {
+    transform: scale(1.7) translateX(-41px); /* Pas de changement, il reste à gauche */
+    opacity: 1; /* Toujours visible */
+  }
+
+  /* À 100% de l'animation : idem, le logo garde la même taille et position finale */
+  100% {
+    transform: scale(1.7) translateX(-41px); /* Le logo reste où il est */
+    opacity: 1; /* Toujours visible, sans changement */
+  }
+}
+
+/* Classe pour déclencher l'animation quand la sidebar est activée */
+.rotate-disappear {
+  /* Applique l'animation définie ci-dessus sur 1.3 secondes avec une transition douce */
+  animation: growRotateShrinkHorizontal 1.3s ease-in-out forwards;
+  /* 
+  - 1.3s : Durée totale de l'animation
+  - ease-in-out : Commence doucement, accélère, puis ralentit à la fin
+  - forwards : Garde les styles appliqués à 100% après la fin de l'animation
+  */
+}

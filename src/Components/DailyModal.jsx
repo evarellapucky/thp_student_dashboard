@@ -69,6 +69,7 @@ const DailyModal = () => {
                 isOpen={isModalOpen} 
                 onClose={handleCloseModal} 
                 modalSize="h-[90vh] w-[90vw] max-w-full"
+                title=""
                 content={
                     <div className="flex flex-col gap-6 justify-between">
                         <div className='flex flex-col gap-2 items-center'>
