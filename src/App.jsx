@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import Agenda from "./Pages/Agenda";
 import Profile from "./Pages/Profile";
-import Sidebar from "./Components/Sidebar/Sidebar";
+import Sidebar from "./Components/Sidebar/sidebar_component/Sidebar";
 import MobileSidebar from "./Components/Sidebar/SidebarMobile";
 import HamburgerIcon from "./Components/Sidebar/HamburgerIcon";
 import DateTime from "./Components/DateTime";

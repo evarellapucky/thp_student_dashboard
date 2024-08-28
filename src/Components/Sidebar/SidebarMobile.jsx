@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import logo from "../../Assets/logo_thp.png";
+import logo from "../../Assets/thpLogo.svg";
 import disconnect from "../../Assets/disconnect.svg";
 import profile from "../../Assets/profile.svg";
 import dashboard_logo from "../../Assets/dashboard.svg";
