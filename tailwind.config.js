@@ -11,6 +11,7 @@ export default {
         "blue-gradient": "linear-gradient(180deg, #15A3FF 0%, #0081E3 100%)",
         "gray-gradient": "linear-gradient(135deg, #343A40 0%, #5C5F63 100%)",
         "gradient": "linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%)",
+        "light-blue": "linear-gradient(180deg, #15a1ffa2 0%, #0081E39e 100%)",
       },
       boxShadow: {
         inner: `

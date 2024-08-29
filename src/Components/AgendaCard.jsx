@@ -28,7 +28,7 @@ const AgendaCard = ({ title, date, resources, toCorrect, toRender }) => {
           />
         </div>
       )}
-      <div className="absolute py-2 px-2 text-white top-0 left-0 bg-success rounded-md -translate-x-3 -translate-y-7 w-24 h-10 flex justify-center items-center">
+      <div className="absolute py-2 px-2 text-white top-0 left-0 bg-gray-gradient rounded-md -translate-x-3 -translate-y-7 w-24 h-10 flex justify-center items-center">
         <h4>{title}</h4>
       </div>
       <p className="text-sm text-gray-darker my-4">{date}</p>
@@ -38,8 +38,8 @@ const AgendaCard = ({ title, date, resources, toCorrect, toRender }) => {
             <button
               key={index}
               onClick={() => handleResourceClick(resource)}
-              className={`p-2 text-white text-md rounded-md hover:bg-gradient hover:text-secondary cursor-pointer ${
-                resource.isProject ? "bg-red-500 hover:text-red-500" : "bg-blue-gradient"
+              className={`p-2 text-white text-md font-semibold rounded-md  cursor-pointer ${
+                resource.isProject ? "bg-red-500 hover:bg-red-300 " : "bg-blue-gradient hover:bg-light-blue"
               }`}
             >
               {resource.title}
