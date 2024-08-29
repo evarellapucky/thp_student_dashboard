@@ -1,6 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
 const KitUI = () => {
   return (
     <>
@@ -16,7 +13,5 @@ const KitUI = () => {
     </>
   )
 }
-
-KitUI.propTypes = {}
 
 export default KitUI
