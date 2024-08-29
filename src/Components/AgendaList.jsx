@@ -12,8 +12,8 @@ const AgendaList = ({ moduleName, weekIndex }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
-          // "https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json"
+          // "https://raw.githubusercontent.com/evarellapucky/Favorites/main/favorites.json"
+          "https://raw.githubusercontent.com/YannRZG/Missions-THP/main/Resources.json"
         );
 
         const moduleData = response.data[moduleName];
