@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 
 function TopCards() {
-  const [userId, setUserId] = useState("16");
+  const [userId] = useState("16");
   const [profileData, setProfileData] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ function TopCards() {
       try {
         const response = await axios.get('https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json');
         const selectedUser = response.data.users.find(user => user.id === userId)
-        
+
         if (selectedUser) {
           setProfileData(selectedUser);
         } else {
@@ -49,7 +49,7 @@ function TopCards() {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 justify-items-center items-center mx-3">
         <Journey journey={profileData.journey} percentage={profileData.percentage}/>
         <Points points={profileData.points} rank={profileData.rank}/>
-        <MyJokers count={profileData.joker} total={3} />
+        <MyJokers count={Number(profileData.joker)} total={3} />
         <Handshakes handshakes={profileData.helping_hand}/>
       </div>
       ) : (
