@@ -3,10 +3,10 @@ import handshake_icon from "../../Assets/handshake_icon.svg"
 
 function Handshakes({ handshakes }) {
   return (
-    <div className="card bg-base-100 w-5/6 sm:w-80 h-44 shadow-out">
+        <div className="card bg-base-100 w-5/6 max-w-80 xl:w-full h-44 shadow-out">
             <div className="relative">
               <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-success rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
-             <img src={handshake_icon} alt="Icône poignées de mains"/>
+                <img src={handshake_icon} alt="Icône poignées de mains"/>
               </div>
             </div>
           <div className="card-body">

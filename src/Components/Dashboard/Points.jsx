@@ -4,7 +4,7 @@ import mes_points_icon from "../../Assets/mes_points_icon.svg";
 
 function Points({ points, rank }) {
   return (
-    <div className="card bg-base-100 w-5/6 sm:w-80 h-44 shadow-out">
+    <div className="card bg-base-100 w-5/6 max-w-80 xl:w-full h-44 shadow-out">
       <div className="relative">
         <div className="absolute py-2 px-2 text-sm text-white top-0 left-0 bg-warning rounded-md -translate-x-3 -translate-y-5 shadow-lightOut">
           <img src={mes_points_icon} alt="Icône points" />
