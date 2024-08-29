@@ -1,4 +1,3 @@
-import React from "react";
 import Journey from "./Journey";
 import Points from "./Points";
 import MyJokers from "./MyJokers";
@@ -11,21 +10,38 @@ import { useEffect } from "react";
 function TopCards() {
   const [userId, setUserId] = useState("16");
   const [profileData, setProfileData] = useState([])
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get('https://raw.githubusercontent.com/tommy-pellerin/json_refont_thp/main/Users.json');
-
         const selectedUser = response.data.users.find(user => user.id === userId)
-        setProfileData(selectedUser);
+        
+        if (selectedUser) {
+          setProfileData(selectedUser);
+        } else {
+          setError('Utilisateur non trouvé');
+        }
       } catch (error) {
         console.error('Erreur lors du fetch des utilisateurs:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUsers();
-  }, []);
+  }, [userId]);
+
+  if (loading) {
+    return <p>Chargement...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
     
   return (
     <>
