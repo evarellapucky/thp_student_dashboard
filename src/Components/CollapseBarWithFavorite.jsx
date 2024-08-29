@@ -48,6 +48,8 @@ CollapseBarWithFavorite.propTypes = {
   title: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
   borderColor: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
 };
 
 export default CollapseBarWithFavorite;

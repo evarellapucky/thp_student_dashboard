@@ -1,6 +1,6 @@
-import React from "react";
 import { useState } from "react";
 import parse from 'html-react-parser';
+import PropTypes from "prop-types";
 
 function DirectoryTable({ data }) {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
@@ -162,6 +162,10 @@ function DirectoryTable({ data }) {
       </div>
     </div>
   )
+}
+
+DirectoryTable.propTypes = {
+  data: PropTypes.array
 }
 
 export default DirectoryTable;

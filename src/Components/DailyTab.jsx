@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import GaugeChart from 'react-gauge-chart';
 import Handshake from '../../src/Public/Images/Handshake.png';
+import PropType from 'prop-types';
 
 const DailyTab = ({ onSelect }) => {
   const [selectedTab, setSelectedTab] = useState('handshakes');
@@ -81,9 +82,11 @@ const DailyTab = ({ onSelect }) => {
     </div>
   </div>
 </div>
-
-
   );
+};
+
+DailyTab.propTypes = {
+  onSelect: PropType.func.isRequired,
 };
 
 export default DailyTab;
