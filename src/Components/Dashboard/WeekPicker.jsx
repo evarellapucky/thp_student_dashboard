@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DatePicker from 'rsuite/DatePicker';
 import moment from 'moment';
 import 'rsuite/dist/rsuite.min.css';
+import PropTypes from 'prop-types';
 
 const WeekPicker = ({ onWeekChange }) => {
   // Obtenir la date du jour et initialiser avec les dates de début et de fin de semaine (lundi à vendredi)
@@ -63,6 +64,10 @@ const WeekPicker = ({ onWeekChange }) => {
       />
     </div>
   );
+};
+
+WeekPicker.propTypes = {
+  onWeekChange: PropTypes.func
 };
 
 export default WeekPicker;

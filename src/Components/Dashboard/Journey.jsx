@@ -1,5 +1,5 @@
 import journey_icon from "../../Assets/journey_icon.svg";
-
+import PropTypes from 'prop-types';
 
 function Journey({ percentage, journey }) {
   return (
@@ -28,6 +28,11 @@ function Journey({ percentage, journey }) {
     </div>
   </div>
   );
+}
+
+Journey.propTypes = {
+  percentage: PropTypes.number,
+  journey: PropTypes.string
 }
 
 export default Journey;
