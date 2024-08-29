@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import logo from "../../../Assets/thpLogo.svg";
 import logo2 from "../../../Assets/thpLogoMinimised.svg";
 import SidebarItem from "../SidebarItem";
-import disconnect from "../../../Assets/disconnect.svg";
-import profile from "../../../Assets/profile.svg";
-import dashboard_logo from "../../../Assets/dashboard.svg";
-import Daylogo from "../../../Assets/day.svg";
-import agenda_logo from "../../../Assets/agenda.svg";
-import search_logo from "../../../Assets/search.svg";
-import glass_logo from "../../../Assets/magnifying_glass.svg";
-import favorite_logo from "../../../Assets/favorites.svg";
-import faq_logo from "../../../Assets/question_mark.svg";
-import contact_logo from "../../../Assets/contact.svg";
+import LogoutIcon from "../sidebar_icons/Disconnect_Icon";
+import UserIcon from "../sidebar_icons/Profile_Icon";
+import HomeIcon from "../sidebar_icons/Dashboard_Icon";
+import CalendarIcon from "../sidebar_icons/Day_Icon";
+import AgendaIcon from "../sidebar_icons/Agenda_Icon";
+import FolderIcon from "../sidebar_icons/Folder_Icon";
+import SearchIcon from "../sidebar_icons/Search_Icon";
+import HeartIcon from "../sidebar_icons/Heart_Icon";
+import HelpIcon from "../sidebar_icons/Question_Mark_Icon";
+import IdentificationIcon from "../sidebar_icons/Identification_Icon";
 import SidebarDropdown from "../SidebarDropdown";
 import HamburgerIcon from "../HamburgerIcon";
 import { useLocation } from "react-router-dom";
@@ -112,10 +112,10 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 link="/profile"
                 text="Profil"
                 icon={
-                  <img
-                    src={profile}
-                    alt="mon profil"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <UserIcon
+                    size={24}
+                    color={location.pathname === "/profile" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -125,10 +125,10 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 link="/dashboard"
                 text="Dashboard"
                 icon={
-                  <img
-                    src={dashboard_logo}
-                    alt="dashboard"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <HomeIcon
+                    size={24}
+                    color={location.pathname === "/dashboard" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -136,12 +136,12 @@ const Sidebar = ({ isMinimized, onToggle }) => {
               />
               <SidebarItem
                 link="/today"
-                text="Aujourd'hui"
+                text="Calendrier"
                 icon={
-                  <img
-                    src={Daylogo}
-                    alt="aujourd'hui"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <CalendarIcon
+                    size={24}
+                    color={location.pathname === "/today" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -151,10 +151,10 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 link="/agenda"
                 text="Agenda"
                 icon={
-                  <img
-                    src={agenda_logo}
-                    alt="agenda"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <AgendaIcon
+                    size={24}
+                    color={location.pathname === "/agenda" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -163,10 +163,10 @@ const Sidebar = ({ isMinimized, onToggle }) => {
               <SidebarDropdown
                 title="Mes recherches"
                 icon={
-                  <img
-                    src={search_logo}
-                    alt="rechercher"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <FolderIcon
+                    size={24}
+                    color={(location.pathname.startsWith("/search") || location.pathname === "/favorites") && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -175,10 +175,10 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   link="/search"
                   text="Recherche"
                   icon={
-                    <img
-                      src={glass_logo}
-                      alt="rechercher"
-                      className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                    <SearchIcon
+                      size={24}
+                      color={location.pathname === "/search" && isMinimized ? "blue" : "white"}
+                      className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                     />
                   }
                   isSidebarMinimized={isMinimized}
@@ -188,24 +188,25 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   link="/favorites"
                   text="Mes favoris"
                   icon={
-                    <img
-                      src={favorite_logo}
-                      alt="favorites"
-                      className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                    <HeartIcon
+                      size={24}
+                      color={location.pathname === "/favorites" && isMinimized ? "blue" : "white"}
+                      className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                     />
                   }
                   isSidebarMinimized={isMinimized}
                   isActive={location.pathname === "/favorites"}
                 />
               </SidebarDropdown>
+
               <SidebarItem
                 link="/faq"
-                text="FAQ / Aide"
+                text="FAQ"
                 icon={
-                  <img
-                    src={faq_logo}
-                    alt="faq"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <HelpIcon
+                    size={24}
+                    color={location.pathname === "/faq" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
@@ -213,34 +214,34 @@ const Sidebar = ({ isMinimized, onToggle }) => {
               />
               <SidebarItem
                 link="/contact"
-                text="Contact"
+                text="contact"
                 icon={
-                  <img
-                    src={contact_logo}
-                    alt="contact"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
+                  <IdentificationIcon
+                    size={24}
+                    color={location.pathname === "/contact" && isMinimized ? "blue" : "white"}
+                    className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
                 isSidebarMinimized={isMinimized}
                 isActive={location.pathname === "/contact"}
               />
           
-            {/* Bouton de déconnexion séparé */}
-            <div>
-              <SidebarItem
-                link="/logout"
-                text="Déconnexion"
-                icon={
-                  <img
-                    src={disconnect}
-                    alt="disconnect"
-                    className={`w-6 h-6 ${isMinimized ? "mx-auto" : "mr-2"}`}
-                  />
-                }
-                textColor="text-red"
-                isSidebarMinimized={isMinimized}
-              />
-            </div>
+              {/* Bouton de déconnexion séparé */}
+              <div>
+                <SidebarItem
+                  link="/logout"
+                  text="Déconnexion"
+                  icon={
+                    <LogoutIcon
+                      size={24}
+                      color="red"
+                      className={`${isMinimized ? "mx-auto" : "mr-2"}`}
+                    />
+                  }
+                  isSidebarMinimized={isMinimized}
+                  isActive={location.pathname === "/logout"}
+                />
+              </div>
             </ul>
 
             <div
