@@ -61,13 +61,13 @@ const Week = () => {
 
   return (
     <div className='flex flex-col flex-1 gap-6'>
-      <div className='flex flex-col justify-between lg:flex-row mt-8'>
+      <div className='flex flex-col justify-between lg:flex-row mt-8 mx-2'>
         <h2 className='text-center'>Introduction</h2> {/* Affiche le nom du module par défaut */}
         <WeekPicker onWeekChange={(range) => setWeekRange(range)} />
       </div>
 
       {/* Affichage des cartes AgendaCard pour la semaine courante */}
-      <div className='flex flex-wrap justify-evenly gap-10 mt-5'>
+      <div className='flex flex-wrap xl:flex-nowrap xl:mx-2 justify-evenly gap-10 mt-5'>
         {selectedWeekData ? (
           selectedWeekData.days.map((dayData, dayIndex) => (
             <AgendaCard
