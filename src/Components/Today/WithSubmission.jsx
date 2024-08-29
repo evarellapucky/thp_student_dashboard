@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import InputField from "../InputField";
 import Countdown from "./Countdown.jsx";
+import PropTypes from 'prop-types';
 
 const WithSubmission = ({
   countdownMode,
@@ -109,6 +110,12 @@ const WithSubmission = ({
       </div>
     </div>
   );
+};
+
+WithSubmission.propTypes = {
+  countdownMode: PropTypes.string.isRequired,
+  isCountdownActive: PropTypes.bool.isRequired,
+  onCountdownEnd: PropTypes.func.isRequired,
 };
 
 export default WithSubmission;

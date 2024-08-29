@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ItemCard from "./ItemCard"; // Assurez-vous que le chemin est correct
-import itemsData from "../../Data/items.json"; // Importation statique du JSON
+import ItemCard from "./ItemCard";
+import itemsData from "../../Data/items.json";
 
 const ShopItems = () => {
   const [items, setItems] = useState([]);

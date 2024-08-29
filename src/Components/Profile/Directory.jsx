@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import DirectoryTable from "../DirectoryTable";
 import axios from "axios";

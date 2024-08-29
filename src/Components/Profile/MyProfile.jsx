@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useDropzone } from 'react-dropzone';
 import { useAtom } from "jotai";
@@ -35,7 +34,7 @@ function MyProfile() {
 
     fetchUser();
 
-  }, []);
+  }, [myId]);
 
   const handleOpenEditProfileModal = () => {
     setContent(<EditProfile/>)

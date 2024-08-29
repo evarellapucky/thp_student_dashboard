@@ -1,6 +1,6 @@
-import React from 'react'
 import { useState } from 'react';
 import "./tooltipIcon.css";
+import PropTypes from 'prop-types';
 
 const TooltipIcon = ({ text, direction = "right" }) => {
   const [hovered, setHovered] = useState(false);
@@ -21,6 +21,11 @@ const TooltipIcon = ({ text, direction = "right" }) => {
       )}
     </div>
   );
+};
+
+TooltipIcon.propTypes = {
+  text: PropTypes.string.isRequired,
+  direction: PropTypes.string,
 };
 
 export default TooltipIcon;

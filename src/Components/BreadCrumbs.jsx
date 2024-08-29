@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const BreadCrumbs = ({ activeTab }) => {
     return (
         <div className="breadcrumbs text-sm">
@@ -12,6 +13,10 @@ const BreadCrumbs = ({ activeTab }) => {
             </ul>
         </div>
     );
+};
+
+BreadCrumbs.propTypes = {
+    activeTab: PropTypes.string
 };
 
 export default BreadCrumbs;

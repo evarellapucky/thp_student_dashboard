@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import './Pagination.css';
+import PropType from 'prop-types';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -129,6 +130,12 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
       </div>
     </>
   );
+};
+
+Pagination.propTypes = {
+  totalPages: PropType.number.isRequired,
+  currentPage: PropType.number.isRequired,
+  setCurrentPage: PropType.func.isRequired,
 };
 
 export default Pagination;

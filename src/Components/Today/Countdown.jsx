@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Countdown = ({ mode, onCountdownEnd }) => {
   const [timeLeft, setTimeLeft] = useState(null);
@@ -87,6 +88,11 @@ const Countdown = ({ mode, onCountdownEnd }) => {
 </div>
 
   );
+};
+
+Countdown.propTypes = { 
+  mode: PropTypes.oneOf(['untilMidnight', 'untilNoon']).isRequired,
+  onCountdownEnd: PropTypes.func.isRequired,
 };
 
 export default Countdown;

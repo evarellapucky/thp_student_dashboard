@@ -2,6 +2,7 @@
 import AgendaCard from './AgendaCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const AgendaList = ({ moduleName, weekIndex }) => {
   const [agendaItems, setAgendaItems] = useState([]);
@@ -59,6 +60,11 @@ const AgendaList = ({ moduleName, weekIndex }) => {
       })}
     </div>
   );
+};
+
+AgendaList.propTypes = {
+  moduleName: PropTypes.string.isRequired,
+  weekIndex: PropTypes.number.isRequired,
 };
 
 export default AgendaList;

@@ -1,5 +1,6 @@
 import Handshake from "../../Public/Images/Handshake.png"
 import handshake_icon from "../../Assets/handshake_icon.svg"
+import PropTypes from 'prop-types';
 
 function Handshakes({ handshakes }) {
   return (
@@ -22,6 +23,10 @@ function Handshakes({ handshakes }) {
           </div>
         </div>
   )
+}
+
+Handshakes.propTypes = {
+  handshakes: PropTypes.number
 }
 
 export default Handshakes

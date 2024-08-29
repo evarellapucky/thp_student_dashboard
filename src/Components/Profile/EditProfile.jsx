@@ -1,9 +1,6 @@
-import React from "react";
 import { useState } from "react";
-import BigModal from "../BigModal";
 import { useAtom } from 'jotai';
 import { modalOpenAtom } from "../Atom/atoms";
-import { useResetAtom } from "jotai/utils";
 import DefaultButton from "../DefaultButton";
 
 function EditProfile() {
