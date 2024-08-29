@@ -17,6 +17,7 @@ import SidebarDropdown from "../SidebarDropdown";
 import HamburgerIcon from "../HamburgerIcon";
 import { useLocation } from "react-router-dom";
 import "./sidebar.css"; 
+import "./snowy_sidebar.css";
 
 const Sidebar = ({ isMinimized, onToggle }) => {
   const [currentLogo, setCurrentLogo] = useState(isMinimized ? logo2 : logo);
@@ -73,6 +74,17 @@ const Sidebar = ({ isMinimized, onToggle }) => {
           isMinimized ? "w-20" : "w-64"
         } bg-gray-gradient p-4 z-50 rounded-lg transition-all duration-50`}
       >
+
+<div className="stars-container">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div className="star" key={i}></div>
+        ))}
+      </div>
+      <div className="snow-pile">
+        <div className="snow-pile-extra small1"></div>
+        <div className="snow-pile-extra small2"></div>
+        <div className="snow-pile-extra small3"></div>
+      </div>
         <button
           onClick={onToggle}
           className={`absolute top-2 right-2 w-8 h-8 ${
