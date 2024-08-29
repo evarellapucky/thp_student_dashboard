@@ -46,7 +46,7 @@ const AgendaList = ({ moduleName, weekIndex }) => {
         const { day, ToRender, ToCorrect, resources } = item;
         
         return (
-          <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
+          <div key={index} className="w-full flex justify-center sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
             <AgendaCard 
               title={day} 
               date={`Semaine ${weekIndex + 1}`} 
