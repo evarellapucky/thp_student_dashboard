@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RedirectButton from '../RedirectButton';
 import TooltipIcon from '../TooltipIcon/TooltipIcon';
 import ProjectCard from './ProjectCard';

@@ -4,7 +4,6 @@ import MyBumpChart from '../BumpChart';
 import DailyTab from '../DailyTab';
 import axios from 'axios';
 import ReusableChart from '../ReusableChart';
-import { format } from 'date-fns';
 
 const Daily = () => {
     const [selectedDailyTab, setSelectedDailyTab] = useState('handshakes');

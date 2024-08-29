@@ -1,6 +1,7 @@
 // src/Components/Correction.jsx
 import DefaultButton from "../DefaultButton";
 import Countdown from "./Countdown";
+import PropTypes from 'prop-types';
 
 const Correction = ({ countdownMode, isCountdownActive, onCountdownEnd, showCorrections }) => {
   if (!showCorrections) return null;
@@ -61,6 +62,13 @@ const Correction = ({ countdownMode, isCountdownActive, onCountdownEnd, showCorr
       </div>
     </div>
   );
+};
+
+Correction.propTypes = {
+  countdownMode: PropTypes.string,
+  isCountdownActive: PropTypes.bool,
+  onCountdownEnd: PropTypes.func,
+  showCorrections: PropTypes.bool,
 };
 
 export default Correction;

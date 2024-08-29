@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-
 import { useAtom } from 'jotai';
 import { modalOpenAtom, modalContentAtom } from './Atom/atoms';
 
