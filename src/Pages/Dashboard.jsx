@@ -1,7 +1,6 @@
 import TopCards from "../Components/Dashboard/TopCards";
 import BottomCards from "../Components/Dashboard/BottomCards";
 import Week from "../Components/Dashboard/Week";
-import './dashboard.css';
 
 function Dashboard() {
   return (
