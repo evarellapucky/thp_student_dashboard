@@ -1,0 +1,12 @@
+a {
+  text-decoration: none; /* Supprime le soulignement pour tous les liens */
+  color: inherit; /* Garde la couleur du texte héritée */
+}
+
+a:hover,
+a:active,
+a:focus,
+a:visited {
+  text-decoration: none; /* Empêche le soulignement dans tous les états */
+  color: inherit; /* Empêche tout changement de couleur dans tous les états */
+}
