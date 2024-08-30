@@ -1,23 +1,25 @@
 import PropTypes from "prop-types";
 import logo from "../../Assets/thpLogo.svg";
-import disconnect from "../../Assets/disconnect.svg";
-import profile from "../../Assets/profile.svg";
-import dashboard_logo from "../../Assets/dashboard.svg";
-import today_logo from "../../Assets/today.svg";
-import agenda_logo from "../../Assets/agenda.svg";
-import search_logo from "../../Assets/search.svg";
-import glass_logo from "../../Assets/magnifying_glass.svg";
-import favorite_logo from "../../Assets/favorites.svg";
-import faq_logo from "../../Assets/question_mark.svg";
-import contact_logo from "../../Assets/contact.svg";
 import HamburgerIcon from './HamburgerIcon';
 import SidebarItem from './SidebarItem'; 
 import SidebarDropdown from './SidebarDropdown'; 
 import { useLocation } from 'react-router-dom';
 
+// Import des icônes depuis le dossier 'sidebar_icons'
+import AgendaIcon from './sidebar_icons/Agenda_Icon';
+import DashboardIcon from './sidebar_icons/Dashboard_Icon';
+import DayIcon from './sidebar_icons/Day_Icon';
+import DisconnectIcon from './sidebar_icons/Disconnect_Icon';
+import FolderIcon from './sidebar_icons/Folder_Icon';
+import HeartIcon from './sidebar_icons/Heart_Icon';
+import IdentificationIcon from './sidebar_icons/Identification_Icon';
+import ProfileIcon from './sidebar_icons/Profile_Icon';
+import QuestionMarkIcon from './sidebar_icons/Question_Mark_Icon';
+import SearchIcon from './sidebar_icons/Search_Icon';
+
 const SidebarMobile = ({ isOpen, onToggle }) => {
-  const location = useLocation(); // Obtenir l'URL actuelle
-  const isMobile = true; // On peut aussi détecter dynamiquement si besoin
+  const location = useLocation();
+  const isMobile = true;
 
   return (
     <div className={`fixed inset-0 z-50 ${isOpen ? "block" : "hidden"}`}>
@@ -54,7 +56,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/profile"
                 text="Profil"
-                icon={<img src={profile} alt="mon profil" className="w-6 h-6 mr-2" />}
+                icon={<ProfileIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -63,7 +65,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/dashboard"
                 text="Dashboard"
-                icon={<img src={dashboard_logo} alt="dashboard" className="w-6 h-6 mr-2" />}
+                icon={<DashboardIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -72,7 +74,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/today"
                 text="Aujourd'hui"
-                icon={<img src={today_logo} alt="aujourd'hui" className="w-6 h-6 mr-2" />}
+                icon={<DayIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -81,7 +83,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/agenda"
                 text="Agenda"
-                icon={<img src={agenda_logo} alt="agenda" className="w-6 h-6 mr-2" />}
+                icon={<AgendaIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -89,13 +91,13 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               />
               <SidebarDropdown
                 title="Mes recherches"
-                icon={<img src={search_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
+                icon={<SearchIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
               >
                 <SidebarItem
                   link="/search"
                   text="Recherche"
-                  icon={<img src={glass_logo} alt="rechercher" className="w-6 h-6 mr-2" />}
+                  icon={<SearchIcon size={24} className="mr-2 text-white" />}
                   isSidebarMinimized={false}
                   onClick={onToggle}
                   isMobile={isMobile}
@@ -104,7 +106,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
                 <SidebarItem
                   link="/favorites"
                   text="Mes favoris"
-                  icon={<img src={favorite_logo} alt="favorites" className="w-6 h-6 mr-2" />}
+                  icon={<HeartIcon size={24} className="mr-2 text-white" />}
                   isSidebarMinimized={false}
                   onClick={onToggle}
                   isMobile={isMobile}
@@ -114,7 +116,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/faq"
                 text="FAQ / Aide"
-                icon={<img src={faq_logo} alt="faq" className="w-6 h-6 mr-2" />}
+                icon={<QuestionMarkIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -123,7 +125,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/contact"
                 text="Contact"
-                icon={<img src={contact_logo} alt="contact" className="w-6 h-6 mr-2" />}
+                icon={<IdentificationIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
@@ -132,7 +134,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               <SidebarItem
                 link="/logout"
                 text="Déconnexion"
-                icon={<img src={disconnect} alt="disconnect" className="w-6 h-6 mr-2" />}
+                icon={<DisconnectIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
                 onClick={onToggle}
                 isMobile={isMobile}
