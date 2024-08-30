@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import Dashboard from "../Pages/Dashboard";
 import Agenda from "../Pages/Agenda";
 import Contact from "../Pages/Contact";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import Faq from "../Pages/Faq";
 import Missions from "../Pages/Missions";
 import Profile from "../Pages/Profile";
