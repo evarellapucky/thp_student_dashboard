@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMinimized, isMobile, onClick, isActive }) => (
   <li 
-    className={`p-2 rounded ${isActive ? "border-l-4 border-primary bg-secondary" : ""}  ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-secondary"}`}
+    className={`p-2 rounded ${isActive && !isSidebarMinimized ? "border-l-4 border-primary bg-secondary" : ""}  ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-secondary"}`}
     onClick={isMobile ? onClick : null}
   >
     <Link to={link} className={`flex items-center ${textColor} `}>
