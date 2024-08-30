@@ -114,7 +114,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <UserIcon
                     size={24}
-                    color={location.pathname === "/profile" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/profile" && isMinimized ?"#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -127,7 +127,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <HomeIcon
                     size={24}
-                    color={location.pathname === "/dashboard" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/dashboard" && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -140,7 +140,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <CalendarIcon
                     size={24}
-                    color={location.pathname === "/today" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/today" && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -153,7 +153,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <AgendaIcon
                     size={24}
-                    color={location.pathname === "/agenda" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/agenda" && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -165,7 +165,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <FolderIcon
                     size={24}
-                    color={(location.pathname.startsWith("/search") || location.pathname === "/favorites") && isMinimized ? "blue" : "white"}
+                    color={(location.pathname.startsWith("/search") || location.pathname === "/favorites") && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -177,7 +177,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   icon={
                     <SearchIcon
                       size={24}
-                      color={location.pathname === "/search" && isMinimized ? "blue" : "white"}
+                      color={location.pathname === "/search" && isMinimized ? "#007BFF" : "white"}
                       className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                     />
                   }
@@ -190,7 +190,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                   icon={
                     <HeartIcon
                       size={24}
-                      color={location.pathname === "/favorites" && isMinimized ? "blue" : "white"}
+                      color={location.pathname === "/favorites" && isMinimized ? "#007BFF" : "white"}
                       className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                     />
                   }
@@ -205,7 +205,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <HelpIcon
                     size={24}
-                    color={location.pathname === "/faq" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/faq" && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }
@@ -218,7 +218,7 @@ const Sidebar = ({ isMinimized, onToggle }) => {
                 icon={
                   <IdentificationIcon
                     size={24}
-                    color={location.pathname === "/contact" && isMinimized ? "blue" : "white"}
+                    color={location.pathname === "/contact" && isMinimized ? "#007BFF" : "white"}
                     className={`${isMinimized ? "mx-auto" : "mr-2"}`}
                   />
                 }

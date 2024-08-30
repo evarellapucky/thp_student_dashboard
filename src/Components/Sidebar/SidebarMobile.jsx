@@ -91,7 +91,7 @@ const SidebarMobile = ({ isOpen, onToggle }) => {
               />
               <SidebarDropdown
                 title="Mes recherches"
-                icon={<SearchIcon size={24} className="mr-2 text-white" />}
+                icon={<FolderIcon size={24} className="mr-2 text-white" />}
                 isSidebarMinimized={false}
               >
                 <SidebarItem
