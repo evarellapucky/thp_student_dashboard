@@ -78,7 +78,7 @@ function Profile() {
         <div role="tablist" className="tabs tabs-lifted">
         <input type="radio" name="my_tabs_2" role="tab" className={`tab ${selectedTab === 'Profil' ? 'tab-active [--tab-border-color:theme(colors.mediumgray)] ' : ''}`} aria-label="Profil" defaultChecked onClick={() => setSelectedTab('Profil')}/>
         {selectedTab === "Profil" && 
-          <div role="tabpanel" className="tab-content bg-base-100 border-gray-medium rounded-box p-6 mr-auto" >
+          <div role="tabpanel" className="tab-content bg-base-100 border-gray-medium rounded-box p-6" >
             <MyProfile/>
           </div>
         }
