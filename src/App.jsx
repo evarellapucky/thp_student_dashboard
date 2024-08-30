@@ -1,4 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
+import Dashboard from "./Pages/Dashboard";
+import AppRoutes from "./Routes/AppRoutes";
 import Sidebar from "./Components/Sidebar/sidebar_component/Sidebar";
 import MobileSidebar from "./Components/Sidebar/SidebarMobile";
 import HamburgerIcon from "./Components/Sidebar/HamburgerIcon";
@@ -11,7 +13,7 @@ import {
   tokenAtom,
 } from "./Components/Atom/atoms";
 import axios from "axios";
-import AppRoutes from "./Routes/AppRoutes";
+
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
