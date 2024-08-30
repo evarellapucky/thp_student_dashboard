@@ -1,28 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard";
-import Agenda from "./Pages/Agenda";
-import Profile from "./Pages/Profile";
+import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./Components/Sidebar/sidebar_component/Sidebar";
 import MobileSidebar from "./Components/Sidebar/SidebarMobile";
 import HamburgerIcon from './Components/Sidebar/HamburgerIcon'; 
 import DateTime from "./Components/DateTime";
-import Today from "./Pages/Today";
-import Missions from "./Pages/Missions";
-import Contact from "./Pages/Contact";
-import Faq from "./Pages/Faq";
-import CategoryDetail from "./Components/Faq/CategoryDetail";
-import Shop from "./Pages/Shop";
 import { useEffect, useState } from "react";
-import Search from "./Pages/Search";
-import Favorites from "./Pages/Favorites";
-import Projets from "./Pages/Projets";
-import Resource from "./Pages/Resource";
 import { useAtom } from "jotai";
 import { totalMissionCountAtom, issuesAtom, tokenAtom } from "./Components/Atom/atoms";
 import axios from "axios";
-import SignIn from "./Pages/SignIn";
-import Historique from "./Components/Shop/Historique";
-import KitUI from "./Pages/KitUI";
+import AppRoutes from "./Routes/AppRoutes";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -130,27 +115,7 @@ function App() {
               isMobile ? '' : 'ml-20 p-6'}`}
           >
             <DateTime />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/today" element={<Today />} />
-              <Route path="/agenda" element={<Agenda />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/missions" element={<Missions />} />
-              <Route path="/projets" element={<Projets />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/faq/:categoryName" element={<CategoryDetail />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/historique" element={<Historique />} />
-              <Route path="/projects" element={<Projets />} />
-              <Route path="/resource" element={<Resource />} />
-              <Route path="/sign_in" element={<SignIn />} />
-
-              <Route path="/kit_ui" element={<KitUI />} />
-            </Routes>
+           <AppRoutes />
           </main>
           <footer className="py-5"></footer>
       </BrowserRouter>
