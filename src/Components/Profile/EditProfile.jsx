@@ -26,7 +26,7 @@ function EditProfile() {
     <div>
         <h2>Modifier mon profil</h2>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 CheckboxGroup">
+          <div className="flex flex-col CheckboxGroup">
             <div className="col-span-1 md:col-span-2 m-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

@@ -39,7 +39,7 @@ function Contact() {
         <div className="flex w-full md:w-1/2 bg-base-100 rounded-lg shadow-lightOut p-6">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="mb-6">
-              <h2 className="font-bold mb-4">Nous contacter</h2>
+              <h2 className="font-bold mb-4 text-blue-dark">Nous contacter</h2>
             </div>
 
             <InputField
