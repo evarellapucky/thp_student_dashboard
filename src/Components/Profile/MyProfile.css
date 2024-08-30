@@ -59,12 +59,4 @@
     display: none; /* Cache les flèches sur les petits écrans */
   }
 
-  .flex {
-    flex-direction: column; /* Aligne les éléments en colonne sur mobile */
-    align-items: center; /* Centre les éléments horizontalement */
-  }
-
-  img {
-    margin-bottom: 10px; /* Ajoute un espace en dessous de l'image */
-  }
 }
