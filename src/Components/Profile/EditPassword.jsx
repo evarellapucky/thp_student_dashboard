@@ -40,7 +40,7 @@ function EditPassword() {
       <h2>Modifier mon mot de passe</h2>
       <form onSubmit={handleSubmit}>
 
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 my-3">
           <label className="input input-bordered flex items-center gap-2 w-full md:w-4/5 lg:w-2/5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -169,8 +169,8 @@ function EditPassword() {
         </div>
 
           <div className="md:absolute bottom-0 left-0 right-0 flex justify-center gap-3 p-4 bg-white">
-          <DefaultButton type="submit" name="Valider" color="btn-success"/>
-          <DefaultButton type="submit" name="Annuler" color="btn-error" onClick={handleCloseModal} />
+            <DefaultButton type="submit" name="Valider" color="btn-success"/>
+            <DefaultButton type="submit" name="Annuler" color="btn-error" onClick={handleCloseModal} />
           </div>
       </form>
     </div>
