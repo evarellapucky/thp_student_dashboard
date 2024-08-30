@@ -1,9 +1,11 @@
+import './MyProfile.css';
+
 function MyDocuments() {
 
   return(
     <>
       <h1>Mes documents</h1>
-      <div className="flex">
+      <div>
         <div className="flex flex-col items-center gap-5 w-full">
           <a className="flex justify-between gap-5 w-full sm:max-w-xl border-2 p-3" href="https://github.com/tommy-pellerin/json_refont_thp/raw/main/youhavebeenhacked.pdf" download="Attestation_d_inscription_en_formation.pdf">
             <p>Attestation d'inscription en formation</p>
@@ -33,7 +35,6 @@ function MyDocuments() {
             </svg>
           </a>
         </div>
-
       </div>
     </>
   )

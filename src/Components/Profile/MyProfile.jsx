@@ -8,8 +8,6 @@ import EditPassword from "./EditPassword";
 import axios from "axios";
 import DefaultButton from "../DefaultButton";
 import moussaillon from "../../Assets/moussaillon_01-cd7905f6ac0fb80b9cabacd44c15f20259ce3f0c8ef3b0c6ec58aeb1a7844ead.svg"
-import corsaire from "../../Assets/corsaire_01-d1a93f73c370cfcf4c97d92593e9cc40119ed87e4b641e85dc34a8d425d62757.svg"
-import pirate from "../../Assets/pirate_01-bf3f9f7e4935e7577fdac079d782ea492e9cc25e00bd1ee4106e90aeabb3c987.svg"
 import './MyProfile.css';
 
 function MyProfile() {
