@@ -77,6 +77,7 @@ const Week = () => {
               resources={dayData.resources}
               toCorrect={dayData.ToCorrect}
               toRender={dayData.ToRender}
+              isProject={dayData.isProject}
             />
           ))
         ) : (

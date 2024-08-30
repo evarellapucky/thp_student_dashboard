@@ -10,6 +10,8 @@ export default {
           "linear-gradient(90deg, #ff0000 0%, #ff4500 10%, #ff6347 20%, #ff7f50 30%, #ffa07a 40%, #ffff00 50%, #00ff00 60%, #0000ff 70%, #4b0082 80%, #8b00ff 90%, #ff00ff 100%)",
         "blue-gradient": "linear-gradient(180deg, #15A3FF 0%, #0081E3 100%)",
         "gray-gradient": "linear-gradient(135deg, #343A40 0%, #5C5F63 100%)",
+        "gradient": "linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%)",
+        "light-blue": "linear-gradient(180deg, #15a1ffa2 0%, #0081E39e 100%)",
       },
       boxShadow: {
         inner: `
