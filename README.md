@@ -1,3 +1,58 @@
+# README - Dashboard Étudiant pour The Hacking Project
+
+## 📚 Présentation du Projet
+
+Bienvenue dans le projet **Dashboard Étudiant** pour *The Hacking Project*. Cette application web sert de point central pour les étudiants afin de gérer leur progression. Le dashboard offre une interface conviviale où les étudiants peuvent accéder aux matériaux de cours, surveiller leur progression, et participer à la communauté. Que vous soyez débutant en code ou développeur expérimenté, ce dashboard vise à améliorer votre expérience d'apprentissage et à vous maintenir sur la bonne voie tout au long du programme The Hacking Project.
+
+## 🚀 Technologies Utilisées
+
+Ce projet est construit avec une pile technologique moderne pour garantir performance, évolutivité, et facilité de développement. Voici un aperçu des principales technologies utilisées :
+
+- **Frontend** :
+  - HTML5 & CSS3
+  - JavaScript (ES6+)
+  - React.js - pour créer des interfaces utilisateur interactives
+  - tailwind css
+
+- **Backend** :
+  - Ce projet est purement frontend, la récupération des données ne comprend pas (encore) de logique particulière
+
+- **Base de Données** :
+  - JSON - une solution de base de données simple, basée sur des fichiers, adaptée à ce projet
+  - Récupération de données depuis github (détaillé plus bas)
+
+- **Gestion de Version** :
+  - Git & GitHub - pour le contrôle de version et la collaboration
+
+## ⚙️ Commandes d'Installation et de Lancement
+
+Suivez ces étapes pour faire fonctionner le projet sur votre machine locale :
+
+### Prérequis
+Assurez-vous d'avoir les éléments suivants installés :
+- **npm** ou **pnpm** comme gestionnaire de packets js
+- [Git](https://git-scm.com/)
+- Un éditeur de code comme [VS Code](https://code.visualstudio.com/)
+
+### Installation
+
+1. **Cloner le dépôt :**
+   ```bash
+   git clone https://github.com/Evarella_pucky/thp_student_dashboard.git
+   cd dashboard-etudiant
+   ```
+2. **Initialisation**
+    ```bash
+    npm i
+    pnpm i
+    ```
+3. **Lancement du serveur ***
+    ```bash
+    npm run dev
+    pnpm run dev
+    ```
+
+
 ## Consommation des Endpoints API
 
 Ce projet frontend utilise les endpoints d'une API externe pour récupérer et gérer les données nécessaires à l'application. Voici comment les appels à l'API sont gérés et ce que tu dois savoir pour configurer et utiliser l'application correctement.
