@@ -38,7 +38,7 @@ Assurez-vous d'avoir les éléments suivants installés :
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/evarellapucky/v
+   git clone https://github.com/evarellapucky
    cd thp_student_dashboard
    ```
 2. **Initialisation**
