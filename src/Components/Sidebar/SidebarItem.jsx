@@ -6,7 +6,7 @@ const SidebarItem = ({ link, text, icon, textColor = 'text-white', isSidebarMini
     className={`p-2 rounded ${isActive && !isSidebarMinimized ? "border-l-4 border-primary bg-secondary" : ""}  ${isSidebarMinimized ? "hover:scale-125 transition-transform duration-200" : "hover:bg-secondary"}`}
     onClick={isMobile ? onClick : null}
   >
-    <Link to={link} className={`flex items-center ${textColor} !no-underline`}>
+    <Link to={link} className={`flex items-center ${textColor}`}>
       {icon}
       <span
         className={`ml-2 transition-all duration-300 ${isSidebarMinimized ? "hidden" : "inline-block"} whitespace-nowrap overflow-hidden ${textColor}`}
