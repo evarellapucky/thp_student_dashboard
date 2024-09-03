@@ -38,17 +38,23 @@ Assurez-vous d'avoir les éléments suivants installés :
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/Evarella_pucky/thp_student_dashboard.git
-   cd dashboard-etudiant
+   git clone https://github.com/evarellapucky/v
+   cd thp_student_dashboard
    ```
 2. **Initialisation**
     ```bash
     npm i
+    ```
+    **ou**
+    ```bash
     pnpm i
     ```
 3. **Lancement du serveur ***
     ```bash
     npm run dev
+    ```
+    **ou**
+    ```bash
     pnpm run dev
     ```
 
